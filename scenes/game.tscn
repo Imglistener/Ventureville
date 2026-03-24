@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://d1if5mx0gsc3a"]
+
+[ext_resource type="PackedScene" uid="uid://c3v356ke5k7oe" path="res://scenes/player.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://bkj4n6ep5slkd" path="res://scenes/tile_map.tscn" id="2_yqjtg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uwrxv"]
+font_size = 119
+
+[node name="Game" type="Node2D" unique_id=1241532032]
+
+[node name="Label" type="Label" parent="." unique_id=236303079]
+offset_left = -126.0
+offset_top = -380.0
+offset_right = 724.0
+offset_bottom = -117.0
+text = "Starting Location"
+label_settings = SubResource("LabelSettings_uwrxv")
+
+[node name="CharacterBody2D" parent="." unique_id=383133031 instance=ExtResource("2_lnu2h")]
+z_index = 5
+position = Vector2(269, 367)
+scale = Vector2(0.5, 0.5)
+
+[node name="TileMap" parent="." unique_id=313070251 instance=ExtResource("2_yqjtg")]

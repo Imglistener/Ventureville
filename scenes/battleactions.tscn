@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bbfntuvkjw1ol"]
+
+[ext_resource type="Texture2D" uid="uid://b0hfeoyymog0x" path="res://assets/Vbox.png" id="1_8m86m"]
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="2_mdwcr"]
+
+[node name="Battleactions" type="NinePatchRect" unique_id=679668276]
+offset_left = 5.4656677
+offset_right = 616.4647
+offset_bottom = 132.23834
+texture = ExtResource("1_8m86m")
+region_rect = Rect2(4, 147, 124, 106)
+patch_margin_left = 44
+patch_margin_top = 37
+patch_margin_right = 40
+patch_margin_bottom = 37
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=310469951]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_mdwcr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=450818830]
+layout_mode = 2
+theme = ExtResource("2_mdwcr")
+
+[node name="Brace" type="Button" parent="MarginContainer/HBoxContainer" unique_id=835448228]
+layout_mode = 2
+theme = ExtResource("2_mdwcr")
+text = "Brace"
+
+[node name="Brace2" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1051289784]
+layout_mode = 2
+theme = ExtResource("2_mdwcr")
+theme_override_constants/line_spacing = -40
+text = "View 
+Deck"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer" unique_id=1879121319]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/outline_size = 5
+step = 1.0
+value = 50.0
+rounded = true
+allow_greater = true
+show_percentage = false
+
+[node name="Mana" type="Label" parent="MarginContainer/HBoxContainer/ProgressBar" unique_id=1630806907]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -27.5
+offset_right = 20.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "MANA/MAX MANA"

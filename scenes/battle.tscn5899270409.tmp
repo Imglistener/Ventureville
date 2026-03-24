@@ -1,0 +1,442 @@
+[gd_scene format=3 uid="uid://cb8nxihvxrg2i"]
+
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="1_th188"]
+[ext_resource type="Script" uid="uid://c6xhowhgj8v81" path="res://scripts/battle.gd" id="1_v7i3o"]
+[ext_resource type="Texture2D" uid="uid://b0hfeoyymog0x" path="res://assets/Vbox.png" id="2_p1qf1"]
+[ext_resource type="Texture2D" uid="uid://btqsti7r010lb" path="res://assets/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_11_yellow.png" id="3_a12nh"]
+[ext_resource type="Texture2D" uid="uid://bia8tomh7vaj3" path="res://assets/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_11.png" id="3_p1qf1"]
+[ext_resource type="LabelSettings" uid="uid://cwvkv70rf748a" path="res://assets/Label_Settings.tres" id="5_lpir7"]
+[ext_resource type="Texture2D" uid="uid://dybecck5q42sp" path="res://assets/dungeon.jpg" id="6_f4pi3"]
+[ext_resource type="Texture2D" uid="uid://cidfbi53rk4k4" path="res://assets/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_42.png" id="7_yahae"]
+[ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="9_yahae"]
+[ext_resource type="Texture2D" uid="uid://bedswjj26ywid" path="res://assets/Mabel_hover.png" id="10_03edq"]
+[ext_resource type="Texture2D" uid="uid://cqfm4s40cv6fm" path="res://assets/Mabel.png" id="10_66ngm"]
+[ext_resource type="Texture2D" uid="uid://bpiepls5q8x1a" path="res://assets/GUI/GUI-1.png" id="11_6ni85"]
+[ext_resource type="Script" uid="uid://mvchpx8qhoby" path="res://scenes/nine_patch_rect.gd" id="12_p0caf"]
+[ext_resource type="AudioStream" uid="uid://bg6jbku5jie7p" path="res://assets/Nihility.ogg" id="13_22uqi"]
+[ext_resource type="PackedScene" uid="uid://b07wkah7m0f1g" path="res://scenes/menusoundsystem.tscn" id="14_h4dll"]
+[ext_resource type="PackedScene" uid="uid://bbfntuvkjw1ol" path="res://scenes/battleactions.tscn" id="14_vceff"]
+[ext_resource type="AudioStream" uid="uid://dthpwusghe2wg" path="res://assets/hover.wav" id="17_p0caf"]
+[ext_resource type="AudioStream" uid="uid://diyc8a23kpu7b" path="res://assets/click.wav" id="18_61i1y"]
+
+[sub_resource type="Theme" id="Theme_lpir7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mx5t"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_66ngm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v7i3o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ctt5t"]
+region_rect = Rect2(138, 2, 45, 29)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwnw2"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_66ngm"]
+default_font = ExtResource("9_yahae")
+default_font_size = 30
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 4
+Button/font_sizes/font_size = 45
+Button/fonts/font = ExtResource("9_yahae")
+Button/styles/disabled = SubResource("StyleBoxFlat_4mx5t")
+Button/styles/focus = SubResource("StyleBoxEmpty_66ngm")
+Button/styles/hover = SubResource("StyleBoxEmpty_v7i3o")
+Button/styles/normal = SubResource("StyleBoxTexture_ctt5t")
+Button/styles/pressed = SubResource("StyleBoxFlat_lwnw2")
+
+[sub_resource type="GDScript" id="GDScript_h4dll"]
+
+[node name="Battle" type="Control" unique_id=30946768]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v7i3o")
+
+[node name="Background" type="ColorRect" parent="." unique_id=464716810]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1680183, 0.025840001, 0.1428257, 1)
+metadata/_edit_lock_ = true
+
+[node name="MarginMain" type="MarginContainer" parent="." unique_id=2064016121]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginMain" unique_id=479921055]
+custom_minimum_size = Vector2(720, 720)
+layout_mode = 2
+
+[node name="EnemyInfo" type="VBoxContainer" parent="MarginMain/VBoxContainer" unique_id=1554168125]
+layout_mode = 2
+theme = ExtResource("1_th188")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginMain/VBoxContainer/EnemyInfo" unique_id=1623237556]
+layout_mode = 2
+texture = ExtResource("2_p1qf1")
+region_rect = Rect2(4, 147, 128, 106)
+patch_margin_left = 77
+patch_margin_top = 106
+patch_margin_right = 91
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginMain/VBoxContainer/EnemyInfo/NinePatchRect" unique_id=1240656073]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginMain/VBoxContainer/EnemyInfo/NinePatchRect/MarginContainer" unique_id=317360487]
+layout_mode = 2
+theme_override_constants/separation = 214
+
+[node name="Enem_Status" type="Label" parent="MarginMain/VBoxContainer/EnemyInfo/NinePatchRect/MarginContainer/HBoxContainer" unique_id=833165868]
+layout_mode = 2
+text = "Status Effects: (Icons)"
+label_settings = ExtResource("5_lpir7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginMain/VBoxContainer/EnemyInfo/NinePatchRect/MarginContainer/HBoxContainer" unique_id=1738712323]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = -2
+alignment = 1
+
+[node name="Enemy_name" type="Label" parent="MarginMain/VBoxContainer/EnemyInfo/NinePatchRect/MarginContainer/HBoxContainer/VBoxContainer" unique_id=901584268]
+layout_mode = 2
+text = "EnemyName"
+label_settings = ExtResource("5_lpir7")
+horizontal_alignment = 1
+
+[node name="Enemy_name2" type="Label" parent="MarginMain/VBoxContainer/EnemyInfo/NinePatchRect/MarginContainer/HBoxContainer/VBoxContainer" unique_id=759173417]
+layout_mode = 2
+text = "Message: Enemy Action"
+label_settings = ExtResource("5_lpir7")
+
+[node name="Is_Active" type="Label" parent="MarginMain/VBoxContainer/EnemyInfo/NinePatchRect/MarginContainer/HBoxContainer" unique_id=1346487577]
+layout_mode = 2
+text = "Turn Order: "
+label_settings = ExtResource("5_lpir7")
+horizontal_alignment = 2
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="MarginMain/VBoxContainer/EnemyInfo" unique_id=535567704]
+self_modulate = Color(1, 1, 1, 0.43400002)
+layout_mode = 2
+theme = SubResource("Theme_lpir7")
+texture = ExtResource("2_p1qf1")
+region_rect = Rect2(4, 147, 128, 106)
+patch_margin_left = 77
+patch_margin_top = 106
+patch_margin_right = 91
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginMain/VBoxContainer/EnemyInfo/NinePatchRect2" unique_id=756475859]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginMain/VBoxContainer/EnemyInfo/NinePatchRect2/MarginContainer" unique_id=971952753]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 214
+
+[node name="Sanbar" type="TextureProgressBar" parent="MarginMain/VBoxContainer/EnemyInfo/NinePatchRect2/MarginContainer/HBoxContainer" unique_id=1774747736]
+layout_mode = 2
+value = 50.0
+fill_mode = 1
+texture_under = ExtResource("3_a12nh")
+texture_progress = ExtResource("3_a12nh")
+tint_progress = Color(0.2520276, 0.25202766, 0.25202763, 1)
+
+[node name="Sanity" type="Label" parent="MarginMain/VBoxContainer/EnemyInfo/NinePatchRect2/MarginContainer/HBoxContainer/Sanbar" unique_id=1253761503]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.989
+anchor_bottom = 0.632
+offset_left = 102.0
+offset_right = -102.08499
+offset_bottom = 6.9679985
+text = "SAN"
+label_settings = ExtResource("5_lpir7")
+
+[node name="healthbar" type="TextureProgressBar" parent="MarginMain/VBoxContainer/EnemyInfo/NinePatchRect2/MarginContainer/HBoxContainer" unique_id=1283637805]
+layout_mode = 2
+value = 50.0
+fill_mode = 1
+texture_under = ExtResource("3_p1qf1")
+texture_progress = ExtResource("3_p1qf1")
+tint_progress = Color(0.3557254, 0.12005239, 0.08532106, 1)
+
+[node name="Health" type="Label" parent="MarginMain/VBoxContainer/EnemyInfo/NinePatchRect2/MarginContainer/HBoxContainer/healthbar" unique_id=671585759]
+layout_mode = 0
+offset_left = 111.0
+offset_right = 196.0
+offset_bottom = 55.0
+text = "HP"
+label_settings = ExtResource("5_lpir7")
+
+[node name="AP" type="Label" parent="MarginMain/VBoxContainer/EnemyInfo/NinePatchRect2/MarginContainer/HBoxContainer" unique_id=1197585211]
+layout_mode = 2
+text = "Actions Points:"
+label_settings = ExtResource("5_lpir7")
+horizontal_alignment = 2
+
+[node name="Arena" type="TextureRect" parent="MarginMain/VBoxContainer" unique_id=1883513822]
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+texture = ExtResource("6_f4pi3")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginMain/VBoxContainer/Arena" unique_id=178654187]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -628.0
+offset_top = -121.0
+offset_right = 628.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginMain/VBoxContainer/Arena/MarginContainer" unique_id=1344896963]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginMain/VBoxContainer/Arena/MarginContainer/HBoxContainer" unique_id=565818696]
+custom_minimum_size = Vector2(280, 360)
+layout_mode = 2
+texture = ExtResource("7_yahae")
+region_rect = Rect2(2.0406494, 0, 74.95935, 51.50301)
+patch_margin_right = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginMain/VBoxContainer/Arena/MarginContainer/HBoxContainer/NinePatchRect" unique_id=557823797]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Log" type="Label" parent="MarginMain/VBoxContainer/Arena/MarginContainer/HBoxContainer/NinePatchRect/MarginContainer" unique_id=1072890574]
+layout_mode = 2
+text = "LOG"
+label_settings = ExtResource("5_lpir7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginMain/VBoxContainer/Arena/MarginContainer/HBoxContainer" unique_id=1751082446]
+layout_mode = 2
+theme_override_constants/margin_left = 285
+theme_override_constants/margin_top = 95
+theme_override_constants/margin_right = 255
+theme_override_constants/margin_bottom = 5
+
+[node name="Enemy" type="TextureButton" parent="MarginMain/VBoxContainer/Arena/MarginContainer/HBoxContainer/MarginContainer" unique_id=1784292297]
+layout_mode = 2
+texture_normal = ExtResource("10_66ngm")
+texture_focused = ExtResource("10_03edq")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="MarginMain/VBoxContainer/Arena/MarginContainer/HBoxContainer" unique_id=1566461305]
+custom_minimum_size = Vector2(280, 360)
+layout_mode = 2
+texture = ExtResource("7_yahae")
+region_rect = Rect2(2.0406494, 0, 74.95935, 51.50301)
+patch_margin_right = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginMain/VBoxContainer/Arena/MarginContainer/HBoxContainer/NinePatchRect2" unique_id=438654490]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="portrait" type="Label" parent="MarginMain/VBoxContainer/Arena/MarginContainer/HBoxContainer/NinePatchRect2/MarginContainer" unique_id=1414443304]
+layout_mode = 2
+text = "Portrait"
+label_settings = ExtResource("5_lpir7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interface" type="MarginContainer" parent="MarginMain/VBoxContainer" unique_id=317479354]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginMain/VBoxContainer/Interface" unique_id=1177427996]
+custom_minimum_size = Vector2(1280, 130)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_6ni85")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+script = ExtResource("12_p0caf")
+
+[node name="ActionsMenu" type="HBoxContainer" parent="MarginMain/VBoxContainer/Interface/NinePatchRect" unique_id=25335144]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 130)
+layout_mode = 0
+offset_right = 1264.0
+offset_bottom = 136.0
+size_flags_vertical = 4
+theme_override_constants/separation = 48
+
+[node name="Talk" type="Button" parent="MarginMain/VBoxContainer/Interface/NinePatchRect/ActionsMenu" unique_id=293117457]
+custom_minimum_size = Vector2(280, 136)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../Battle")
+focus_neighbor_right = NodePath("../Run")
+focus_next = NodePath("../Run")
+focus_previous = NodePath("../Battle")
+theme = ExtResource("1_th188")
+text = "Talk"
+
+[node name="Run" type="Button" parent="MarginMain/VBoxContainer/Interface/NinePatchRect/ActionsMenu" unique_id=265142696]
+custom_minimum_size = Vector2(280, 136)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../Talk")
+focus_neighbor_right = NodePath("../Item")
+focus_next = NodePath("../Item")
+focus_previous = NodePath("../Talk")
+theme = SubResource("Theme_66ngm")
+text = "Escape"
+
+[node name="Item" type="Button" parent="MarginMain/VBoxContainer/Interface/NinePatchRect/ActionsMenu" unique_id=282789779]
+custom_minimum_size = Vector2(280, 136)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../Run")
+focus_neighbor_right = NodePath("../Battle")
+focus_next = NodePath("../Battle")
+focus_previous = NodePath("../Run")
+theme = SubResource("Theme_66ngm")
+text = "Items"
+
+[node name="Battle" type="Button" parent="MarginMain/VBoxContainer/Interface/NinePatchRect/ActionsMenu" unique_id=1657688204]
+custom_minimum_size = Vector2(280, 136)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_66ngm")
+text = "Battle"
+
+[node name="MENUSOUNDSYSTEM" parent="MarginMain/VBoxContainer/Interface/NinePatchRect/ActionsMenu" unique_id=2042602386 instance=ExtResource("14_h4dll")]
+
+[node name="Battleactions" parent="MarginMain/VBoxContainer/Interface/NinePatchRect" unique_id=679668276 instance=ExtResource("14_vceff")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 0.0
+offset_right = 610.999
+
+[node name="HBoxContainer" parent="MarginMain/VBoxContainer/Interface/NinePatchRect/Battleactions/MarginContainer" parent_id_path=PackedInt32Array(679668276, 310469951) index="0" unique_id=450818830]
+script = SubResource("GDScript_h4dll")
+
+[node name="MENUSOUNDSYSTEM" parent="MarginMain/VBoxContainer/Interface/NinePatchRect/Battleactions/MarginContainer/HBoxContainer" index="3" unique_id=1455212484 instance=ExtResource("14_h4dll")]
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="." unique_id=372786808]
+stream = ExtResource("13_22uqi")
+autoplay = true
+
+[node name="Hover" type="AudioStreamPlayer2D" parent="." unique_id=2055549125]
+unique_name_in_owner = true
+stream = ExtResource("17_p0caf")
+volume_db = 3.152
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer2D" parent="." unique_id=573508492]
+unique_name_in_owner = true
+stream = ExtResource("18_61i1y")
+volume_db = 3.152
+bus = &"SFX"
+
+[connection signal="visibility_changed" from="MarginMain/VBoxContainer/Interface/NinePatchRect/ActionsMenu" to="." method="_on_actions_menu_visibility_changed"]
+[connection signal="visibility_changed" from="MarginMain/VBoxContainer/Interface/NinePatchRect/Battleactions/MarginContainer/HBoxContainer" to="MarginMain/VBoxContainer/Interface/NinePatchRect/Battleactions/MarginContainer/HBoxContainer" method="_on_visibility_changed"]
+
+[editable path="MarginMain/VBoxContainer/Interface/NinePatchRect/Battleactions"]
