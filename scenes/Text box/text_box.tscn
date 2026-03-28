@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://b4rs1olnj176w"]
+
+[ext_resource type="Script" uid="uid://do0y7bi7orr4f" path="res://scenes/Text box/text_box.gd" id="1_qmveb"]
+[ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="2_dnewi"]
+[ext_resource type="Texture2D" uid="uid://doj1nseex08d6" path="res://assets/ChatBox/ChatBox.png" id="2_qmveb"]
+[ext_resource type="Texture2D" uid="uid://bvgplwasc3cb1" path="res://assets/ChatBox/Tail.png" id="3_jjjmw"]
+[ext_resource type="Texture2D" uid="uid://dpyo06kdad716" path="res://assets/ChatBox/NextIndicator1.png" id="4_qynx3"]
+[ext_resource type="Texture2D" uid="uid://d0oioki780war" path="res://assets/ChatBox/NextIndicator2.png" id="5_d4wdm"]
+[ext_resource type="Texture2D" uid="uid://dxpsj6se3eh82" path="res://assets/ChatBox/NextIndicator3.png" id="6_f2if2"]
+[ext_resource type="Texture2D" uid="uid://dfleap476p7n3" path="res://assets/ChatBox/NextIndicator4.png" id="7_u6vus"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_derm0"]
+atlas = ExtResource("4_qynx3")
+region = Rect2(0, 0, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6b0d"]
+atlas = ExtResource("5_d4wdm")
+region = Rect2(0, 0, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ej8a"]
+atlas = ExtResource("6_f2if2")
+region = Rect2(0, 0, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tceyk"]
+atlas = ExtResource("7_u6vus")
+region = Rect2(0, 0, 12, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_orvj5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_derm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6b0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ej8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tceyk")
+}],
+"loop": true,
+"name": &"NextIndicator",
+"speed": 8.0
+}]
+
+[node name="TextBox" type="MarginContainer" unique_id=155478685]
+z_index = 20
+offset_right = 51.0
+offset_bottom = 48.0
+script = ExtResource("1_qmveb")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=579158457]
+layout_mode = 2
+texture = ExtResource("2_qmveb")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Control" type="Control" parent="NinePatchRect" unique_id=894158436]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.5
+offset_top = -48.0
+offset_right = 22.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Tail" type="Sprite2D" parent="NinePatchRect/Control" unique_id=1179165470]
+position = Vector2(25, 52)
+scale = Vector2(1.5000001, 1.4545455)
+texture = ExtResource("3_jjjmw")
+
+[node name="Control2" type="Control" parent="NinePatchRect" unique_id=896109812]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="NextIndicator" type="AnimatedSprite2D" parent="NinePatchRect/Control2" unique_id=2032287446]
+visible = false
+position = Vector2(-6, -5)
+scale = Vector2(0.9166667, 0.90909094)
+sprite_frames = SubResource("SpriteFrames_orvj5")
+animation = &"NextIndicator"
+autoplay = "NextIndicator"
+frame_progress = 0.6081593
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=737742555]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1074286235]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_dnewi")
+vertical_alignment = 1
+
+[node name="LetterDisplayTimer" type="Timer" parent="." unique_id=1382447836]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=993338281]
+
+[connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]

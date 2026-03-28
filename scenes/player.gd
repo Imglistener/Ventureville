@@ -8,6 +8,8 @@ var last_direction : Vector2 = Vector2.DOWN
 
 
 func _physics_process(delta: float) -> void:
+	if DialogManager.is_dialog_active:
+		return
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if direction != Vector2.ZERO:

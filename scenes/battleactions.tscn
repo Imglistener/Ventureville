@@ -2,19 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://b0hfeoyymog0x" path="res://assets/Vbox.png" id="1_8m86m"]
 [ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="2_mdwcr"]
-[ext_resource type="Script" uid="uid://d2kbu4dhxe1ap" path="res://scenes/progress_bar.gd" id="3_mdwcr"]
-[ext_resource type="Texture2D" uid="uid://debxa5ee77fk5" path="res://assets/GUI/GUI_MANAPOT.png" id="4_k7ffo"]
-[ext_resource type="LabelSettings" uid="uid://cwvkv70rf748a" path="res://assets/Label_Settings.tres" id="7_vidtm"]
-
-[sub_resource type="Gradient" id="Gradient_ygmix"]
-offsets = PackedFloat32Array(0.41992882, 0.6761566)
-colors = PackedColorArray(0.36900425, 0.28251648, 0.62890625, 1, 0.2230835, 0, 0.6640625, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y7heb"]
-gradient = SubResource("Gradient_ygmix")
-width = 140
-height = 88
-fill_from = Vector2(0, 1)
 
 [node name="Battleactions" type="NinePatchRect" unique_id=679668276]
 offset_left = 5.4656677
@@ -39,53 +26,42 @@ theme = ExtResource("2_mdwcr")
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=450818830]
 layout_mode = 2
 theme = ExtResource("2_mdwcr")
-theme_override_constants/separation = 106
 
-[node name="End Turn" type="Button" parent="MarginContainer/HBoxContainer" unique_id=835448228]
+[node name="Brace" type="Button" parent="MarginContainer/HBoxContainer" unique_id=835448228]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 theme = ExtResource("2_mdwcr")
-theme_override_constants/line_spacing = -40
-text = "End
-Turn"
+text = "Brace"
 
-[node name="View Deck" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1051289784]
+[node name="Brace2" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1051289784]
 layout_mode = 2
 theme = ExtResource("2_mdwcr")
 theme_override_constants/line_spacing = -40
 text = "View 
 Deck"
 
-[node name="manacounter" type="TextureProgressBar" parent="MarginContainer/HBoxContainer" unique_id=1066797559]
-custom_minimum_size = Vector2(73.163, 111.858)
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer" unique_id=1879121319]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-max_value = 3.0
-value = 3.0
-fill_mode = 3
-nine_patch_stretch = true
-stretch_margin_left = 79
-stretch_margin_right = 62
-texture_over = ExtResource("4_k7ffo")
-texture_progress = SubResource("GradientTexture2D_y7heb")
-script = ExtResource("3_mdwcr")
+theme_override_constants/outline_size = 5
+step = 1.0
+value = 50.0
+rounded = true
+allow_greater = true
+show_percentage = false
 
-[node name="Mana" type="Label" parent="MarginContainer/HBoxContainer/manacounter" unique_id=1052666627]
+[node name="Mana" type="Label" parent="MarginContainer/HBoxContainer/ProgressBar" unique_id=1630806907]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -131.0
+offset_left = -20.0
 offset_top = -27.5
-offset_right = 131.0
+offset_right = 20.0
 offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "MANA/MAX MANA"
-label_settings = ExtResource("7_vidtm")
-horizontal_alignment = 1
-vertical_alignment = 1

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bqn377e7c5ubh"]
+
+[ext_resource type="Script" uid="uid://k5slmfiv72oc" path="res://scenes/Interaction/Interaction Manager/interaction_manager.gd" id="1_p7j5n"]
+[ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="1_spka6"]
+
+[node name="InteractionManager" type="Node2D" unique_id=692898219]
+script = ExtResource("1_p7j5n")
+
+[node name="Label" type="Label" parent="." unique_id=908204391]
+z_index = 20
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -57.0
+offset_right = 57.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_spka6")
+horizontal_alignment = 1
+vertical_alignment = 1

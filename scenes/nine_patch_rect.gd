@@ -2,8 +2,6 @@ extends Node
 var activemenu = null
 var index: int = 1
 @onready var menus : Array = get_children()
-@onready var zahando: MarginContainer = $Battleactions/Zahando
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass

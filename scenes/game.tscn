@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c3v356ke5k7oe" path="res://scenes/player.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bkj4n6ep5slkd" path="res://scenes/tile_map.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://cr1uhp2u7celx" path="res://scenes/NPC/old_man.tscn" id="3_lnu2h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uwrxv"]
 font_size = 119
@@ -11,14 +12,19 @@ font_size = 119
 [node name="Label" type="Label" parent="." unique_id=236303079]
 offset_left = -126.0
 offset_top = -380.0
-offset_right = 724.0
-offset_bottom = -117.0
+offset_right = 854.0
+offset_bottom = -142.0
 text = "Starting Location"
 label_settings = SubResource("LabelSettings_uwrxv")
 
-[node name="CharacterBody2D" parent="." unique_id=383133031 instance=ExtResource("2_lnu2h")]
-z_index = 5
-position = Vector2(269, 367)
-scale = Vector2(0.5, 0.5)
-
 [node name="TileMap" parent="." unique_id=313070251 instance=ExtResource("2_yqjtg")]
+
+[node name="OldMan" parent="." unique_id=1131496462 instance=ExtResource("3_lnu2h")]
+position = Vector2(847, 111)
+
+[node name="player" parent="." unique_id=383133031 instance=ExtResource("2_lnu2h")]
+position = Vector2(231, 458)
+scale = Vector2(0.4, 0.4)
+
+[node name="OldMan2" parent="." unique_id=768655061 instance=ExtResource("3_lnu2h")]
+position = Vector2(543, 116)
