@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Ventureville"
-run/main_scene="uid://d1if5mx0gsc3a"
+run/main_scene="uid://cb8nxihvxrg2i"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
