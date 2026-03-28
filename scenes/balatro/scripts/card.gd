@@ -88,14 +88,22 @@ func handle_mouse_click(event: InputEvent) -> void:
 	if event.is_pressed():
 		following_mouse = true
 	else:
-		# drop card
-		global_position = anchor_position
+	# drop card
 		following_mouse = false
 		collision_shape.set_deferred("disabled", false)
+
+		# Kill existing tween if needed
 		if tween_handle and tween_handle.is_running():
 			tween_handle.kill()
-		tween_handle = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
-		tween_handle.tween_property(self, "rotation", 0.0, 0.3)
+
+		# Create smooth return tween
+		tween_handle = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+
+		# Move back smoothly instead of teleporting
+		tween_handle.tween_property(self, "global_position", anchor_position, 0.4)
+
+		# Reset rotation in parallel
+		tween_handle.parallel().tween_property(self, "rotation", 0.0, 0.3)
 
 func _on_gui_input(event: InputEvent) -> void:
 	
