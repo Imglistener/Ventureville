@@ -12,12 +12,9 @@ signal applied_effect(name)
 
 #AverageFunctionBeLike:
 
-func releaseDOT(target: TextureProgressBar, amount: int):
-	target.value = target.value + amount	
+func releaseDOT(target: Combat_Entity, amount: int):
+	target.take_damage(amount)	
 
-# Called when applied
-func on_apply(source, target, amount):
-	pass
 
 # Called each turn
 func on_standby_phase(source, target):

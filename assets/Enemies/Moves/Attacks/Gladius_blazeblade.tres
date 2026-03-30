@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Attack_Action" format=3 uid="uid://88tm2wpbkkfx"]
+
+[ext_resource type="AudioStream" uid="uid://bbvqa2xxno57n" path="res://assets/SFX/Gladius nuke.wav" id="1_2pldk"]
+[ext_resource type="Resource" uid="uid://bj7r1n7tcssdq" path="res://assets/Data/Damage Types/Fire.tres" id="1_5ko1q"]
+[ext_resource type="Script" uid="uid://bdxs2b55rdyg4" path="res://scripts/attack_action.gd" id="1_wb765"]
+
+[resource]
+script = ExtResource("1_wb765")
+damage_base = 20
+damage_type = ExtResource("1_5ko1q")
+action_name = "Blazing Chained Blade"
+action_type = "Attack"
+action_soundeffect = ExtResource("1_2pldk")
+action_log_message = "\"Gladius swing their blade in a wide arc!"
+metadata/_custom_type_script = "uid://bdxs2b55rdyg4"

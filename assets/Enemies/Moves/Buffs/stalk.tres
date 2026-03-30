@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="stalk" format=3 uid="uid://d3sjlnhqvhnga"]
+
+[ext_resource type="Script" uid="uid://w2574rmkk0vq" path="res://scripts/stalk.gd" id="1_pghqo"]
+[ext_resource type="AudioStream" uid="uid://blr6kihmmbqi7" path="res://assets/SFX/stalk.wav" id="1_xqa7e"]
+
+[resource]
+script = ExtResource("1_pghqo")
+Duration = 3
+action_name = "Apex Predator's Stalk"
+action_type = "Buff"
+action_soundeffect = ExtResource("1_xqa7e")
+action_log_message = "Gladius is stalking!"
+metadata/_custom_type_script = "uid://w2574rmkk0vq"

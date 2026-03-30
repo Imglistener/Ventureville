@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Damage_Type" format=3 uid="uid://dg5xxjar8srrv"]
+
+[ext_resource type="Script" uid="uid://dxkaq12b6eq46" path="res://scripts/damage_type.gd" id="1_gucyv"]
+[ext_resource type="Resource" uid="uid://daypul6noogqf" path="res://assets/Status Effects/Concussed.tres" id="1_hmerr"]
+
+[resource]
+script = ExtResource("1_gucyv")
+name = "Physical"
+associated_status = ExtResource("1_hmerr")
+metadata/_custom_type_script = "uid://dxkaq12b6eq46"

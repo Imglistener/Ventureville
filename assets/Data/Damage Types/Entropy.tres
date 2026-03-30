@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Damage_Type" format=3 uid="uid://dfcm8syx6kp1b"]
+
+[ext_resource type="Resource" uid="uid://b35yoaatftwhx" path="res://assets/Status Effects/Withering.tres" id="1_8hfx6"]
+[ext_resource type="Script" uid="uid://dxkaq12b6eq46" path="res://scripts/damage_type.gd" id="1_c4sv1"]
+
+[resource]
+script = ExtResource("1_c4sv1")
+name = "Entropy"
+associated_status = ExtResource("1_8hfx6")
+metadata/_custom_type_script = "uid://dxkaq12b6eq46"
