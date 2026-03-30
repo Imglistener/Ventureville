@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Loadout" format=3 uid="uid://u7b6uhn5848s"]
+
+[ext_resource type="Script" uid="uid://dl7lqrq8fb6cw" path="res://scripts/class.gd" id="1_fi12j"]
+
+[resource]
+script = ExtResource("1_fi12j")
+Class_Name = "Illusionist"
+HP = 10
+SAN = 15
+STRENGTH = 10
+BLOOD = 10
+ENTROPY = 10
+INFLUENCE = 13
+metadata/_custom_type_script = "uid://dl7lqrq8fb6cw"

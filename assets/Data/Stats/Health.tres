@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="stat_instance" format=3 uid="uid://dt7ikfaainjvx"]
+
+[ext_resource type="Script" uid="uid://dhfjcjovwwxu1" path="res://assets/Data/stat_instance.gd" id="1_6h3ke"]
+
+[resource]
+script = ExtResource("1_6h3ke")
+stat_description = "Your vigor and vitality, determines how much HP you have."
+Constant_value = 10
+raw_scaling_value = null
+raw_resistance_value = null
+BASE = 100
+stat_name = "Health"
+stat_value = 10
+scaling_1 = 15.0
+scaling_2 = 12.5
+scaling_3 = 5.0
+resist_max = 0.5
+resist_stat_cap = 80.0
+metadata/_custom_type_script = "uid://dhfjcjovwwxu1"

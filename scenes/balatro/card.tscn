@@ -37,25 +37,19 @@ shader_parameter/inset = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xsth3"]
 size = Vector2(88.5, 127.75)
 
-[node name="MarginContainer" type="MarginContainer" unique_id=433643271]
-offset_right = 40.0
-offset_bottom = 40.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Card" type="Button" parent="." unique_id=711192203]
+[node name="Card" type="Button" unique_id=711192203]
 material = SubResource("ShaderMaterial_3ph3s")
 custom_minimum_size = Vector2(152, 207)
-layout_mode = 2
+offset_right = 152.0
+offset_bottom = 207.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7aqjh")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_7aqjh")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_7aqjh")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_7aqjh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7aqjh")
 script = ExtResource("1_borcn")
-velocity_multiplier = 1.0
 
-[node name="Shadow" type="TextureRect" parent="Card" unique_id=763162667]
+[node name="Shadow" type="TextureRect" parent="." unique_id=763162667]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(1, 1, 1, 0.168627)
 show_behind_parent = true
@@ -65,7 +59,7 @@ offset_bottom = 128.0
 texture = ExtResource("1_3sp1f")
 expand_mode = 1
 
-[node name="CardTexture" type="TextureRect" parent="Card" unique_id=1236224017]
+[node name="CardTexture" type="TextureRect" parent="." unique_id=1236224017]
 material = SubResource("ShaderMaterial_cho03")
 custom_minimum_size = Vector2(24.635, 31.35)
 layout_mode = 1
@@ -76,14 +70,14 @@ offset_bottom = 79.350006
 texture = ExtResource("5_h0m5o")
 expand_mode = 4
 
-[node name="DestroyArea" type="Area2D" parent="Card" unique_id=607934942]
+[node name="DestroyArea" type="Area2D" parent="." unique_id=607934942]
 position = Vector2(32, 48)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Card/DestroyArea" unique_id=1764149525]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestroyArea" unique_id=1764149525]
 position = Vector2(11.75, 16.125)
 shape = SubResource("RectangleShape2D_xsth3")
 disabled = true
 
-[connection signal="gui_input" from="Card" to="Card" method="_on_gui_input"]
-[connection signal="mouse_entered" from="Card" to="Card" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Card" to="Card" method="_on_mouse_exited"]
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

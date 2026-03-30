@@ -1,4 +1,4 @@
-extends RichTextLabel
+class_name tooltip extends RichTextLabel
 
 var description : String
 var hover_timer := 0.0
@@ -12,7 +12,6 @@ func _ready():
 	
 func _process(delta):
 	global_position = get_global_mouse_position() + Vector2(12, 12)
-
 	if is_hovering:
 		hover_timer += delta
 		if hover_timer >= hover_delay:
