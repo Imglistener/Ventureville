@@ -1,0 +1,143 @@
+if {Artist.MeetingS} == true:
+	jump MeetingS
+if {Artist.MeetingT} == true:
+	jump MeetingT
+if {Artist.MeetingF} == true:
+	jump MeetingF
+if {Artist.CompletedT} == true:
+	set {Artist.CompletedT} = false
+	jump Restart
+label Restart
+join MC leftmost [length="0.3" wait="true"]
+join "Old Man" (Placeholder/Mabel) rightmost [length="0.3" wait="true"]
+if {Artist.CompletedF} == true:
+	"Old Man" (Placeholder/Mabel): That's it for now, i'll tell you the rest of the story if we meet again
+	set {Artist.CompletedF} = false
+	set {Artist.MeetingS} = true
+	[end_timeline]
+if {Artist.CompletedS} == true:
+	"Old Man" (Placeholder/Mabel): That's it for now, i'll tell you the rest of the story if we meet again
+	set {Artist.CompletedS} = false
+	set {Artist.MeetingT} = true
+	[end_timeline]
+"Old Man" (Placeholder/Mabel): Hey! Stranger do you want to hear a story about an Artist?
+- Yes
+	"Old Man": There once was an Artist
+	"Old Man": Who moved to Austria to study and for Inspiration
+	"Old Man": Thinking the place would make him a Master
+	"Old Man": Years later when he was asked
+	"Old Man": "What made his paintings so great?"
+	"Old Man": Never once did he mention the place
+	"Old Man": and answered
+	"Old Man": "My Hands"
+	"Old Man": Everyone thought he was arrogant
+	"Old Man": Taking credit for what the country gave him
+	"Old Man": Now tell me stranger
+	"Old Man" (Placeholder/Alice): Do you think the Artist was arrogant? or was he being honest?
+	- I think he was arrogant
+		"Old Man" (Placeholder/Mabel Hover): Just like what everyone else thought.
+		You recieved a *relic_name*
+	- I think he was being honest
+		[voice path="res://assets/NPC/Gasp/universfield-gasp-242214.mp3" volume="0.0"]
+		"Old Man" (Placeholder/Mabel): Oh!
+		"Old Man": An interesting thought indeed......
+		You recieved a *relic_name*
+	set {Artist.CompletedF} = true
+- No
+	"Old Man" (Placeholder/Mabel Hover): I was going to reward you if you listened to my story
+	"Old Man": But it's fine if you dont want them.
+[end_timeline]
+label MeetingS
+join MC leftmost [length="0.3" wait="true"]
+MC: You again...
+join "Old Man" (Placeholder/Mabel) rightmost [length="0.3" wait="true"]
+"Old Man" (Placeholder/Mabel): Hello stranger, So we meet again
+"Old Man": Would you like to listen to the rest of the story?
+- Yes
+	"Old Man": After everyone was starting to call out his arrogance
+	"Old Man": He decided to ask everyone else a question
+	"Old Man": Have they ever been in a situation where they need to decide something important?
+	"Old Man": A school? A college?
+	"Old Man": Comparing every little detail?
+	"Old Man": Trying to decide what would be perfect for you?
+	"Old Man": If so, do you really think that choice, that place is what makes you successful?
+	"Old Man": What do you think?
+	- Yes
+		"Old Man" (Placeholder/Mabel Hover): Circumstances do matter but are they all that decide ones success?
+		You recieved a *relic_name*
+	- No
+		[voice path="res://assets/NPC/Gasp/universfield-gasp-242214.mp3" volume="0.0"]
+		"Old Man" (Placeholder/Mabel): You... really are a unique thinker.
+		You recieved a *relic_name*
+	set {Artist.CompletedS} = true
+	set {Artist.MeetingS} = false
+- No
+	"Old Man" (Placeholder/Mabel Hover): You're missing out on the rewards!
+[end_timeline]
+label MeetingT
+join MC leftmost [length="0.3" wait="true"]
+MC: How do you keep getting ahead of me?
+join "Old Man" (Placeholder/Mabel) rightmost [length="0.3" wait="true"]
+"Old Man" (Placeholder/Mabel): A Magician is also an Artist, An Artist is also a Magician.
+"Old Man": But that's not important right now
+"Old Man": I want to ask you something
+"Old Man": Just like the Artist I am sure you had to choose a path for your journey
+"Old Man": Now tell me stranger, do you think the path you chose is enough to get through to the end of this journey?
+"Old Man": If not, then would you like a second chance? and choose a different path?
+- No
+	MC: No, I believe in myself
+	You obtained a *Super powerful upgrade for your Class*
+	[voice path="res://assets/NPC/Gasp/universfield-gasp-242214.mp3" volume="0.0"]
+	"Old Man" (Placeholder/Mabel): Heh.... Extraordinary as always *disappears*
+	leave "Old Man" [length="0.3" wait="true"]
+	MC: What!? Where did he disappear to?....
+- Yes
+	*You chose a different class to replace your class and get to choose upgrades and relics based on your progress right now in the game*
+	MC: W-W-What did you do to me? What's happening to me?
+	"Old Man" (Placeholder/Mabel Hover): Hehehe..... it was your wish... *diappears*
+	leave "Old Man" [length="0.3" wait="true"]
+	MC: What!? Where did he disappear to?....
+set {Artist.MeetingF} = true
+set {Artist.MeetingT} = false
+[end_timeline]
+label MeetingF
+join MC leftmost [length="0.3" wait="true"]
+join "Old Man" (Placeholder/Mabel) rightmost [length="0.3" wait="true"]
+"Old Man" (Placeholder/Mabel): Let's finish this strory once and for all stranger..
+"Old Man": Everyone answered "Yes" to the Artist's question
+"Old Man": He then decided to tell everyone a story,
+"Old Man": His story of when he was in the same predicament as them
+"Old Man": He said
+"Old Man": When he was deciding whether to go Vienna or to Linz to become a master of art,
+"Old Man": He was torn between the two and couldn't decide which would make him a master
+"Old Man": Then a friend asked him
+"Old Man": Why does it matter which city you go to?
+"Old Man": Can you see yourself becoming a master if you choose either one of the cities?
+"Old Man": If yes then the city does not matter what matters is "You"
+"Old Man": That's when the Artist realised
+"Old Man": That we always try to find the circumstances that can make us great
+"Old Man": We put the circumstance's ability to affect our life above than our own
+"Old Man": But the reality is if you dont believe in yourself then even the circumstances won't save you
+"Old Man": But if you do
+"Old Man": Then the circumstances do not matter, what makes you great is you yourself and "Your Hands"
+"Old Man": So did you like this story stranger?
+"Old Man": Now you should understand that you always need to believe in the path you choose
+"Old Man": Now i have one Final question for you
+"Old Man": Who do you think was the Artist in the story?
+- You
+	"Old Man" (Placeholder/Mabel): Yes you guessed correctly it is indeed me who is the Artist, But is that all to it?
+	you recieved a *powerful upgrade for your class*
+- Me
+	"Old Man" (Placeholder/Mabel): Yes you are indeed just like the Artist in the story, But are you sure its only you?
+	you recieved a *Super powerful upgrade for your class*
+- All of us
+	[voice path="res://assets/NPC/Gasp/universfield-gasp-242214.mp3" volume="0.0"]
+	"Old Man": Yes, we all are An Artist
+	you recieved a *OP upgrade for your class*
+"Old Man": Well I guess this is the end of our story
+"Old Man": Goodbye....  Artist.   *diappears*
+leave "Old Man" [length="0.3" wait="true"]
+MC: This is never gonna get old....
+set {Artist.CompletedT} = true
+set {Artist.MeetingF} = false
+[end_timeline]

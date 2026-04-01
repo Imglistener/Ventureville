@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://6bslm6hs3bv4"]
+
+[ext_resource type="PackedScene" uid="uid://ceco73efd8hgg" path="res://scenes/Tilemap/test_level.tscn" id="1_gol0p"]
+
+[node name="main" type="Node2D" unique_id=1825505648]
+
+[node name="testlevel" parent="." unique_id=1723556185 instance=ExtResource("1_gol0p")]

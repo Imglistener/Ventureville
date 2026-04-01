@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cr1uhp2u7celx"]
+
+[ext_resource type="Texture2D" uid="uid://cu2aavqa7iblh" path="res://assets/002.png" id="1_ron6v"]
+[ext_resource type="Script" uid="uid://nnqj2tisrsgx" path="res://scenes/NPC/Old Man/dialog.gd" id="2_r1a2i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6ola"]
+atlas = ExtResource("1_ron6v")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ehq0"]
+atlas = ExtResource("1_ron6v")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih1tl"]
+atlas = ExtResource("1_ron6v")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohowh"]
+atlas = ExtResource("1_ron6v")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hps6m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6ola")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ehq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih1tl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohowh")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1mq7y"]
+radius = 60.0
+height = 142.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ih1tl"]
+radius = 113.0
+height = 260.0
+
+[node name="OldMan" type="CharacterBody2D" unique_id=1131496462]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1142710141]
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_hps6m")
+animation = &"Idle"
+frame_progress = 0.8481549
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1542543224]
+shape = SubResource("CapsuleShape2D_1mq7y")
+
+[node name="Dialog" type="Area2D" parent="." unique_id=10851254]
+script = ExtResource("2_r1a2i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialog" unique_id=573026973]
+shape = SubResource("CapsuleShape2D_ih1tl")

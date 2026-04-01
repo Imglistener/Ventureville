@@ -1,1 +1,0 @@
-class_name battle_log extends RichTextLabel
