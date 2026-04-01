@@ -13,11 +13,6 @@ func initialize_move(container: Button) -> void:
 	status_effect = associated_stat.Associated_Damage_Type.associated_status
 	container_texture.texture = Action_Card_Art
 	scaling_value = associated_stat.get_raw_scaling_value(associated_stat)
-func apply_effect() -> void:
+
+func apply_effect(player : Node, target : Combat_Entity) -> void:
 	pass
-
-
-func basic_attack(target: Combat_Entity) -> void:
-		var amount : int = base_damage + scaling_value
-		print(scaling_value)
-		target.takedamage(amount , damage_type)

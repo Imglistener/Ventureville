@@ -1,15 +1,16 @@
 class_name Battle_Manager extends Node
 
 @onready var ENEMY: Combat_Entity = %Combat_Entity
+@onready var PLAYER: Player_Battle_Handler = %Player_Battle_Entity
 
 @export var card_scene: PackedScene
 #Battle Variables:
 var turn_counter : int		= 1
-var mana_counter : int		= 1
+var mana_counter : int		= 5
 var action_points: int		= 3
 var active_effects : Array	= []
 
-#States:
+#Stattes:
 enum TURN_PHASE {
 	player_standby_phase_start,
 	player_standby_phase_end,
@@ -46,8 +47,8 @@ signal enemy_battle_phase_start
 signal enemy_battle_phase_end
 
 
-
-signal turn_changed(turn_counter)
+signal card_played(card_data)
+signal turn_changed()
 
 func _process(_delta: float) -> void:
 	pass
@@ -75,23 +76,65 @@ func _ready() -> void:
 	update_turn_phase()
 	pass
 
-func _onCard_Pressed(card_data : Player_Action_instance)-> void:
-	card_data.basic_attack(ENEMY)
-	pass
+func turn_tick() -> void:
+	turn_counter += 1
+	action_points = 3
+	mana_counter += 1
+	emit_signal("turn_changed", turn_counter)
+	
+
+func _onCard_Pressed(card_data : Player_Attack_Instance)-> void:
+	action_points -= card_data.Action_Cost_AP
+	mana_counter -= card_data.Action_Cost_MP
+	card_data.apply_effect(PLAYER, ENEMY)
+	emit_signal("card_played", card_data)
+
 func update_turn_phase() -> void:
 	CURRENT_PHASE = PHASES[Phases_index]
 	turn_phase_check()
 	
 func advance_turn_phase() -> void:
-	Phases_index = (Phases_index + 1) % PHASES.size()
+		Phases_index = (Phases_index + 1) % PHASES.size()
 
 func register_card(card):
 	card.card_clicked.connect(_onCard_Pressed)
 
 func _on_end_turn_pressed() -> void:
-	pass # Replace with function body.
-
+	advance_turn_phase()
+	update_turn_phase()
 
 func _on_battle_pressed() -> void:
 	advance_turn_phase()
-	update_turn_phase()	
+	update_turn_phase()
+
+
+func _on_player_battle_phase_end() -> void:
+	ENEMY.enemy_view.disabled
+	turn_tick()
+	advance_turn_phase()
+	update_turn_phase()
+	
+
+func _on_combat_entity_enemy_done_attacking() -> void:
+	advance_turn_phase()
+	update_turn_phase()
+
+
+func _on_status_effect_manager_effects_checked() -> void:
+	advance_turn_phase()
+	update_turn_phase()
+
+
+func _on_combat_entity_enemy_battle_ready() -> void:
+	advance_turn_phase()
+	update_turn_phase()
+
+func _on_ui_manager_cards_drawn() -> void:
+	advance_turn_phase()
+	update_turn_phase()
+
+	
+
+
+func _on_enemy_battle_phase_end() -> void:
+	turn_tick()

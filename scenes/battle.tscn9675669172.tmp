@@ -819,7 +819,6 @@ position = Vector2(1104, 392)
 [connection signal="enemy_standby_phase_start" from="Battle_Manager" to="Status Effect Manager" method="_on_battle_manager_enemy_standby_phase_start"]
 [connection signal="player_battle_phase_end" from="Battle_Manager" to="Battle_Manager" method="_on_player_battle_phase_end"]
 [connection signal="player_battle_phase_end" from="Battle_Manager" to="UI_Manager" method="_on_battle_manager_player_battle_phase_end"]
-[connection signal="player_battle_phase_end" from="Battle_Manager" to="MarginMain/VBoxContainer/Interface/NinePatchRect/Battleactions/Zahando" method="_on_battle_manager_player_battle_phase_end"]
 [connection signal="player_standby_phase_end" from="Battle_Manager" to="UI_Manager" method="_on_battle_manager_player_standby_phase_end"]
 [connection signal="player_standby_phase_start" from="Battle_Manager" to="UI_Manager" method="_on_battle_manager_player_standby_phase_start"]
 [connection signal="turn_changed" from="Battle_Manager" to="UI_Manager" method="_on_battle_manager_turn_changed"]

@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://dex4lx8f1p112" path="res://scenes/shared/shaders/dissolve.gdshader" id="1_sy11y"]
 [ext_resource type="Script" uid="uid://ebq8nj03463r" path="res://scenes/balatro/scripts/card.gd" id="2_6ligt"]
 [ext_resource type="Texture2D" uid="uid://cskh758f74ngv" path="res://scenes/balatro/visuals/Tiles_A_white.png" id="3_8w5pg"]
-[ext_resource type="Resource" uid="uid://buhfjpwqsymf2" path="res://assets/Data/Player/PlayerActions/Basic_Attack.tres" id="3_nvopj"]
+[ext_resource type="Resource" uid="uid://bwl4dwb62pwsv" path="res://assets/Data/Player/PlayerActions/Psychic Rend.tres" id="3_nvopj"]
 [ext_resource type="Shader" uid="uid://cshgprywi4vp0" path="res://scenes/shared/shaders/fake_3D.gdshader" id="4_nvopj"]
 [ext_resource type="Texture2D" uid="uid://cw8dpn83r3kl8" path="res://assets/GUI/attackcard.png" id="5_1yd6c"]
 [ext_resource type="AudioStream" uid="uid://cdpg4x53v00cu" path="res://assets/SFX/Gladius.wav" id="6_6ligt"]

@@ -7,5 +7,5 @@ class_name Player_Action extends Enemy_Action
 
 @export var Action_Card_VFX : Callable
 
-func use_action(action : )-> void:
+func use_action(action)-> void:
 	action.apply_effect()

@@ -25,15 +25,18 @@ class_name UI_manager extends Node
 @onready var action_points: TextureProgressBar = %Action_Points
 
 
+signal cards_drawn
+
 #Transition Effect Function:
 func transition_to(show_node: Control, hide_node: Control = null) -> void:
-	var t = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	
 	# 🔻 Hide current
 	if hide_node:
+		var t = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+		
 		t.tween_property(hide_node, "modulate:a", 0.0, 0.25)
 		t.parallel().tween_property(hide_node, "scale", Vector2(0.95, 0.95), 0.25)
-	
+		
 		await t.finished
 		hide_node.visible = false
 	
@@ -47,18 +50,19 @@ func transition_to(show_node: Control, hide_node: Control = null) -> void:
 	
 	t2.tween_property(show_node, "modulate:a", 1.0, 0.3)
 	t2.parallel().tween_property(show_node, "scale", Vector2.ONE, 0.3)
-
-
 	
 	
 func _process(_delta: float) -> void:
 	pass
 	
 func Actualize_AP() -> void:
-	action_points.max_value = battle_manager.action_points
-	action_points.value		= battle_manager.action_points
-	ap.text					= str(battle_manager.action_points)
-
+	if action_points.max_value == 0:
+		action_points.max_value = battle_manager.action_points
+		action_points.value		= battle_manager.action_points
+		ap.text					= str(battle_manager.action_points)
+	else:
+		action_points.value		= battle_manager.action_points
+		ap.text					= str(battle_manager.action_points)
 	
 
 func update_turn_counter() -> void:
@@ -83,7 +87,7 @@ func update_player_info_display()-> void:
 	player_san.value		= PLAYER.Current_San
 	player_san_counter.text = str(PLAYER.Current_San)
 	playernamedisplay.text 	= str(PLAYER.Player.Assigned_Class.Class_Name)
-	
+
 	
 	
 func log_update(text: String = str(battle_manager.turn_counter)) -> void:
@@ -93,11 +97,16 @@ func log_update(text: String = str(battle_manager.turn_counter)) -> void:
 		BATTLE_LOG.text = BATTLE_LOG.text + "\n" + text
 
 func mana_counter_functionality() -> void:
-	manacounter.max_value 	= battle_manager.mana_counter
-	manacounter.value		= battle_manager.mana_counter
-	mana.text				= str(battle_manager.mana_counter)
-func _on_combat_entity_attack_just_landed(damage_type: Variant, amount) -> void:
-	e_heathbar.value = ENEMY.enemy_stats[1]
+	if manacounter.max_value == 0:
+		manacounter.max_value 	= battle_manager.mana_counter
+		manacounter.value		= battle_manager.mana_counter
+		mana.text				= str(battle_manager.mana_counter)
+	else:		
+		manacounter.value		= battle_manager.mana_counter
+		mana.text				= str(battle_manager.mana_counter)
+
+func _on_combat_entity_attack_just_landed(amount) -> void:
+	e_heathbar.change_value(ENEMY.enemy_stats[1])
 	HP_Number.text = str(int(ENEMY.enemy_stats[1]))
 func _on_battle_manager_player_standby_phase_start() -> void:
 	await get_tree().process_frame
@@ -117,3 +126,34 @@ func _on_battle_manager_player_standby_phase_start() -> void:
 func _on_battle_manager_player_standby_phase_end() -> void:
 	transition_to(battleactions, actions_menu)
 	zahando.draw_cards(5)
+	emit_signal("cards_drawn")
+
+
+func _on_battle_manager_card_played(card_data: Variant) -> void:
+	Actualize_AP()
+	mana_counter_functionality()
+
+
+func _on_battle_manager_player_battle_phase_end() -> void:
+	transition_to($"../MarginMain/VBoxContainer/Interface/NinePatchRect", battleactions)
+	Actualize_AP()
+	mana_counter_functionality()
+
+
+func _on_player_battle_entity_player_took_damage(amount: Variant) -> void:
+	player_hp_counter.text = str(PLAYER.Current_HP)
+	player_san_counter.text = str(PLAYER.Current_San)
+	player_hp.change_value(int(player_hp_counter.text))
+
+
+func _on_battle_manager_turn_changed(turn_counter) -> void:
+	if turn_counter % 2 == 0:
+		log_update()
+		Actualize_AP()
+		mana_counter_functionality()
+	else:
+		log_update()
+		Actualize_AP()
+		mana_counter_functionality()
+		battle_manager.advance_turn_phase()
+		transition_to(actions_menu)

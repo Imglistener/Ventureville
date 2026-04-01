@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c1yext36xhgmg" path="res://assets/Enemies/Data/Enemy_Data.gd" id="1_aq8bo"]
 [ext_resource type="Resource" uid="uid://bj7r1n7tcssdq" path="res://assets/Data/Damage Types/Fire.tres" id="1_fljgd"]
 [ext_resource type="Resource" uid="uid://cdowea3a0d32b" path="res://assets/Data/Damage Types/Ice.tres" id="2_07fm0"]
+[ext_resource type="Resource" uid="uid://2n3ur4vx7kfv" path="res://assets/Enemies/Moves/Attacks/Gladius_triple_bite.tres" id="2_nut2g"]
 [ext_resource type="Resource" uid="uid://d3sjlnhqvhnga" path="res://assets/Enemies/Moves/Buffs/stalk.tres" id="2_r7jhg"]
 [ext_resource type="Resource" uid="uid://cu3f4jce4emj2" path="res://assets/Enemies/Gladius_Phase_2.tres" id="2_y7qp4"]
 [ext_resource type="Texture2D" uid="uid://dqm40qsgnokt3" path="res://assets/Enemybattlers/gladius_phase_1_highlighted.png" id="4_56vnj"]
@@ -19,6 +20,7 @@ RES = ExtResource("1_fljgd")
 VUL = ExtResource("2_07fm0")
 Enemy_Name = "Tricephalos_1"
 Enemy_Attack_01 = ExtResource("1_07fm0")
+Enemy_Attack_02 = ExtResource("2_nut2g")
 Enemy_Buff = ExtResource("2_r7jhg")
 Phase_2 = ExtResource("2_y7qp4")
 Texture_Normal = ExtResource("4_605vv")

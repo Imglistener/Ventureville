@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Player_Attack_Instance" format=3 uid="uid://bwl4dwb62pwsv"]
+
+[ext_resource type="Texture2D" uid="uid://v7gdjpo7m804" path="res://assets/GUI/psychic-rend.png" id="1_8jcw0"]
+[ext_resource type="Script" uid="uid://c60yfahyptinl" path="res://Player_Attack_Instance.gd" id="1_gum4d"]
+[ext_resource type="Resource" uid="uid://cvkch21grrypt" path="res://assets/Data/Stats/Influence.tres" id="2_biith"]
+
+[resource]
+script = ExtResource("1_gum4d")
+hit_count = 3
+associated_stat = ExtResource("2_biith")
+base_damage = 9
+Action_Cost_MP = 1
+Action_Cost_AP = 1
+Action_Card_Art = ExtResource("1_8jcw0")
+action_name = "Psychic Rend"
+action_type = "Attack Action"
+action_log_message = "\"The voice of madness compels your enemy!\""
+metadata/_custom_type_script = "uid://c60yfahyptinl"

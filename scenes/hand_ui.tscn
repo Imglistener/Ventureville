@@ -11,7 +11,7 @@ fractal_octaves = 4
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gmkwt"]
 noise = SubResource("FastNoiseLite_1i0gj")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvbk2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dh0rk"]
 resource_local_to_scene = true
 shader = ExtResource("2_pyj6f")
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_gmkwt")
@@ -39,7 +39,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Card" parent="Hand" unique_id=1925611641 instance=ExtResource("1_dh0rk")]
-material = SubResource("ShaderMaterial_qvbk2")
+material = SubResource("ShaderMaterial_dh0rk")
 layout_mode = 2
 
 [node name="DropArea" type="Node2D" parent="." unique_id=929832601]

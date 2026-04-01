@@ -13,7 +13,7 @@ extends Node
 
 # State
 var is_statuseffectactive: bool = false
-
+signal effects_checked
 # ------------------------------
 # Apply an effect based on damage type
 # ------------------------------
@@ -80,4 +80,10 @@ func _on_battle_just_dealt_damage(damage_type: Variant, target: Variant) -> void
 	apply_effect_from_damage(damage_type, target)
 
 
+	
+
+
+func _on_battle_manager_enemy_standby_phase_start() -> void:
+	effect_tick()
+	emit_signal("effects_checked")
 	

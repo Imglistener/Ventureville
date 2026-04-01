@@ -15,6 +15,10 @@ run/main_scene="uid://cb8nxihvxrg2i"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DamageNumbers="*uid://dvgt411a5ts3j"
+
 [display]
 
 window/size/viewport_width=1280

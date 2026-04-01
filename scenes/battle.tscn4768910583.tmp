@@ -10,8 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cmyuxpm0kue7g" path="res://assets/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_25.png" id="7_bi5l8"]
 [ext_resource type="Texture2D" uid="uid://cidfbi53rk4k4" path="res://assets/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_42.png" id="7_yahae"]
 [ext_resource type="Texture2D" uid="uid://dkr62mk01xwek" path="res://assets/KennyUI/Border/panel-border-005.png" id="8_bi5l8"]
-[ext_resource type="Script" uid="uid://xitkalso5pgp" path="res://scripts/deck_manager.gd" id="8_mpb26"]
-[ext_resource type="Resource" uid="uid://b5hkm5hwk5cuc" path="res://assets/Data/Player/Deck/Deck.tres" id="9_4u087"]
 [ext_resource type="Script" uid="uid://dnso8iiy8cpp6" path="res://scripts/battle_manager.gd" id="9_gmkwt"]
 [ext_resource type="PackedScene" uid="uid://c8oaa8ln7t2k0" path="res://scenes/enemy.tscn" id="9_saiin"]
 [ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="9_yahae"]
@@ -199,10 +197,6 @@ unique_name_in_owner = true
 script = ExtResource("4_fqtyt")
 Player = ExtResource("5_8a2ah")
 CLASS = ExtResource("7_at2n2")
-
-[node name="Deck_Manager" type="Node" parent="." unique_id=1596419299]
-script = ExtResource("8_mpb26")
-deck = ExtResource("9_4u087")
 
 [node name="Background" type="ColorRect" parent="." unique_id=464716810]
 layout_mode = 1
@@ -813,16 +807,13 @@ position = Vector2(1104, 392)
 [connection signal="effects_checked" from="Status Effect Manager" to="Battle_Manager" method="_on_status_effect_manager_effects_checked"]
 [connection signal="card_played" from="Battle_Manager" to="UI_Manager" method="_on_battle_manager_card_played"]
 [connection signal="card_played" from="Battle_Manager" to="MarginMain/VBoxContainer/Interface/NinePatchRect/Battleactions/Zahando" method="_on_battle_manager_card_played"]
-[connection signal="enemy_battle_phase_end" from="Battle_Manager" to="Battle_Manager" method="_on_enemy_battle_phase_end"]
 [connection signal="enemy_battle_phase_start" from="Battle_Manager" to="MarginMain/VBoxContainer/Arena/MarginContainer/HBoxContainer/Enemy_Margin/Combat_Entity" method="_on_battle_manager_enemy_battle_phase_start"]
 [connection signal="enemy_standby_phase_end" from="Battle_Manager" to="MarginMain/VBoxContainer/Arena/MarginContainer/HBoxContainer/Enemy_Margin/Combat_Entity" method="_on_battle_manager_enemy_standby_phase_end"]
 [connection signal="enemy_standby_phase_start" from="Battle_Manager" to="Status Effect Manager" method="_on_battle_manager_enemy_standby_phase_start"]
 [connection signal="player_battle_phase_end" from="Battle_Manager" to="Battle_Manager" method="_on_player_battle_phase_end"]
 [connection signal="player_battle_phase_end" from="Battle_Manager" to="UI_Manager" method="_on_battle_manager_player_battle_phase_end"]
-[connection signal="player_battle_phase_end" from="Battle_Manager" to="MarginMain/VBoxContainer/Interface/NinePatchRect/Battleactions/Zahando" method="_on_battle_manager_player_battle_phase_end"]
 [connection signal="player_standby_phase_end" from="Battle_Manager" to="UI_Manager" method="_on_battle_manager_player_standby_phase_end"]
 [connection signal="player_standby_phase_start" from="Battle_Manager" to="UI_Manager" method="_on_battle_manager_player_standby_phase_start"]
-[connection signal="turn_changed" from="Battle_Manager" to="UI_Manager" method="_on_battle_manager_turn_changed"]
 [connection signal="cards_drawn" from="UI_Manager" to="Battle_Manager" method="_on_ui_manager_cards_drawn"]
 [connection signal="player_took_damage" from="Player_Battle_Entity" to="UI_Manager" method="_on_player_battle_entity_player_took_damage"]
 [connection signal="attack_just_landed" from="MarginMain/VBoxContainer/Arena/MarginContainer/HBoxContainer/Enemy_Margin/Combat_Entity" to="UI_Manager" method="_on_combat_entity_attack_just_landed"]

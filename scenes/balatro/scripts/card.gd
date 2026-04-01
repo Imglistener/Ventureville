@@ -9,7 +9,7 @@ extends Button
 @export var destroy_duration: float = 0.4
 @export var destroy_scale_target: float = 0.8
 @export var destroy_fade_target: float = 0.0
-@export var card_data : Player_Action_instance
+@export var card_data : Player_Action
 
 var base_position: Vector2 = Vector2.ZERO
 var tween_rot: Tween
@@ -22,19 +22,22 @@ var is_destroying: bool = false  # Prevent multiple destroy calls
 @onready var collision_shape: CollisionShape2D = $DestroyArea/CollisionShape2D
 @onready var sfx: AudioStreamPlayer2D = $SFX
 
-signal card_clicked()
+signal card_clicked(card_data)
 
 func _ready() -> void:
+	
 	angle_x_max = deg_to_rad(angle_x_max)
 	angle_y_max = deg_to_rad(angle_y_max)
 	collision_shape.set_deferred("disabled", true)
-	card_data.initialize_move(self)
 	if card_texture.material:
 		card_texture.material = card_texture.material.duplicate()
 	await get_tree().process_frame
 	base_position = position
 	
-	
+func apply_template(card) -> void:
+	card_data.initialize_move(card)
+
+
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
@@ -81,44 +84,47 @@ func _on_mouse_exited() -> void:
 	tween_hover.parallel().tween_property(self, "position", base_position, 0.2)
 
 func _on_card_clicked() -> void:
-	if is_destroying:
-		return
-	is_destroying = true
-	if sfx and click_sound:
-		sfx.stream = click_sound
-		sfx.play()
-	# Disable future interactions
-	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	collision_shape.set_deferred("disabled", true)
-	# Kill any ongoing tweens
-	if tween_hover and tween_hover.is_running():
-		tween_hover.kill()
-	if tween_rot and tween_rot.is_running():
-		tween_rot.kill()
-	emit_signal("card_clicked" , card_data)
-	# Reset visual state (prevent glitches)
-	scale = Vector2.ONE
-	rotation = 0.0
-	z_index = 0
-	if card_texture.material:
-		card_texture.material.set_shader_parameter("x_rot", 0.0)
-		card_texture.material.set_shader_parameter("y_rot", 0.0)
+	if disabled:
+		pass
+	else:
+		if is_destroying:
+			return
+		is_destroying = true
+		if sfx and click_sound:
+			sfx.stream = click_sound
+			sfx.play()
+		# Disable future interactions
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
+		collision_shape.set_deferred("disabled", true)
+		# Kill any ongoing tweens
+		if tween_hover and tween_hover.is_running():
+			tween_hover.kill()
+		if tween_rot and tween_rot.is_running():
+			tween_rot.kill()
+		emit_signal("card_clicked" , card_data)
+		# Reset visual state (prevent glitches)
+		scale = Vector2.ONE
+		rotation = 0.0
+		z_index = 0
+		if card_texture.material:
+			card_texture.material.set_shader_parameter("x_rot", 0.0)
+			card_texture.material.set_shader_parameter("y_rot", 0.0)
 
-	# Record current global position (before reparenting)
-	var saved_global_pos = global_position
+		# Record current global position (before reparenting)
+		var saved_global_pos = global_position
 
-	# Remove card from the container immediately so the layout updates
-	var new_parent = get_tree().current_scene
-	reparent(new_parent, true)  # keep_world_transform = true
+		# Remove card from the container immediately so the layout updates
+		var new_parent = get_tree().current_scene
+		reparent(new_parent, true)  # keep_world_transform = true
 
-	# Restore global position (reparenting may have changed it)
-	global_position = saved_global_pos
+		# Restore global position (reparenting may have changed it)
+		global_position = saved_global_pos
 
-	# Bring to front during animation
-	z_index = 100
+		# Bring to front during animation
+		z_index = 100
 
 	# Start disappearance animation
-	_start_destroy_animation()
+		_start_destroy_animation()
 	
 	
 

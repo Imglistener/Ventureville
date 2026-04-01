@@ -8,13 +8,15 @@ class_name Enemy_Action extends Resource
 @export var action_vfx: Callable
 
 
-func inflict_damage(target: Combat_Entity, amount : int, damage_type : Damage_Type) -> void:
-	target.take_damage(amount, damage_type) # <- NOT UI
+func inflict_damage(target: Player_Battle_Handler, amount : int, damage_type : Damage_Type) -> void:
+	target.take_damage(amount) 
 
+func damage_enemy(target: Combat_Entity, amount : int) -> void:
+	target.take_damage(amount) 
 
 func gain_shield(source, amount: int) -> void:
 	source.add_shield(amount)
 
 
-func execute(source, target) -> void:
+func execute(user : Node, source: Enemy_Data, target: Player_Battle_Handler) -> void:
 	pass

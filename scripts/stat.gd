@@ -28,7 +28,6 @@ func calculate_scaling(stat_name: stat_instance, starting_level: int = stat_name
 		value += stat_name.cap_1 * stat_name.scaling_1
 		value += (stat_name.cap_2 - stat_name.cap_1) * stat_name.scaling_2
 		value += (true_stat_value - stat_name.cap_2) * stat_name.scaling_3
-	print(stat_name.stat_name, ":" , value)
 	return value
 	
 func calculate_resistance(used_stat : stat_instance, stat_value: int, starting_level : int = used_stat.Constant_value)-> float:
