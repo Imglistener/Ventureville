@@ -12,6 +12,7 @@ base_damage = 20
 Action_Cost_MP = 2
 Action_Cost_AP = 1
 Action_Card_Art = ExtResource("1_2d2br")
+tooltip_text = "AP: 1 [br]MANA 2[br] Deal %s PHYSICAL Damage."
 action_name = "Drop Kick"
 action_type = "Attack"
 action_log_message = "\"You pull all of your muscle mass into a devastating Drop Kick!\""

@@ -1,0 +1,229 @@
+[gd_scene format=3 uid="uid://fiskbqhnlgr7"]
+
+[ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="1_tbnqu"]
+[ext_resource type="Texture2D" uid="uid://vex2urok6e37" path="res://assets/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_02.png" id="2_lw3j4"]
+[ext_resource type="Texture2D" uid="uid://b5eyeoafopmla" path="res://assets/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_15.png" id="3_dyh3b"]
+[ext_resource type="Script" uid="uid://uq1lo7ltori7" path="res://assets/Data/Scripts/PlayerBarsContainer.gd" id="3_lw3j4"]
+[ext_resource type="Texture2D" uid="uid://dkr62mk01xwek" path="res://assets/KennyUI/Border/panel-border-005.png" id="4_hw7b7"]
+[ext_resource type="Script" uid="uid://cdivs16ftli1n" path="res://scripts/bars/animated_bar.gd" id="5_4rtgt"]
+[ext_resource type="LabelSettings" uid="uid://cwvkv70rf748a" path="res://assets/Label_Settings.tres" id="6_3r8k3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mx5t"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xwyam"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4mx5t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7oapq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwnw2"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7oapq"]
+texture = ExtResource("2_lw3j4")
+modulate_color = Color(0, 0.79603237, 2.8165433, 1)
+
+[sub_resource type="Theme" id="Theme_u8m8f"]
+default_font = ExtResource("1_tbnqu")
+default_font_size = 30
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 4
+Button/font_sizes/font_size = 45
+Button/fonts/font = ExtResource("1_tbnqu")
+Button/styles/disabled = SubResource("StyleBoxFlat_4mx5t")
+Button/styles/focus = SubResource("StyleBoxEmpty_xwyam")
+Button/styles/hover = SubResource("StyleBoxEmpty_4mx5t")
+Button/styles/normal = SubResource("StyleBoxEmpty_7oapq")
+Button/styles/pressed = SubResource("StyleBoxFlat_lwnw2")
+HBoxContainer/constants/separation = 68
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 9
+MarginContainer/constants/margin_right = 9
+MarginContainer/constants/margin_top = 8
+ProgressBar/styles/background = null
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_7oapq")
+
+[node name="PlayerBarsContainer" type="MarginContainer" unique_id=2061961984]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -141.0
+offset_top = -107.0
+offset_right = 141.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 8
+theme = SubResource("Theme_u8m8f")
+script = ExtResource("3_lw3j4")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=580231335]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="player_shield" type="TextureProgressBar" parent="VBoxContainer2" unique_id=1711017065]
+custom_minimum_size = Vector2(275, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 14
+stretch_margin_right = 14
+texture_under = ExtResource("3_dyh3b")
+texture_over = ExtResource("4_hw7b7")
+texture_progress = ExtResource("2_lw3j4")
+tint_under = Color(1, 1, 1, 0)
+tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(1.2907221, 1.0815382, 3.1672676, 1)
+script = ExtResource("5_4rtgt")
+
+[node name="player_san_shield" type="TextureProgressBar" parent="VBoxContainer2" unique_id=964078708]
+custom_minimum_size = Vector2(275, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+fill_mode = 1
+nine_patch_stretch = true
+stretch_margin_left = 29
+stretch_margin_right = 12
+texture_under = ExtResource("3_dyh3b")
+texture_over = ExtResource("4_hw7b7")
+texture_progress = ExtResource("2_lw3j4")
+tint_under = Color(1, 1, 1, 0)
+tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(1.4722497, 3.7038827, 4.6817894, 1)
+script = ExtResource("5_4rtgt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1410548058]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 11
+
+[node name="player_hp" type="TextureProgressBar" parent="VBoxContainer" unique_id=2007370472]
+custom_minimum_size = Vector2(264, 40)
+layout_mode = 2
+value = 12.0
+nine_patch_stretch = true
+stretch_margin_left = 14
+stretch_margin_right = 14
+texture_under = ExtResource("3_dyh3b")
+texture_over = ExtResource("4_hw7b7")
+texture_progress = ExtResource("2_lw3j4")
+tint_over = Color(0.08984375, 0.08254395, 0.053344727, 1)
+script = ExtResource("5_4rtgt")
+
+[node name="player_hp_counter" type="Label" parent="VBoxContainer/player_hp" unique_id=785690160]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "HP"
+label_settings = ExtResource("6_3r8k3")
+
+[node name="player_san" type="TextureProgressBar" parent="VBoxContainer" unique_id=188910440]
+custom_minimum_size = Vector2(264, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 14.0
+fill_mode = 1
+nine_patch_stretch = true
+stretch_margin_left = 29
+stretch_margin_right = 12
+texture_under = ExtResource("3_dyh3b")
+texture_over = ExtResource("4_hw7b7")
+texture_progress = ExtResource("2_lw3j4")
+tint_under = Color(0.45882353, 0.3019608, 0.3019608, 1)
+tint_over = Color(0.25480175, 0.15710449, 0.34375, 1)
+tint_progress = Color(0.70980394, 0.64705884, 0.39607844, 1)
+script = ExtResource("5_4rtgt")
+
+[node name="player_san_counter" type="Label" parent="VBoxContainer/player_san" unique_id=1703255216]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "SAN"
+label_settings = ExtResource("6_3r8k3")
+
+[node name="Statuseffecticon" type="TextureRect" parent="." unique_id=1081928048]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 0
+stretch_mode = 3
+
+[node name="turns_remaining" type="Label" parent="Statuseffecticon" unique_id=1123481830]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.503829
+anchor_top = 0.63793105
+anchor_right = 0.503829
+anchor_bottom = 0.6379311
+offset_left = -5.5
+offset_top = -17.5
+offset_right = 5.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

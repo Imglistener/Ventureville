@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_wb765")
-damage_base = 20
+damage_base = 15
 damage_type = ExtResource("1_5ko1q")
 number_of_hits = 2
 cost = 1

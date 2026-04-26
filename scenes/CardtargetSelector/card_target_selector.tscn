@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c3o1p5gd0mc7w"]
+
+[ext_resource type="Script" uid="uid://br6r50p8dhw5k" path="res://scenes/CardtargetSelector/card_target_selector.gd" id="1_7n516"]
+[ext_resource type="PackedScene" uid="uid://d2g1ukeepoujm" path="res://scenes/CardtargetSelector/card_ark.tscn" id="2_75p57"]
+[ext_resource type="Texture2D" uid="uid://b8ax0yf7ykmom" path="res://assets/Screenshot 2026-03-17 131204.png" id="3_tom3x"]
+[ext_resource type="PackedScene" uid="uid://btprf2rs0i0dx" path="res://assets/Data/NewScenes/LineParticles/line_particles.tscn" id="4_7fu8n"]
+[ext_resource type="Script" uid="uid://bcu8cqmb3a0vh" path="res://assets/Data/NewScenes/LineParticles/line_particles.gd" id="5_d0ncl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufip5"]
+size = Vector2(15, 15)
+
+[node name="CardTargetSelector" type="Node2D" unique_id=1721769176]
+script = ExtResource("1_7n516")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1493337862]
+collision_mask = 4
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=989687995]
+shape = SubResource("RectangleShape2D_ufip5")
+
+[node name="ARK" type="CanvasLayer" parent="." unique_id=1233074662]
+layer = 2
+
+[node name="Line2D" parent="ARK" unique_id=1767658862 node_paths=PackedStringArray("particles") instance=ExtResource("2_75p57")]
+texture = ExtResource("3_tom3x")
+particles = NodePath("../LineParticles")
+
+[node name="LineParticles" parent="ARK" unique_id=1617560783 instance=ExtResource("4_7fu8n")]
+preprocess = 0.0
+script = ExtResource("5_d0ncl")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

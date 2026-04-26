@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DamageType" format=3 uid="uid://bxryntsurastc"]
+
+[ext_resource type="Script" uid="uid://cs2umcg6qolyx" path="res://assets/Enemies/Data/Damage Types/DamageTypeInstance.gd" id="1_0lg7m"]
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="1_ow35m"]
+
+[resource]
+script = ExtResource("1_0lg7m")
+Damage_Type = 2
+Associated_Stat = ExtResource("1_ow35m")
+metadata/_custom_type_script = "uid://cs2umcg6qolyx"

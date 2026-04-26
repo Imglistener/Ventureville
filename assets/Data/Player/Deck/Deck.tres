@@ -1,18 +1,14 @@
 [gd_resource type="Resource" script_class="Deck" format=3 uid="uid://b5hkm5hwk5cuc"]
 
-[ext_resource type="Script" uid="uid://bvds2uv5eer2p" path="res://scripts/deck.gd" id="1_dyacs"]
-[ext_resource type="Resource" uid="uid://bwl4dwb62pwsv" path="res://assets/Data/Player/PlayerActions/Psychic Rend.tres" id="2_7abai"]
-[ext_resource type="Resource" uid="uid://nun3gxdrm1l0" path="res://assets/Data/Player/PlayerActions/Drop Kick.tres" id="3_ao31u"]
-[ext_resource type="Resource" uid="uid://dnxr5celckwlj" path="res://assets/Data/Player/PlayerActions/Darkness Claw.tres" id="4_8wy8p"]
-[ext_resource type="Resource" uid="uid://deg226tgr7guk" path="res://assets/Data/Player/PlayerActions/Draw_blood.tres" id="4_sy2il"]
+[ext_resource type="Script" uid="uid://cpy8tjlulsna2" path="res://scripts/Card.gd" id="1_7abai"]
+[ext_resource type="Script" uid="uid://pqq147nh02w3" path="res://scripts/deck.gd" id="1_dyacs"]
+[ext_resource type="Resource" uid="uid://be12tcnli2021" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Barrier.tres" id="1_lxatl"]
+[ext_resource type="Resource" uid="uid://ddquxo4p134kp" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Claw.tres" id="1_s5sof"]
 
 [resource]
 script = ExtResource("1_dyacs")
 Obtained_Cards = {
-ExtResource("2_7abai"): 4,
-ExtResource("4_8wy8p"): 4,
-ExtResource("4_sy2il"): 4,
-ExtResource("3_ao31u"): 4
+ExtResource("1_s5sof"): 8,
+ExtResource("1_lxatl"): 5
 }
-Cards_in_Deck = [ExtResource("2_7abai"), ExtResource("4_8wy8p"), ExtResource("3_ao31u"), ExtResource("4_sy2il")]
-metadata/_custom_type_script = "uid://bvds2uv5eer2p"
+Cards_in_Deck = Array[ExtResource("1_7abai")]([ExtResource("1_lxatl"), ExtResource("1_s5sof")])

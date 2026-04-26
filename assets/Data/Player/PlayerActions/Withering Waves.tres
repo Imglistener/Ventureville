@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Debuff_Action" format=3 uid="uid://bssbh3yrcvksj"]
+
+[ext_resource type="Script" uid="uid://dcrcb8px56j02" path="res://scripts/debuff_instance.gd" id="1_rm316"]
+[ext_resource type="Texture2D" uid="uid://dnnowndudwd5s" path="res://assets/GUI/withering_waves.jpg" id="1_sypws"]
+[ext_resource type="Resource" uid="uid://b35yoaatftwhx" path="res://assets/Status Effects/Withering.tres" id="2_x4tlj"]
+[ext_resource type="PackedScene" uid="uid://ccs8krvi6oix" path="res://attack_effect.tscn" id="3_x4tlj"]
+
+[resource]
+script = ExtResource("1_rm316")
+Associated_Debuff = ExtResource("2_x4tlj")
+Amount_Applied = 3
+Action_Cost_MP = 1
+Action_Cost_AP = 1
+Action_Card_Art = ExtResource("1_sypws")
+tooltip_text = "AP: 1 [br]MANA 1 [br]Apply 3 WITHERING to your enemy."
+action_name = "Withering Waves"
+action_type = "Debuff"
+action_log_message = "\"Incomphrensible Frequencies tear at your opponent's body!\""
+action_vfx = ExtResource("3_x4tlj")
+metadata/_custom_type_script = "uid://dcrcb8px56j02"

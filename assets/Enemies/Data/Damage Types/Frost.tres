@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DamageType" format=3 uid="uid://du467nq062v76"]
+
+[ext_resource type="Script" uid="uid://cs2umcg6qolyx" path="res://assets/Enemies/Data/Damage Types/DamageTypeInstance.gd" id="1_thbop"]
+
+[resource]
+script = ExtResource("1_thbop")
+Damage_Type = 1
+metadata/_custom_type_script = "uid://cs2umcg6qolyx"

@@ -12,6 +12,7 @@ base_damage = 9
 Action_Cost_MP = 1
 Action_Cost_AP = 1
 Action_Card_Art = ExtResource("1_8jcw0")
+tooltip_text = "AP: 1 [br]MANA 1 [br]Deal %s PSYCHIC Damage."
 action_name = "Psychic Rend"
 action_type = "Attack Action"
 action_log_message = "\"The voice of madness compels your enemy!\""

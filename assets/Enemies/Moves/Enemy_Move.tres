@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="Enemy_Action" format=3 uid="uid://d20rhul1gqxeb"]
-
-[ext_resource type="Script" uid="uid://ca0ow1gomljgc" path="res://scripts/enemy_action.gd" id="1_vbfsg"]
-
-[resource]
-script = ExtResource("1_vbfsg")

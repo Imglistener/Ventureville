@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StatInstance" format=3 uid="uid://bf04hmv3nnbgw"]
+
+[ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="1_1fp3n"]
+
+[resource]
+script = ExtResource("1_1fp3n")
+resist_max = 80.0
+resist_stat_cap = 60.0
+metadata/_custom_type_script = "uid://dpyy1nwoa6fa2"

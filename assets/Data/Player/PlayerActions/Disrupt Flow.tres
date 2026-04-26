@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Debuff_Action" format=3 uid="uid://5kjo0wdcbc1v"]
+
+[ext_resource type="Texture2D" uid="uid://d1k803bhxsl2g" path="res://assets/GUI/disrupt_flow.jpg" id="1_ffed8"]
+[ext_resource type="Script" uid="uid://dcrcb8px56j02" path="res://scripts/debuff_instance.gd" id="1_gfrlx"]
+[ext_resource type="Resource" uid="uid://dexkk3vt8k4ud" path="res://assets/Status Effects/Debuffs/Disrupted.tres" id="2_oyym3"]
+
+[resource]
+script = ExtResource("1_gfrlx")
+Associated_Debuff = ExtResource("2_oyym3")
+Amount_Applied = 3
+Action_Cost_MP = 3
+Action_Cost_AP = 1
+Action_Card_Art = ExtResource("1_ffed8")
+tooltip_text = "AP: 1 [br]MANA 3[br] Apply 3 Disrupt to your Enemy."
+action_name = "Disrupt Flow"
+action_type = "Debuff"
+action_log_message = "\"Dissonant Energies Disrupt your Opponent!\""
+metadata/_custom_type_script = "uid://dcrcb8px56j02"

@@ -1,14 +1,20 @@
-[gd_resource type="Resource" script_class="Loadout" format=3 uid="uid://bw62m3afdy2r2"]
+[gd_resource type="Resource" script_class="CharacterInstance" format=3 uid="uid://bw62m3afdy2r2"]
 
-[ext_resource type="Script" uid="uid://dl7lqrq8fb6cw" path="res://scripts/class.gd" id="1_qjt0a"]
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="1_75hr3"]
+[ext_resource type="Resource" uid="uid://ceoqilwthbnl5" path="res://assets/Data/Stats/Revised Stats/Entropy.tres" id="2_hakgc"]
+[ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="3_30pqk"]
+[ext_resource type="Resource" uid="uid://bf04hmv3nnbgw" path="res://assets/Data/Stats/Revised Stats/Health.tres" id="3_h6vfc"]
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="4_itxnv"]
+[ext_resource type="Resource" uid="uid://bxetxvy80ay0c" path="res://assets/Data/Stats/Revised Stats/Sanity.tres" id="5_j3do0"]
+[ext_resource type="Resource" uid="uid://cr5xuv3tmjx6m" path="res://assets/Data/Stats/Revised Stats/Strength.tres" id="6_1u42b"]
+[ext_resource type="Script" uid="uid://cs2ejlgorfek8" path="res://assets/Data/Player/CharacterInstance.gd" id="7_a86jw"]
+[ext_resource type="Resource" uid="uid://b5hkm5hwk5cuc" path="res://assets/Data/Player/Deck/Deck.tres" id="8_cxdyy"]
 
 [resource]
-script = ExtResource("1_qjt0a")
-Class_Name = "Tarnished"
-HP = 16
-SAN = 12
-STRENGTH = 5
-BLOOD = 5
-ENTROPY = 5
-INFLUENCE = 5
-metadata/_custom_type_script = "uid://dl7lqrq8fb6cw"
+script = ExtResource("7_a86jw")
+CharacterName = "John"
+starting_deck = ExtResource("8_cxdyy")
+draw_power = 5
+max_mana = 3
+AP = 3
+stats = Array[ExtResource("3_30pqk")]([ExtResource("3_h6vfc"), ExtResource("5_j3do0"), ExtResource("4_itxnv"), ExtResource("6_1u42b"), ExtResource("1_75hr3"), ExtResource("2_hakgc")])

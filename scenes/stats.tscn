@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://c7rl025riv4v8"]
-
-[ext_resource type="Script" uid="uid://ctjjm15cdjsol" path="res://scenes/stats.gd" id="1_3f7q0"]
-
-[node name="PCBattlerStats" type="Node" unique_id=1596594879]
-script = ExtResource("1_3f7q0")

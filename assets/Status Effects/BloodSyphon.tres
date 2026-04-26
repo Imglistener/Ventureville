@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BloodSyphon" format=3 uid="uid://be5c7aep2us2"]
+
+[ext_resource type="Script" uid="uid://cofh7j3s3f5o5" path="res://assets/Status Effects/Blood Syphon.gd" id="1_pj3u1"]
+[ext_resource type="Texture2D" uid="uid://bolb4eopeie4u" path="res://assets/GUI/Bleeding.png" id="2_gll6u"]
+
+[resource]
+script = ExtResource("1_pj3u1")
+status_name = 2
+default_duration = 2
+status_icon = ExtResource("2_gll6u")
+status_description = "Affected Entity loses Health equal to twice the remaining duration. User heals the same amount."
+metadata/_custom_type_script = "uid://cofh7j3s3f5o5"

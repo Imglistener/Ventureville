@@ -12,6 +12,7 @@ base_damage = 12
 Action_Cost_MP = 1
 Action_Cost_AP = 1
 Action_Card_Art = ExtResource("1_854hc")
+tooltip_text = "AP: 1 [br]MANA 1 [br]Deal %s BLOOD Damage."
 action_name = "Draw Blood"
 action_type = "Attack"
 action_log_message = "\"Fangs bared, you Draw Blood!\""

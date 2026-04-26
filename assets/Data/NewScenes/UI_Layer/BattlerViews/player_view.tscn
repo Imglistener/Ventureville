@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cyd2vf8wy3bo4"]
+
+[ext_resource type="Texture2D" uid="uid://v0tydlfyg7mn" path="res://assets/KennyUI/Panel/panel-008.png" id="1_li1gx"]
+[ext_resource type="Texture2D" uid="uid://cdlgjildby10k" path="res://assets/illusionist/illusionist_portrait_V2.png" id="2_hyb8y"]
+[ext_resource type="Script" uid="uid://fupbb36dfdpc" path="res://assets/Data/Scripts/player_view.gd" id="2_uy3sq"]
+[ext_resource type="PackedScene" uid="uid://fiskbqhnlgr7" path="res://assets/Data/NewScenes/UI_Layer/player_stats_container.tscn" id="3_4nq6f"]
+
+[node name="PlayerView" type="NinePatchRect" unique_id=1803275803]
+self_modulate = Color(0.45262197, 0.45262197, 0.45262197, 0.62600005)
+anchors_preset = -1
+anchor_right = 0.25
+anchor_bottom = 0.6388889
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_li1gx")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+script = ExtResource("2_uy3sq")
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerContainer" type="MarginContainer" parent="." unique_id=416444908]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PlayerPortrait" type="TextureRect" parent="PlayerContainer" unique_id=80522152]
+custom_minimum_size = Vector2(0, 446.995)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("2_hyb8y")
+expand_mode = 3
+
+[node name="PlayerBarsContainer" parent="PlayerContainer" unique_id=2061961984 instance=ExtResource("3_4nq6f")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2

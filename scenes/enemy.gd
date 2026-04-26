@@ -1,1 +1,0 @@
-class_name Enemy_View extends TextureButton

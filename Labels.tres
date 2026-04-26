@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://c50kjxi87qd8t"]
+
+[ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="1_nymb6"]
+
+[resource]
+font = ExtResource("1_nymb6")
+font_size = 41
+font_color = Color(0, 0, 0, 1)
+outline_size = 8

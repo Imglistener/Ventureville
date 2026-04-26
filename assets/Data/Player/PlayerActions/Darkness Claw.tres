@@ -12,6 +12,7 @@ base_damage = 12
 Action_Cost_MP = 2
 Action_Cost_AP = 1
 Action_Card_Art = ExtResource("1_o2kfl")
+tooltip_text = "AP: 1 [br]MANA 1 [br]Deal %s ENTROPY Damage."
 action_name = "Claws of Darkness"
 action_type = "Attack"
 action_log_message = "\"You rip open with Claws of Darkness!\""

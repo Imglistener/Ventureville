@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://biyjdfjp3h6q"]
+
+[ext_resource type="Texture2D" uid="uid://cqismbup4hcfa" path="res://assets/GUI/ManaContainer.png" id="1_g16hm"]
+[ext_resource type="Script" uid="uid://dflnn7cyqj71q" path="res://assets/Data/Scripts/mana_ui.gd" id="2_cwqhd"]
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="2_uh7cm"]
+[ext_resource type="Texture2D" uid="uid://cl2al4nppjabt" path="res://assets/GUI/ManaContainerEmpty.png" id="3_cwqhd"]
+
+[node name="Mana_UI" type="TextureRect" unique_id=1073400066]
+anchors_preset = -1
+anchor_right = 0.14003101
+anchor_bottom = 0.84878194
+offset_left = -0.826416
+offset_top = -1.1735535
+offset_right = 82.64459
+offset_bottom = -218.2305
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_g16hm")
+expand_mode = 5
+script = ExtResource("2_cwqhd")
+Empty = ExtResource("3_cwqhd")
+Full = ExtResource("1_g16hm")
+
+[node name="MP_Number" type="Label" parent="." unique_id=934902119]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42387062
+anchor_top = 0.33632186
+anchor_right = 0.5761294
+anchor_bottom = 0.66367817
+offset_bottom = -1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_uh7cm")
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 66
+text = "5"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

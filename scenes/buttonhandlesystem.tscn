@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://b6r7mb6ps4bd"]
-
-[ext_resource type="Script" uid="uid://jnaia8ejooup" path="res://scenes/buttonhandlesystem.gd" id="1_i3cih"]
-
-[node name="Buttonhandlesystem" type="Node" unique_id=167876438]
-script = ExtResource("1_i3cih")

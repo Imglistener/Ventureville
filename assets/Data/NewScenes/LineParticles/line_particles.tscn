@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://btprf2rs0i0dx"]
+
+[ext_resource type="Texture2D" uid="uid://bxrpvferkl44m" path="res://assets/KennyUI/Panel/panel-024.png" id="1_iugr5"]
+
+[sub_resource type="Gradient" id="Gradient_iugr5"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h5opm"]
+gradient = SubResource("Gradient_iugr5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h5opm"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(60, 1, 1)
+angle_min = -89.99999
+angle_max = 90.000015
+inherit_velocity_ratio = -0.89
+spread = 0.0
+angular_velocity_min = -90.000015
+angular_velocity_max = -60.000015
+gravity = Vector3(0, 98, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+color_ramp = SubResource("GradientTexture1D_h5opm")
+
+[node name="GPUParticles2D" type="GPUParticles2D" unique_id=521896117]
+emitting = false
+amount = 50
+texture = ExtResource("1_iugr5")
+preprocess = 2.25
+speed_scale = 2.0
+explosiveness = 0.83
+process_material = SubResource("ParticleProcessMaterial_h5opm")

@@ -6,8 +6,7 @@
 [resource]
 script = ExtResource("1_thtfh")
 stat_description = "Your silver tongue and charms, or rather, your mastery over your opponents' minds. Governs your Psychic Damage and Psychic Damage Resistance."
-raw_scaling_value = null
-raw_resistance_value = null
+Constant_value = 10
 Associated_Damage_Type = ExtResource("1_qspy1")
 stat_name = "Influence"
 scaling_1 = 1.0

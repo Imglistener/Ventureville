@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cwrwvtamgynf7"]
+
+[ext_resource type="Texture2D" uid="uid://bpiepls5q8x1a" path="res://assets/GUI/GUI-1.png" id="1_x7sbc"]
+[ext_resource type="Script" uid="uid://se2d5duxx18" path="res://scripts/dialogue_node.gd" id="2_jxemv"]
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="3_f3oim"]
+[ext_resource type="Script" uid="uid://bwvpr1s4xfb3l" path="res://scripts/dialogue_box.gd" id="4_mi2ae"]
+[ext_resource type="AudioStream" uid="uid://d322xxcr14ue" path="res://assets/SFX/typing_loop.wav" id="5_ls3l6"]
+[ext_resource type="AudioStream" uid="uid://joaxswd5yfxd" path="res://assets/SFX/typing_done.wav" id="6_a285r"]
+[ext_resource type="Script" uid="uid://bnw1n1cq8bkrb" path="res://scripts/Dialogue_Manager.gd" id="7_jxemv"]
+
+[node name="dialogue-node" type="NinePatchRect" unique_id=770245451]
+visible = false
+self_modulate = Color(0.28060427, 0.27619392, 0.27619392, 0.578)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.35379
+offset_top = -225.15613
+offset_right = -24.889648
+offset_bottom = -20.497437
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_x7sbc")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+script = ExtResource("2_jxemv")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=467441865]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="dialogue-box" type="RichTextLabel" parent="MarginContainer" unique_id=1424232509]
+layout_mode = 2
+theme = ExtResource("3_f3oim")
+bbcode_enabled = true
+scroll_active = false
+script = ExtResource("4_mi2ae")
+typesound = ExtResource("5_ls3l6")
+stop_sound = ExtResource("6_a285r")
+
+[node name="DialogueManager" type="Node" parent="." unique_id=1429974705]
+script = ExtResource("7_jxemv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=718281267]

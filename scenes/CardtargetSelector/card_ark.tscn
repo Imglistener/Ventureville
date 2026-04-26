@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d2g1ukeepoujm"]
+
+[ext_resource type="Script" uid="uid://b76wfkhtdam27" path="res://scenes/CardtargetSelector/card_ark.gd" id="2_xfvhm"]
+
+[sub_resource type="Curve" id="Curve_lvh2t"]
+_limits = [0.2, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.2), 0.0, 0.0, 0, 0, Vector2(0.35905045, 0.65129405), 1.3966, 1.3966, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="Line2D" type="Line2D" unique_id=1767658862]
+width = 14.915
+width_curve = SubResource("Curve_lvh2t")
+default_color = Color(1, 1, 1, 0)
+texture_mode = 2
+script = ExtResource("2_xfvhm")
+speed = 0.5

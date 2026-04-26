@@ -1,0 +1,207 @@
+[gd_scene format=3 uid="uid://dy2lvmmb2q1lw"]
+
+[ext_resource type="Script" uid="uid://p6bwojul8amu" path="res://assets/Data/NewScenes/toolbar_container.gd" id="1_42ohh"]
+[ext_resource type="Texture2D" uid="uid://bo8cmn5oe17m4" path="res://assets/KennyUI/Border/panel-border-015.png" id="1_s2172"]
+[ext_resource type="Texture2D" uid="uid://bby71buwvwo53" path="res://assets/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_44.png" id="2_42ohh"]
+[ext_resource type="Texture2D" uid="uid://b72j2iee4py8h" path="res://assets/Edinnu_UI_asset_pack/Menu_buttons/Menu_button (1).png" id="3_732sv"]
+[ext_resource type="Texture2D" uid="uid://bwy6nqsfoc14g" path="res://assets/Wenrexa/PNG/Btn_Question.png" id="4_kypne"]
+[ext_resource type="Texture2D" uid="uid://cjswaqly8ch3m" path="res://assets/Wenrexa/PNG/Icon_deck.png" id="5_8n8w1"]
+[ext_resource type="Texture2D" uid="uid://r7s4o67r50w3" path="res://assets/GUI/Icon65.png" id="6_euu2n"]
+[ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="7_regow"]
+[ext_resource type="Texture2D" uid="uid://cmfj8g5onuj24" path="res://assets/Edinnu_UI_asset_pack/Menu_buttons/Menu_button (18).png" id="8_sl5rt"]
+[ext_resource type="Script" uid="uid://du5ckfar1fpqk" path="res://assets/Data/NewScenes/turn_counter_label.gd" id="10_42ohh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ho52x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8v523"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nxbgt"]
+font = ExtResource("7_regow")
+font_size = 14
+font_color = Color(0.037497986, 0.0027770996, 0.35546875, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_16u5j"]
+font = ExtResource("7_regow")
+font_size = 31
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
+
+[node name="toolbar_container" type="MarginContainer" unique_id=82390871]
+material = SubResource("ShaderMaterial_ho52x")
+custom_minimum_size = Vector2(0, 70)
+size_flags_vertical = 2
+script = ExtResource("1_42ohh")
+
+[node name="toolbar_shadow" type="NinePatchRect" parent="." unique_id=782459245]
+self_modulate = Color(0, 0, 0, 0.59000003)
+z_index = 1
+layout_mode = 2
+texture = ExtResource("1_s2172")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="toolbar" type="NinePatchRect" parent="." unique_id=65007511]
+self_modulate = Color(0.23172103, 0, 0.39020357, 1)
+material = SubResource("ShaderMaterial_8v523")
+use_parent_material = true
+layout_mode = 2
+texture = ExtResource("2_42ohh")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="toolbar" unique_id=1434062990]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 6
+
+[node name="NavMenu" type="NinePatchRect" parent="toolbar/MarginContainer" unique_id=1831951411]
+custom_minimum_size = Vector2(212.865, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("3_732sv")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="toolbar/MarginContainer/NavMenu" unique_id=1306510723]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="PauseMenuIcons" type="HBoxContainer" parent="toolbar/MarginContainer/NavMenu/MarginContainer" unique_id=1859210933]
+custom_minimum_size = Vector2(120, 12)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Help" type="TextureButton" parent="toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons" unique_id=1965760346]
+custom_minimum_size = Vector2(50, 45)
+layout_mode = 2
+texture_normal = ExtResource("4_kypne")
+texture_pressed = ExtResource("4_kypne")
+texture_hover = ExtResource("4_kypne")
+texture_disabled = ExtResource("4_kypne")
+texture_focused = ExtResource("4_kypne")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Show Deck" type="TextureButton" parent="toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons" unique_id=1277710609]
+custom_minimum_size = Vector2(50, 45)
+layout_mode = 2
+texture_normal = ExtResource("5_8n8w1")
+texture_pressed = ExtResource("5_8n8w1")
+texture_hover = ExtResource("5_8n8w1")
+texture_disabled = ExtResource("5_8n8w1")
+texture_focused = ExtResource("5_8n8w1")
+ignore_texture_size = true
+stretch_mode = 0
+flip_h = true
+
+[node name="Pause" type="TextureButton" parent="toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons" unique_id=13308016]
+custom_minimum_size = Vector2(50, 45)
+layout_mode = 2
+texture_normal = ExtResource("6_euu2n")
+texture_pressed = ExtResource("6_euu2n")
+texture_hover = ExtResource("6_euu2n")
+texture_disabled = ExtResource("6_euu2n")
+texture_focused = ExtResource("6_euu2n")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="toolbar/MarginContainer" unique_id=1495240362]
+layout_mode = 2
+theme_override_constants/separation = 360
+
+[node name="NinePatchRect" type="NinePatchRect" parent="toolbar/MarginContainer/HBoxContainer" unique_id=164451611]
+custom_minimum_size = Vector2(190.155, 58)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_732sv")
+region_rect = Rect2(0, 0, 30, 34)
+patch_margin_left = 20
+patch_margin_top = 12
+patch_margin_right = 21
+patch_margin_bottom = 13
+
+[node name="MarginContainer2" type="MarginContainer" parent="toolbar/MarginContainer/HBoxContainer/NinePatchRect" unique_id=237713965]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="toolbar/MarginContainer/HBoxContainer/NinePatchRect/MarginContainer2" unique_id=80393731]
+layout_mode = 2
+theme_override_constants/separation = -3
+
+[node name="PlayerName" type="Label" parent="toolbar/MarginContainer/HBoxContainer/NinePatchRect/MarginContainer2/VBoxContainer" unique_id=1250253265]
+layout_mode = 2
+text = "PLAYER NAME"
+label_settings = SubResource("LabelSettings_nxbgt")
+
+[node name="Currency" type="Label" parent="toolbar/MarginContainer/HBoxContainer/NinePatchRect/MarginContainer2/VBoxContainer" unique_id=1213402671]
+layout_mode = 2
+text = "CURRENCY"
+label_settings = SubResource("LabelSettings_nxbgt")
+
+[node name="Turn Counter Display" type="NinePatchRect" parent="toolbar/MarginContainer/HBoxContainer" unique_id=26639190]
+custom_minimum_size = Vector2(212.865, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("8_sl5rt")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="toolbar/MarginContainer/HBoxContainer/Turn Counter Display" unique_id=2016955401]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 8
+
+[node name="Turn_Counter_Label" type="Label" parent="toolbar/MarginContainer/HBoxContainer/Turn Counter Display/MarginContainer" unique_id=1102670266]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Your Turn!"
+label_settings = SubResource("LabelSettings_16u5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_42ohh")
