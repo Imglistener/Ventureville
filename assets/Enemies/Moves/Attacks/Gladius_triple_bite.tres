@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Attack_Action" format=3 uid="uid://2n3ur4vx7kfv"]
+
+[ext_resource type="AudioStream" uid="uid://db4dsbvk3qi3c" path="res://assets/SFX/wolf_triple_bite.wav" id="1_ckdjb"]
+[ext_resource type="Script" uid="uid://bdxs2b55rdyg4" path="res://scripts/attack_action.gd" id="1_vhue1"]
+[ext_resource type="Resource" uid="uid://b6harj3ero505" path="res://assets/Data/Damage Types/Psychic.tres" id="2_ckdjb"]
+
+[resource]
+script = ExtResource("1_vhue1")
+damage_base = 12
+damage_type = ExtResource("2_ckdjb")
+number_of_hits = 3
+cost = 1
+action_name = "Triple Gnawing"
+action_type = "Attack"
+action_soundeffect = ExtResource("1_ckdjb")
+action_log_message = "\"Gladius prepare for a Triple Gnawing!\""
+metadata/_custom_type_script = "uid://bdxs2b55rdyg4"

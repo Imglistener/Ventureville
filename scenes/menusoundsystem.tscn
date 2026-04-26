@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://b07wkah7m0f1g"]
-
-[ext_resource type="Script" uid="uid://yu2gxtdp27e4" path="res://scenes/menusoundsystem.gd" id="1_kvk80"]
-
-[node name="MENUSOUNDSYSTEM" type="Node" unique_id=2042602386]
-script = ExtResource("1_kvk80")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Loadout" format=3 uid="uid://t2ur053bpxih"]
+
+[ext_resource type="Script" uid="uid://dl7lqrq8fb6cw" path="res://scripts/class.gd" id="1_tpydy"]
+
+[resource]
+script = ExtResource("1_tpydy")
+Class_Name = "Hexer"
+HP = 10
+SAN = 12
+STRENGTH = 10
+BLOOD = 10
+ENTROPY = 15
+INFLUENCE = 10
+metadata/_custom_type_script = "uid://dl7lqrq8fb6cw"

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b8nbxucsr1mir"]
+
+[ext_resource type="Script" uid="uid://b0gne1755vgh7" path="res://assets/Data/Scripts/hand.gd" id="1_12k0p"]
+
+[node name="Hand" type="Node2D" unique_id=418394277]
+script = ExtResource("1_12k0p")
+spacing = 50

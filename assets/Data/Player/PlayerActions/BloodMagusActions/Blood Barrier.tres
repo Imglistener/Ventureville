@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3 uid="uid://be12tcnli2021"]
+
+[ext_resource type="Script" uid="uid://i8p4lko4yhky" path="res://assets/Data/Player/PlayerActions/CardEffects/BloodBarrier.gd" id="1_gtouj"]
+
+[resource]
+script = ExtResource("1_gtouj")
+name = "Blood Barrier"
+type = 3
+mp_cost = 1
+Description = "Gain 8 Shield."
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

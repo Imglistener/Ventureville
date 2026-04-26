@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DamageType" format=3 uid="uid://dbo8hv6pt1qt0"]
+
+[ext_resource type="Script" uid="uid://cs2umcg6qolyx" path="res://assets/Enemies/Data/Damage Types/DamageTypeInstance.gd" id="1_2howx"]
+[ext_resource type="Resource" uid="uid://cr5xuv3tmjx6m" path="res://assets/Data/Stats/Revised Stats/Strength.tres" id="1_v8j12"]
+
+[resource]
+script = ExtResource("1_2howx")
+Damage_Type = 5
+Associated_Stat = ExtResource("1_v8j12")
+metadata/_custom_type_script = "uid://cs2umcg6qolyx"

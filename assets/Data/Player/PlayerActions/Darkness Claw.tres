@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Player_Attack_Instance" format=3 uid="uid://dnxr5celckwlj"]
+
+[ext_resource type="Script" uid="uid://c60yfahyptinl" path="res://Player_Attack_Instance.gd" id="1_lpi7m"]
+[ext_resource type="Texture2D" uid="uid://cw8dpn83r3kl8" path="res://assets/GUI/attackcard.png" id="1_o2kfl"]
+[ext_resource type="Resource" uid="uid://bkpjw5hw48iao" path="res://assets/Data/Stats/Entropy.tres" id="2_xp1vt"]
+
+[resource]
+script = ExtResource("1_lpi7m")
+hit_count = 2
+associated_stat = ExtResource("2_xp1vt")
+base_damage = 12
+Action_Cost_MP = 2
+Action_Cost_AP = 1
+Action_Card_Art = ExtResource("1_o2kfl")
+tooltip_text = "AP: 1 [br]MANA 1 [br]Deal %s ENTROPY Damage."
+action_name = "Claws of Darkness"
+action_type = "Attack"
+action_log_message = "\"You rip open with Claws of Darkness!\""
+metadata/_custom_type_script = "uid://c60yfahyptinl"

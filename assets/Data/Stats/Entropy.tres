@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="stat_instance" format=3 uid="uid://bkpjw5hw48iao"]
+
+[ext_resource type="Resource" uid="uid://dfcm8syx6kp1b" path="res://assets/Data/Damage Types/Entropy.tres" id="1_e4car"]
+[ext_resource type="Script" uid="uid://dhfjcjovwwxu1" path="res://assets/Data/stat_instance.gd" id="1_jxb64"]
+
+[resource]
+script = ExtResource("1_jxb64")
+stat_description = "Your mastery over the Dark Arts and control over powers well beyond human comprehension. Governs your Entropy damage and Entropy Damage Resistance."
+Constant_value = 10
+raw_scaling_value = null
+raw_resistance_value = null
+Associated_Damage_Type = ExtResource("1_e4car")
+stat_name = "Entropy"
+scaling_1 = 3.0
+scaling_2 = 2.0
+scaling_3 = 1.0
+resist_max = 0.5
+resist_stat_cap = 80.0
+metadata/_custom_type_script = "uid://dhfjcjovwwxu1"

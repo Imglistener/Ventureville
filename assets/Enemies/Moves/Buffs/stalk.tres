@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Buff_Effect" format=3 uid="uid://d3sjlnhqvhnga"]
+
+[ext_resource type="Script" uid="uid://gtm2fe3l8hag" path="res://scripts/Buff_Effect.gd" id="1_pghqo"]
+
+[resource]
+script = ExtResource("1_pghqo")
+metadata/_custom_type_script = "uid://w2574rmkk0vq"

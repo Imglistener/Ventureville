@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Player_Attack_Instance" format=3 uid="uid://deg226tgr7guk"]
+
+[ext_resource type="Texture2D" uid="uid://m6v120x4kl76" path="res://assets/GUI/draw_blood.png" id="1_854hc"]
+[ext_resource type="Script" uid="uid://c60yfahyptinl" path="res://Player_Attack_Instance.gd" id="1_y0sul"]
+[ext_resource type="Resource" uid="uid://cqlaeqio0yxvb" path="res://assets/Data/Stats/Blood.tres" id="2_o6xal"]
+
+[resource]
+script = ExtResource("1_y0sul")
+hit_count = 3
+associated_stat = ExtResource("2_o6xal")
+base_damage = 12
+Action_Cost_MP = 1
+Action_Cost_AP = 1
+Action_Card_Art = ExtResource("1_854hc")
+tooltip_text = "AP: 1 [br]MANA 1 [br]Deal %s BLOOD Damage."
+action_name = "Draw Blood"
+action_type = "Attack"
+action_log_message = "\"Fangs bared, you Draw Blood!\""
+metadata/_custom_type_script = "uid://c60yfahyptinl"

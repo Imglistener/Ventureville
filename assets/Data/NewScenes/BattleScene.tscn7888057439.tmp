@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://cjway0k6kdiy0"]
+
+[ext_resource type="Texture2D" uid="uid://n8lmyatugrbl" path="res://assets/3d-foggy-forest-landscape.jpg" id="1_83jjo"]
+[ext_resource type="Script" uid="uid://b3nj6xntkhkum" path="res://assets/Data/Scripts/control_base.gd" id="2_4a4b7"]
+[ext_resource type="PackedScene" uid="uid://digppdns1abl1" path="res://assets/Data/NewScenes/UI_Layer/Menus/StandbyMenu.tscn" id="2_htbe8"]
+[ext_resource type="PackedScene" uid="uid://cyd2vf8wy3bo4" path="res://assets/Data/NewScenes/UI_Layer/BattlerViews/player_view.tscn" id="3_iuswa"]
+[ext_resource type="PackedScene" uid="uid://dy2lvmmb2q1lw" path="res://assets/Data/NewScenes/toolbar_container.tscn" id="3_omkm2"]
+[ext_resource type="PackedScene" uid="uid://cwrwvtamgynf7" path="res://assets/Data/NewScenes/dialogue_node.tscn" id="5_5yol5"]
+[ext_resource type="PackedScene" uid="uid://b8nbxucsr1mir" path="res://assets/Data/NewScenes/Hand.tscn" id="5_xwocj"]
+[ext_resource type="PackedScene" uid="uid://bvtqbs2qbo681" path="res://assets/Data/NewScenes/UI_Layer/AP_Bar.tscn" id="6_ivt5a"]
+[ext_resource type="Resource" uid="uid://baw4foxkqfik2" path="res://assets/Enemies/Data/Damage Types/Fire.tres" id="7_451j8"]
+[ext_resource type="PackedScene" uid="uid://biyjdfjp3h6q" path="res://assets/Data/NewScenes/UI_Layer/mana_ui.tscn" id="7_ax5al"]
+[ext_resource type="PackedScene" uid="uid://cid0ju5a74w0u" path="res://scenes/Enemies/Gladius.tscn" id="8_3esf3"]
+[ext_resource type="PackedScene" uid="uid://c3o1p5gd0mc7w" path="res://scenes/CardtargetSelector/card_target_selector.tscn" id="10_a03hs"]
+[ext_resource type="Script" uid="uid://rpgcyv34bk5l" path="res://scripts/stat_manager.gd" id="10_rgo70"]
+[ext_resource type="Resource" uid="uid://b2hh5c4wlqtn5" path="res://assets/Enemies/Data/Enemies/Gladius Phase 1.tres" id="11_1gyek"]
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="11_68fdq"]
+[ext_resource type="Texture2D" uid="uid://b1k7yuxcrdk7d" path="res://assets/Wenrexa/PNG/CheckBox02.png" id="12_68fdq"]
+[ext_resource type="Script" uid="uid://cg3oixktuv3ya" path="res://scripts/resource_ui_manager.gd" id="13_w7muy"]
+[ext_resource type="Script" uid="uid://bg1g50w6darod" path="res://scripts/resource_manager.gd" id="14_a3qp2"]
+[ext_resource type="Resource" uid="uid://bw62m3afdy2r2" path="res://assets/Data/Classes/Tarnished.tres" id="15_xklma"]
+[ext_resource type="Script" uid="uid://c1bi4eai8etya" path="res://scripts/menus_manager.gd" id="17_8fh2q"]
+[ext_resource type="Script" uid="uid://o4qohiqhl68k" path="res://assets/Data/NewScenes/phase_manager.gd" id="18_wsofm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1gyek"]
+size = Vector2(1262.6399, 378.95313)
+
+[node name="BattleScene" type="Node2D" unique_id=560536288]
+
+[node name="Background_Layer" type="CanvasLayer" parent="." unique_id=475671505]
+layer = 0
+
+[node name="Background" type="Sprite2D" parent="Background_Layer" unique_id=1341718266]
+position = Vector2(640, 222.00002)
+scale = Vector2(0.225, 0.225)
+texture = ExtResource("1_83jjo")
+metadata/_edit_lock_ = true
+
+[node name="Control_Layer" type="CanvasLayer" parent="." unique_id=1717132867]
+layer = 2
+
+[node name="Enemy" parent="Control_Layer" unique_id=438713798 instance=ExtResource("8_3esf3")]
+position = Vector2(512, 383)
+
+[node name="Control_Base" type="Control" parent="Control_Layer" unique_id=2000512818]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_4a4b7")
+
+[node name="toolbar_container" parent="Control_Layer/Control_Base" unique_id=82390871 instance=ExtResource("3_omkm2")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Base_Margin" type="MarginContainer" parent="Control_Layer/Control_Base" unique_id=1410913608]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 16
+
+[node name="StandbyContainer" type="MarginContainer" parent="Control_Layer/Control_Base/Base_Margin" unique_id=28552336]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/margin_right = 200
+
+[node name="dialogue-node" parent="Control_Layer/Control_Base/Base_Margin/StandbyContainer" unique_id=770245451 instance=ExtResource("5_5yol5")]
+custom_minimum_size = Vector2(900, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Background" parent="Control_Layer/Control_Base/Base_Margin/StandbyContainer" unique_id=578769339 instance=ExtResource("2_htbe8")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+testdamage = ExtResource("7_451j8")
+
+[node name="Hand" parent="Control_Layer/Control_Base/Base_Margin/StandbyContainer" unique_id=418394277 instance=ExtResource("5_xwocj")]
+visible = false
+position = Vector2(125.18747, -444.75012)
+scale = Vector2(0.9, 0.9)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control_Layer/Control_Base/Base_Margin" unique_id=514336235]
+custom_minimum_size = Vector2(256, 460)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="PlayerView" parent="Control_Layer/Control_Base/Base_Margin/MarginContainer" unique_id=1803275803 instance=ExtResource("3_iuswa")]
+layout_mode = 2
+
+[node name="AP_Bar" parent="Control_Layer/Control_Base" unique_id=1262385969 instance=ExtResource("6_ivt5a")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 881.9999
+offset_top = 55.999992
+offset_right = 894.0
+offset_bottom = -265.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+
+[node name="Mana_UI" parent="Control_Layer/Control_Base" unique_id=1073400066 instance=ExtResource("7_ax5al")]
+visible = false
+layout_mode = 1
+anchor_left = -0.00064563757
+anchor_top = 0.6983701
+anchor_right = 0.12763107
+anchor_bottom = 1.0404414
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 98.51651
+offset_bottom = 147.77478
+scale = Vector2(0.625, 0.625)
+metadata/_edit_use_anchors_ = true
+
+[node name="End Turn" type="Button" parent="Control_Layer/Control_Base" unique_id=1818549525]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 130.0
+offset_right = 230.13
+offset_bottom = 212.405
+theme = ExtResource("11_68fdq")
+text = "END TURN"
+icon = ExtResource("12_68fdq")
+expand_icon = true
+
+[node name="Node2D_Layer" type="CanvasLayer" parent="." unique_id=271104960]
+
+[node name="CardTargetSelector" parent="Node2D_Layer" unique_id=1721769176 instance=ExtResource("10_a03hs")]
+z_as_relative = false
+
+[node name="DropArea" type="Area2D" parent="Node2D_Layer" unique_id=455978371]
+z_index = 6
+z_as_relative = false
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D_Layer/DropArea" unique_id=1149390529]
+visibility_layer = 1025
+z_index = 4
+z_as_relative = false
+position = Vector2(643.07324, 306.21173)
+shape = SubResource("RectangleShape2D_1gyek")
+debug_color = Color(1, 1, 1, 0)
+
+[node name="TargetingArea" type="Node2D" parent="Node2D_Layer" unique_id=643819608]
+position = Vector2(487, 548)
+
+[node name="Functionality" type="Node" parent="." unique_id=401213274]
+
+[node name="EnemyStatManager" type="Node" parent="Functionality" unique_id=851315779]
+script = ExtResource("10_rgo70")
+Entity = ExtResource("11_1gyek")
+
+[node name="ResourceUIManager" type="Node" parent="Functionality" unique_id=522749599]
+script = ExtResource("13_w7muy")
+
+[node name="ResourceManager" type="Node" parent="Functionality" unique_id=1817792797]
+script = ExtResource("14_a3qp2")
+
+[node name="PlayerStatManager" type="Node" parent="Functionality" unique_id=692489589 groups=["player"]]
+script = ExtResource("10_rgo70")
+Entity = ExtResource("15_xklma")
+
+[node name="MenusManager" type="Node" parent="Functionality" unique_id=1582759824]
+script = ExtResource("17_8fh2q")
+
+[node name="PhaseManager" type="Node" parent="Functionality" unique_id=1122656434]
+script = ExtResource("18_wsofm")
+
+[connection signal="pressed" from="Control_Layer/Control_Base/End Turn" to="Functionality/PhaseManager" method="emit_specific_phase" binds= [&"PlayerBattleEnd"]]

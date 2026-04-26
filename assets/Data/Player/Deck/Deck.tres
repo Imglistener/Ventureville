@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://b5hkm5hwk5cuc"]
+
+[ext_resource type="Script" uid="uid://cpy8tjlulsna2" path="res://scripts/Card.gd" id="1_7abai"]
+[ext_resource type="Script" uid="uid://pqq147nh02w3" path="res://scripts/deck.gd" id="1_dyacs"]
+[ext_resource type="Resource" uid="uid://be12tcnli2021" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Barrier.tres" id="1_lxatl"]
+[ext_resource type="Resource" uid="uid://ddquxo4p134kp" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Claw.tres" id="1_s5sof"]
+
+[resource]
+script = ExtResource("1_dyacs")
+Obtained_Cards = {
+ExtResource("1_s5sof"): 8,
+ExtResource("1_lxatl"): 5
+}
+Cards_in_Deck = Array[ExtResource("1_7abai")]([ExtResource("1_lxatl"), ExtResource("1_s5sof")])

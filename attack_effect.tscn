@@ -1,0 +1,326 @@
+[gd_scene format=3 uid="uid://ccs8krvi6oix"]
+
+[ext_resource type="Texture2D" uid="uid://bxll4l18q3iok" path="res://assets/Everything/Alternative 1/1/Alternative_1_01-sheet.png" id="1_fu1e7"]
+[ext_resource type="Texture2D" uid="uid://crp6pue600vdv" path="res://assets/PNG/Explosion_8/Explosion_1.png" id="2_nj1up"]
+[ext_resource type="Texture2D" uid="uid://bmivvr6btfsbv" path="res://assets/PNG/Explosion_8/Explosion_2.png" id="3_x6q2a"]
+[ext_resource type="Texture2D" uid="uid://jhs2jq0v4m3u" path="res://assets/PNG/Explosion_8/Explosion_3.png" id="4_q7d3o"]
+[ext_resource type="Texture2D" uid="uid://dtwkm1gmvcy65" path="res://assets/PNG/Explosion_8/Explosion_4.png" id="5_t67nt"]
+[ext_resource type="Texture2D" uid="uid://dlal76isrvsfu" path="res://assets/PNG/Explosion_8/Explosion_5.png" id="6_bq4tw"]
+[ext_resource type="Texture2D" uid="uid://cnom3y5imd6dd" path="res://assets/PNG/Explosion_8/Explosion_6.png" id="7_2whyv"]
+[ext_resource type="Texture2D" uid="uid://cofykyemlxtbq" path="res://assets/PNG/Explosion_8/Explosion_7.png" id="8_kftry"]
+[ext_resource type="Texture2D" uid="uid://b3cl7vxvfa6c" path="res://assets/PNG/Explosion_8/Explosion_8.png" id="9_d6ak8"]
+[ext_resource type="Texture2D" uid="uid://wl1l8il7f755" path="res://assets/PNG/Explosion_8/Explosion_9.png" id="10_jend7"]
+[ext_resource type="Texture2D" uid="uid://y7bqjxxdii2q" path="res://assets/PNG/Explosion_8/Explosion_10.png" id="11_7ydpw"]
+[ext_resource type="AudioStream" uid="uid://rt0qk3air83p" path="res://assets/SFX/humordome-magic-burst-452852.mp3" id="12_nj1up"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_n2r74"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_7p7s0"]
+_limits = [0.0, 60.0, 0.0, 1.0]
+_data = [Vector2(0, 4.1194), 0.0, 0.0, 0, 0, Vector2(0.7039711, 60), 0.0, 0.0, 0, 0, Vector2(1, 0.6268616), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tf3jb"]
+curve = SubResource("Curve_7p7s0")
+
+[sub_resource type="Curve" id="Curve_b3y00"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.32490975, 0.9805971), 0.0, 0.0, 0, 0, Vector2(0.95667875, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6yq5y"]
+curve = SubResource("Curve_b3y00")
+
+[sub_resource type="Gradient" id="Gradient_s56fx"]
+colors = PackedColorArray(0, 0, 0, 0.711, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qc5ju"]
+gradient = SubResource("Gradient_s56fx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v5hid"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(60, 60, 60)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 59.99998
+angular_velocity_curve = SubResource("CurveTexture_tf3jb")
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.81200016
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 99.99999
+damping_max = 100.00001
+color_ramp = SubResource("GradientTexture1D_qc5ju")
+hue_variation_min = -0.020000022
+hue_variation_max = 0.019999977
+anim_speed_max = 1.0
+anim_speed_curve = SubResource("CurveTexture_6yq5y")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_htf21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nj1up")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x6q2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q7d3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t67nt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bq4tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2whyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kftry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_d6ak8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jend7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7ydpw")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 20.0
+}]
+
+[sub_resource type="Animation" id="Animation_jaev0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"explode"]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:self_modulate:r")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.165, 0, 0.165, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D:self_modulate:g")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.165, 0, 0.165, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D:self_modulate:b")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.165, 0, 0.165, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimatedSprite2D:self_modulate:a")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.165, 0, 0.165, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_77eio"]
+resource_name = "explode"
+length = 0.33
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.23333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 2, 2, 2, 2, 2, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.005555556, -0.16666667, 0, 0, 2, -0.005555556, -0.16666667, 0, 0, 3, -0.0055555566, -0.16666667, 0, 0, 4, -0.005555555, -0.16666667, 0, 0, 5, -0.005555555, -0.16666667, 0, 0, 6, -0.005555558, -0.16666667, 0, 0, 7, -0.005555555, -0.16666667, 0, 0, 8, -0.005555555, -0.16666667, 0, 0, 9, -0.005555555, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:self_modulate:r")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.165, 0, 0.165, 0, 1, -0.016111111, 0, 0, 0),
+"times": PackedFloat32Array(0.23333335, 0.33)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D:self_modulate:g")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.165, 0, 0.165, 0, 1, -0.016111111, 0, 0, 0),
+"times": PackedFloat32Array(0.23333335, 0.33)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D:self_modulate:b")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.165, 0, 0.165, 0, 1, -0.016111111, 0, 0, 0),
+"times": PackedFloat32Array(0.23333335, 0.33)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimatedSprite2D:self_modulate:a")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.165, 0, 0.165, 0, 0, -0.016111111, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0.23333335, 0.33)
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q8ofq"]
+_data = {
+&"RESET": SubResource("Animation_jaev0"),
+&"explode": SubResource("Animation_77eio")
+}
+
+[node name="Animation_Base_Node" type="Node2D" unique_id=1285946238]
+z_as_relative = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=513462154]
+material = SubResource("CanvasItemMaterial_n2r74")
+emitting = false
+amount = 15
+texture = ExtResource("1_fu1e7")
+one_shot = true
+preprocess = 0.23
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_v5hid")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2116429649]
+modulate = Color(0.28523982, 0.13172913, 0.34765625, 1)
+position = Vector2(3, 0)
+sprite_frames = SubResource("SpriteFrames_htf21")
+animation = &"explode"
+
+[node name="Animation_Manager" type="AnimationPlayer" parent="." unique_id=946379892]
+libraries/ = SubResource("AnimationLibrary_q8ofq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=273335654]
+position = Vector2(3, 0)
+stream = ExtResource("12_nj1up")
+bus = &"SFX"

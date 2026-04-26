@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://digppdns1abl1"]
+
+[ext_resource type="Texture2D" uid="uid://bpiepls5q8x1a" path="res://assets/GUI/GUI-1.png" id="1_wyrha"]
+[ext_resource type="Script" uid="uid://dobrsw1rn2i71" path="res://assets/Data/Scripts/standby_menu.gd" id="2_akeyu"]
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="2_hj5of"]
+[ext_resource type="Script" uid="uid://cumib5hreuqhc" path="res://assets/Data/Scripts/menusoundsystem.gd" id="3_fxqob"]
+[ext_resource type="AudioStream" uid="uid://dthpwusghe2wg" path="res://assets/hover.wav" id="4_7o46m"]
+[ext_resource type="Script" uid="uid://b825pf5cylms5" path="res://assets/Data/Scripts/buttonhandlesystem.gd" id="4_rex6c"]
+[ext_resource type="AudioStream" uid="uid://diyc8a23kpu7b" path="res://assets/click.wav" id="5_akeyu"]
+
+[node name="Background" type="NinePatchRect" unique_id=578769339]
+self_modulate = Color(0.4725, 0.4725, 0.4725, 0.657)
+custom_minimum_size = Vector2(800, 100)
+anchors_preset = -1
+anchor_left = 0.1875
+anchor_top = 0.8611111
+anchor_right = 0.8125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+texture = ExtResource("1_wyrha")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+script = ExtResource("2_akeyu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1755076216]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Margin" unique_id=2098798781]
+layout_mode = 2
+theme_override_constants/separation = 95
+alignment = 1
+
+[node name="Talk" type="Button" parent="Margin/ButtonContainer" unique_id=1170609248]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_hj5of")
+text = "TALK"
+clip_text = true
+
+[node name="Escape" type="Button" parent="Margin/ButtonContainer" unique_id=1317983348]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_hj5of")
+text = "ESCAPE"
+clip_text = true
+
+[node name="Items" type="Button" parent="Margin/ButtonContainer" unique_id=902707879]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_hj5of")
+text = "ITEMS"
+clip_text = true
+
+[node name="Battle" type="Button" parent="Margin/ButtonContainer" unique_id=1697515136]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_hj5of")
+text = "BATTLE"
+clip_text = true
+
+[node name="SoundSystem" type="Node" parent="Margin/ButtonContainer" unique_id=1208334229]
+script = ExtResource("3_fxqob")
+hoversfx = ExtResource("4_7o46m")
+clickSfx = ExtResource("5_akeyu")
+
+[node name="MenuSystem" type="Node" parent="Margin/ButtonContainer" unique_id=1425486274]
+script = ExtResource("4_rex6c")
+
+[node name="MenuSFXPlayer" type="AudioStreamPlayer" parent="." unique_id=940532075]

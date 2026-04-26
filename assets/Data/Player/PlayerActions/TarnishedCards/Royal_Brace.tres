@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://du760ppbajsh5"]
+
+[ext_resource type="Script" uid="uid://cpy8tjlulsna2" path="res://scripts/Card.gd" id="1_c2u7j"]
+
+[resource]
+script = ExtResource("1_c2u7j")
+name = "Royal_Brace"
+type = 3
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

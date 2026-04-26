@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="stat_instance" format=3 uid="uid://c17l5rgp672fg"]
+
+[ext_resource type="Script" uid="uid://dhfjcjovwwxu1" path="res://assets/Data/stat_instance.gd" id="1_3e0cc"]
+[ext_resource type="Resource" uid="uid://dg5xxjar8srrv" path="res://assets/Data/Damage Types/Physical.tres" id="1_sk61k"]
+
+[resource]
+script = ExtResource("1_3e0cc")
+stat_description = "Your raw physical performance, and ability to deliver an agonizing beatdown. Governs your Physical Damage and Physical Damage Resistance."
+Constant_value = 10
+Associated_Damage_Type = ExtResource("1_sk61k")
+stat_name = "Strength"
+cap_1 = 40
+cap_2 = 80
+scaling_2 = 3.0
+resist_max = 0.4
+resist_stat_cap = 80.0
+metadata/_custom_type_script = "uid://dhfjcjovwwxu1"
