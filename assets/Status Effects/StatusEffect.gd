@@ -9,7 +9,10 @@ var current_duration : int = 0
 @export_multiline var status_description: String
 
 
-func on_apply(_targets: Array[Node]) -> void:
+func on_apply(_targets: Array[Node], duration : int = 1) -> void:
+	pass
+
+func on_activate() -> void:
 	pass
 
 func on_tick(_target: BaseBattlerStats) -> void:
@@ -18,5 +21,11 @@ func on_tick(_target: BaseBattlerStats) -> void:
 func on_remove(_target: BaseBattlerStats) -> void:
 	pass
 
-func is_applicable() -> bool:
+func is_applicable(targets: Array[Node]) -> bool:
 	return false
+
+func find_same_effect(effects: Array) -> StatusEffect:
+	for effect in effects:
+		if effect.get_script() == self.get_script():
+			return effect
+	return null

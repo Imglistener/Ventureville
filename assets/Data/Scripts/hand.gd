@@ -6,7 +6,7 @@ class_name CardHand extends Node2D
 @onready var deck_manager: DeckManager = $"../../../../../../Functionality/DeckManager"
 
 var is_card_highlighted: bool
-
+var is_arranging: bool = false
 
 func start_turn() -> void:
 	if not player_stat_manager.is_node_ready():
@@ -24,21 +24,22 @@ func draw_card(amount: int) -> void:
 		
 		#await CardScene.move_cad(CardScene, start_pos, Vector2(i*spacing, CardScene.global_position.y), 0.5)
 func arrange_hand():
+	is_arranging = true
 	var offset: int = 250
-	
 	var final_pos: Vector2
 	var final_rot: float
-	
+	var last_tween: Tween
+
 	for i in get_children():
 		var hand_ratio: float = 0.5
 		if get_child_count() > 1:
-			if i:
-				hand_ratio = float(i.get_index()) / (float(get_child_count()) - 1.0)
-				final_pos = Vector2(hand_ratio * offset, 0)
-				final_rot = lerp_angle(-0.2, 0.2, float(i.get_index()) / float(get_child_count() - 1))
+			hand_ratio = float(i.get_index()) / (float(get_child_count()) - 1.0)
+			final_pos = Vector2(hand_ratio * offset, 0)
+			final_rot = lerp_angle(-0.2, 0.2, float(i.get_index()) / float(get_child_count() - 1))
 		else:
 			final_rot = 0
 			final_pos = Vector2(50, 0)
+
 		if i:
 			var tween = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 			tween.parallel().tween_property(i, "position", final_pos, 0.03 + (i.get_index() * 0.075))
@@ -46,14 +47,19 @@ func arrange_hand():
 			i.hand_position = final_pos
 			i.hand_rotation = final_rot
 			i.hand_position_set = true
-			await tween.finished
+			last_tween = tween
 
+	# Await only once, after all tweens are started
+	if last_tween:
+		await last_tween.finished
+
+	is_arranging = false
 func define_playable() -> void:
 	for i in get_children():
 		# Stack cards left-to-right so rightmost is on top
 		i.z_index = i.get_index()
 		i.is_playable.z_as_relative = true
-		i.is_playable.z_index = -1
+		i.is_playable.z_index = i.get_index()-1
 	
 		if i.card_data.mp_cost <= player_stat_manager.Player.mana and i.card_data.ap_cost <= player_stat_manager.Player.AP:
 			i.is_playable.visible = true
@@ -62,4 +68,4 @@ func define_playable() -> void:
 		else:
 			i.is_playable.visible = false
 			i.is_playable.z_as_relative = true
-			i.is_playable.z_index = 0
+			i.is_playable.z_index = i.get_index() - 1

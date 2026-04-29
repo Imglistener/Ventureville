@@ -1,0 +1,19 @@
+[gd_resource type="Resource" format=3 uid="uid://d4auimgetdkq6"]
+
+[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/BloodSyphon.tres" id="1_lvj2y"]
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="2_nha04"]
+[ext_resource type="Script" uid="uid://d2vqnu7kcsctt" path="res://assets/Data/Player/PlayerActions/CardEffects/BloodBlade.gd" id="3_ohh5m"]
+
+[resource]
+script = ExtResource("3_ohh5m")
+base_damage = 10
+base_cost = 10
+StatsScaled = ExtResource("2_nha04")
+AppliedEffect = ExtResource("1_lvj2y")
+name = "Blood Blade"
+target = 1
+mp_cost = 1
+ap_cost = 1
+Description = "Take 10 HP Damage. Deal {scaled} Blood Damage to a Target, chance to apply 3 Blood Syphon."
+LogMessage = "\"Channeling Blood as a blade, you slice at your foe!\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

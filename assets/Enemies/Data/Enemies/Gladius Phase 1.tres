@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="EnemyBattlerStats" format=3 uid="uid://b2hh5c4wlqtn5"]
 
+[ext_resource type="Texture2D" uid="uid://bq1gvv0rfroyw" path="res://assets/Neo Gladius Phase1 Highlighted.png" id="1_75vxh"]
 [ext_resource type="Script" uid="uid://b3icxqpmtwr18" path="res://assets/Data/Entities/EnemyBattlerStats.gd" id="1_gjxuh"]
-[ext_resource type="Texture2D" uid="uid://dqm40qsgnokt3" path="res://assets/Enemybattlers/gladius_phase_1_highlighted.png" id="1_hxk6v"]
-[ext_resource type="Texture2D" uid="uid://nu0i467kdy8m" path="res://assets/Enemybattlers/gladius_phase_1.png" id="1_pigyi"]
+[ext_resource type="Texture2D" uid="uid://cad0ktw8ynhii" path="res://assets/Neo Gladius Phase1.png" id="2_tp11d"]
 [ext_resource type="Script" uid="uid://djvjp04eqmhrw" path="res://assets/Enemies/Data/Enemies/Dialogue/DialogueInstance.gd" id="3_75vxh"]
 [ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="4_l5utn"]
 
@@ -20,11 +20,11 @@ metadata/_custom_type_script = "uid://djvjp04eqmhrw"
 [resource]
 script = ExtResource("1_gjxuh")
 Is_Vul_to = 1
-EnemyName = "Gladius"
 Difficulty = 1
 Has_Phase_2 = true
-Battler_Art_Normal = ExtResource("1_pigyi")
-Battler_Art_Hovered = ExtResource("1_hxk6v")
-DamageBonus = 10
+Battler_Art_Normal = ExtResource("2_tp11d")
+Battler_Art_Hovered = ExtResource("1_75vxh")
+DamageBonus = 5.0
 Dialogue = Array[ExtResource("3_75vxh")]([SubResource("Resource_75vxh"), SubResource("Resource_tp11d")])
+entity_name = "Gladius"
 Battler_Type = 1

@@ -2,8 +2,16 @@ class_name BaseBattlerStats extends Resource
 signal Stats_Changed
 
 enum BATTLER_TYPES {PLAYER , ENEMY}
+signal damage_taken(amount: int, entity_name: String)
+signal sanity_damage_taken(amount: int, entity_name: String)
+signal health_restored(amount: int, entity_name: String)
+signal sanity_restored(amount: int, entity_name: String)
+signal block_gained(amount: int, entity_name: String)
+signal san_block_gained(amount: int, entity_name: String)
+signal entity_died(entity_name: String)
 
 @export_group("Basic Stats")
+@export var entity_name : String
 @export var Battler_Type: BATTLER_TYPES
 @export var AP		: int = 1
 
@@ -23,7 +31,13 @@ var current_sanity	: int : set = set_sanity
 var current_block	: int : set = set_block
 var current_san_block: int: set = set_san_block
 var damage_numbers: Vector2
+var buff_damage_modifier: int
 
+func modify_buff_modifier(amount: int) -> void:
+	buff_damage_modifier = amount
+	print("current buff modifier is:", buff_damage_modifier)
+	Stats_Changed.emit()
+	
 func load_stats() -> void:
 	for stat_instance in stats:
 		match stat_instance.stat_name:

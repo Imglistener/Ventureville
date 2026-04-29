@@ -5,7 +5,7 @@ const TILT_LIMIT := 0.50         # max tilt in radians (~14 degrees), clamp so i
 const TILT_LERP := 0.1           # how snappily it chases the target tilt, lower = floatier
 const DRAG_SCALE_MULTIPLIER := 1.05  # subtle scale-up to feel "lifted"
 
-func process(delta: float) -> void:
+func process(_delta: float) -> void:
 	if abs(card_UI.rotation) > 0.001:
 		card_UI.rotation = lerp(card_UI.rotation, 0.0, TILT_LERP)
 	else:

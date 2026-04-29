@@ -8,7 +8,6 @@ enum DC{BASIC, ELITE, BOSS, OVERLORD}
 @export var Is_Vul_to: DamageType.DAMAGETYPE
 
 @export_group("Basic Variables")
-@export var EnemyName: String
 @export var Difficulty: DC
 @export var Has_Phase_2: bool
 @export var Battler_Art_Normal	: Texture
@@ -19,6 +18,7 @@ enum DC{BASIC, ELITE, BOSS, OVERLORD}
 
 @export_group("Dialogue")
 @export var Dialogue: Array[DialogueLine]
+
 
 
 func initialize_damage_bonus() -> void:
@@ -66,8 +66,17 @@ func take_damage(damage: int, damage_type: DamageType = null) -> void:
 		elif damage_type.Damage_Type == Is_Vul_to:
 			damage = damage * 1.500
 	self.current_health -= damage
+	damage_taken.emit(damage, entity_name) 
 	DamageNumbers.display_number(damage, true, damage_numbers)
+	if self.current_health == 0:
+			entity_died.emit(entity_name)
 
+func heal(amount: int) -> void:
+	DamageNumbers.display_healing_number(amount, true, damage_numbers)
+	self.current_health += amount
+	health_restored.emit(amount, entity_name)
+	
+	
 func create_instance() -> Resource:
 	var instance: EnemyBattlerStats = self.duplicate()
 	instance.current_health = self.Max_HP

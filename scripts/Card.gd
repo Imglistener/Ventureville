@@ -10,6 +10,7 @@ enum Target{SELF, ONEENEMY, ALLENEMIES, ALL}
 @export var mp_cost: int
 @export var ap_cost: int
 @export_multiline var Description: String
+@export_multiline var LogMessage: String
 
 func is_SingleTarget() -> bool:
 	return target == Target.ONEENEMY
@@ -37,5 +38,8 @@ func activate_card(targets: Array[Node], characterstats: CharacterInstance) -> v
 	else:
 		apply_effect(_get_targets(targets))
 
+func get_description(character: CharacterInstance) -> String:
+	return Description
+	
 func apply_effect(_targets : Array[Node]) -> void:
 	pass

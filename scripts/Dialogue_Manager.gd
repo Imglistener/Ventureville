@@ -35,7 +35,7 @@ func print_message() -> void:
 	var line: DialogueLine = enemy_dialogue[current_message_index]
 	match line.Speaker:
 		DialogueLine.SPEAKER.PLAYER:
-			speaker = player_stat_manager.Entity.CharacterName
+			speaker = player_stat_manager.Player.entity_name
 		DialogueLine.SPEAKER.ENEMY:
 			speaker = enemy_stat_manager.Entity.EnemyName
 		DialogueLine.SPEAKER.NONE:

@@ -8,5 +8,7 @@ func activate(targets : Array[Node]) -> void:
 			continue
 		if target is EnemyView:
 				target.Enemy.Entity.current_san_block += amount
+				target.Enemy.Entity.san_block_gained.emit(amount, target.Enemy.Entity.entity_name)
 		if target is Stat_Manager:
-			target.Entity.current_san_block += amount
+			target.Player.current_san_block += amount
+			target.Player.san_block_gained.emit(amount, target.Player.entity_name)

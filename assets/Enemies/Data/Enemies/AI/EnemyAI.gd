@@ -10,6 +10,7 @@ func _ready() -> void:
 	setup_action_chances()
 	for action in get_children():
 		action.target = target
+		action.log = get_tree().get_first_node_in_group('Log')
 
 func get_action() -> EnemyAction:
 	var action : EnemyAction = get_conditional_action()

@@ -1,6 +1,5 @@
 class_name CharacterInstance extends BaseBattlerStats
 
-@export var CharacterName	: String
 @export var starting_deck	: Deck
 @export var draw_power		: int
 @export var max_mana		: int
@@ -27,14 +26,22 @@ func take_damage(damage : int, damage_type: DamageType) -> void:
 		var final_damage := clampi(damage - resistance, 0, damage)
 		DamageNumbers.display_number(final_damage, false, damage_numbers)
 		self.current_health -= final_damage
-
+		damage_taken.emit(final_damage, entity_name)
 	
 	else:
 		self.current_health -= damage
 		DamageNumbers.display_number(damage, false, damage_numbers)
+		damage_taken.emit(damage, entity_name)
+	if self.current_health == 0:
+			entity_died.emit(entity_name)
 
 func reset_mana() -> void:
 	self.mana = max_mana
+
+func heal(amount: int) -> void:
+	DamageNumbers.display_healing_number(amount, false, damage_numbers)
+	self.current_health += amount
+	health_restored.emit(amount, entity_name)
 
 func card_IsPlayable(card: Card) -> bool:
 	return self.mana >= card.mp_cost and self.AP >= card.ap_cost

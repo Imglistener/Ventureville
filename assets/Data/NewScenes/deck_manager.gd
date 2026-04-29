@@ -3,6 +3,8 @@ class_name DeckManager extends Node
 @onready var targeting_area: Node2D = $"../../Node2D_Layer/TargetingArea"
 @onready var label_0: Label = $"../../Node2D_Layer/DiscardPile/Label"
 @onready var label_1: Label = $"../../Node2D_Layer/DeckPile/Label"
+@onready var discard_pile: TextureButton = $"../../Node2D_Layer/DiscardPile"
+@onready var deck_pile: TextureButton = $"../../Node2D_Layer/DeckPile"
 var CardDeck : Deck
 var CardsDiscarded : int : set = set_cards_discarded
 var CardsInDeck: int : set = set_cards_still_in_deck
@@ -26,6 +28,8 @@ func ready_card_drawn() -> CardUI:
 	var CardData = CardDeck.draw_card()
 	var CardScene = preload("res://assets/Data/NewScenes/Cards/card.tscn").instantiate()
 	var start_pos = Vector2(800, 0)
+	CardScene.Discard_position = discard_pile.position
+	CardScene.deck_position = deck_pile.position
 	CardScene.global_position = start_pos
 	CardScene.parent = targeting_area
 	CardScene.player_stats = player_stat_manager.Player
@@ -41,7 +45,7 @@ func set_cards_discarded(amount) -> void:
 	label_0.text = str(CardsDiscarded)
 
 
-func track_deck_size(deck_size: int) -> void:
+func track_deck_size(_deck_size: int) -> void:
 	CardsInDeck = CardDeck.Battle_Deck.size()
 
 func set_cards_still_in_deck(amount) -> void:

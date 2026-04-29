@@ -33,14 +33,21 @@ var cards_colliding:= []
 var hand_position: Vector2
 var hand_rotation: float
 var hand_position_set: bool = false
+var deck_position: Vector2
+var Discard_position: Vector2
+var log : Log
 
 func _ready() -> void:
 	card_name.text = str(card_data.name)
 	card_type.text = str(card_data.Type.keys()[card_data.type])
+	card_data.Description =	card_data.get_description(player_stats)
 	card_effect.text = str(card_data.Description)
 	cost.text = str(card_data.ap_cost)
 	mp_cost.text = str(card_data.mp_cost)
 	card_state_manager.init(self)
+	log = get_tree().get_first_node_in_group('Log')
+	if not player_stats.Stats_Changed.is_connected(update_description):
+		player_stats.Stats_Changed.connect(update_description)
 
 func _process(delta: float) -> void:
 	card_state_manager.process(delta)
@@ -48,10 +55,29 @@ func _process(delta: float) -> void:
 func play() -> void:
 	if not card_data:
 		return
-	
+	log.text += '[br]' + card_data.LogMessage
+	is_playable.visible = false
 	card_data.activate_card(targets, player_stats)
+	animate_out()
 
-	queue_free()
+func update_description() -> void:
+	card_data.Description = card_data.get_description(player_stats)
+	card_effect.text = card_data.Description
+
+func animate_out() -> void:
+	if not deck_position or not Discard_position:
+		return
+	if tween and tween.is_running():
+		tween.kill()
+	tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	tween.parallel().tween_property(self, "scale", Vector2(0.1, 0.1), 0.2)
+	tween.parallel().tween_property(self, "global_position", Discard_position, 0.4)
+	tween.parallel().tween_property(self, 'modulate', Color(0.0, 0.0, 0.0, 0.0), 0.4)
+	tween.finished.connect(
+		func():
+			queue_free()
+	)
+	
 
 func animate_to_hand() -> void:
 	if not hand_position_set:
@@ -77,7 +103,7 @@ func is_card_focused(value: bool) -> void:
 		sfx.play()
 		await animate_card(0)
 	else:
-		z_index = get_index()              # Restore to hand stack positio
+		z_index = get_index()             
 		await animate_card(1)
 	
 func animate_card(type: int) -> void:
@@ -108,12 +134,12 @@ func _on_mouse_entered() -> void:
 	is_card_focused(true)
 
 func _input(event: InputEvent) -> void:
+	var hand = get_parent() as CardHand
+	if hand and hand.is_arranging:
+		return
 	card_state_manager.on_input(event)
 func _on_gui_input(event: InputEvent) -> void:
 	card_state_manager.on_gui_input(event)
-
-
-
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if not targets.has(area):

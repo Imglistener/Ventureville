@@ -1,6 +1,6 @@
 class_name Burning extends StatusEffect
 
-func on_apply(targets: Array[Node]) -> void:
+func on_apply(targets: Array[Node], duration: int = 1) -> void:
 	for target in targets:
 		if not target:
 			continue
@@ -8,20 +8,20 @@ func on_apply(targets: Array[Node]) -> void:
 			var effects = target.Enemy.Entity.ActiveEffects
 			var existing = _find_same_effect(effects)
 			if existing:
-				existing.current_duration += 1
+				existing.current_duration += duration
 			else:
 				var instance = self.duplicate()
-				instance.current_duration = 1
+				instance.current_duration = duration
 				effects.append(instance)
 
 		elif target is Stat_Manager:
 			var effects = target.Player.ActiveEffects
 			var existing = _find_same_effect(effects)
 			if existing:
-				existing.current_duration += 1
+				existing.current_duration += duration
 			else:
 				var instance = self.duplicate()
-				instance.current_duration = 1
+				instance.current_duration = duration
 				effects.append(instance)
 
 func on_tick(target: BaseBattlerStats) -> void:

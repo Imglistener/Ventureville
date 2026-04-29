@@ -1,0 +1,226 @@
+[gd_scene format=3 uid="uid://xrhwnbgpj1x1"]
+
+[ext_resource type="Script" uid="uid://cdw3r3k804l3h" path="res://assets/Data/NewScenes/blood_barrier.gd" id="1_jqut6"]
+[ext_resource type="Texture2D" uid="uid://ccxwylms4vqtc" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX2/frames/BloodMage_skill2_frame1.png" id="2_yhigq"]
+[ext_resource type="Texture2D" uid="uid://dfjg46qy60hf1" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX2/frames/BloodMage_skill2_frame2.png" id="3_d7hd4"]
+[ext_resource type="Texture2D" uid="uid://ds7b1ig8w8c6c" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX2/frames/BloodMage_skill2_frame3.png" id="4_0jbxq"]
+[ext_resource type="Texture2D" uid="uid://6dvnbgeout5r" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX2/frames/BloodMage_skill2_frame4.png" id="5_idyot"]
+[ext_resource type="Texture2D" uid="uid://b0564xy4a6wmu" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX2/frames/BloodMage_skill2_frame5.png" id="6_mj3m5"]
+[ext_resource type="Texture2D" uid="uid://d2nsbeh33v7t5" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX2/frames/BloodMage_skill2_frame6.png" id="7_purc6"]
+[ext_resource type="Texture2D" uid="uid://dukdhiah2v4r8" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX2/frames/BloodMage_skill2_frame7.png" id="8_sguyd"]
+[ext_resource type="Texture2D" uid="uid://bshsek3wqrp50" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX2/frames/BloodMage_skill2_frame8.png" id="9_3ciho"]
+[ext_resource type="Texture2D" uid="uid://da80b3nvyargs" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX2/frames/BloodMage_skill2_frame9.png" id="10_tmj8g"]
+[ext_resource type="Texture2D" uid="uid://drxbmno8qc04f" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX2/frames/BloodMage_skill2_frame10.png" id="11_8ldnw"]
+[ext_resource type="Texture2D" uid="uid://bnh78y052726v" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX2/frames/BloodMage_skill2_frame11.png" id="12_mwoa8"]
+[ext_resource type="Texture2D" uid="uid://bwfqt62tyv12n" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX2/frames/BloodMage_skill2_frame12.png" id="13_jgfr5"]
+[ext_resource type="Texture2D" uid="uid://bfyru3xx8bov2" path="res://Pixel Art VFX - Vampire - FREE Version/VFX4/Frames/Vampire_skill4_frame1.png" id="14_178ap"]
+[ext_resource type="Texture2D" uid="uid://cqg33d7p6r30g" path="res://Pixel Art VFX - Vampire - FREE Version/VFX4/Frames/Vampire_skill4_frame2.png" id="15_o32lf"]
+[ext_resource type="Texture2D" uid="uid://dnfoqjtw7nlb8" path="res://Pixel Art VFX - Vampire - FREE Version/VFX4/Frames/Vampire_skill4_frame3.png" id="16_okgwm"]
+[ext_resource type="Texture2D" uid="uid://dliiy6if48yq7" path="res://Pixel Art VFX - Vampire - FREE Version/VFX4/Frames/Vampire_skill4_frame4.png" id="17_vfs03"]
+[ext_resource type="Texture2D" uid="uid://bj72fsqoklx0s" path="res://Pixel Art VFX - Vampire - FREE Version/VFX4/Frames/Vampire_skill4_frame5.png" id="18_0qgtu"]
+[ext_resource type="Texture2D" uid="uid://yssrc1vva8fj" path="res://Pixel Art VFX - Vampire - FREE Version/VFX4/Frames/Vampire_skill4_frame6.png" id="19_s7y1i"]
+[ext_resource type="AudioStream" uid="uid://cnli6sy1w48nu" path="res://assets/SFX/BloodBarrier.wav" id="20_yhigq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1wp0s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yhigq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d7hd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0jbxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_idyot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mj3m5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_purc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sguyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3ciho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tmj8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8ldnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mwoa8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jgfr5")
+}],
+"loop": false,
+"name": &"Barrier",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_178ap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_o32lf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_okgwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_vfs03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_0qgtu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_s7y1i")
+}],
+"loop": false,
+"name": &"BarrierBack",
+"speed": 30.0
+}]
+
+[sub_resource type="Animation" id="Animation_shqlj"]
+resource_name = "BloodBarrier"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BarrierBack:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 0.6830201),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Barrier:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 0.5358867),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BarrierBack")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.13333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"BarrierBack", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Barrier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Barrier", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_4u16r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BarrierBack:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Barrier:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ie1ns"]
+_data = {
+&"BloodBarrier": SubResource("Animation_shqlj"),
+&"RESET": SubResource("Animation_4u16r")
+}
+
+[node name="BloodBarrier" type="Node2D" unique_id=2048595711]
+script = ExtResource("1_jqut6")
+
+[node name="BarrierBack" type="AnimatedSprite2D" parent="." unique_id=1487830028]
+scale = Vector2(2.06, 2.06)
+sprite_frames = SubResource("SpriteFrames_1wp0s")
+animation = &"BarrierBack"
+frame = 5
+frame_progress = 1.0
+
+[node name="Barrier" type="AnimatedSprite2D" parent="." unique_id=1209066096]
+sprite_frames = SubResource("SpriteFrames_1wp0s")
+animation = &"Barrier"
+frame = 11
+frame_progress = 1.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1720950673]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1429835773]
+stream = ExtResource("20_yhigq")
+volume_db = 5.561
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=84523562]
+libraries/ = SubResource("AnimationLibrary_ie1ns")

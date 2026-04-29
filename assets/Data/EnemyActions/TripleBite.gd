@@ -12,6 +12,7 @@ func _ready() -> void:
 func use_action() -> void:
 	if not Enemy or not target:
 		return
+	super()
 	var tween := create_tween().set_trans(Tween.TRANS_QUINT)
 	var original_scale = Enemy.scale
 	var enlarged_scale = original_scale * 1.5
@@ -29,5 +30,5 @@ func use_action() -> void:
 
 	tween.finished.connect(
 		func():
-			Events.EnemyActionCompleted.emit(Enemy)
+			Events.EnemyActionCompleted.emit(self)
 	)

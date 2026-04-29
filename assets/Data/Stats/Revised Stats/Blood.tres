@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_hoyrh")
 stat_name = 4
+stat_level = 20
 resist_max = 80.0
 resist_stat_cap = 60.0
 metadata/_custom_type_script = "uid://dpyy1nwoa6fa2"

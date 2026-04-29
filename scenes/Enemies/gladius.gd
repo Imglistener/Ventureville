@@ -12,11 +12,13 @@ class_name EnemyView extends Area2D
 @onready var statuseffecticon: TextureRect = $EnemyBarsContainer/Statuseffecticon
 @onready var turns_remaining: Label = $EnemyBarsContainer/Statuseffecticon/turns_remaining
 @onready var enemy_bars_container: EnemyBarsContainer = $EnemyBarsContainer
+@onready var idle: Node = $Container/EnemyView/Idle
 
 var Enemy: Stat_Manager
 
 func _ready() -> void:
 	border.pivot_offset = border.size/2
+	idle.start(enemy_view)
 func update_enemy_view(texture_normal: Texture, texture_hovered: Texture) -> void:
 	enemy_view.texture_focused = texture_hovered
 	enemy_view.texture_normal = texture_normal

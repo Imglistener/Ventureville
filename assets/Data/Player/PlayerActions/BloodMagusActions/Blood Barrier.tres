@@ -1,11 +1,14 @@
 [gd_resource type="Resource" format=3 uid="uid://be12tcnli2021"]
 
+[ext_resource type="PackedScene" uid="uid://xrhwnbgpj1x1" path="res://assets/Data/NewScenes/blood_barrier.tscn" id="1_gjxh7"]
 [ext_resource type="Script" uid="uid://i8p4lko4yhky" path="res://assets/Data/Player/PlayerActions/CardEffects/BloodBarrier.gd" id="1_gtouj"]
 
 [resource]
 script = ExtResource("1_gtouj")
+VFX = ExtResource("1_gjxh7")
 name = "Blood Barrier"
 type = 3
 mp_cost = 1
 Description = "Gain 8 Shield."
+LogMessage = "\"You erect a barrier of blood!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

@@ -12,9 +12,9 @@
 
 [resource]
 script = ExtResource("7_a86jw")
-CharacterName = "John"
 starting_deck = ExtResource("8_cxdyy")
 draw_power = 5
 max_mana = 3
+entity_name = "John"
 AP = 3
 stats = Array[ExtResource("3_30pqk")]([ExtResource("3_h6vfc"), ExtResource("5_j3do0"), ExtResource("4_itxnv"), ExtResource("6_1u42b"), ExtResource("1_75hr3"), ExtResource("2_hakgc")])

@@ -5,13 +5,13 @@
 [ext_resource type="Script" uid="uid://dvj68adj207sy" path="res://assets/Data/Scripts/enemy_view.gd" id="3_hrax5"]
 [ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="4_3mehh"]
 [ext_resource type="Texture2D" uid="uid://boyx52878drbv" path="res://assets/KennyUI/Border/panel-border-000.png" id="4_hrax5"]
+[ext_resource type="Script" uid="uid://u5mrv63okf7b" path="res://scenes/Enemies/IdleAnimation.gd" id="4_s0exv"]
 [ext_resource type="Texture2D" uid="uid://vex2urok6e37" path="res://assets/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_02.png" id="5_hrax5"]
 [ext_resource type="Script" uid="uid://c35bxpju1glrx" path="res://assets/Data/Scripts/enemy_bars_container.gd" id="6_3mehh"]
 [ext_resource type="Texture2D" uid="uid://b5eyeoafopmla" path="res://assets/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_15.png" id="7_hnvbq"]
 [ext_resource type="Texture2D" uid="uid://dkr62mk01xwek" path="res://assets/KennyUI/Border/panel-border-005.png" id="8_mh1ew"]
 [ext_resource type="Script" uid="uid://cdivs16ftli1n" path="res://scripts/bars/animated_bar.gd" id="9_6hsbo"]
 [ext_resource type="LabelSettings" uid="uid://cwvkv70rf748a" path="res://assets/Label_Settings.tres" id="10_xox7x"]
-[ext_resource type="Texture2D" uid="uid://55381ghk6ykq" path="res://assets/GUI/icon_Burning.png" id="11_5hwxa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjvsk"]
 size = Vector2(494.297, 314.11603)
@@ -111,6 +111,9 @@ texture_normal = ExtResource("1_ym5r7")
 ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_hrax5")
+
+[node name="Idle" type="Node" parent="Container/EnemyView" unique_id=1636508940]
+script = ExtResource("4_s0exv")
 
 [node name="Border" type="NinePatchRect" parent="Container" unique_id=1407151200]
 visible = false
@@ -254,17 +257,14 @@ text = "SAN"
 label_settings = ExtResource("10_xox7x")
 
 [node name="Statuseffecticon" type="TextureRect" parent="EnemyBarsContainer" unique_id=1081928048]
-visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-mouse_filter = 2
-texture = ExtResource("11_5hwxa")
+mouse_filter = 0
 stretch_mode = 3
 
 [node name="turns_remaining" type="Label" parent="EnemyBarsContainer/Statuseffecticon" unique_id=1123481830]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.503829

@@ -6,8 +6,6 @@ class_name ActiveEffectManager extends Node
 @onready var player_view: PlayerView = $"../../Control_Layer/Control_Base/Base_Margin/MarginContainer/PlayerView"
 @onready var phase_manager: PhaseManager = $"../PhaseManager"
 
-
-# Add these variables at the top of your class
 var _effect_cycle_timer: Timer
 var _player_effect_index: int = 0
 var _enemy_effect_index: int = 0
@@ -20,6 +18,7 @@ func _ready() -> void:
 	_connect_icon_hover_signals()
 	Events.PlayerBattleEnd.connect(tick_effects.bind(player_stat_manager).unbind(1))
 	Events.EnemyBattleEnd.connect(tick_effects.bind(enemy_stat_manager).unbind(1))
+	Events.effect_applied.connect(display_active_effects)
 func _setup_effect_cycle_timer() -> void:
 	_effect_cycle_timer = Timer.new()
 	_effect_cycle_timer.wait_time = EFFECT_DISPLAY_DURATION
@@ -52,7 +51,10 @@ func _advance_player_effect() -> void:
 		player_view.player_bars_container.statuseffecticon.texture = null
 		player_view.player_bars_container.turns_remaining.text = ""
 		return
-
+	if effects.size() == 1:
+		player_view.player_bars_container.statuseffecticon.texture = effects[0].status_icon
+		player_view.player_bars_container.turns_remaining.text = str(effects[0].current_duration)
+		return
 	_player_effect_index = _player_effect_index % effects.size()
 	var effect = effects[_player_effect_index]
 	_tween_icon_swap(
@@ -68,7 +70,10 @@ func _advance_enemy_effect() -> void:
 		enemy.enemy_bars_container.statuseffecticon.texture = null
 		enemy.enemy_bars_container.turns_remaining.text = ""
 		return
-
+	if effects.size() == 1:
+		enemy.enemy_bars_container.statuseffecticon.texture  = effects[0].status_icon
+		enemy.enemy_bars_container.turns_remaining.text  = str(effects[0].current_duration)
+		return
 	_enemy_effect_index = _enemy_effect_index % effects.size()
 	var effect = effects[_enemy_effect_index]
 	_tween_icon_swap(
@@ -79,6 +84,7 @@ func _advance_enemy_effect() -> void:
 	_enemy_effect_index = (_enemy_effect_index + 1) % effects.size()
 
 func _tween_icon_swap(icon: TextureRect, label: Label, effect: Resource) -> void:
+
 	var tween = create_tween()
 	tween.set_parallel(false)
 
@@ -94,7 +100,6 @@ func _tween_icon_swap(icon: TextureRect, label: Label, effect: Resource) -> void
 	# Fade in
 	tween.tween_property(icon, "modulate:a", 1.0, 0.15)
 
-# Call this when you need to force a UI refresh (e.g. after effects are added/removed)
 func display_active_effects() -> void:
 	_player_effect_index = 0
 	_enemy_effect_index = 0

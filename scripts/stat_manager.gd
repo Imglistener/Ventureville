@@ -5,6 +5,7 @@ class_name Stat_Manager extends Node
 @onready var Resources: resource_manager = $"../ResourceManager"
 @onready var phase_manager: PhaseManager = $"../PhaseManager"
 @onready var bgm: AudioStreamPlayer = $"../../BGM"
+@onready var log: Log = $"../../Control_Layer/Control_Base/ColorRect/MarginContainer/ScrollContainer/Log"
 
 @export var enemy_ai: PackedScene 
 var Player: CharacterInstance
@@ -72,6 +73,7 @@ func _initialize_entity(entity_type: Variant) -> void:
 		if not enemy.is_node_ready():
 			await enemy.ready
 		enemy.Enemy = self
+		log.connect_to_entity(Entity)
 		setup_ai()
 		enemy.update_enemy_view(Entity.Battler_Art_Normal, Entity.Battler_Art_Hovered)
 		Entity.damage_numbers = get_tree().get_nodes_in_group("DamageNumbers")[1].global_position
@@ -90,9 +92,10 @@ func _initialize_entity(entity_type: Variant) -> void:
 		if not player_view.is_node_ready():
 			await player_view.ready
 		Player = Entity.Load_Player()
+		
 		Player.starting_deck.intialize_deck_contents()
 		Player.damage_numbers = get_tree().get_nodes_in_group("DamageNumbers")[0].global_position
-
+		log.connect_to_entity(Player)
 		player_view.player_bars_container.player_hp.max_value = Player.Max_HP
 		player_view.player_bars_container.player_hp.value = Player.current_health
 		player_view.player_bars_container.player_hp_counter.text = str(Player.current_health)
@@ -109,12 +112,20 @@ func phase_transition() -> void:
 
 func play_turn() -> void:
 	if Entity is not EnemyBattlerStats: return
+	if enemy.enemy_view.has_node("Idle"):
+		enemy.enemy_view.get_node("Idle").stop()
 	if not CurrentAction:
 		return
 	CurrentAction.use_action()
 	CurrentAction = null
+	var end = func():
+		if enemy.enemy_view.has_node("Idle"):
+			enemy.enemy_view.get_node("Idle").start(enemy.enemy_view)
+	Events.EnemyActionCompleted.connect(
+		end.unbind(1)
+	)
 
 
-func _on_enemy_action_completed(_enemy: EnemyView) -> void:
+func _on_enemy_action_completed(_enemy: EnemyAction) -> void:
 	if Entity is not EnemyBattlerStats: return
 	phase_manager.advance_to_next_phase()
