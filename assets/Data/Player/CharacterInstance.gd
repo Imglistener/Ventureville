@@ -1,8 +1,10 @@
 class_name CharacterInstance extends BaseBattlerStats
+enum PlayerClasses{BloodMagus, DarkMagus, VoiceMagus, FoulTarnished}
 
 @export var starting_deck	: Deck
 @export var draw_power		: int
 @export var max_mana		: int
+@export var player_class : PlayerClasses
 
 
 
@@ -10,6 +12,9 @@ var mana: int : set = set_mana
 var battle_deck : Deck
 var discard		: Deck
 var draw_deck	: Deck
+var character_level: int = 0
+
+
 
 func set_mana(value: int) -> void:
 	mana = value
@@ -34,7 +39,11 @@ func take_damage(damage : int, damage_type: DamageType) -> void:
 		damage_taken.emit(damage, entity_name)
 	if self.current_health == 0:
 			entity_died.emit(entity_name)
-
+			
+func set_character_level()-> void:
+	for stat in stats:
+		character_level += stat.stat_level
+		 
 func reset_mana() -> void:
 	self.mana = max_mana
 
@@ -56,6 +65,7 @@ func create_instance() -> Resource:
 	instance.battle_deck = instance.starting_deck.duplicate()
 	instance.draw_deck	= Deck.new()
 	instance.discard = Deck.new()
+	instance.set_character_level()
 	return instance
 #Load Character:
 func Load_Player() -> Resource:
@@ -69,6 +79,6 @@ func Load_Player() -> Resource:
 	instance.battle_deck = instance.starting_deck.duplicate()
 	instance.draw_deck = Deck.new()
 	instance.discard = Deck.new()
-	
+	instance.set_character_level()
 
 	return instance

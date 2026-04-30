@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ct644v6mvtf2d"]
+
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="1_31emm"]
+[ext_resource type="Texture2D" uid="uid://v0tydlfyg7mn" path="res://assets/KennyUI/Panel/panel-008.png" id="1_fxm1a"]
+[ext_resource type="Script" uid="uid://clh11vehqowua" path="res://scripts/card_inspector.gd" id="1_qo7wm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ikflb"]
+texture = ExtResource("1_fxm1a")
+texture_margin_left = 26.0
+texture_margin_top = 26.0
+texture_margin_right = 26.0
+texture_margin_bottom = 26.0
+modulate_color = Color(1, 1, 1, 0.70400006)
+
+[node name="CardInspector" type="PanelContainer" unique_id=382155218]
+custom_minimum_size = Vector2(260, 280)
+offset_right = 260.0
+offset_bottom = 280.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ikflb")
+script = ExtResource("1_qo7wm")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=657552401]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CardEffect" type="RichTextLabel" parent="MarginContainer" unique_id=12522114]
+layout_mode = 2
+theme = ExtResource("1_31emm")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+fit_content = true
+scroll_active = false

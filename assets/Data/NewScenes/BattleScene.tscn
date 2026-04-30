@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://bg1g50w6darod" path="res://scripts/resource_manager.gd" id="14_a3qp2"]
 [ext_resource type="Script" uid="uid://v5hiskpdh4ir" path="res://assets/Data/Scripts/log.gd" id="14_lnaa1"]
 [ext_resource type="Texture2D" uid="uid://bpf38icqbkko" path="res://assets/GUI/Discard.png" id="15_47eqh"]
+[ext_resource type="PackedScene" uid="uid://ct644v6mvtf2d" path="res://assets/Data/NewScenes/CardInspector.tscn" id="15_t77tx"]
 [ext_resource type="Resource" uid="uid://bw62m3afdy2r2" path="res://assets/Data/Classes/Tarnished.tres" id="15_xklma"]
 [ext_resource type="Texture2D" uid="uid://swrqjyj25nw" path="res://assets/GUI/DeckIcon.png" id="16_yfv5k"]
 [ext_resource type="Script" uid="uid://c1bi4eai8etya" path="res://scripts/menus_manager.gd" id="17_8fh2q"]
@@ -104,8 +105,8 @@ testdamage = ExtResource("7_451j8")
 layer = 5
 
 [node name="Hand" parent="Control_Layer/Control_Base/Base_Margin/StandbyContainer/HandLayer" unique_id=418394277 instance=ExtResource("5_xwocj")]
-position = Vector2(152.187, 283.49)
-scale = Vector2(0.9, 0.9)
+position = Vector2(152.187, 263.49)
+scale = Vector2(0.8, 0.8)
 
 [node name="MarginContainer" type="MarginContainer" parent="Control_Layer/Control_Base/Base_Margin" unique_id=514336235]
 custom_minimum_size = Vector2(256, 460)
@@ -191,6 +192,12 @@ bbcode_enabled = true
 text = "Turn : 1"
 scroll_following = true
 script = ExtResource("14_lnaa1")
+
+[node name="PanelContainer" parent="Control_Layer/Control_Base" unique_id=382155218 instance=ExtResource("15_t77tx")]
+visible = false
+layout_mode = 0
+offset_top = 175.0
+offset_bottom = 215.0
 
 [node name="DamageNumbers" type="Node2D" parent="Control_Layer" unique_id=1054874820 groups=["DamageNumbers"]]
 z_index = 10

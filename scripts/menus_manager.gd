@@ -45,9 +45,25 @@ func _ready() -> void:
 	if not phase_manager.is_node_ready():
 		await phase_manager.ready
 	phase_manager.connect_signals()
+	setup_toolbar_display()
 
 
-
+func setup_toolbar_display() -> void:
+	var player_data: String
+	player_data = player_stat_manager.Player.entity_name
+	player_data += " | "
+	match player_stat_manager.Player.player_class:
+		CharacterInstance.PlayerClasses.BloodMagus:
+			player_data += "Blood Magus"
+		CharacterInstance.PlayerClasses.DarkMagus:
+			player_data += "Dark Magus"
+		CharacterInstance.PlayerClasses.VoiceMagus:
+			player_data += "Illusionist"
+		CharacterInstance.PlayerClasses.FoulTarnished:
+			player_data += "Tarnished"
+	
+	toolbar_container.player_name.text = str(player_data)
+	toolbar_container.currency.text = "Forbidden Forest" + " | " + str(player_stat_manager.Player.character_level)
 func fade_node(to_hide : Node, remove_from_container: bool) -> void:
 	if to_hide:
 		var original_scale = to_hide.scale

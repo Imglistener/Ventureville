@@ -4,6 +4,6 @@
 
 [resource]
 font = ExtResource("1_nymb6")
-font_size = 41
-font_color = Color(0, 0, 0, 1)
+font_size = 61
+font_color = Color(0.3217615, 0.04069519, 0.49609375, 1)
 outline_size = 8

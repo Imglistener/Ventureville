@@ -18,14 +18,14 @@
 [sub_resource type="LabelSettings" id="LabelSettings_nxbgt"]
 font = ExtResource("7_regow")
 font_size = 14
-font_color = Color(0.037497986, 0.0027770996, 0.35546875, 1)
+font_color = Color(1, 0.890625, 0, 1)
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_16u5j"]
 font = ExtResource("7_regow")
 font_size = 31
-font_color = Color(0, 0, 0, 1)
+font_color = Color(0.19424438, 0.37109375, 0, 1)
 outline_size = 8
 
 [node name="toolbar_container" type="MarginContainer" unique_id=82390871]
@@ -134,45 +134,28 @@ stretch_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="toolbar/MarginContainer" unique_id=1495240362]
 layout_mode = 2
-theme_override_constants/separation = 360
+theme_override_constants/separation = 300
 
-[node name="NinePatchRect" type="NinePatchRect" parent="toolbar/MarginContainer/HBoxContainer" unique_id=164451611]
-custom_minimum_size = Vector2(190.155, 58)
+[node name="MarginContainer2" type="MarginContainer" parent="toolbar/MarginContainer/HBoxContainer" unique_id=237713965]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("3_732sv")
-region_rect = Rect2(0, 0, 30, 34)
-patch_margin_left = 20
-patch_margin_top = 12
-patch_margin_right = 21
-patch_margin_bottom = 13
-
-[node name="MarginContainer2" type="MarginContainer" parent="toolbar/MarginContainer/HBoxContainer/NinePatchRect" unique_id=237713965]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="toolbar/MarginContainer/HBoxContainer/NinePatchRect/MarginContainer2" unique_id=80393731]
+[node name="VBoxContainer" type="VBoxContainer" parent="toolbar/MarginContainer/HBoxContainer/MarginContainer2" unique_id=80393731]
 layout_mode = 2
 theme_override_constants/separation = -3
 
-[node name="PlayerName" type="Label" parent="toolbar/MarginContainer/HBoxContainer/NinePatchRect/MarginContainer2/VBoxContainer" unique_id=1250253265]
+[node name="PlayerName" type="Label" parent="toolbar/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1250253265]
 layout_mode = 2
-text = "PLAYER NAME"
+text = "PlayerName | ClassName"
 label_settings = SubResource("LabelSettings_nxbgt")
 
-[node name="Currency" type="Label" parent="toolbar/MarginContainer/HBoxContainer/NinePatchRect/MarginContainer2/VBoxContainer" unique_id=1213402671]
+[node name="Currency" type="Label" parent="toolbar/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1213402671]
 layout_mode = 2
-text = "CURRENCY"
+text = "Level"
 label_settings = SubResource("LabelSettings_nxbgt")
 
 [node name="Turn Counter Display" type="NinePatchRect" parent="toolbar/MarginContainer/HBoxContainer" unique_id=26639190]

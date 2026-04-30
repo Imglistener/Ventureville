@@ -29,5 +29,4 @@ func get_description(character: CharacterInstance) -> String:
 	var index = character.stats.find(StatsScaled)
 	var bonus = character.stats[index].stat_scaling_value + character.buff_damage_modifier
 	total = base_damage + bonus
-	print("total damage is: ", total)
 	return Description.replace("{scaled}", str(total))

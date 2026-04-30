@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_flby8")
 stat_name = 3
+BASE_OFFSET = 8
 resist_max = 80.0
 resist_stat_cap = 60.0
 metadata/_custom_type_script = "uid://dpyy1nwoa6fa2"

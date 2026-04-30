@@ -14,6 +14,6 @@ name = "Blood Blade"
 target = 1
 mp_cost = 1
 ap_cost = 1
-Description = "Take 10 HP Damage. Deal {scaled} Blood Damage to a Target, chance to apply 3 Blood Syphon."
+Description = "Take 10 HP Damage. Deal {scaled} Blood Damage to a Target, chance to apply up to 3 Blood Syphon."
 LogMessage = "\"Channeling Blood as a blade, you slice at your foe!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

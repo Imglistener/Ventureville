@@ -5,6 +5,7 @@ class_name DeckManager extends Node
 @onready var label_1: Label = $"../../Node2D_Layer/DeckPile/Label"
 @onready var discard_pile: TextureButton = $"../../Node2D_Layer/DiscardPile"
 @onready var deck_pile: TextureButton = $"../../Node2D_Layer/DeckPile"
+@onready var control_base: Control = $"../../Control_Layer/Control_Base"
 var CardDeck : Deck
 var CardsDiscarded : int : set = set_cards_discarded
 var CardsInDeck: int : set = set_cards_still_in_deck
@@ -26,7 +27,7 @@ func on_Player_battle_start(_turn: Variant = null) -> void: # FIX 4: shuffle onc
 func ready_card_drawn() -> CardUI:
 	# FIX 4: shuffle removed from here
 	var CardData = CardDeck.draw_card()
-	var CardScene = preload("res://assets/Data/NewScenes/Cards/card.tscn").instantiate()
+	var CardScene = preload("res://assets/Data/NewScenes/Cards/card.tscn").instantiate() as CardUI
 	var start_pos = Vector2(800, 0)
 	CardScene.Discard_position = discard_pile.position
 	CardScene.deck_position = deck_pile.position
@@ -34,6 +35,7 @@ func ready_card_drawn() -> CardUI:
 	CardScene.parent = targeting_area
 	CardScene.player_stats = player_stat_manager.Player
 	CardScene.card_data = CardData
+	CardScene.ControlBase = control_base
 	return CardScene
 
 func update_tracked_cards() -> void:

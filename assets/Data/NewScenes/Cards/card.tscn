@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://nody171fluag"]
 
 [ext_resource type="Texture2D" uid="uid://d4kamu6pictq0" path="res://assets/GUI/Card.png" id="1_f5qq3"]
-[ext_resource type="LabelSettings" uid="uid://c50kjxi87qd8t" path="res://Labels.tres" id="2_2d4b5"]
 [ext_resource type="Script" uid="uid://cyen3w4wa8tip" path="res://assets/Data/NewScenes/Cards/card.gd" id="2_8hmw1"]
 [ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="3_8hmw1"]
 [ext_resource type="Resource" uid="uid://be12tcnli2021" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Barrier.tres" id="3_80gmr"]
@@ -153,19 +152,20 @@ aimingSFX = ExtResource("6_80gmr")
 
 [node name="CardName" type="Label" parent="." unique_id=1886172814]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.711506
-anchor_top = 0.54901123
-anchor_right = 1.2661257
-anchor_bottom = 0.6085701
-offset_left = -334.28564
-offset_top = -462.85687
-offset_right = -334.28564
-offset_bottom = -444.53192
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.50003
+offset_top = 22.857141
+offset_right = 170.49997
+offset_bottom = 131.85715
+grow_horizontal = 2
+theme = ExtResource("5_bb8u2")
+theme_type_variation = &"TooltipLabel"
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 61
 text = "CARD NAME"
-label_settings = ExtResource("2_2d4b5")
 horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="CardType" type="Label" parent="." unique_id=1643071682]
 layout_mode = 1
@@ -225,6 +225,7 @@ theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 45
 text = "Inflict X BLOOD Damage.
 Chance to apply Bleeding for 3 Turns."
+scroll_active = false
 metadata/_edit_use_anchors_ = true
 
 [node name="CardAnimation" type="AnimationPlayer" parent="." unique_id=717851961]

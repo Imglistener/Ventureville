@@ -7,6 +7,7 @@ extends TextureRect
 @export var aimingSFX	: AudioStream
 
 signal ReparentRequest(card: CardUI)
+signal CardClicked(card: CardUI)
 
 @onready var is_playable: ColorRect = $IsPlayable
 
@@ -36,6 +37,7 @@ var hand_position_set: bool = false
 var deck_position: Vector2
 var Discard_position: Vector2
 var log : Log
+var ControlBase : Control
 
 func _ready() -> void:
 	card_name.text = str(card_data.name)
@@ -48,6 +50,9 @@ func _ready() -> void:
 	log = get_tree().get_first_node_in_group('Log')
 	if not player_stats.Stats_Changed.is_connected(update_description):
 		player_stats.Stats_Changed.connect(update_description)
+	if ControlBase:
+		if not CardClicked.is_connected(ControlBase.on_trigger_pressed):
+			CardClicked.connect(ControlBase.on_trigger_pressed)
 
 func _process(delta: float) -> void:
 	card_state_manager.process(delta)
@@ -138,8 +143,14 @@ func _input(event: InputEvent) -> void:
 	if hand and hand.is_arranging:
 		return
 	card_state_manager.on_input(event)
-func _on_gui_input(event: InputEvent) -> void:
+	
+		
+func _gui_input(event: InputEvent) -> void:
 	card_state_manager.on_gui_input(event)
+	if event is InputEventMouseButton:
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			CardClicked.emit(self)
+			
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if not targets.has(area):
