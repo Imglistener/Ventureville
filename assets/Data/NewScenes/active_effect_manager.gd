@@ -19,6 +19,7 @@ func _ready() -> void:
 	Events.PlayerBattleEnd.connect(tick_effects.bind(player_stat_manager).unbind(1))
 	Events.EnemyBattleEnd.connect(tick_effects.bind(enemy_stat_manager).unbind(1))
 	Events.effect_applied.connect(display_active_effects)
+	Events.effect_display.connect(DamageNumbers.display_effect)
 func _setup_effect_cycle_timer() -> void:
 	_effect_cycle_timer = Timer.new()
 	_effect_cycle_timer.wait_time = EFFECT_DISPLAY_DURATION

@@ -12,8 +12,7 @@ func use_action() -> void:
 	super()
 	var block_effect := BlockEffect.new()
 	block_effect.amount = block_gained
-	SFXBus.stream = SoundEffect
-	SFXBus.play()
+	SFXBus.play_sfx(SoundEffect)
 
 	get_tree().create_timer(2.8, false).timeout.connect(
 		func():

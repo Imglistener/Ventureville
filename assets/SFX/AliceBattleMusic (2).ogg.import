@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://0nwvuc6uyl86"
+path="res://.godot/imported/AliceBattleMusic (2).ogg-6afd4a7081e0f99292d8e83c63178888.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/SFX/AliceBattleMusic (2).ogg"
+dest_files=["res://.godot/imported/AliceBattleMusic (2).ogg-6afd4a7081e0f99292d8e83c63178888.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

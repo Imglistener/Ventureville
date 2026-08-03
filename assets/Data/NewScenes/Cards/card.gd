@@ -47,15 +47,31 @@ func _ready() -> void:
 	cost.text = str(card_data.ap_cost)
 	mp_cost.text = str(card_data.mp_cost)
 	card_state_manager.init(self)
+	manage_card_rarity()
 	log = get_tree().get_first_node_in_group('Log')
 	if not player_stats.Stats_Changed.is_connected(update_description):
 		player_stats.Stats_Changed.connect(update_description)
+	if not Events.card_played.is_connected(update_costs):
+		Events.card_played.connect(update_costs.unbind(1))
 	if ControlBase:
 		if not CardClicked.is_connected(ControlBase.on_trigger_pressed):
 			CardClicked.connect(ControlBase.on_trigger_pressed)
 
 func _process(delta: float) -> void:
 	card_state_manager.process(delta)
+
+func manage_card_rarity() -> void:
+	match card_data.rarity:
+		Card.Rarities.Common:
+			card_name.add_theme_color_override("font_color", Color.WHITE)
+		Card.Rarities.Rare:
+			card_name.add_theme_color_override("font_color", Color.AQUA)
+		Card.Rarities.Legendary:
+			card_name.add_theme_color_override("font_color", Color.GOLD)
+
+func update_costs() -> void:
+	cost.text = str(card_data.ap_cost)
+	mp_cost.text = str(card_data.mp_cost)
 
 func play() -> void:
 	if not card_data:

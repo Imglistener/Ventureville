@@ -7,6 +7,8 @@ extends Control
 @onready var panel = $PanelContainer
 
 const KEYWORDS: Dictionary = {
+	#CardName:
+	"Blood Aias": "[color=gray]{0}[/color]",
 	# Status effects
 	"Burning":      "[color=#ff4500][wave]{0}[/wave][/color]",
 	"Frostbite":    "[color=#00cfff][wave]{0}[/wave][/color]",
@@ -62,8 +64,20 @@ func build_card_display(data: Card, description: String) -> String:
 
 func apply_keyword_styling() -> void:
 	var textlabel := panel.card_effect as RichTextLabel
+	var placeholders: Dictionary = {}
+	var i := 0
+	
+	# Pass 1: replace keywords with placeholders
 	for keyword in KEYWORDS:
-		current_message = current_message.replace(keyword, KEYWORDS[keyword].format({0: keyword}))
+		var placeholder := "##KW_%d##" % i
+		placeholders[placeholder] = KEYWORDS[keyword].format({0: keyword})
+		current_message = current_message.replace(keyword, placeholder)
+		i += 1
+	
+	# Pass 2: replace placeholders with actual BBCode
+	for placeholder in placeholders:
+		current_message = current_message.replace(placeholder, placeholders[placeholder])
+	
 	textlabel.parse_bbcode(current_message)
 
 func _input(event: InputEvent) -> void:

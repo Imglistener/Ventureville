@@ -13,6 +13,7 @@ func apply_effect(targets : Array[Node]) -> void:
 			damage_gained = effect.current_duration
 			effect.on_remove(enemy)
 			player.heal(healing)
+			player.san_heal(healing)
 			var applied_effect = DamageUP.new()
 			applied_effect.amount = damage_gained
 			applied_effect.current_duration = 1

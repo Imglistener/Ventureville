@@ -2,9 +2,10 @@ class_name Card extends Resource
 
 enum Type{ATTACK, BUFF, DEBUFF, DEFEND}
 enum Target{SELF, ONEENEMY, ALLENEMIES, ALL}
-
+enum Rarities{Common, Rare, Legendary}
 @export_group("Card Details")
 @export var name: String
+@export var rarity: Rarities
 @export var type: Type
 @export var target: Target
 @export var mp_cost: int

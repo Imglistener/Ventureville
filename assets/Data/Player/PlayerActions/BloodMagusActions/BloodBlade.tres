@@ -2,6 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/BloodSyphon.tres" id="1_lvj2y"]
 [ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="2_nha04"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="3_nha04"]
 [ext_resource type="Script" uid="uid://d2vqnu7kcsctt" path="res://assets/Data/Player/PlayerActions/CardEffects/BloodBlade.gd" id="3_ohh5m"]
 
 [resource]
@@ -10,6 +11,7 @@ base_damage = 10
 base_cost = 10
 StatsScaled = ExtResource("2_nha04")
 AppliedEffect = ExtResource("1_lvj2y")
+damage_type = ExtResource("3_nha04")
 name = "Blood Blade"
 target = 1
 mp_cost = 1

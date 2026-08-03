@@ -21,8 +21,7 @@ func use_action() -> void:
 	damage_effect.damage_type = damagetype
 	var target_array: Array[Node] = [target]
 	damage_effect.amount = Damage * Enemy.Enemy.Entity.DamageBonus
-	SFXBus.stream = SoundEffect
-	SFXBus.play()
+	SFXBus.play_sfx(SoundEffect)
 	tween.tween_property(Enemy.enemy_view, "scale", enlarged_scale, 0.4)
 	tween.tween_callback(damage_effect.activate.bind(target_array))
 	tween.tween_interval(0.25)

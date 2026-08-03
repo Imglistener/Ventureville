@@ -1,0 +1,257 @@
+[gd_scene format=3 uid="uid://bry8jp3ptxan4"]
+
+[ext_resource type="Texture2D" uid="uid://cuikqb5nubrd1" path="res://assets/KennyUI/Panel/panel-015.png" id="1_ufg0w"]
+[ext_resource type="Texture2D" uid="uid://dkr62mk01xwek" path="res://assets/KennyUI/Border/panel-border-005.png" id="2_0cmel"]
+[ext_resource type="Script" uid="uid://c226kcbebeww" path="res://assets/Data/NewScenes/settings_menu.gd" id="2_d0eu6"]
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="3_mlw3h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0cmel"]
+texture = ExtResource("1_ufg0w")
+texture_margin_left = 21.0
+texture_margin_top = 21.0
+texture_margin_right = 21.0
+texture_margin_bottom = 21.0
+modulate_color = Color(0.14117648, 0.003921569, 0.28235295, 0.4862745)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mlw3h"]
+texture = ExtResource("2_0cmel")
+texture_margin_left = 21.0
+texture_margin_top = 21.0
+texture_margin_right = 21.0
+texture_margin_bottom = 21.0
+modulate_color = Color(1, 1, 1, 0.43529412)
+
+[node name="SettingsMenu" type="PanelContainer" unique_id=1148530878]
+custom_minimum_size = Vector2(700, 500)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0cmel")
+script = ExtResource("2_d0eu6")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1782938670]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=2145300864]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=460230187]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=80016177]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mlw3h")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer" unique_id=1201957389]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Resolutions" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer/HBoxContainer" unique_id=1705024279]
+layout_mode = 2
+theme = ExtResource("3_mlw3h")
+theme_type_variation = &"Options"
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 30
+text = "Resolutions: "
+
+[node name="ResolutionsPicker" type="OptionButton" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer/HBoxContainer" unique_id=2106454466]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_mlw3h")
+alignment = 1
+autowrap_trim_flags = 0
+selected = 1
+fit_to_longest_item = false
+allow_reselect = true
+item_count = 3
+popup/item_0/text = "1920 x 1080"
+popup/item_0/id = 0
+popup/item_1/text = "1280 x 720"
+popup/item_1/id = 1
+popup/item_2/text = "854 x 480"
+popup/item_2/id = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=976587240]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mlw3h")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer2" unique_id=1256113057]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Framerate" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer2/HBoxContainer" unique_id=534726944]
+layout_mode = 2
+theme = ExtResource("3_mlw3h")
+theme_type_variation = &"Options"
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 30
+text = "Framerate: "
+
+[node name="Framerate Picker" type="OptionButton" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer2/HBoxContainer" unique_id=1915015724]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_mlw3h")
+alignment = 1
+autowrap_trim_flags = 0
+selected = 1
+fit_to_longest_item = false
+allow_reselect = true
+item_count = 6
+popup/item_0/text = "30"
+popup/item_0/id = 0
+popup/item_1/text = "60"
+popup/item_1/id = 1
+popup/item_2/text = "120"
+popup/item_2/id = 2
+popup/item_3/text = "144"
+popup/item_3/id = 3
+popup/item_4/text = "240"
+popup/item_4/id = 4
+popup/item_5/text = "Unlimited"
+popup/item_5/id = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=954392900]
+layout_mode = 2
+alignment = 1
+
+[node name="V-Sync" type="CheckBox" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=26347707]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_mlw3h")
+theme_override_font_sizes/font_size = 20
+text = "V-sync"
+expand_icon = true
+
+[node name="Fullscreen" type="CheckBox" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1018895012]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_mlw3h")
+theme_override_font_sizes/font_size = 20
+text = "Fullscreen
+"
+expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1982520032]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=394793953]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mlw3h")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer2" unique_id=2058567678]
+layout_mode = 2
+theme_override_constants/separation = 28
+alignment = 1
+
+[node name="BGM Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=1379499351]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_mlw3h")
+theme_type_variation = &"GraphFrameTitleLabel"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "BGM:"
+
+[node name="BGM Slider" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=596318161]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("3_mlw3h")
+min_value = 0.001
+max_value = 20.0
+value = 0.001
+rounded = true
+ticks_on_borders = true
+
+[node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=692973029]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mlw3h")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3" unique_id=1923245739]
+layout_mode = 2
+theme_override_constants/separation = 37
+alignment = 1
+
+[node name="SFX Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=656300065]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_mlw3h")
+theme_type_variation = &"GraphFrameTitleLabel"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "SFX:"
+
+[node name="SFX Slider" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=1041658684]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("3_mlw3h")
+min_value = 0.001
+max_value = 20.0
+value = 0.001
+rounded = true
+ticks_on_borders = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer" unique_id=269806520]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Reset" type="Button" parent="MarginContainer/HBoxContainer2" unique_id=2055697664]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("3_mlw3h")
+text = "Reset Settings"
+
+[node name="Save" type="Button" parent="MarginContainer/HBoxContainer2" unique_id=312071296]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("3_mlw3h")
+text = "Save Settings"
+
+[node name="Return" type="Button" parent="MarginContainer" unique_id=2108121331]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("3_mlw3h")
+text = "Return"

@@ -8,8 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cjswaqly8ch3m" path="res://assets/Wenrexa/PNG/Icon_deck.png" id="5_8n8w1"]
 [ext_resource type="Texture2D" uid="uid://r7s4o67r50w3" path="res://assets/GUI/Icon65.png" id="6_euu2n"]
 [ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="7_regow"]
-[ext_resource type="Texture2D" uid="uid://cmfj8g5onuj24" path="res://assets/Edinnu_UI_asset_pack/Menu_buttons/Menu_button (18).png" id="8_sl5rt"]
-[ext_resource type="Script" uid="uid://du5ckfar1fpqk" path="res://assets/Data/NewScenes/turn_counter_label.gd" id="10_42ohh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ho52x"]
 
@@ -22,15 +20,13 @@ font_color = Color(1, 0.890625, 0, 1)
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_16u5j"]
-font = ExtResource("7_regow")
-font_size = 31
-font_color = Color(0.19424438, 0.37109375, 0, 1)
-outline_size = 8
-
 [node name="toolbar_container" type="MarginContainer" unique_id=82390871]
 material = SubResource("ShaderMaterial_ho52x")
 custom_minimum_size = Vector2(0, 70)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
 size_flags_vertical = 2
 script = ExtResource("1_42ohh")
 
@@ -85,6 +81,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 12
@@ -95,6 +92,7 @@ custom_minimum_size = Vector2(120, 12)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/separation = 18
 alignment = 1
 
@@ -134,11 +132,13 @@ stretch_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="toolbar/MarginContainer" unique_id=1495240362]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 300
 
 [node name="MarginContainer2" type="MarginContainer" parent="toolbar/MarginContainer/HBoxContainer" unique_id=237713965]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
@@ -158,33 +158,4 @@ layout_mode = 2
 text = "Level"
 label_settings = SubResource("LabelSettings_nxbgt")
 
-[node name="Turn Counter Display" type="NinePatchRect" parent="toolbar/MarginContainer/HBoxContainer" unique_id=26639190]
-custom_minimum_size = Vector2(212.865, 40)
-layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("8_sl5rt")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 20
-
-[node name="MarginContainer" type="MarginContainer" parent="toolbar/MarginContainer/HBoxContainer/Turn Counter Display" unique_id=2016955401]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 8
-
-[node name="Turn_Counter_Label" type="Label" parent="toolbar/MarginContainer/HBoxContainer/Turn Counter Display/MarginContainer" unique_id=1102670266]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Your Turn!"
-label_settings = SubResource("LabelSettings_16u5j")
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("10_42ohh")
+[connection signal="pressed" from="toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Pause" to="." method="on_button_press"]

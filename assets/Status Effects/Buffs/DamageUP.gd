@@ -10,6 +10,8 @@ func on_apply(targets: Array[Node], duration : int = 1) -> void:
 	for target in targets:
 		if not target:
 			continue
+		var Enemy = target.get_tree().get_first_node_in_group('Enemies') as EnemyView
+		var Player = target.get_tree().get_first_node_in_group('player').player_view as PlayerView
 		if target is Stat_Manager:
 			var effects = target.Player.ActiveEffects
 			var existing = find_same_effect(effects)
@@ -18,6 +20,7 @@ func on_apply(targets: Array[Node], duration : int = 1) -> void:
 					existing.current_duration = duration
 				applied_to = target.Player
 				Events.effect_applied.emit()
+				Events.effect_display.emit(self, false, Enemy.position)
 			else:
 				var instance = self.duplicate()
 				instance.tree = tree
@@ -27,6 +30,7 @@ func on_apply(targets: Array[Node], duration : int = 1) -> void:
 				instance.amount = amount
 				instance.on_activate()
 				Events.effect_applied.emit()
+				Events.effect_display.emit(self, false, Enemy.position)
 		if target is EnemyView:
 			var effects = target.Enemy.Entity.ActiveEffects
 			var existing = find_same_effect(effects)
@@ -35,6 +39,7 @@ func on_apply(targets: Array[Node], duration : int = 1) -> void:
 					existing.current_duration = duration
 				applied_to = target.Enemy.Entity
 				Events.effect_applied.emit()
+				Events.effect_display.emit(self, true, Player.position)
 			else:
 				var instance = self.duplicate()
 				instance.tree = tree
@@ -44,6 +49,7 @@ func on_apply(targets: Array[Node], duration : int = 1) -> void:
 				instance.amount = amount
 				instance.on_activate()
 				Events.effect_applied.emit()
+				Events.effect_display.emit(self, true, Player.position)
 
 func on_activate() -> void:
 	applied_to.modify_buff_modifier(amount)

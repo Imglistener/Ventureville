@@ -25,8 +25,7 @@ func use_action() -> void:
 	var tween := create_tween().set_trans(Tween.TRANS_QUINT).set_parallel(false)
 	var entity := Enemy.Enemy.Entity
 	var original_scale := Enemy.scale
-	SoundBus.stream = SoundEffect
-	SoundBus.play()
+	SoundBus.play_sfx(SoundEffect)
 	tween.tween_property(Enemy, "scale", original_scale * Vector2(0.6, 1.4), 0.2)
 	tween.tween_property(Enemy, "scale", original_scale * Vector2(1.8, 0.5), 0.15) \
 		.set_trans(Tween.TRANS_EXPO)

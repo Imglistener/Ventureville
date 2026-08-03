@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://deupgdnrw64eu"]
+
+[ext_resource type="Script" uid="uid://dejffgtp42irn" path="res://assets/Data/EnemyActions/TripleBite.gd" id="1_g2fhw"]
+[ext_resource type="Resource" uid="uid://ccl61vrmwaqn7" path="res://assets/Enemies/Data/Damage Types/Psychic.tres" id="2_mmb28"]
+[ext_resource type="AudioStream" uid="uid://cd1rhnnv8h8hk" path="res://assets/SFX/enemy-attack.wav" id="3_eowgx"]
+
+[node name="AttackAction" type="Node" unique_id=1616185674]
+script = ExtResource("1_g2fhw")
+damagetype = ExtResource("2_mmb28")
+ActionType = 1
+SoundEffect = ExtResource("3_eowgx")
+ActionChance = 5.0
+Description = "\"The creature stares at you... You feel ill.\""

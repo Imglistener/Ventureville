@@ -1,0 +1,354 @@
+[gd_scene format=3 uid="uid://nody171fluag"]
+
+[ext_resource type="Texture2D" uid="uid://d4kamu6pictq0" path="res://assets/GUI/Card.png" id="1_f5qq3"]
+[ext_resource type="Script" uid="uid://cyen3w4wa8tip" path="res://assets/Data/NewScenes/Cards/card.gd" id="2_8hmw1"]
+[ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="3_8hmw1"]
+[ext_resource type="Resource" uid="uid://be12tcnli2021" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Barrier.tres" id="3_80gmr"]
+[ext_resource type="Texture2D" uid="uid://bealobhm404qw" path="res://assets/GUI/icons/ChatGPT Image Apr 15, 2026, 05_04_17 PM.png" id="4_1wehq"]
+[ext_resource type="AudioStream" uid="uid://cnuxlqejtckb5" path="res://assets/SFX/card_hover.wav" id="4_80gmr"]
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="5_bb8u2"]
+[ext_resource type="AudioStream" uid="uid://p68vnmwk5kiw" path="res://assets/SFX/card_click.wav" id="5_x53gr"]
+[ext_resource type="AudioStream" uid="uid://cs43hedoluabf" path="res://assets/SFX/711353__rising_moon__magic_loop.mp3" id="6_80gmr"]
+[ext_resource type="Script" uid="uid://dbqo6v48is40i" path="res://scripts/CardUI/CardState/CardStateManager.gd" id="8_ktvkk"]
+[ext_resource type="Script" uid="uid://um2yjt6eq6j1" path="res://scripts/CardUI/CardState/StateCardDragging.gd" id="9_5cyc0"]
+[ext_resource type="Script" uid="uid://ba8tlvahvwcu3" path="res://scripts/CardUI/CardState/StateCardIdling.gd" id="10_igbv7"]
+[ext_resource type="Script" uid="uid://bpsw3q58rclfp" path="res://assets/Data/NewScenes/Cards/card_effect_label.gd" id="10_jv0el"]
+[ext_resource type="Script" uid="uid://y5w4mn6hr4iu" path="res://scripts/CardUI/CardState/StateCardClicked.gd" id="11_80gmr"]
+[ext_resource type="Script" uid="uid://btv4edn2vhq6g" path="res://scripts/CardUI/CardState/StateCardHovering.gd" id="12_x53gr"]
+[ext_resource type="Script" uid="uid://4cta7ix0hl1f" path="res://scripts/CardUI/CardState/StateCardReleased.gd" id="13_jv0el"]
+[ext_resource type="Texture2D" uid="uid://b1osqe8nfsxb" path="res://assets/GUI/Mana.png" id="17_x53gr"]
+[ext_resource type="Texture2D" uid="uid://bmqa3low23bmu" path="res://assets/GUI/AP.png" id="18_jv0el"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m4iia"]
+font = ExtResource("3_8hmw1")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
+
+[sub_resource type="Animation" id="Animation_bb8u2"]
+resource_name = "Drag"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-224, -303.99997)]
+}
+
+[sub_resource type="Animation" id="Animation_8hmw1"]
+resource_name = "Hover"
+length = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(2.5491211, 1),
+"update": 0,
+"values": [Vector2(0.35, 0.35), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_1wehq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.35, 0.35)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-224, -303.99997)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bb8u2"]
+_data = {
+&"Drag": SubResource("Animation_bb8u2"),
+&"Hover": SubResource("Animation_8hmw1"),
+&"RESET": SubResource("Animation_1wehq")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hmw1"]
+size = Vector2(628.3723, 935.86584)
+
+[sub_resource type="Shader" id="Shader_80gmr"]
+code = "shader_type canvas_item;
+render_mode blend_add;
+
+uniform vec4 glow_color : source_color = vec4(0.3, 0.7, 1.0, 1.0);
+uniform float thickness : hint_range(0.01, 0.2) = 0.06;
+uniform float softness : hint_range(0.005, 0.1) = 0.03;
+uniform float intensity : hint_range(0.0, 3.0) = 1.5;
+uniform float pulse_speed : hint_range(0.0, 5.0) = 1.5;
+uniform float pulse_amount : hint_range(0.0, 0.5) = 0.15;
+uniform float fade_strength : hint_range(0.0, 4.0) = 1.5; // 0 = no fade, higher = tighter fade
+uniform float fade_bias : hint_range(0.0, 1.0) = 0.2;     // lifts the fade floor at center
+
+void fragment() {
+    vec2 uv = UV;
+
+    // Edge glow
+    float dist_x = min(uv.x, 1.0 - uv.x);
+    float dist_y = min(uv.y, 1.0 - uv.y);
+    float dist = min(dist_x, dist_y);
+    float glow = 1.0 - smoothstep(thickness, thickness + softness, dist);
+
+    // Distance from center [0,1] where 0 = center, 1 = corner
+    vec2 centered = abs(uv - 0.5) * 2.0;
+    float center_dist = max(centered.x, centered.y); // use max for rectangular feel
+    float fade = 1.0 - smoothstep(fade_bias, 1.0, pow(center_dist, 1.0 / max(fade_strength, 0.001)));
+
+    float pulse = 1.0 + sin(TIME * pulse_speed) * pulse_amount;
+    float alpha = glow * fade * intensity * pulse;
+    COLOR = vec4(glow_color.rgb, alpha * glow_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x53gr"]
+shader = SubResource("Shader_80gmr")
+shader_parameter/glow_color = Color(0, 0.9296875, 1, 1)
+shader_parameter/thickness = 0.08500000333898
+shader_parameter/softness = 0.08000000345074
+shader_parameter/intensity = 1.0510000499225
+shader_parameter/pulse_speed = 3.334000158365
+shader_parameter/pulse_amount = 0.41200001957
+shader_parameter/fade_strength = 0.50000002375
+shader_parameter/fade_bias = 0.7170000340575
+
+[node name="Card" type="TextureRect" unique_id=515759519 groups=["Cards"]]
+offset_left = -224.0
+offset_top = -303.99997
+offset_right = 443.0
+offset_bottom = 614.0
+scale = Vector2(0.35, 0.35)
+pivot_offset = Vector2(333, 459)
+mouse_filter = 0
+texture = ExtResource("1_f5qq3")
+script = ExtResource("2_8hmw1")
+card_data = ExtResource("3_80gmr")
+HoverSFX = ExtResource("4_80gmr")
+clickedSFX = ExtResource("5_x53gr")
+aimingSFX = ExtResource("6_80gmr")
+
+[node name="CardName" type="Label" parent="." unique_id=1886172814]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.50003
+offset_top = 22.857141
+offset_right = 170.49997
+offset_bottom = 131.85715
+grow_horizontal = 2
+theme = ExtResource("5_bb8u2")
+theme_type_variation = &"TooltipLabel"
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 61
+text = "CARD NAME"
+horizontal_alignment = 1
+
+[node name="CardType" type="Label" parent="." unique_id=1643071682]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.85810965
+anchor_top = 0.930874
+anchor_right = 1.1182843
+anchor_bottom = 0.99244505
+offset_left = -334.2857
+offset_top = -463.59595
+offset_right = -334.2857
+offset_bottom = -462.11823
+grow_horizontal = 2
+grow_vertical = 2
+text = "TYPE"
+label_settings = SubResource("LabelSettings_m4iia")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CardIcon" type="TextureRect" parent="." unique_id=289330355]
+custom_minimum_size = Vector2(400, 310)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7208313
+anchor_top = 0.6020025
+anchor_right = 1.3175814
+anchor_bottom = 0.9643734
+offset_left = -335.2696
+offset_top = -462.8572
+offset_right = -333.30182
+offset_bottom = -462.8572
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_1wehq")
+expand_mode = 3
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="CardEffect" type="RichTextLabel" parent="." unique_id=672723650]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07908834
+anchor_top = 0.5075032
+anchor_right = 0.91238976
+anchor_bottom = 0.9327387
+offset_top = 3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("5_bb8u2")
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 54
+text = "Inflict X BLOOD Damage.
+Chance to apply Bleeding for 3 Turns."
+scroll_active = false
+horizontal_alignment = 1
+script = ExtResource("10_jv0el")
+min_font_size = null
+max_font_size = null
+metadata/_edit_use_anchors_ = true
+
+[node name="CardAnimation" type="AnimationPlayer" parent="." unique_id=717851961]
+libraries/ = SubResource("AnimationLibrary_bb8u2")
+
+[node name="DropPointDetector" type="Area2D" parent="." unique_id=1454532745]
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape2D" parent="DropPointDetector" unique_id=854725221]
+position = Vector2(331.46918, 457.93286)
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_8hmw1")
+debug_color = Color(0, 0.60038817, 0.70000815, 0)
+
+[node name="CardStateManager" type="Node" parent="." unique_id=613156116 node_paths=PackedStringArray("starting_state") groups=["StateManager"]]
+script = ExtResource("8_ktvkk")
+starting_state = NodePath("CardStateIdling")
+metadata/_custom_type_script = "uid://dbqo6v48is40i"
+
+[node name="CardStateDragging" type="Node" parent="CardStateManager" unique_id=1597663080]
+script = ExtResource("9_5cyc0")
+state = 3
+
+[node name="CardStateIdling" type="Node" parent="CardStateManager" unique_id=719726011]
+script = ExtResource("10_igbv7")
+
+[node name="CardStateClicked" type="Node" parent="CardStateManager" unique_id=876801751]
+script = ExtResource("11_80gmr")
+state = 2
+
+[node name="CardStateHovering" type="Node" parent="CardStateManager" unique_id=1588237784]
+script = ExtResource("12_x53gr")
+state = 4
+
+[node name="CardStateReleased" type="Node" parent="CardStateManager" unique_id=232672706]
+script = ExtResource("13_jv0el")
+state = 5
+
+[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=745794655]
+bus = &"SFX"
+
+[node name="IsPlayable" type="ColorRect" parent="." unique_id=1133534713]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+material = SubResource("ShaderMaterial_x53gr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -10.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.2578125, 0.79125977, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=423875402]
+layout_mode = 1
+offset_left = 11.428589
+offset_top = 19.999998
+offset_right = 51.428596
+offset_bottom = 60.000008
+scale = Vector2(3.19, 3.19)
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("17_x53gr")
+expand_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect" unique_id=433200826]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0041232086
+anchor_top = 0.054804504
+anchor_right = 0.9958768
+anchor_bottom = 1.0548047
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="APCost" type="Label" parent="TextureRect/MarginContainer" unique_id=2146630464]
+layout_mode = 2
+theme = ExtResource("5_bb8u2")
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 19
+text = "3"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1898304432]
+layout_mode = 1
+offset_left = 31.428589
+offset_top = 131.42856
+offset_right = 87.382126
+offset_bottom = 177.12625
+scale = Vector2(3.19, 3.19)
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("18_jv0el")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect2" unique_id=1077688965]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.23784603
+anchor_top = 0.054804504
+anchor_right = 0.762154
+anchor_bottom = 1.0548047
+offset_top = -0.8956566
+offset_bottom = -0.8956566
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MPCost" type="Label" parent="TextureRect2/MarginContainer" unique_id=387431464]
+layout_mode = 2
+theme = ExtResource("5_bb8u2")
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 15
+text = "3"
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="area_entered" from="DropPointDetector" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="DropPointDetector" to="." method="_on_area_2d_area_exited"]

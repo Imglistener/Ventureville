@@ -6,6 +6,7 @@ class_name Stat_Manager extends Node
 @onready var phase_manager: PhaseManager = $"../PhaseManager"
 @onready var bgm: AudioStreamPlayer = $"../../BGM"
 @onready var log: Log = $"../../Control_Layer/Control_Base/ColorRect/MarginContainer/ScrollContainer/Log"
+@onready var deck_manager: DeckManager = $"../DeckManager"
 
 @export var enemy_ai: PackedScene 
 var Player: CharacterInstance
@@ -106,9 +107,19 @@ func _initialize_entity(entity_type: Variant) -> void:
 		player_view.player_bars_container.player_shield.value = Player.current_block
 		player_view.player_bars_container.player_san_shield.max_value = Player.current_san_block+1
 		player_view.player_bars_container.player_san_shield.value = Player.current_san_block
+		player_view.player_portrait.texture = Player.player_portrait
+	
 
 func phase_transition() -> void:
-	bgm.play(3 * 60 + 13)
+	var phase_music: AudioStream
+	var actionlibrary = EnemyThoughts.get_children()
+	for action in actionlibrary:
+		if action.ActionEffect == EnemyAction.ActionEffects.Transition:
+			if action.Phases:
+				phase_music = action.Phases[action.phase_index - 1].PhaseBGM
+	EnemyThoughts.setup_action_chances()
+	bgm.stream = phase_music
+	bgm.play()
 
 func play_turn() -> void:
 	if Entity is not EnemyBattlerStats: return
@@ -128,4 +139,5 @@ func play_turn() -> void:
 
 func _on_enemy_action_completed(_enemy: EnemyAction) -> void:
 	if Entity is not EnemyBattlerStats: return
+	await get_tree().create_timer(0.5, true, false, false).timeout
 	phase_manager.advance_to_next_phase()

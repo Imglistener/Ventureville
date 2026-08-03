@@ -32,6 +32,7 @@ func get_conditional_action() -> EnemyAction:
 	return null
 
 func get_chance_action() -> EnemyAction:
+	
 	var action: EnemyAction
 	var roll := randf_range(0.0, TotalChance)
 	
@@ -46,6 +47,7 @@ func get_chance_action() -> EnemyAction:
 
 
 func setup_action_chances() -> void:
+	TotalChance = 0
 	var action : EnemyAction
 	for child in get_children():
 		action = child as EnemyAction

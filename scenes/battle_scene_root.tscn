@@ -28,7 +28,7 @@
 [ext_resource type="Script" uid="uid://vmhlycpqneej" path="res://scripts/turn_manager.gd" id="31_uncrd"]
 [ext_resource type="Script" uid="uid://b6ubuum34tf1l" path="res://scripts/bars_manager.gd" id="31_wvgdk"]
 [ext_resource type="PackedScene" uid="uid://cwrwvtamgynf7" path="res://assets/Data/NewScenes/dialogue_node.tscn" id="32_bh3of"]
-[ext_resource type="PackedScene" uid="uid://cid0ju5a74w0u" path="res://scenes/Enemies/Gladius.tscn" id="33_67tmk"]
+[ext_resource type="PackedScene" uid="uid://cid0ju5a74w0u" path="res://scenes/Enemies/Enemy.tscn" id="33_67tmk"]
 [ext_resource type="Script" uid="uid://bg1g50w6darod" path="res://scripts/resource_manager.gd" id="33_f2ukd"]
 [ext_resource type="Script" uid="uid://c1bi4eai8etya" path="res://scripts/menus_manager.gd" id="35_47a8g"]
 [ext_resource type="Script" uid="uid://bnw1n1cq8bkrb" path="res://scripts/Dialogue_Manager.gd" id="43_r21ol"]

@@ -1,8 +1,8 @@
 class_name DeckManager extends Node
 @onready var player_stat_manager: Stat_Manager = $"../PlayerStatManager"
 @onready var targeting_area: Node2D = $"../../Node2D_Layer/TargetingArea"
-@onready var label_0: Label = $"../../Node2D_Layer/DiscardPile/Label"
-@onready var label_1: Label = $"../../Node2D_Layer/DeckPile/Label"
+@onready var label_0: AnimatedCountLabel = $"../../Node2D_Layer/DiscardPile/Label"
+@onready var label_1: AnimatedCountLabel = $"../../Node2D_Layer/DeckPile/Label"
 @onready var discard_pile: TextureButton = $"../../Node2D_Layer/DiscardPile"
 @onready var deck_pile: TextureButton = $"../../Node2D_Layer/DeckPile"
 @onready var control_base: Control = $"../../Control_Layer/Control_Base"
@@ -44,7 +44,7 @@ func update_tracked_cards() -> void:
 
 func set_cards_discarded(amount) -> void:
 	CardsDiscarded = amount
-	label_0.text = str(CardsDiscarded)
+	label_0.display(amount)
 
 
 func track_deck_size(_deck_size: int) -> void:
@@ -52,7 +52,7 @@ func track_deck_size(_deck_size: int) -> void:
 
 func set_cards_still_in_deck(amount) -> void:
 	CardsInDeck = amount
-	label_1.text = str(CardsInDeck)
+	label_1.display(amount)
 
 func on_Player_end_turn(_turn : Variant) -> void:
 	CardDeck.discard_hand()

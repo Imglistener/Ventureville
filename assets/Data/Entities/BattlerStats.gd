@@ -13,7 +13,7 @@ signal entity_died(entity_name: String)
 @export_group("Basic Stats")
 @export var entity_name : String
 @export var Battler_Type: BATTLER_TYPES
-@export var AP		: int = 1
+
 
 @export_group("Player Stats")
 @export var stats : Array[StatInstance] = []
@@ -35,9 +35,15 @@ var buff_damage_modifier: int
 
 func modify_buff_modifier(amount: int) -> void:
 	buff_damage_modifier = amount
-	print("current buff modifier is:", buff_damage_modifier)
 	Stats_Changed.emit()
-	
+
+func true_take_damage(amount: int) -> void:
+	current_health -= amount
+	Stats_Changed.emit()
+	damage_taken.emit(amount, entity_name)
+	if current_health == 0:
+		entity_died.emit(entity_name)
+
 func load_stats() -> void:
 	for stat_instance in stats:
 		match stat_instance.stat_name:
@@ -66,10 +72,14 @@ func set_block(value: int) -> void:
 	
 func heal(amount: int) -> void:
 	self.current_health += amount
-
+func san_heal(amount: int) -> void:
+	self.current_sanity = clampi(self.current_sanity + amount, 0, self.Max_SAN)
+	
 func take_damage(amount: int, damagetype: DamageType) -> void:
 	self.current_health -= amount
-
+func take_san_damage(amount: int) -> void:
+	self.current_sanity -= amount
+	
 func _get_max_hp() -> int:
 	return _max_hp  # Now just returns the backing variable
 	

@@ -41,6 +41,8 @@ func on_tick(target: BaseBattlerStats) -> void:
 		if target.current_block > 0:
 			target.take_damage(0, null)
 			current_duration -= 1
+			if current_duration <= 0:
+				on_remove(target)
 			return
 		target.take_damage(damage, null)
 		if tree:
@@ -58,6 +60,7 @@ func on_tick(target: BaseBattlerStats) -> void:
 			var user = tree.get_first_node_in_group("player")
 			user.Player.heal(damage)
 		current_duration -= 1
+
 	if current_duration <= 0:
 		on_remove(target)
 

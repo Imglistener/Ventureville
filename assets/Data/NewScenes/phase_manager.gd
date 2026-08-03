@@ -15,10 +15,13 @@ const PHASE_CYCLE := [
 ]
 var current_phase : Phases
 var _phase_index := 0
-
+var turn_counter : int = 1
+signal NewTurn(turn_counter)
 func emit_current_phase() -> void:
 	match current_phase:
 		Phases.PlayerStandbyStart:
+			turn_counter += 1
+			NewTurn.emit(turn_counter)
 			Events.PlayerStandbyStart.emit(current_phase)
 		Phases.PlayerStandbyEnd:
 			Events.PlayerStandbyEnd.emit(current_phase)

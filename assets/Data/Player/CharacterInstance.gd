@@ -5,16 +5,17 @@ enum PlayerClasses{BloodMagus, DarkMagus, VoiceMagus, FoulTarnished}
 @export var draw_power		: int
 @export var max_mana		: int
 @export var player_class : PlayerClasses
+@export var player_portrait: Texture
 
-
-
+var AP: int : set = set_AP
 var mana: int : set = set_mana
 var battle_deck : Deck
-var discard		: Deck
-var draw_deck	: Deck
 var character_level: int = 0
 
 
+func set_AP(value: int) -> void:
+	AP = clampi(value, 0, 3)
+	Stats_Changed.emit()
 
 func set_mana(value: int) -> void:
 	mana = value
@@ -39,7 +40,8 @@ func take_damage(damage : int, damage_type: DamageType) -> void:
 		damage_taken.emit(damage, entity_name)
 	if self.current_health == 0:
 			entity_died.emit(entity_name)
-			
+	
+	Stats_Changed.emit()
 func set_character_level()-> void:
 	for stat in stats:
 		character_level += stat.stat_level
@@ -47,10 +49,24 @@ func set_character_level()-> void:
 func reset_mana() -> void:
 	self.mana = max_mana
 
+func reset_AP() -> void:
+	self.AP = 3
+
+func take_san_damage(amount: int) -> void:
+	if self.current_san_block > 0:
+		var origina_amount = amount
+		amount = clampi(amount - self.current_san_block, 0, amount)
+		self.current_san_block = clampi(self.current_san_block - origina_amount, 0, self.current_san_block)
+	super(amount)
+	sanity_damage_taken.emit(amount, entity_name)
+	Stats_Changed.emit()
+	
+
 func heal(amount: int) -> void:
 	DamageNumbers.display_healing_number(amount, false, damage_numbers)
 	self.current_health += amount
 	health_restored.emit(amount, entity_name)
+	Stats_Changed.emit()
 
 func card_IsPlayable(card: Card) -> bool:
 	return self.mana >= card.mp_cost and self.AP >= card.ap_cost
@@ -62,9 +78,8 @@ func create_instance() -> Resource:
 	instance.current_sanity = Max_SAN
 	instance.current_block = 0
 	instance.reset_mana()
+	instance.reset_AP()
 	instance.battle_deck = instance.starting_deck.duplicate()
-	instance.draw_deck	= Deck.new()
-	instance.discard = Deck.new()
 	instance.set_character_level()
 	return instance
 #Load Character:
@@ -77,8 +92,8 @@ func Load_Player() -> Resource:
 	instance.current_block = 0
 	instance.reset_mana()
 	instance.battle_deck = instance.starting_deck.duplicate()
-	instance.draw_deck = Deck.new()
-	instance.discard = Deck.new()
+
 	instance.set_character_level()
+	instance.reset_AP()
 
 	return instance

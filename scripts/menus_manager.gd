@@ -10,8 +10,11 @@ class_name MenusManager extends Node
 @onready var enemy: EnemyView = $"../../Control_Layer/Enemy"
 @onready var deck_pile: TextureButton = $"../../Node2D_Layer/DeckPile"
 @onready var discard_pile: TextureButton = $"../../Node2D_Layer/DiscardPile"
-@onready var end_turn: Button = $"../../Control_Layer/Control_Base/End Turn"
+@onready var end_turn: TextureButton = $"../../Control_Layer/Control_Base/End Turn"
 @onready var toolbar_container: Toolbar = $"../../Control_Layer/Control_Base/toolbar_container"
+@onready var pause_menu: PauseMenu = $"../../Control_Layer/Pause Menu"
+@onready var pause_blur: ColorRect = $"../../Control_Layer/Pause Blur"
+@onready var turn_counter: Label = $"../../Control_Layer/TurnCounter"
 
 var Dialogue_manager: Dialogue_Manager 
 var talk: Button
@@ -44,10 +47,29 @@ func _ready() -> void:
 		Dialogue_manager.Dialogue_Done.connect(_on_dialogue_end)
 	if not phase_manager.is_node_ready():
 		await phase_manager.ready
+	if not pause_menu.resume.pressed.is_connected(_resume_game):
+		pause_menu.resume.pressed.connect(_resume_game)
+	if not toolbar_container.pause.pressed.is_connected(_pause_game):
+		toolbar_container.pause.pressed.connect(_pause_game)
+	
 	phase_manager.connect_signals()
 	setup_toolbar_display()
 
-
+func handle_blur(paused: bool) -> void:
+	var t = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	t.tween_property(pause_blur.material, "shader_parameter/blur_amount", 0.0 if paused else 2.0, 0.4)
+	await t.finished
+func _resume_game()-> void:
+	get_tree().paused = false
+	pause_menu.visible = false
+	pause_blur.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	handle_blur(true)
+	
+func _pause_game()-> void:
+	get_tree().paused = true
+	pause_menu.visible = true
+	pause_blur.mouse_filter = Control.MOUSE_FILTER_STOP
+	handle_blur(false)
 func setup_toolbar_display() -> void:
 	var player_data: String
 	player_data = player_stat_manager.Player.entity_name
@@ -129,7 +151,7 @@ func _update_turn_label(phase: PhaseManager.Phases) -> void:
 			new_text = "Enemy Turn!"
 		_:
 			return
-	toolbar_container.turn_counter_label.animate_turn_label(new_text)
+	turn_counter.animate_turn_label(new_text)
 			
 func PhaseUI_active(phase : PhaseManager.Phases) -> void:
 	match phase:
@@ -153,10 +175,7 @@ func PhaseUI_active(phase : PhaseManager.Phases) -> void:
 			end_turn.disabled = true
 			fade_node(end_turn, true)
 			enemy.enemy_view.disabled = true
-			for i in hand.get_children():
-				fade_node(i, false)
-				i.queue_free()
-			fade_node(hand, false)
+			hand.clear_hand()
 			fade_node(ap_bar, false)
 			fade_node(mana_ui, false)
 			fade_node(deck_pile, false)

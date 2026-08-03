@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://ty81e0bpoaog"]
+
+[ext_resource type="Script" uid="uid://c5qdvnlyyivep" path="res://assets/Enemies/Data/Enemies/AI/EnemyAI.gd" id="1_y126v"]
+[ext_resource type="PackedScene" uid="uid://deupgdnrw64eu" path="res://scenes/Enemies/attack_action.tscn" id="2_opckb"]
+[ext_resource type="PackedScene" uid="uid://c1nxupf5v130f" path="res://scenes/Enemies/block_action.tscn" id="3_ux6u0"]
+[ext_resource type="Script" uid="uid://h4ie3qhwxsp3" path="res://assets/Enemies/Data/Enemies/EnemyInstance/AliceMoves/King.gd" id="3_xqnmf"]
+[ext_resource type="Resource" uid="uid://dbo8hv6pt1qt0" path="res://assets/Enemies/Data/Damage Types/Physical.tres" id="4_tvy72"]
+[ext_resource type="Script" uid="uid://duhasnkx10l2l" path="res://scenes/Enemies/San_attack_action.gd" id="4_ux6u0"]
+[ext_resource type="AudioStream" uid="uid://1wm157ydki3t" path="res://assets/SFX/AttackEffectSfx (2).mp3" id="5_jq8fj"]
+[ext_resource type="AudioStream" uid="uid://5qnmpg7tkcm3" path="res://assets/SFX/san.mp3" id="5_ty7le"]
+[ext_resource type="Script" uid="uid://cpkuef8w7cwh3" path="res://assets/Enemies/Data/Enemies/EnemyInstance/AliceMoves/Queen.gd" id="6_jq8fj"]
+[ext_resource type="PackedScene" uid="uid://byl4wjrvc8avn" path="res://scenes/Enemies/buff_action.tscn" id="6_tc13w"]
+[ext_resource type="Resource" uid="uid://cb7byxbhcb4kv" path="res://assets/Enemies/Data/Damage Types/Entropy.tres" id="7_akkxw"]
+[ext_resource type="Script" uid="uid://bghdiytneed68" path="res://scenes/Enemies/Transition.gd" id="7_p6jta"]
+[ext_resource type="Script" uid="uid://b7q1devc168hg" path="res://assets/Enemies/Data/Enemies/EnemyInstance/PhaseData/PhaseData.gd" id="8_h2s1s"]
+[ext_resource type="AudioStream" uid="uid://d20mfaejt0d21" path="res://assets/SFX/AttackEffectSfx (1).mp3" id="8_xa4tk"]
+[ext_resource type="AudioStream" uid="uid://ceyhv64c6puxi" path="res://assets/SFX/heartbeat.mp3" id="9_pyvb4"]
+[ext_resource type="Resource" uid="uid://bq73hncp0fm8n" path="res://assets/Enemies/Data/Enemies/EnemyInstance/PhaseData/Alice_1.tres" id="9_xqnmf"]
+[ext_resource type="Resource" uid="uid://bvh46o70m4q3s" path="res://assets/Enemies/Data/Enemies/EnemyInstance/PhaseData/Alice_2.tres" id="10_uh0ir"]
+
+[node name="EnemyAI" type="Node" unique_id=1564454232]
+script = ExtResource("1_y126v")
+
+[node name="AttackAction" parent="." unique_id=1616185674 instance=ExtResource("2_opckb")]
+
+[node name="AttackAction2" parent="." unique_id=2097570028 instance=ExtResource("2_opckb")]
+script = ExtResource("3_xqnmf")
+Damage = 40
+damagetype = ExtResource("4_tvy72")
+SoundEffect = ExtResource("5_jq8fj")
+ActionChance = 0.0
+Description = "\"!$#%@#$ lays the King...\""
+
+[node name="AttackAction3" parent="." unique_id=2114838944 instance=ExtResource("2_opckb")]
+script = ExtResource("6_jq8fj")
+damagetype = ExtResource("7_akkxw")
+number_hits = 3
+SoundEffect = ExtResource("8_xa4tk")
+ActionChance = 10.0
+Description = "\"!$#%@#$ lays the Queen...\""
+
+[node name="BlockAction" parent="." unique_id=1459789831 instance=ExtResource("3_ux6u0")]
+block_gained = 30
+
+[node name="SanAttackAction" parent="." unique_id=545017397 instance=ExtResource("2_opckb")]
+script = ExtResource("4_ux6u0")
+Damage = 20
+SoundEffect = ExtResource("5_ty7le")
+ActionChance = 6.0
+Description = "\"You hear ticking... Coming from inside...\""
+
+[node name="BuffAction" parent="." unique_id=1089871370 instance=ExtResource("6_tc13w")]
+script = ExtResource("7_p6jta")
+Phases = Array[ExtResource("8_h2s1s")]([ExtResource("9_xqnmf"), ExtResource("10_uh0ir")])
+SoundEffect = ExtResource("9_pyvb4")
+Description = "\"Something is happening... You cannot tell what... Only that it makes you uneasy...\""

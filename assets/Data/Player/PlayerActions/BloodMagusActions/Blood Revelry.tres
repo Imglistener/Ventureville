@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_uaevp")
 name = "Blood Revelry"
+rarity = 1
 type = 1
 target = 1
 mp_cost = 2

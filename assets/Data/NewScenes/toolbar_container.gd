@@ -1,4 +1,6 @@
 class_name Toolbar extends MarginContainer
-@onready var turn_counter_label: Label = $"toolbar/MarginContainer/HBoxContainer/Turn Counter Display/MarginContainer/Turn_Counter_Label"
 @onready var player_name: Label = $toolbar/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/PlayerName
 @onready var currency: Label = $toolbar/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Currency
+@onready var help: TextureButton = $toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Help
+@onready var show_deck: TextureButton = $"toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Show Deck"
+@onready var pause: TextureButton = $toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Pause

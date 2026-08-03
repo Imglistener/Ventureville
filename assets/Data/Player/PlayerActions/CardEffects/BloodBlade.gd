@@ -4,6 +4,7 @@ extends Card
 @export var base_cost : int
 @export var StatsScaled: StatInstance
 @export var AppliedEffect: StatusEffect
+@export var damage_type: DamageType
 
 var total : int
 func apply_effect(targets : Array[Node]) -> void:
@@ -16,8 +17,9 @@ func apply_effect(targets : Array[Node]) -> void:
 		if damage_bonus:
 			damage_bonus = damage_bonus.stat_scaling_value 
 			var deal_damage = AttackEffect.new()
+			deal_damage.damage_type = damage_type
 			deal_damage.amount = total
-			player.Player.take_damage(base_cost, null)
+			player.Player.true_take_damage(base_cost)
 			deal_damage.activate(targets)
 			AppliedEffect.current_duration = 3
 			var i = randi_range(0, 3)
