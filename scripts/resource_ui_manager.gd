@@ -1,5 +1,5 @@
 class_name UI_Manager extends Node
-@onready var AP_bar: TextureProgressBar = $"../../Control_Layer/Control_Base/AP_Bar"
+@onready var AP_bar: TextureProgressBar = $"../../Control_Layer/Control_Base/AP_Background/AP_Bar"
 @onready var MP_UI: Mana_UI = $"../../Control_Layer/Control_Base/Mana_UI"
 @onready var Resource_manager: resource_manager = $"../ResourceManager"
 @onready var player_stat_manager: Stat_Manager = $"../PlayerStatManager"

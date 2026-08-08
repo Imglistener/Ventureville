@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://i1wsctjsu11y"]
+
+[ext_resource type="Script" uid="uid://1pn375m8pd4b" path="res://assets/Data/Scripts/Item.gd" id="1_itwko"]
+[ext_resource type="Texture2D" uid="uid://bolb4eopeie4u" path="res://assets/GUI/Bleeding.png" id="1_ktddt"]
+
+[resource]
+script = ExtResource("1_itwko")
+item_name = "Small Potion of Healing"
+item_description = "Blood Red liquid swirls around in this glass vial. Restores 30 HP."
+item_icon = ExtResource("1_ktddt")
+metadata/_custom_type_script = "uid://1pn375m8pd4b"

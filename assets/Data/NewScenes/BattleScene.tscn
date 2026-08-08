@@ -14,8 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://c3o1p5gd0mc7w" path="res://scenes/CardtargetSelector/card_target_selector.tscn" id="10_a03hs"]
 [ext_resource type="Script" uid="uid://rpgcyv34bk5l" path="res://scripts/stat_manager.gd" id="10_rgo70"]
 [ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="11_68fdq"]
-[ext_resource type="Texture2D" uid="uid://dio2txajvb04v" path="res://assets/GUI/meter_no_glass_b2.png" id="11_b1rdx"]
-[ext_resource type="Texture2D" uid="uid://cajqjx0a4r4io" path="res://assets/GUI/progress_2.png" id="12_2kban"]
 [ext_resource type="Script" uid="uid://cg3oixktuv3ya" path="res://scripts/resource_ui_manager.gd" id="13_w7muy"]
 [ext_resource type="Script" uid="uid://bg1g50w6darod" path="res://scripts/resource_manager.gd" id="14_a3qp2"]
 [ext_resource type="Script" uid="uid://v5hiskpdh4ir" path="res://assets/Data/Scripts/log.gd" id="14_lnaa1"]
@@ -28,8 +26,10 @@
 [ext_resource type="Texture2D" uid="uid://dw1a4xsrs7bka" path="res://assets/GUI/End_Turn_Button_highlight.png" id="17_0ccq8"]
 [ext_resource type="Script" uid="uid://c1bi4eai8etya" path="res://scripts/menus_manager.gd" id="17_8fh2q"]
 [ext_resource type="AudioStream" uid="uid://dthpwusghe2wg" path="res://assets/hover.wav" id="17_lvhkn"]
+[ext_resource type="PackedScene" uid="uid://coybng6mqo20d" path="res://items.tscn" id="18_2kban"]
 [ext_resource type="AudioStream" uid="uid://diyc8a23kpu7b" path="res://assets/click.wav" id="18_v76ad"]
 [ext_resource type="Script" uid="uid://o4qohiqhl68k" path="res://assets/Data/NewScenes/phase_manager.gd" id="18_wsofm"]
+[ext_resource type="PackedScene" uid="uid://casic1yg7e26l" path="res://assets/Data/Player/Inventory/Items/quantity_label.tscn" id="19_0ccq8"]
 [ext_resource type="Resource" uid="uid://t4bhsemp13xl" path="res://assets/Enemies/Data/Enemies/Alice.tres" id="20_t77tx"]
 [ext_resource type="Shader" uid="uid://b3isi0mn6v52j" path="res://assets/Data/NewScenes/blur.gdshader" id="20_w5vtb"]
 [ext_resource type="PackedScene" uid="uid://ty81e0bpoaog" path="res://scenes/Enemies/AliceAI.tscn" id="21_1g5n4"]
@@ -142,24 +142,14 @@ theme_override_constants/margin_bottom = 90
 [node name="PlayerView" parent="Control_Layer/Control_Base/Base_Margin/MarginContainer" unique_id=1803275803 instance=ExtResource("3_iuswa")]
 layout_mode = 2
 
-[node name="AP_Bar" parent="Control_Layer/Control_Base" unique_id=1262385969 instance=ExtResource("6_ivt5a")]
+[node name="AP_Background" parent="Control_Layer/Control_Base" unique_id=1581570366 instance=ExtResource("6_ivt5a")]
 visible = false
-layout_mode = 1
-anchor_left = 0.05394883
-anchor_top = 0.026471836
-anchor_right = 4.264105
-anchor_bottom = 2.6723053
-offset_left = 881.9999
-offset_top = 56.0
-offset_right = 894.0
-offset_bottom = -265.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.06, 0.06)
-nine_patch_stretch = true
-texture_under = ExtResource("11_b1rdx")
-texture_over = null
-texture_progress = ExtResource("12_2kban")
+layout_mode = 0
+offset_left = 918.7476
+offset_top = 62.920013
+offset_right = 1481.7476
+offset_bottom = 232.92001
+scale = Vector2(0.645, 0.645)
 
 [node name="Mana_UI" parent="Control_Layer/Control_Base" unique_id=1073400066 instance=ExtResource("7_ax5al")]
 visible = false
@@ -168,13 +158,13 @@ anchor_left = 0.029041866
 anchor_top = 0.68170357
 anchor_right = 0.15731856
 anchor_bottom = 1.0237744
-offset_left = -8.958588
-offset_top = 16.774445
+offset_left = -8.958586
+offset_top = 40.774384
 offset_right = 89.55792
-offset_bottom = 182.276
+offset_bottom = 206.27594
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.475, 0.475)
+scale = Vector2(0.42, 0.42)
 
 [node name="End Turn" type="TextureButton" parent="Control_Layer/Control_Base" unique_id=369487781]
 visible = false
@@ -230,6 +220,13 @@ layout_mode = 0
 offset_top = 175.0
 offset_bottom = 215.0
 
+[node name="ItemsMenu" parent="Control_Layer/Control_Base" unique_id=1042447593 instance=ExtResource("18_2kban")]
+layout_mode = 1
+offset_left = 7.3613586
+offset_top = 504.8949
+offset_right = -276.63867
+QuantityScene = ExtResource("19_0ccq8")
+
 [node name="DamageNumbers" type="Node2D" parent="Control_Layer" unique_id=1054874820 groups=["DamageNumbers"]]
 z_index = 10
 position = Vector2(1038.1616, 510.72748)
@@ -237,7 +234,10 @@ position = Vector2(1038.1616, 510.72748)
 [node name="DamageNumbersEnemy" type="Node2D" parent="Control_Layer" unique_id=1450103725 groups=["DamageNumbers"]]
 position = Vector2(637.6156, 79.939804)
 
-[node name="Pause Blur" type="ColorRect" parent="Control_Layer" unique_id=507999492]
+[node name="Pause Layer" type="CanvasLayer" parent="Control_Layer" unique_id=206101572]
+layer = 5
+
+[node name="Pause Blur" type="ColorRect" parent="Control_Layer/Pause Layer" unique_id=507999492]
 process_mode = 3
 material = SubResource("ShaderMaterial_f33sq")
 anchors_preset = 15
@@ -249,7 +249,7 @@ mouse_filter = 2
 color = Color(0.57032317, 0.57032317, 0.57032317, 0.28300002)
 metadata/_edit_lock_ = true
 
-[node name="Defeat" type="Label" parent="Control_Layer/Pause Blur" unique_id=529388028]
+[node name="Defeat" type="Label" parent="Control_Layer/Pause Layer/Pause Blur" unique_id=529388028]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -269,7 +269,7 @@ theme_override_constants/outline_size = 31
 theme_override_font_sizes/font_size = 110
 text = "DEFEAT..."
 
-[node name="Victory" type="Label" parent="Control_Layer/Pause Blur" unique_id=109793418]
+[node name="Victory" type="Label" parent="Control_Layer/Pause Layer/Pause Blur" unique_id=109793418]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -289,7 +289,7 @@ theme_override_constants/outline_size = 31
 theme_override_font_sizes/font_size = 110
 text = "VICTORY!"
 
-[node name="Pause Menu" type="PanelContainer" parent="Control_Layer" unique_id=1540107876]
+[node name="Pause Menu" type="PanelContainer" parent="Control_Layer/Pause Layer" unique_id=1540107876]
 process_mode = 3
 visible = false
 anchors_preset = -1
@@ -303,40 +303,40 @@ grow_vertical = 2
 script = ExtResource("16_v76ad")
 metadata/_edit_use_anchors_ = true
 
-[node name="Pause Buttons" type="VBoxContainer" parent="Control_Layer/Pause Menu" unique_id=1330809830]
+[node name="Pause Buttons" type="VBoxContainer" parent="Control_Layer/Pause Layer/Pause Menu" unique_id=1330809830]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Resume" type="Button" parent="Control_Layer/Pause Menu/Pause Buttons" unique_id=987641475]
+[node name="Resume" type="Button" parent="Control_Layer/Pause Layer/Pause Menu/Pause Buttons" unique_id=987641475]
 layout_mode = 2
 theme = ExtResource("11_68fdq")
 theme_type_variation = &"FlatButton"
 text = "Resume"
 
-[node name="Load" type="Button" parent="Control_Layer/Pause Menu/Pause Buttons" unique_id=380701588]
+[node name="Load" type="Button" parent="Control_Layer/Pause Layer/Pause Menu/Pause Buttons" unique_id=380701588]
 layout_mode = 2
 theme = ExtResource("11_68fdq")
 theme_type_variation = &"FlatButton"
 text = "Load"
 
-[node name="Settings" type="Button" parent="Control_Layer/Pause Menu/Pause Buttons" unique_id=1779268747]
+[node name="Settings" type="Button" parent="Control_Layer/Pause Layer/Pause Menu/Pause Buttons" unique_id=1779268747]
 layout_mode = 2
 theme = ExtResource("11_68fdq")
 theme_type_variation = &"FlatButton"
 text = "Settings"
 
-[node name="Save and Quit" type="Button" parent="Control_Layer/Pause Menu/Pause Buttons" unique_id=893551272]
+[node name="Save and Quit" type="Button" parent="Control_Layer/Pause Layer/Pause Menu/Pause Buttons" unique_id=893551272]
 layout_mode = 2
 theme = ExtResource("11_68fdq")
 theme_type_variation = &"FlatButton"
 text = "Quit"
 
-[node name="MenuSound" type="Node" parent="Control_Layer/Pause Menu/Pause Buttons" unique_id=533666184]
+[node name="MenuSound" type="Node" parent="Control_Layer/Pause Layer/Pause Menu/Pause Buttons" unique_id=533666184]
 script = ExtResource("16_1g5n4")
 hoversfx = ExtResource("17_lvhkn")
 clickSfx = ExtResource("18_v76ad")
 
-[node name="SettingsMenu" parent="Control_Layer" unique_id=1148530878 instance=ExtResource("16_f33sq")]
+[node name="SettingsMenu" parent="Control_Layer/Pause Layer" unique_id=1148530878 instance=ExtResource("16_f33sq")]
 process_mode = 3
 visible = false
 offset_left = -432.0
@@ -432,9 +432,9 @@ anchor_top = 0.2777778
 anchor_right = 0.94375
 anchor_bottom = 0.2777778
 offset_left = -1132.545
-offset_top = 183.75298
+offset_top = 199.753
 offset_right = -1132.545
-offset_bottom = 183.75298
+offset_bottom = 199.753
 scale = Vector2(0.575, 0.575)
 texture_normal = ExtResource("28_b1rdx")
 ignore_texture_size = true
@@ -511,3 +511,5 @@ playback_type = 1
 [node name="Extra" type="AudioStreamPlayer" parent="." unique_id=375572522 groups=["SFXBus"]]
 
 [connection signal="pressed" from="Control_Layer/Control_Base/End Turn" to="Functionality/PhaseManager" method="emit_specific_phase" binds= [&"PlayerBattleEnd"]]
+
+[editable path="Control_Layer/Control_Base/AP_Background"]

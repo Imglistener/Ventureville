@@ -1,23 +1,32 @@
 [gd_scene format=3 uid="uid://bvtqbs2qbo681"]
 
-[ext_resource type="Texture2D" uid="uid://bec8wljm4hkmv" path="res://assets/GUI/bar_background.png" id="1_ry3ja"]
-[ext_resource type="Texture2D" uid="uid://dfq7e0c4heh6q" path="res://assets/GUI/bar.png" id="2_kmvhp"]
-[ext_resource type="Texture2D" uid="uid://c5ovbu16vifjo" path="res://assets/GUI/bar_progress.png" id="3_1npb2"]
+[ext_resource type="Texture2D" uid="uid://cbkf750wn7dop" path="res://assets/GUI/meter_with_glass_small.png" id="1_kmvhp"]
+[ext_resource type="Texture2D" uid="uid://yix8rd4k81lg" path="res://assets/GUI/meter_no_glass_nobackground_.png" id="2_1npb2"]
+[ext_resource type="Texture2D" uid="uid://cajqjx0a4r4io" path="res://assets/GUI/progress_2.png" id="3_tvre1"]
 [ext_resource type="Script" uid="uid://cdivs16ftli1n" path="res://scripts/bars/animated_bar.gd" id="4_kmvhp"]
 
-[node name="AP_Bar" type="TextureProgressBar" unique_id=1262385969]
-anchors_preset = -1
-anchor_right = 0.2453125
-anchor_bottom = 0.13777779
-offset_right = 471.0
-offset_bottom = 50.799988
-scale = Vector2(0.4, 0.4)
+[node name="AP_Background" type="TextureRect" unique_id=1581570366]
+offset_right = 563.0
+offset_bottom = 170.0
+texture = ExtResource("1_kmvhp")
+
+[node name="AP_Bar" type="TextureProgressBar" parent="." unique_id=1262385969]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.0
+offset_top = -63.0
+offset_right = 237.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 max_value = 3.0
 value = 3.0
-texture_under = ExtResource("1_ry3ja")
-texture_over = ExtResource("2_kmvhp")
-texture_progress = ExtResource("3_1npb2")
+texture_under = ExtResource("2_1npb2")
+texture_progress = ExtResource("3_tvre1")
 script = ExtResource("4_kmvhp")
-metadata/_edit_use_anchors_ = true

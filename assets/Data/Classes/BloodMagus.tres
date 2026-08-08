@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="CharacterInstance" format=3 uid="uid://dnux8rwh6xw2l"]
 
 [ext_resource type="Texture2D" uid="uid://clhppi5kqrsky" path="res://assets/Data/Classes/BloodMagus/BloodMagus.png" id="1_1a232"]
+[ext_resource type="Resource" uid="uid://dh3lhtl6ux4uu" path="res://assets/Data/Player/Inventory/Inventory.tres" id="1_iri2l"]
 [ext_resource type="Script" uid="uid://cs2ejlgorfek8" path="res://assets/Data/Player/CharacterInstance.gd" id="1_sn4ww"]
 [ext_resource type="Resource" uid="uid://b5hkm5hwk5cuc" path="res://assets/Data/Player/Deck/Deck.tres" id="2_kg42h"]
 [ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="3_v3aom"]
@@ -17,6 +18,6 @@ starting_deck = ExtResource("2_kg42h")
 draw_power = 4
 max_mana = 3
 player_portrait = ExtResource("1_1a232")
+player_inventory = ExtResource("1_iri2l")
 entity_name = "Samuel"
-AP = 3
 stats = Array[ExtResource("3_v3aom")]([ExtResource("4_87oeh"), ExtResource("5_1a232"), ExtResource("6_iri2l"), ExtResource("7_3opvp"), ExtResource("8_ak5lq"), ExtResource("9_jhug3")])

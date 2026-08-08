@@ -5,15 +5,15 @@ class_name MenusManager extends Node
 @onready var player_stat_manager: Stat_Manager = $"../PlayerStatManager"
 @onready var hand: CardHand = $"../../Control_Layer/Control_Base/Base_Margin/StandbyContainer/HandLayer/Hand"
 @onready var phase_manager: PhaseManager = $"../PhaseManager"
-@onready var ap_bar: TextureProgressBar = $"../../Control_Layer/Control_Base/AP_Bar"
+@onready var AP: TextureRect = $"../../Control_Layer/Control_Base/AP_Background"
 @onready var mana_ui: Mana_UI = $"../../Control_Layer/Control_Base/Mana_UI"
 @onready var enemy: EnemyView = $"../../Control_Layer/Enemy"
 @onready var deck_pile: TextureButton = $"../../Node2D_Layer/DeckPile"
 @onready var discard_pile: TextureButton = $"../../Node2D_Layer/DiscardPile"
 @onready var end_turn: TextureButton = $"../../Control_Layer/Control_Base/End Turn"
 @onready var toolbar_container: Toolbar = $"../../Control_Layer/Control_Base/toolbar_container"
-@onready var pause_menu: PauseMenu = $"../../Control_Layer/Pause Menu"
-@onready var pause_blur: ColorRect = $"../../Control_Layer/Pause Blur"
+@onready var pause_menu: PauseMenu = $"../../Control_Layer/Pause Layer/Pause Menu"
+@onready var pause_blur: ColorRect = $"../../Control_Layer/Pause Layer/Pause Blur"
 @onready var turn_counter: Label = $"../../Control_Layer/TurnCounter"
 
 var Dialogue_manager: Dialogue_Manager 
@@ -111,6 +111,37 @@ func show_node(to_show : Node) -> void:
 	
 	emit_signal("node_visible")
 	
+func splash_out(node: Node, direction: Vector2, distance: float, duration: float = 0.3) -> void:
+	var start_pos: Vector2 = node.position
+	var target_pos: Vector2 = start_pos + direction.normalized() * distance
+	
+
+	var tween := create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(node, "position", target_pos, duration)\
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(node, "modulate:a", 0.0, duration)\
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	await tween.finished
+	node.hide()
+	node.position = start_pos
+	
+func splash_in(node: Node, direction: Vector2, distance: float, duration: float = 0.3) -> void:
+	node.show()
+	var target_pos: Vector2 = node.position
+	var start_pos: Vector2 = target_pos - direction.normalized() * distance
+
+	node.position = start_pos
+	node.modulate.a = 0.0
+
+	var tween := create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(node, "position", target_pos, duration)\
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	tween.tween_property(node, "modulate:a", 1.0, duration)\
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+
+	await tween.finished
 
 func _input(event: InputEvent) -> void:
 	if not dialogue_node.visible:
@@ -161,26 +192,26 @@ func PhaseUI_active(phase : PhaseManager.Phases) -> void:
 		PhaseManager.Phases.PlayerStandbyEnd:
 			phase_manager.call_deferred('advance_to_next_phase')
 		PhaseManager.Phases.PlayerBattleStart:
-			transition_to(end_turn)
+			splash_in(end_turn, Vector2.LEFT, 300, 0.5)
 			end_turn.disabled = false
 			enemy.enemy_view.disabled = false
 			transition_to(hand, standby_menu)
-			transition_to(ap_bar)
-			transition_to(mana_ui)
-			transition_to(deck_pile)
-			transition_to(discard_pile)
+			splash_in(AP, Vector2.LEFT, 400, 0.5)
+			splash_in(mana_ui, Vector2.RIGHT, 300, 0.5)
+			splash_in(deck_pile, Vector2.RIGHT, 300, 0.5)
+			splash_in(discard_pile, Vector2.RIGHT, 300, 0.5)
 			await node_visible
 			hand.start_turn() 
 		PhaseManager.Phases.PlayerBattleEnd:
 			end_turn.disabled = true
-			fade_node(end_turn, true)
+			splash_out(end_turn, Vector2.RIGHT, 300, 0.5)
 			enemy.enemy_view.disabled = true
 			hand.clear_hand()
-			fade_node(ap_bar, false)
-			fade_node(mana_ui, false)
-			fade_node(deck_pile, false)
-			fade_node(discard_pile, false)
-			fade_node(standby_menu, false)
+			splash_out(AP, Vector2.RIGHT, 400, 0.5)
+			splash_out(mana_ui, Vector2.LEFT, 300, 0.5)
+			splash_out(deck_pile, Vector2.LEFT, 300, 0.5)
+			splash_out(discard_pile, Vector2.LEFT, 300, 0.5)
+			splash_out(standby_menu, Vector2.DOWN, 300, 0.5)
 		PhaseManager.Phases.EnemyStandbyStart:
 			_update_turn_label(phase)
 		PhaseManager.Phases.EnemyStandbyEnd:

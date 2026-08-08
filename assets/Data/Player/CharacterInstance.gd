@@ -6,6 +6,7 @@ enum PlayerClasses{BloodMagus, DarkMagus, VoiceMagus, FoulTarnished}
 @export var max_mana		: int
 @export var player_class : PlayerClasses
 @export var player_portrait: Texture
+@export var player_inventory: Inventory
 
 var AP: int : set = set_AP
 var mana: int : set = set_mana
@@ -81,6 +82,7 @@ func create_instance() -> Resource:
 	instance.reset_AP()
 	instance.battle_deck = instance.starting_deck.duplicate()
 	instance.set_character_level()
+	instance.player_inventory = instance.player_inventory.new_inventory()
 	return instance
 #Load Character:
 func Load_Player() -> Resource:
@@ -92,7 +94,6 @@ func Load_Player() -> Resource:
 	instance.current_block = 0
 	instance.reset_mana()
 	instance.battle_deck = instance.starting_deck.duplicate()
-
 	instance.set_character_level()
 	instance.reset_AP()
 

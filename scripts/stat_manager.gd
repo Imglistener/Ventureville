@@ -7,6 +7,7 @@ class_name Stat_Manager extends Node
 @onready var bgm: AudioStreamPlayer = $"../../BGM"
 @onready var log: Log = $"../../Control_Layer/Control_Base/ColorRect/MarginContainer/ScrollContainer/Log"
 @onready var deck_manager: DeckManager = $"../DeckManager"
+@onready var items_menu: ItemsMenu = $"../../Control_Layer/Control_Base/ItemsMenu"
 
 @export var enemy_ai: PackedScene 
 var Player: CharacterInstance
@@ -93,7 +94,8 @@ func _initialize_entity(entity_type: Variant) -> void:
 		if not player_view.is_node_ready():
 			await player_view.ready
 		Player = Entity.Load_Player()
-		
+		items_menu.player_inventory = Player.player_inventory
+		items_menu.display_items_and_quantities()
 		Player.starting_deck.intialize_deck_contents()
 		Player.damage_numbers = get_tree().get_nodes_in_group("DamageNumbers")[0].global_position
 		log.connect_to_entity(Player)

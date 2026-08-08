@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://coybng6mqo20d"]
+
+[ext_resource type="Texture2D" uid="uid://v0tydlfyg7mn" path="res://assets/KennyUI/Panel/panel-008.png" id="1_u5wui"]
+[ext_resource type="Texture2D" uid="uid://dkr62mk01xwek" path="res://assets/KennyUI/Border/panel-border-005.png" id="2_g7036"]
+[ext_resource type="Script" uid="uid://vqverfi5x1mr" path="res://scripts/items_menu.gd" id="2_nudqs"]
+[ext_resource type="PackedScene" uid="uid://sq1kp5qg28f7" path="res://assets/Data/Player/Inventory/Items/item_x.tscn" id="3_g7036"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ghndp"]
+texture = ExtResource("1_u5wui")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ayh2p"]
+texture = ExtResource("2_g7036")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[node name="ItemsMenu" type="PanelContainer" unique_id=1042447593]
+self_modulate = Color(0.45864004, 0.2132, 0.52, 0.72156864)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_ghndp")
+script = ExtResource("2_nudqs")
+ItemScene = ExtResource("3_g7036")
+
+[node name="MainContainer" type="VBoxContainer" parent="." unique_id=788752569]
+layout_mode = 2
+theme_override_constants/separation = 17
+
+[node name="TooltipContainer" type="PanelContainer" parent="MainContainer" unique_id=342483742]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ayh2p")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainContainer/TooltipContainer" unique_id=1376271575]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainContainer/TooltipContainer/ScrollContainer" unique_id=1943500972]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainContainer" unique_id=1252302493]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/ScrollContainer" unique_id=1177478933]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Items" type="VBoxContainer" parent="MainContainer/ScrollContainer/HBoxContainer" unique_id=788387488]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Quantities" type="VBoxContainer" parent="MainContainer/ScrollContainer/HBoxContainer" unique_id=1990392699]
+layout_mode = 2
+size_flags_horizontal = 3

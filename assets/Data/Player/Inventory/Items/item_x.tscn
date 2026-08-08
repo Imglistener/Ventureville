@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://sq1kp5qg28f7"]
+
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="1_ak7uw"]
+[ext_resource type="Texture2D" uid="uid://bolb4eopeie4u" path="res://assets/GUI/Bleeding.png" id="1_eroga"]
+
+[node name="Item_X" type="Button" unique_id=535404352]
+custom_minimum_size = Vector2(450, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = ExtResource("1_ak7uw")
+text = "Fool"
+icon = ExtResource("1_eroga")
+alignment = 0
