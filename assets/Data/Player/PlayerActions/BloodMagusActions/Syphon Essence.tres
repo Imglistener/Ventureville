@@ -1,6 +1,6 @@
 [gd_resource type="Resource" format=3 uid="uid://da7agmvhlfw1p"]
 
-[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/BloodSyphon.tres" id="1_epbsp"]
+[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="1_epbsp"]
 [ext_resource type="Script" uid="uid://dgrnd3rrnnssm" path="res://assets/Data/Player/PlayerActions/CardEffects/SyphonEssence.gd" id="2_3jcpk"]
 
 [resource]

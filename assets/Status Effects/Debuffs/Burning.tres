@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Burning" format=3 uid="uid://3oxt0hvbwkqq"]
 
-[ext_resource type="Script" uid="uid://ygmxts5f6i67" path="res://assets/Status Effects/Burning.gd" id="1_283qs"]
+[ext_resource type="Script" uid="uid://ygmxts5f6i67" path="res://assets/Status Effects/Debuffs/Burning.gd" id="1_283qs"]
 [ext_resource type="Texture2D" uid="uid://55381ghk6ykq" path="res://assets/GUI/icon_Burning.png" id="2_2beis"]
 
 [resource]

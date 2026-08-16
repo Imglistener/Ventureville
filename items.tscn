@@ -44,7 +44,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_ayh2p")
 [node name="ScrollContainer" type="ScrollContainer" parent="MainContainer/TooltipContainer" unique_id=1376271575]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MainContainer/TooltipContainer/ScrollContainer" unique_id=1943500972]
+[node name="ItemDescription" type="RichTextLabel" parent="MainContainer/TooltipContainer/ScrollContainer" unique_id=1943500972]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

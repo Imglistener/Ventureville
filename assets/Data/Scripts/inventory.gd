@@ -15,12 +15,8 @@ func add_item(item : Item, amount: int) -> void:
 func remove_item(item: Item, amount: int) -> void:
 	if item not in inventory.keys():
 		return
-	else:
-		if inventory[item] <= amount:
-			inventory.erase(item)
-		else:
-			inventory[item] -= amount
-	if inventory[item] == 0:
+	inventory[item] -= amount
+	if inventory[item] == 0: 
 		inventory.erase(item)
 
 func new_inventory() -> Resource:

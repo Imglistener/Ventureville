@@ -2,10 +2,14 @@
 
 [ext_resource type="Script" uid="uid://jutpr4ncqgux" path="res://assets/Data/Scripts/inventory.gd" id="1_1srr7"]
 [ext_resource type="Resource" uid="uid://i1wsctjsu11y" path="res://assets/Data/Player/Inventory/Items/Item Resources/Healing Potion 1.tres" id="1_by85y"]
+[ext_resource type="Resource" uid="uid://k66cwimeskvq" path="res://assets/Data/Player/Inventory/Items/Item Resources/Healing Potion 2.tres" id="2_eh7xy"]
+[ext_resource type="Resource" uid="uid://bo6rg8hmmy8x3" path="res://assets/Data/Player/Inventory/Items/Item Resources/Healing Potion 3.tres" id="3_3cy7q"]
 
 [resource]
 script = ExtResource("1_1srr7")
 inventory = {
-ExtResource("1_by85y"): 3
+ExtResource("1_by85y"): 3,
+ExtResource("2_eh7xy"): 5,
+ExtResource("3_3cy7q"): 8
 }
 metadata/_custom_type_script = "uid://jutpr4ncqgux"

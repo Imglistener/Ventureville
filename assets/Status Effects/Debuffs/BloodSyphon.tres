@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BloodSyphon" format=3 uid="uid://be5c7aep2us2"]
 
-[ext_resource type="Script" uid="uid://cofh7j3s3f5o5" path="res://assets/Status Effects/Blood Syphon.gd" id="1_pj3u1"]
-[ext_resource type="Texture2D" uid="uid://bolb4eopeie4u" path="res://assets/GUI/Bleeding.png" id="2_gll6u"]
+[ext_resource type="Script" uid="uid://cofh7j3s3f5o5" path="res://assets/Status Effects/Debuffs/Blood Syphon.gd" id="1_pj3u1"]
+[ext_resource type="Texture2D" uid="uid://vds0hvbyq1qd" path="res://assets/GUI/Bleeding_Icon.png" id="2_gll6u"]
 
 [resource]
 script = ExtResource("1_pj3u1")

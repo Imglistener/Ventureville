@@ -8,6 +8,7 @@ class_name Stat_Manager extends Node
 @onready var log: Log = $"../../Control_Layer/Control_Base/ColorRect/MarginContainer/ScrollContainer/Log"
 @onready var deck_manager: DeckManager = $"../DeckManager"
 @onready var items_menu: ItemsMenu = $"../../Control_Layer/Control_Base/ItemsMenu"
+@onready var functionality: Node = $".."
 
 @export var enemy_ai: PackedScene 
 var Player: CharacterInstance
@@ -20,8 +21,8 @@ func  set_current_action(value: EnemyAction) -> void:
 func _ready() -> void:
 	if Entity != null:
 		_initialize_entity(Entity.Battler_Type)
-	Events.EnemyActionCompleted.connect(_on_enemy_action_completed)
-	Events.EnemyBattleStart.connect(play_turn.unbind(1))
+	Events.EnemiesDonePlaying.connect(_on_enemies_action_completed)
+	Events.EnemyBattleStart.connect(enemy_turn_order.unbind(1))
 	Events.EnemyStandbyStart.connect(update_action.unbind(1))
 	if not Events.EnemyActionReady.is_connected(phase_manager.advance_to_next_phase):
 		Events.EnemyActionReady.connect(phase_manager.advance_to_next_phase)
@@ -138,8 +139,22 @@ func play_turn() -> void:
 		end.unbind(1)
 	)
 
+func enemy_turn_order() -> void:
+	if Entity is not EnemyBattlerStats:
+		return
+	var turn_order := []
+	var enemy_count: int = 0
+	for enemy_node in functionality.get_children():
+		if enemy_node is Stat_Manager:
+			if enemy_node.enemy_ai:
+				turn_order.append(enemy_node)
+				enemy_count += 1
+	for i in range(enemy_count):
+		turn_order[i].play_turn()
+		await Events.EnemyActionCompleted
+	Events.EnemiesDonePlaying.emit()
 
-func _on_enemy_action_completed(_enemy: EnemyAction) -> void:
+func _on_enemies_action_completed() -> void:
 	if Entity is not EnemyBattlerStats: return
 	await get_tree().create_timer(0.5, true, false, false).timeout
 	phase_manager.advance_to_next_phase()

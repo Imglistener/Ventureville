@@ -9,8 +9,8 @@ class_name EnemyView extends Area2D
 @onready var enemy_hp_counter: Label = $EnemyBarsContainer/VBoxContainer/enemy_hp/enemy_hp_counter
 @onready var enemy_san: TextureProgressBar = $EnemyBarsContainer/VBoxContainer/Enemy_san
 @onready var enemy_san_counter: Label = $EnemyBarsContainer/VBoxContainer/Enemy_san/Enemy_san_counter
-@onready var statuseffecticon: TextureRect = $EnemyBarsContainer/Statuseffecticon
-@onready var turns_remaining: Label = $EnemyBarsContainer/Statuseffecticon/turns_remaining
+@onready var statuseffecticon: TextureRect = $EnemyBarsContainer/MarginContainer/Statuseffecticon
+@onready var turns_remaining: Label = $EnemyBarsContainer/MarginContainer/Statuseffecticon/turns_remaining
 @onready var enemy_bars_container: EnemyBarsContainer = $EnemyBarsContainer
 @onready var idle: Node = $Container/EnemyView/Idle
 

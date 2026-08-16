@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bav3yg2u0ugyk"]
+
+[ext_resource type="Script" uid="uid://c5qdvnlyyivep" path="res://assets/Enemies/Data/Enemies/AI/EnemyAI.gd" id="1_uthk1"]
+[ext_resource type="PackedScene" uid="uid://deupgdnrw64eu" path="res://scenes/Enemies/attack_action.tscn" id="2_a5av3"]
+[ext_resource type="Resource" uid="uid://dbo8hv6pt1qt0" path="res://assets/Enemies/Data/Damage Types/Physical.tres" id="4_ntisg"]
+[ext_resource type="PackedScene" uid="uid://c1nxupf5v130f" path="res://scenes/Enemies/block_action.tscn" id="9_0ttd4"]
+[ext_resource type="Script" uid="uid://duhasnkx10l2l" path="res://scenes/Enemies/San_attack_action.gd" id="10_neeh3"]
+[ext_resource type="AudioStream" uid="uid://5qnmpg7tkcm3" path="res://assets/SFX/san.mp3" id="11_hsaol"]
+
+[node name="EnemyAI" type="Node" unique_id=1564454232]
+script = ExtResource("1_uthk1")
+
+[node name="AttackAction" parent="." unique_id=1616185674 instance=ExtResource("2_a5av3")]
+damagetype = ExtResource("4_ntisg")
+Description = "\"The Foot Knight swings widely!\""
+
+[node name="BlockAction" parent="." unique_id=1459789831 instance=ExtResource("9_0ttd4")]
+block_gained = 12
+ActionChance = 5.0
+Description = "\"The Foot Knight raises its blade defensively!\""
+
+[node name="SanAttackAction" parent="." unique_id=545017397 instance=ExtResource("2_a5av3")]
+script = ExtResource("10_neeh3")
+Damage = 20
+SoundEffect = ExtResource("11_hsaol")
+Description = "\"The Foot Knight lets out a bone chilling howl!\""

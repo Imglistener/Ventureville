@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://casic1yg7e26l"]
 
 [ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="1_4si0a"]
+[ext_resource type="Script" uid="uid://cqm503kwn3gqy" path="res://scripts/quantity_label.gd" id="2_n3jl2"]
 
 [node name="QuantityLabel" type="Label" unique_id=1921758291]
 custom_minimum_size = Vector2(300, 0)
@@ -18,3 +19,4 @@ grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_4si0a")
 horizontal_alignment = 2
+script = ExtResource("2_n3jl2")

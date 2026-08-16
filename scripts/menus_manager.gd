@@ -15,6 +15,8 @@ class_name MenusManager extends Node
 @onready var pause_menu: PauseMenu = $"../../Control_Layer/Pause Layer/Pause Menu"
 @onready var pause_blur: ColorRect = $"../../Control_Layer/Pause Layer/Pause Blur"
 @onready var turn_counter: Label = $"../../Control_Layer/TurnCounter"
+@onready var items_menu: ItemsMenu = $"../../Control_Layer/Control_Base/ItemsMenu"
+@onready var Return: TextureButton = $"../../Control_Layer/Control_Base/Return"
 
 var Dialogue_manager: Dialogue_Manager 
 var talk: Button
@@ -51,7 +53,10 @@ func _ready() -> void:
 		pause_menu.resume.pressed.connect(_resume_game)
 	if not toolbar_container.pause.pressed.is_connected(_pause_game):
 		toolbar_container.pause.pressed.connect(_pause_game)
-	
+	if not standby_menu.items.pressed.is_connected(_on_items_pressed):
+		standby_menu.items.pressed.connect(_on_items_pressed)
+	if not Return.pressed.is_connected(_on_return_pressed):
+		Return.pressed.connect(_on_return_pressed)
 	phase_manager.connect_signals()
 	setup_toolbar_display()
 
@@ -97,6 +102,7 @@ func fade_node(to_hide : Node, remove_from_container: bool) -> void:
 			to_hide.scale = original_scale
 	if remove_from_container:
 		to_hide.visible = false
+	to_hide.hide()
 
 func show_node(to_show : Node) -> void:
 	to_show.visible = true
@@ -153,6 +159,21 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 
+func _on_items_pressed() -> void:
+	fade_node(standby_menu, false)
+	items_menu.show()
+	splash_in(items_menu, Vector2.UP, 250, 0.5)
+	splash_in(Return, Vector2.LEFT, 250, 0.5)
+	splash_in(AP, Vector2.LEFT, 400, 0.5)
+	
+	await node_visible
+
+func _on_return_pressed() -> void:
+	splash_out(items_menu, Vector2.DOWN, 250, 0.5)
+	splash_out(Return, Vector2.RIGHT, 250, 0.5)
+	show_node(standby_menu)
+	splash_out(AP, Vector2.RIGHT, 400, 0.5)
+	await node_visible
 
 func _on_talk_pressed() -> void:
 	Dialogue_manager.call_dialogue(enemy_stat_manager, dialogue_node.dialogue_box, player_stat_manager)

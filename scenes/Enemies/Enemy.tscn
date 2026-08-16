@@ -262,28 +262,32 @@ grow_vertical = 2
 text = "SAN"
 label_settings = ExtResource("10_xox7x")
 
-[node name="Statuseffecticon" type="TextureRect" parent="EnemyBarsContainer" unique_id=1081928048]
-custom_minimum_size = Vector2(32, 32)
+[node name="MarginContainer" type="MarginContainer" parent="EnemyBarsContainer" unique_id=1746009064]
+layout_mode = 2
+theme_override_constants/margin_top = 55
+theme_override_constants/margin_bottom = -20
+
+[node name="Statuseffecticon" type="TextureRect" parent="EnemyBarsContainer/MarginContainer" unique_id=1081928048]
+custom_minimum_size = Vector2(55, 55)
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 0
+size_flags_vertical = 8
 mouse_filter = 0
-stretch_mode = 3
+expand_mode = 2
 
-[node name="turns_remaining" type="Label" parent="EnemyBarsContainer/Statuseffecticon" unique_id=1123481830]
+[node name="turns_remaining" type="Label" parent="EnemyBarsContainer/MarginContainer/Statuseffecticon" unique_id=1123481830]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.503829
-anchor_top = 0.63793105
-anchor_right = 0.503829
-anchor_bottom = 0.6379311
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -5.5
-offset_top = -17.5
+offset_top = -14.5
 offset_right = 5.5
-offset_bottom = 17.5
+offset_bottom = 20.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true

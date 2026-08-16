@@ -21,4 +21,8 @@ signal EnemyBattleEnd(current_phase: PhaseManager.Phases)
 #EnemyActionComplete:
 
 signal EnemyActionCompleted(Enemy: EnemyAction)
+signal EnemiesDonePlaying
 signal EnemyActionReady
+
+#Item Signals
+signal item_used(item: Item)

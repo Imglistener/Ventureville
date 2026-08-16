@@ -10,7 +10,8 @@ func _ready() -> void:
 	reset_bars_UI()
 	if not Events.card_played.is_connected(update_bars_UI):
 		Events.card_played.connect(update_bars_UI.unbind(1))
-	Events.PlayerStandbyEnd.connect(update_bars_UI.unbind(1))
+	Events.PlayerStandbyStart.connect(update_bars_UI.unbind(1))
+	Events.item_used.connect(update_bars_UI.unbind(1))
 
 
 func reset_bars_UI() -> void:

@@ -1,8 +1,7 @@
-class_name BloodSyphon extends StatusEffect
-
+class_name Horrified extends StatusEffect
 var tree : SceneTree
 func _init() -> void:
-	status_icon = preload("res://assets/GUI/Bleeding.png")
+	status_icon = preload("res://assets/GUI/horrified.png")
 
 func on_apply(targets: Array[Node], duration: int = 1) -> void:
 	if targets[0]:
@@ -33,22 +32,28 @@ func on_apply(targets: Array[Node], duration: int = 1) -> void:
 				effects.append(instance)
 	Events.effect_applied.emit()
 
-
+func is_applicable(targets: Array[Node]) -> bool:
+	var target = targets[0]
+	if target is Stat_Manager:
+		return target.Player.current_sanity <= target.Player.Max_SAN/2
+	elif target is EnemyView:
+		return target.Enemy.Entity.current_sanity <= target.Enemy.Entity.Max_SAN/2
+	else:
+		return false
 
 func on_tick(target: BaseBattlerStats) -> void:
 	if target is CharacterInstance:
-		var damage := 2 * current_duration
-		if target.current_block > 0:
-			target.take_damage(0, null)
+		var horror_lvl: int = randi_range(0, 3)
+		if target.current_san_block > 0:
 			current_duration -= 1
 			if current_duration <= 0:
 				on_remove(target)
 			return
-		target.take_damage(damage, null)
-		if tree:
-			var user = tree.get_first_node_in_group("Enemies")
-			user.Enemy.Entity.heal(damage)
-		current_duration -= 1
+		else:
+			target.AP -= horror_lvl
+			current_duration -= 1
+			if current_duration <= 0:
+				on_remove(target)
 	elif target is EnemyBattlerStats:
 		var damage := 2 * current_duration
 		if target.current_block > 0:
@@ -63,17 +68,3 @@ func on_tick(target: BaseBattlerStats) -> void:
 
 	if current_duration <= 0:
 		on_remove(target)
-
-func is_applicable(targets: Array[Node]) -> bool:
-	var target = targets[0]
-	if target is Stat_Manager:
-		return target.Player.current_block == 0
-	elif target is EnemyView:
-		return target.Enemy.Entity.current_block == 0
-	else:
-		return false
-
-func on_remove(target: BaseBattlerStats) -> void:
-	var existing = find_same_effect(target.ActiveEffects)
-	if existing:
-		target.ActiveEffects.erase(existing)

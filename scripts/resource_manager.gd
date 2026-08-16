@@ -34,7 +34,8 @@ func player_increment_mana() -> void:
 		return
 	player_stat_manager.Player.max_mana += 1
 	player_stat_manager.Player.mana = player_stat_manager.Player.max_mana
-	player_stat_manager.Player.AP = 3
+	player_stat_manager.Player.reset_AP()
+	
 
 func _set_counter_label(label: Label, health_value: int, block_value: int, base_font_size: int = 30) -> void:
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -109,3 +110,8 @@ func _on_signal_StatsChanged() -> void:
 		_set_counter_label(p_bars.player_san_counter,
 			player_stat_manager.Player.current_sanity,
 			player_stat_manager.Player.current_san_block)
+
+func item_usage_handler(item: Item) -> void:
+	if item in player_stat_manager.Player.player_inventory.inventory.keys():
+		player_stat_manager.Player.player_inventory.remove_item(item, 1)
+		

@@ -13,7 +13,3 @@ func _ready() -> void:
 		await player_stat_manager.ready
 	if not enemy_stat_manager.is_node_ready():
 		await enemy_stat_manager.ready
-	if not items.pressed.is_connected(player_stat_manager.Player.take_damage.bind(50, testdamage)):
-		items.pressed.connect(player_stat_manager.Player.take_damage.bind(50, testdamage))
-	if not items.pressed.is_connected(enemy_stat_manager.Entity.take_damage.bind(50, testdamage)):
-		items.pressed.connect(enemy_stat_manager.Entity.take_damage.bind(50, testdamage))

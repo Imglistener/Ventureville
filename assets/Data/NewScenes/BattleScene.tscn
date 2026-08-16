@@ -30,9 +30,10 @@
 [ext_resource type="AudioStream" uid="uid://diyc8a23kpu7b" path="res://assets/click.wav" id="18_v76ad"]
 [ext_resource type="Script" uid="uid://o4qohiqhl68k" path="res://assets/Data/NewScenes/phase_manager.gd" id="18_wsofm"]
 [ext_resource type="PackedScene" uid="uid://casic1yg7e26l" path="res://assets/Data/Player/Inventory/Items/quantity_label.tscn" id="19_0ccq8"]
-[ext_resource type="Resource" uid="uid://t4bhsemp13xl" path="res://assets/Enemies/Data/Enemies/Alice.tres" id="20_t77tx"]
+[ext_resource type="Texture2D" uid="uid://cjka26ocsbg56" path="res://assets/GUI/play_button.png" id="20_cs5ql"]
 [ext_resource type="Shader" uid="uid://b3isi0mn6v52j" path="res://assets/Data/NewScenes/blur.gdshader" id="20_w5vtb"]
-[ext_resource type="PackedScene" uid="uid://ty81e0bpoaog" path="res://scenes/Enemies/AliceAI.tscn" id="21_1g5n4"]
+[ext_resource type="Texture2D" uid="uid://c0wkk5cp2x0w3" path="res://assets/GUI/play_button_press.png" id="21_c1pur"]
+[ext_resource type="Texture2D" uid="uid://d4f6186k6kfet" path="res://assets/GUI/play_button_highlighted.png" id="22_c1pur"]
 [ext_resource type="Script" uid="uid://ct4mhcqyvkyd8" path="res://assets/Data/NewScenes/deck_manager.gd" id="22_qogb6"]
 [ext_resource type="Script" uid="uid://du5ckfar1fpqk" path="res://assets/Data/NewScenes/turn_counter_label.gd" id="22_unjj4"]
 [ext_resource type="Resource" uid="uid://dnux8rwh6xw2l" path="res://assets/Data/Classes/BloodMagus.tres" id="24_t77tx"]
@@ -41,7 +42,9 @@
 [ext_resource type="Texture2D" uid="uid://bj0gr4bt44qnx" path="res://assets/GUI/Globlet_discard_Deck_.png" id="26_b1rdx"]
 [ext_resource type="Texture2D" uid="uid://bxofv2pcbbus" path="res://assets/GUI/Deck_holder.png" id="28_b1rdx"]
 [ext_resource type="AudioStream" uid="uid://rlbhoeeuv874" path="res://assets/SFX/Alice.wav" id="29_t77tx"]
+[ext_resource type="Resource" uid="uid://cvwnlcbly6crn" path="res://assets/Enemies/Data/Enemies/EnemyInstance/FootKnight/FootKnight.tres" id="35_c1pur"]
 [ext_resource type="Script" uid="uid://ciqtc2gnl1c60" path="res://assets/Data/NewScenes/game_state_manager.gd" id="36_a7dmv"]
+[ext_resource type="PackedScene" uid="uid://bav3yg2u0ugyk" path="res://scenes/Enemies/FootKnightAI.tscn" id="36_c1pur"]
 [ext_resource type="Script" uid="uid://by1n1serxe8is" path="res://assets/Data/NewScenes/sfxPlayer.gd" id="38_pkylx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f33sq"]
@@ -221,11 +224,25 @@ offset_top = 175.0
 offset_bottom = 215.0
 
 [node name="ItemsMenu" parent="Control_Layer/Control_Base" unique_id=1042447593 instance=ExtResource("18_2kban")]
+visible = false
 layout_mode = 1
-offset_left = 7.3613586
-offset_top = 504.8949
-offset_right = -276.63867
+offset_left = 29.988
+offset_top = 504.895
+offset_right = -321.89307
+offset_bottom = 0.00012207031
 QuantityScene = ExtResource("19_0ccq8")
+
+[node name="Return" type="TextureButton" parent="Control_Layer/Control_Base" unique_id=689991425]
+visible = false
+layout_mode = 0
+offset_left = 956.4994
+offset_top = 609.81464
+offset_right = 1063.4994
+offset_bottom = 715.81464
+scale = Vector2(0.835, 0.835)
+texture_normal = ExtResource("20_cs5ql")
+texture_pressed = ExtResource("21_c1pur")
+texture_hover = ExtResource("22_c1pur")
 
 [node name="DamageNumbers" type="Node2D" parent="Control_Layer" unique_id=1054874820 groups=["DamageNumbers"]]
 z_index = 10
@@ -465,8 +482,8 @@ script = ExtResource("25_gt0no")
 
 [node name="EnemyStatManager" type="Node" parent="Functionality" unique_id=851315779]
 script = ExtResource("10_rgo70")
-Entity = ExtResource("20_t77tx")
-enemy_ai = ExtResource("21_1g5n4")
+Entity = ExtResource("35_c1pur")
+enemy_ai = ExtResource("36_c1pur")
 
 [node name="ResourceUIManager" type="Node" parent="Functionality" unique_id=522749599]
 script = ExtResource("13_w7muy")
@@ -512,4 +529,5 @@ playback_type = 1
 
 [connection signal="pressed" from="Control_Layer/Control_Base/End Turn" to="Functionality/PhaseManager" method="emit_specific_phase" binds= [&"PlayerBattleEnd"]]
 
+[editable path="Control_Layer/Control_Base/Base_Margin/StandbyContainer/Background"]
 [editable path="Control_Layer/Control_Base/AP_Background"]
