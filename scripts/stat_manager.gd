@@ -1,5 +1,8 @@
 class_name Stat_Manager extends Node
-@onready var enemy: EnemyView = $"../../Control_Layer/Enemy"
+
+signal EntityStatsChanged(view: EnemyView, stat_manager: Stat_Manager)
+
+@export var enemy: EnemyView
 @export var Entity : BaseBattlerStats
 @onready var player_view: PlayerView = $"../../Control_Layer/Control_Base/Base_Margin/MarginContainer/PlayerView"
 @onready var Resources: resource_manager = $"../ResourceManager"
@@ -8,7 +11,7 @@ class_name Stat_Manager extends Node
 @onready var log: Log = $"../../Control_Layer/Control_Base/ColorRect/MarginContainer/ScrollContainer/Log"
 @onready var deck_manager: DeckManager = $"../DeckManager"
 @onready var items_menu: ItemsMenu = $"../../Control_Layer/Control_Base/ItemsMenu"
-@onready var functionality: Node = $".."
+@onready var enemy_manager: Node = $"../EnemyManager"
 
 @export var enemy_ai: PackedScene 
 var Player: CharacterInstance
@@ -21,13 +24,7 @@ func  set_current_action(value: EnemyAction) -> void:
 func _ready() -> void:
 	if Entity != null:
 		_initialize_entity(Entity.Battler_Type)
-	Events.EnemiesDonePlaying.connect(_on_enemies_action_completed)
-	Events.EnemyBattleStart.connect(enemy_turn_order.unbind(1))
-	Events.EnemyStandbyStart.connect(update_action.unbind(1))
-	if not Events.EnemyActionReady.is_connected(phase_manager.advance_to_next_phase):
-		Events.EnemyActionReady.connect(phase_manager.advance_to_next_phase)
-	if not Events.EnemyStandbyEnd.is_connected(phase_manager.advance_to_next_phase):
-		Events.EnemyStandbyEnd.connect(phase_manager.advance_to_next_phase.unbind(1))
+
 	if Events.PlayerStandbyStart.is_connected(_reset_block):
 		Events.PlayerStandbyStart.disconnect(_reset_block)
 	if Events.EnemyStandbyStart.is_connected(_reset_block):
@@ -62,7 +59,6 @@ func update_action() -> void:
 		return
 	if not CurrentAction:
 		CurrentAction = EnemyThoughts.get_action()
-
 	var conditional_action_active := EnemyThoughts.get_conditional_action()
 	if conditional_action_active and CurrentAction != conditional_action_active:
 		CurrentAction = conditional_action_active
@@ -76,10 +72,13 @@ func _initialize_entity(entity_type: Variant) -> void:
 		if not enemy.is_node_ready():
 			await enemy.ready
 		enemy.Enemy = self
+		enemy_manager.register(enemy, self)
+		if not Entity.Stats_Changed.is_connected(_on_entity_stats_changed):
+			Entity.Stats_Changed.connect(_on_entity_stats_changed)
 		log.connect_to_entity(Entity)
 		setup_ai()
 		enemy.update_enemy_view(Entity.Battler_Art_Normal, Entity.Battler_Art_Hovered)
-		Entity.damage_numbers = get_tree().get_nodes_in_group("DamageNumbers")[1].global_position
+		Entity.damage_numbers = enemy.dmg_numbers.global_position
 		enemy.enemy_hp.max_value = Entity.Max_HP
 		enemy.enemy_hp.value	= Entity.current_health
 		enemy.enemy_san.max_value	= Entity.Max_SAN
@@ -95,6 +94,8 @@ func _initialize_entity(entity_type: Variant) -> void:
 		if not player_view.is_node_ready():
 			await player_view.ready
 		Player = Entity.Load_Player()
+		if not Player.Stats_Changed.is_connected(_on_player_stats_changed):
+			Player.Stats_Changed.connect(_on_player_stats_changed)
 		items_menu.player_inventory = Player.player_inventory
 		items_menu.display_items_and_quantities()
 		Player.starting_deck.intialize_deck_contents()
@@ -136,25 +137,11 @@ func play_turn() -> void:
 		if enemy.enemy_view.has_node("Idle"):
 			enemy.enemy_view.get_node("Idle").start(enemy.enemy_view)
 	Events.EnemyActionCompleted.connect(
-		end.unbind(1)
+		end.unbind(1), CONNECT_ONE_SHOT
 	)
 
-func enemy_turn_order() -> void:
-	if Entity is not EnemyBattlerStats:
-		return
-	var turn_order := []
-	var enemy_count: int = 0
-	for enemy_node in functionality.get_children():
-		if enemy_node is Stat_Manager:
-			if enemy_node.enemy_ai:
-				turn_order.append(enemy_node)
-				enemy_count += 1
-	for i in range(enemy_count):
-		turn_order[i].play_turn()
-		await Events.EnemyActionCompleted
-	Events.EnemiesDonePlaying.emit()
+func _on_entity_stats_changed() -> void:
+	EntityStatsChanged.emit(enemy, self)
 
-func _on_enemies_action_completed() -> void:
-	if Entity is not EnemyBattlerStats: return
-	await get_tree().create_timer(0.5, true, false, false).timeout
-	phase_manager.advance_to_next_phase()
+func _on_player_stats_changed() -> void:
+	EntityStatsChanged.emit(null, self)

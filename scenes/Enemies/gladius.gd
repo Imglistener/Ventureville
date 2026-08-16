@@ -13,6 +13,9 @@ class_name EnemyView extends Area2D
 @onready var turns_remaining: Label = $EnemyBarsContainer/MarginContainer/Statuseffecticon/turns_remaining
 @onready var enemy_bars_container: EnemyBarsContainer = $EnemyBarsContainer
 @onready var idle: Node = $Container/EnemyView/Idle
+@onready var dmg_numbers: Marker2D = $DmgNumbers
+
+
 
 var Enemy: Stat_Manager
 

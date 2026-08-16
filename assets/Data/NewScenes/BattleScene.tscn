@@ -46,6 +46,8 @@
 [ext_resource type="Script" uid="uid://ciqtc2gnl1c60" path="res://assets/Data/NewScenes/game_state_manager.gd" id="36_a7dmv"]
 [ext_resource type="PackedScene" uid="uid://bav3yg2u0ugyk" path="res://scenes/Enemies/FootKnightAI.tscn" id="36_c1pur"]
 [ext_resource type="Script" uid="uid://by1n1serxe8is" path="res://assets/Data/NewScenes/sfxPlayer.gd" id="38_pkylx"]
+[ext_resource type="Script" uid="uid://bs3r5fddsx6y5" path="res://scripts/enemy_turn_order_manager.gd" id="45_sotth"]
+[ext_resource type="Script" uid="uid://cy7yn1fq5hrgv" path="res://scripts/enemy_manager.gd" id="46_qkuvq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f33sq"]
 shader = ExtResource("20_w5vtb")
@@ -78,7 +80,10 @@ metadata/_edit_use_anchors_ = true
 layer = 2
 
 [node name="Enemy" parent="Control_Layer" unique_id=438713798 instance=ExtResource("8_3esf3")]
-position = Vector2(512, 383)
+position = Vector2(299, 383)
+
+[node name="Enemy2" parent="Control_Layer" unique_id=1787029152 instance=ExtResource("8_3esf3")]
+position = Vector2(752, 383)
 
 [node name="Control_Base" type="Control" parent="Control_Layer" unique_id=2000512818]
 layout_mode = 3
@@ -249,7 +254,7 @@ z_index = 10
 position = Vector2(1038.1616, 510.72748)
 
 [node name="DamageNumbersEnemy" type="Node2D" parent="Control_Layer" unique_id=1450103725 groups=["DamageNumbers"]]
-position = Vector2(637.6156, 79.939804)
+position = Vector2(783.6156, 111.939804)
 
 [node name="Pause Layer" type="CanvasLayer" parent="Control_Layer" unique_id=206101572]
 layer = 5
@@ -480,8 +485,15 @@ script = ExtResource("25_gt0no")
 
 [node name="Functionality" type="Node" parent="." unique_id=401213274]
 
-[node name="EnemyStatManager" type="Node" parent="Functionality" unique_id=851315779]
+[node name="EnemyStatManager" type="Node" parent="Functionality" unique_id=851315779 node_paths=PackedStringArray("enemy")]
 script = ExtResource("10_rgo70")
+enemy = NodePath("../../Control_Layer/Enemy")
+Entity = ExtResource("35_c1pur")
+enemy_ai = ExtResource("36_c1pur")
+
+[node name="EnemyStatManager2" type="Node" parent="Functionality" unique_id=1517701786 node_paths=PackedStringArray("enemy")]
+script = ExtResource("10_rgo70")
+enemy = NodePath("../../Control_Layer/Enemy2")
 Entity = ExtResource("35_c1pur")
 enemy_ai = ExtResource("36_c1pur")
 
@@ -510,6 +522,12 @@ script = ExtResource("25_3d1y2")
 
 [node name="GameStateManager" type="Node" parent="Functionality" unique_id=1041496057]
 script = ExtResource("36_a7dmv")
+
+[node name="EnemyTurnOrderManager" type="Node" parent="Functionality" unique_id=1699957479]
+script = ExtResource("45_sotth")
+
+[node name="EnemyManager" type="Node" parent="Functionality" unique_id=1458255868]
+script = ExtResource("46_qkuvq")
 
 [node name="SFX" type="AudioStreamPlayer" parent="." unique_id=1786813656 groups=["SFXBus"]]
 max_polyphony = 8

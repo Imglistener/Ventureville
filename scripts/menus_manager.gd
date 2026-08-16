@@ -7,7 +7,6 @@ class_name MenusManager extends Node
 @onready var phase_manager: PhaseManager = $"../PhaseManager"
 @onready var AP: TextureRect = $"../../Control_Layer/Control_Base/AP_Background"
 @onready var mana_ui: Mana_UI = $"../../Control_Layer/Control_Base/Mana_UI"
-@onready var enemy: EnemyView = $"../../Control_Layer/Enemy"
 @onready var deck_pile: TextureButton = $"../../Node2D_Layer/DeckPile"
 @onready var discard_pile: TextureButton = $"../../Node2D_Layer/DiscardPile"
 @onready var end_turn: TextureButton = $"../../Control_Layer/Control_Base/End Turn"
@@ -17,6 +16,7 @@ class_name MenusManager extends Node
 @onready var turn_counter: Label = $"../../Control_Layer/TurnCounter"
 @onready var items_menu: ItemsMenu = $"../../Control_Layer/Control_Base/ItemsMenu"
 @onready var Return: TextureButton = $"../../Control_Layer/Control_Base/Return"
+@onready var enemy_manager: Node = $"../EnemyManager"
 
 var Dialogue_manager: Dialogue_Manager 
 var talk: Button
@@ -215,7 +215,8 @@ func PhaseUI_active(phase : PhaseManager.Phases) -> void:
 		PhaseManager.Phases.PlayerBattleStart:
 			splash_in(end_turn, Vector2.LEFT, 300, 0.5)
 			end_turn.disabled = false
-			enemy.enemy_view.disabled = false
+			for view in enemy_manager.get_enemy_views():
+				view.enemy_view.disabled = false
 			transition_to(hand, standby_menu)
 			splash_in(AP, Vector2.LEFT, 400, 0.5)
 			splash_in(mana_ui, Vector2.RIGHT, 300, 0.5)
@@ -226,7 +227,8 @@ func PhaseUI_active(phase : PhaseManager.Phases) -> void:
 		PhaseManager.Phases.PlayerBattleEnd:
 			end_turn.disabled = true
 			splash_out(end_turn, Vector2.RIGHT, 300, 0.5)
-			enemy.enemy_view.disabled = true
+			for view in enemy_manager.get_enemy_views():
+				view.enemy_view.disabled = false
 			hand.clear_hand()
 			splash_out(AP, Vector2.RIGHT, 400, 0.5)
 			splash_out(mana_ui, Vector2.LEFT, 300, 0.5)
