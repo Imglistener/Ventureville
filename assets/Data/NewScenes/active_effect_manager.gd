@@ -9,11 +9,8 @@ var _effect_cycle_timer: Timer
 var _player_effect_index: int = 0
 var _is_player_icon_hovered: bool = false
 const EFFECT_DISPLAY_DURATION: float = 2.0
-const ENEMY_TICK_DELAY: float = 0.3  # pacing gap between each enemy's tick, sequential feel
+const ENEMY_TICK_DELAY: float = 0.3  
 
-# Per-enemy state, keyed by Stat_Manager. Replaces the old single
-# enemy/enemy_stat_manager/_enemy_effect_index/_is_enemy_icon_hovered fields.
-# entry shape: { "view": EnemyView, "index": int, "hovered": bool }
 var _enemy_entries: Dictionary = {}
 var _enemy_order: Array[Stat_Manager] = []
 
@@ -56,8 +53,7 @@ func _on_enemy_registered(view: EnemyView, stat_manager: Stat_Manager) -> void:
 	icon.mouse_exited.connect(_on_enemy_icon_hover.bind(stat_manager, false))
 
 
-func _on_enemy_unregistered(view: EnemyView) -> void:
-	var stat_manager: Stat_Manager = enemy_manager.get_stat_manager_for(view)
+func _on_enemy_unregistered(view: EnemyView, stat_manager: Stat_Manager) -> void:
 	if stat_manager and _enemy_entries.has(stat_manager):
 		_enemy_entries.erase(stat_manager)
 		_enemy_order.erase(stat_manager)

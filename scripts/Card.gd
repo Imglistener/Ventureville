@@ -24,7 +24,7 @@ func _get_targets(targets: Array[Node]) -> Array[Node]:
 		Target.SELF:
 			return tree.get_nodes_in_group("player")
 		Target.ALLENEMIES:
-			return tree.get_nodes_in_group("Enemies")
+			return tree.get_first_node_in_group("EnemyManager").get_enemy_views()
 		Target.ALL:
 			return tree.get_nodes_in_group("player") +  tree.get_nodes_in_group("Enemies")
 		_:

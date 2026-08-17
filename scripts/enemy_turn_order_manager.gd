@@ -2,6 +2,7 @@ class_name EnemyTurnManager extends Node
 
 @onready var functionality: Node = get_parent()
 @onready var phase_manager: PhaseManager = $"../PhaseManager"
+@onready var enemy_manager: EnemyManager = $"../EnemyManager"
 
 var _enemies_pending: int = 0
 
@@ -15,11 +16,9 @@ func _ready() -> void:
 
 func _get_active_enemies() -> Array[Stat_Manager]:
 	var result: Array[Stat_Manager] = []
-	for child in functionality.get_children():
-		if child is Stat_Manager and child.Entity is EnemyBattlerStats and child.enemy_ai:
-			result.append(child)
+	for view in enemy_manager.get_enemy_views():
+		result.append(enemy_manager.get_stat_manager_for(view))
 	return result
-
 
 func _on_enemy_standby_start() -> void:
 	var enemies := _get_active_enemies()

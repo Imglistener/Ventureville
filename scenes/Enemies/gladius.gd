@@ -14,6 +14,7 @@ class_name EnemyView extends Area2D
 @onready var enemy_bars_container: EnemyBarsContainer = $EnemyBarsContainer
 @onready var idle: Node = $Container/EnemyView/Idle
 @onready var dmg_numbers: Marker2D = $DmgNumbers
+@onready var death_animation: AnimationPlayer = $Death
 
 
 
@@ -28,3 +29,10 @@ func update_enemy_view(texture_normal: Texture, texture_hovered: Texture) -> voi
 	enemy_view.texture_hover = texture_hovered
 	enemy_view.texture_pressed = texture_normal	
 	
+func play_death_animation() -> void:
+	if self.has_node("Death"):
+		var anim = self.get_node("Death")
+		anim.play("death")
+		await anim.animation_finished
+	else:
+		await get_tree().create_timer(0.1).timeout

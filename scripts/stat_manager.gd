@@ -1,7 +1,9 @@
 class_name Stat_Manager extends Node
 
 signal EntityStatsChanged(view: EnemyView, stat_manager: Stat_Manager)
+signal EntityDied(view: EnemyView, stat_manager: Stat_Manager) 
 
+var _is_dead: bool = false
 @export var enemy: EnemyView
 @export var Entity : BaseBattlerStats
 @onready var player_view: PlayerView = $"../../Control_Layer/Control_Base/Base_Margin/MarginContainer/PlayerView"
@@ -54,6 +56,7 @@ func setup_ai() -> void:
 
 	
 func update_action() -> void:
+	if _is_dead: return
 	if Entity is not EnemyBattlerStats: return
 	if not EnemyThoughts:
 		return
@@ -126,6 +129,7 @@ func phase_transition() -> void:
 	bgm.play()
 
 func play_turn() -> void:
+	if _is_dead: return
 	if Entity is not EnemyBattlerStats: return
 	if enemy.enemy_view.has_node("Idle"):
 		enemy.enemy_view.get_node("Idle").stop()
@@ -142,6 +146,24 @@ func play_turn() -> void:
 
 func _on_entity_stats_changed() -> void:
 	EntityStatsChanged.emit(enemy, self)
+	if not _is_dead and Entity is EnemyBattlerStats and Entity.current_health <= 0:
+		_is_dead = true
+		_handle_enemy_death()
 
 func _on_player_stats_changed() -> void:
 	EntityStatsChanged.emit(null, self)
+	if not _is_dead and Player.current_health <= 0:
+		_is_dead = true
+		_handle_player_death()
+
+func _handle_enemy_death() -> void:
+	CurrentAction = null
+	enemy.enemy_view.disabled = true
+	await enemy.play_death_animation()
+	enemy_manager.unregister(enemy)
+	enemy.visible = false
+	EntityDied.emit(enemy, self)
+
+func _handle_player_death() -> void:
+	# swap in a player death animation call here if/when one exists
+	EntityDied.emit(null, self)

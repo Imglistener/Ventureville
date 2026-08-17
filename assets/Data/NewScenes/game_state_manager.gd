@@ -3,16 +3,31 @@ class_name GameStateManager extends Node
 @onready var victory: Label = $"../../Control_Layer/Pause Layer/Pause Blur/Victory"
 @onready var pause_blur: ColorRect = $"../../Control_Layer/Pause Layer/Pause Blur"
 @onready var menus_manager: MenusManager = $"../MenusManager"
+@onready var player_stat_manager: Stat_Manager = $"../PlayerStatManager"
+@onready var enemy_manager: EnemyManager = $"../EnemyManager"
+
 
 func _ready() -> void:
-	for child in get_parent().get_children():
-		if child is Stat_Manager:
-			if child.Entity:				
-				if not child.Player:
-					child.Entity.entity_died.connect(track_healthbars.bind(true).unbind(1))
-				else:
-					child.Player.entity_died.connect(track_healthbars.bind(false).unbind(1))
-				
+	if not player_stat_manager.is_node_ready():
+		await player_stat_manager.ready
+
+	if not player_stat_manager.EntityDied.is_connected(_on_entity_died):
+		player_stat_manager.EntityDied.connect(_on_entity_died)
+
+	enemy_manager.connect_and_catch_up(_on_enemy_registered)
+
+
+func _on_enemy_registered(view: EnemyView, stat_manager: Stat_Manager) -> void:
+	if not stat_manager.EntityDied.is_connected(_on_entity_died):
+		stat_manager.EntityDied.connect(_on_entity_died)
+
+
+func _on_entity_died(view: EnemyView, stat_manager: Stat_Manager) -> void:
+	if view == null:
+		_play_lose_sequence()
+	elif enemy_manager.get_enemy_views().is_empty():
+		_play_win_sequence()
+
 
 func handle_blur(paused: bool) -> void:
 	var t = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
@@ -20,18 +35,12 @@ func handle_blur(paused: bool) -> void:
 	await t.finished
 	pause_blur.mouse_filter = Control.MOUSE_FILTER_STOP
 
-func track_healthbars(Won: bool) -> void:
-	await get_tree().create_timer(0.4).timeout
-	if Won:
-		_play_win_sequence()
-	else:
-		_play_lose_sequence()
-	
 
 func _play_win_sequence() -> void:
 	victory.visible = true
 	handle_blur(false)
 	get_tree().paused = true
+
 
 func _play_lose_sequence() -> void:
 	defeat.visible = true

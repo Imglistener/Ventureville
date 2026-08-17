@@ -526,7 +526,7 @@ script = ExtResource("36_a7dmv")
 [node name="EnemyTurnOrderManager" type="Node" parent="Functionality" unique_id=1699957479]
 script = ExtResource("45_sotth")
 
-[node name="EnemyManager" type="Node" parent="Functionality" unique_id=1458255868]
+[node name="EnemyManager" type="Node" parent="Functionality" unique_id=1458255868 groups=["EnemyManager"]]
 script = ExtResource("46_qkuvq")
 
 [node name="SFX" type="AudioStreamPlayer" parent="." unique_id=1786813656 groups=["SFXBus"]]

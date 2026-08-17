@@ -1,15 +1,16 @@
 class_name EnemyManager extends Node
 
-var _enemy_views: Array[EnemyView] = []
+var _enemy_views: Array[Node] = []
 var _view_to_stat_manager: Dictionary = {}
 
 signal enemy_registered(view: EnemyView, stat_manager: Stat_Manager)
-signal enemy_unregistered(view: EnemyView)
+signal enemy_unregistered(view: EnemyView, stat_manager: Stat_Manager)
+
+
 
 
 func register(view: EnemyView, stat_manager: Stat_Manager) -> void:
 	if view in _enemy_views:
-		push_warning("EnemyManager: duplicate registration attempt for %s" % view.name)
 		return
 	_enemy_views.append(view)
 	_view_to_stat_manager[view] = stat_manager
@@ -19,12 +20,13 @@ func register(view: EnemyView, stat_manager: Stat_Manager) -> void:
 func unregister(view: EnemyView) -> void:
 	if view not in _enemy_views:
 		return
+	var stat_manager: Stat_Manager = _view_to_stat_manager.get(view)
 	_enemy_views.erase(view)
 	_view_to_stat_manager.erase(view)
-	enemy_unregistered.emit(view)
+	enemy_unregistered.emit(view, stat_manager)
 
 
-func get_enemy_views() -> Array[EnemyView]:
+func get_enemy_views() -> Array[Node]:
 	return _enemy_views.duplicate()
 
 
