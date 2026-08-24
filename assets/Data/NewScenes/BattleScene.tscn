@@ -45,7 +45,11 @@
 [ext_resource type="Resource" uid="uid://cvwnlcbly6crn" path="res://assets/Enemies/Data/Enemies/EnemyInstance/FootKnight/FootKnight.tres" id="35_c1pur"]
 [ext_resource type="Script" uid="uid://ciqtc2gnl1c60" path="res://assets/Data/NewScenes/game_state_manager.gd" id="36_a7dmv"]
 [ext_resource type="PackedScene" uid="uid://bav3yg2u0ugyk" path="res://scenes/Enemies/FootKnightAI.tscn" id="36_c1pur"]
+[ext_resource type="Texture2D" uid="uid://rudac0x7kpaj" path="res://assets/2.png" id="37_7ub3u"]
+[ext_resource type="Script" uid="uid://djvjp04eqmhrw" path="res://assets/Enemies/Data/Enemies/Dialogue/DialogueInstance.gd" id="38_li6wq"]
 [ext_resource type="Script" uid="uid://by1n1serxe8is" path="res://assets/Data/NewScenes/sfxPlayer.gd" id="38_pkylx"]
+[ext_resource type="Script" uid="uid://b3icxqpmtwr18" path="res://assets/Data/Entities/EnemyBattlerStats.gd" id="39_jiv1t"]
+[ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="40_h2n7a"]
 [ext_resource type="Script" uid="uid://bs3r5fddsx6y5" path="res://scripts/enemy_turn_order_manager.gd" id="45_sotth"]
 [ext_resource type="Script" uid="uid://cy7yn1fq5hrgv" path="res://scripts/enemy_manager.gd" id="46_qkuvq"]
 
@@ -54,7 +58,16 @@ shader = ExtResource("20_w5vtb")
 shader_parameter/blur_amount = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gyek"]
-size = Vector2(1262.6399, 378.95313)
+size = Vector2(1246.9777, 360.58)
+
+[sub_resource type="Resource" id="Resource_sqjrh"]
+script = ExtResource("39_jiv1t")
+Resists = 2
+Battler_Art_Normal = ExtResource("37_7ub3u")
+DamageBonus = 5.0
+entity_name = "Foot Knight"
+Battler_Type = 1
+metadata/_custom_type_script = "uid://b3icxqpmtwr18"
 
 [node name="BattleScene" type="Node2D" unique_id=560536288]
 process_mode = 3
@@ -135,7 +148,7 @@ testdamage = ExtResource("7_451j8")
 layer = 2
 
 [node name="Hand" parent="Control_Layer/Control_Base/Base_Margin/StandbyContainer/HandLayer" unique_id=418394277 groups=["hand"] instance=ExtResource("5_xwocj")]
-position = Vector2(152.187, 309.23)
+position = Vector2(112.187004, 309.22998)
 scale = Vector2(0.8, 0.8)
 
 [node name="MarginContainer" type="MarginContainer" parent="Control_Layer/Control_Base/Base_Margin" unique_id=514336235]
@@ -402,7 +415,7 @@ collision_layer = 2
 visibility_layer = 1025
 z_index = 4
 z_as_relative = false
-position = Vector2(643.07324, 306.21173)
+position = Vector2(650.90436, 275.4735)
 shape = SubResource("RectangleShape2D_1gyek")
 debug_color = Color(1, 1, 1, 0)
 
@@ -494,7 +507,7 @@ enemy_ai = ExtResource("36_c1pur")
 [node name="EnemyStatManager2" type="Node" parent="Functionality" unique_id=1517701786 node_paths=PackedStringArray("enemy")]
 script = ExtResource("10_rgo70")
 enemy = NodePath("../../Control_Layer/Enemy2")
-Entity = ExtResource("35_c1pur")
+Entity = SubResource("Resource_sqjrh")
 enemy_ai = ExtResource("36_c1pur")
 
 [node name="ResourceUIManager" type="Node" parent="Functionality" unique_id=522749599]

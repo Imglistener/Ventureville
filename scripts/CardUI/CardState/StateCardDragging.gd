@@ -20,9 +20,10 @@ func enter() -> void:
 	
 
 func exit() -> void:
+	card_UI.reset_live_preview()
 	card_UI.tween = card_UI.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	card_UI.tween.tween_property(card_UI, "rotation", 0.0, 0.2)
-
+	
 func on_input(event: InputEvent) -> void:
 	var single_targeted := card_UI.card_data.is_SingleTarget()
 	var mouse_motion := event is InputEventMouseMotion

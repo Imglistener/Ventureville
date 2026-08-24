@@ -19,13 +19,11 @@ const RAND_OFFSET := 30  # Max pixels of random spread
 
 func display_effect(status: StatusEffect, is_from_player: bool, source_position: Vector2, wore_off: bool = false) -> void:
 	var color : Color
-	var text : String = str(status.status_name)
-	var font_size: int = 40
-	if text == "BloodSyphon":
-		text = "Blood Syphon"
-	var offset := Vector2(randf_range(-RAND_OFFSET, RAND_OFFSET), randf_range(-RAND_OFFSET * 0.5, RAND_OFFSET * 0.5))
-	_spawn_label(text, color, font_size, is_from_player, source_position + offset, true)
-	
+	var font_size: int = 30
+	if status is BloodSyphon:
+		var text = "Blood Syphon"
+		color = COLORS["Blood Syphon"]
+		_spawn_label(text, color, font_size, is_from_player, source_position - Vector2(150, 150), wore_off)
 	
 
 func display_number(value: int, is_from_player: bool, source_position: Vector2, is_crit: bool = false) -> void:

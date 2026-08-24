@@ -1,6 +1,7 @@
 extends AudioStreamPlayer
 var playback: AudioStreamPlaybackPolyphonic
 var type_sound_id: int = AudioStreamPlaybackPolyphonic.INVALID_ID
+
 func _ready() -> void:
 	stream = AudioStreamPolyphonic.new()
 	play()

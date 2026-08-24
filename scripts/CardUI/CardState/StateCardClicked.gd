@@ -5,6 +5,7 @@ func enter() -> void:
 	card_UI.sfx.play()
 	card_UI.drop_point_detector.monitoring = true
 	
+	
 
 func on_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

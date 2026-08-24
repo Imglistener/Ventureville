@@ -14,6 +14,7 @@ func enter() -> void:
 		await card.tree_exited
 		hand.arrange_hand()
 		hand.define_playable()
+	card_UI.drop_point_detector.monitoring = false
 func process(_delta: float) -> void:		
 	if played:
 		return

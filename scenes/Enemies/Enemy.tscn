@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dkr62mk01xwek" path="res://assets/KennyUI/Border/panel-border-005.png" id="8_mh1ew"]
 [ext_resource type="Script" uid="uid://cdivs16ftli1n" path="res://scripts/bars/animated_bar.gd" id="9_6hsbo"]
 [ext_resource type="LabelSettings" uid="uid://cwvkv70rf748a" path="res://assets/Label_Settings.tres" id="10_xox7x"]
+[ext_resource type="Texture2D" uid="uid://dp5d7o5axqpuv" path="res://assets/GUI/Resists.png" id="13_ht5qr"]
+[ext_resource type="Texture2D" uid="uid://b8pp7te4ajl00" path="res://assets/GUI/Vulnerable.png" id="14_myw8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjvsk"]
 size = Vector2(494.297, 314.11603)
@@ -163,6 +165,8 @@ _data = {
 [node name="Enemy" type="Area2D" unique_id=438713798 groups=["Enemies"]]
 collision_layer = 4
 script = ExtResource("1_6vx3i")
+resistant_icon = ExtResource("13_ht5qr")
+vulnerable_icon = ExtResource("14_myw8k")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1067368722]
 scale = Vector2(0.76, 0.76)
@@ -370,7 +374,22 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 
+[node name="DamageRes" type="MarginContainer" parent="EnemyBarsContainer/MarginContainer" unique_id=466232217]
+layout_mode = 2
+theme_override_constants/margin_top = 49
+theme_override_constants/margin_bottom = -52
+
+[node name="Resists" type="TextureRect" parent="EnemyBarsContainer/MarginContainer/DamageRes" unique_id=575211709]
+visible = false
+custom_minimum_size = Vector2(90, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("13_ht5qr")
+expand_mode = 1
+stretch_mode = 4
+
 [node name="DmgNumbers" type="Marker2D" parent="." unique_id=1345748465]
+visible = false
 position = Vector2(0, -233)
 
 [node name="Death" type="AnimationPlayer" parent="." unique_id=72518885]

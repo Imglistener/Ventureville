@@ -1,6 +1,6 @@
 class_name StatusEffect extends Resource
 
-enum StatusEffects{Burning, Frostbite, BloodSyphon, Horrified, Concussed, Stunned, Withering}
+enum StatusEffects{Burning, Frostbite, BloodSyphon, Horrified, Concussed, Stunned, Withering, DamageUp, Regeneration}
 var current_duration : int = 0
 
 @export var status_name : StatusEffects
@@ -19,8 +19,10 @@ func on_tick(_target: BaseBattlerStats) -> void:
 	pass
 
 func on_remove(_target: BaseBattlerStats) -> void:
-	pass
-
+	var existing = find_same_effect(_target.ActiveEffects)
+	if existing:
+		_target.ActiveEffects.erase(existing)
+		
 func is_applicable(targets: Array[Node]) -> bool:
 	return false
 

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Regeneration" format=3 uid="uid://c3rlpuyyf0q7e"]
+
+[ext_resource type="Script" uid="uid://obt7t7nyffks" path="res://assets/Status Effects/Buffs/Regeneration.gd" id="1_nkrwk"]
+[ext_resource type="Texture2D" uid="uid://nwbaa834nv8h" path="res://assets/PNG/Btn08.png" id="2_3t4n8"]
+
+[resource]
+script = ExtResource("1_nkrwk")
+status_name = 8
+status_icon = ExtResource("2_3t4n8")
+status_description = "\"Target Heals twice the remaining Duration each Standby.\" "
+metadata/_custom_type_script = "uid://obt7t7nyffks"

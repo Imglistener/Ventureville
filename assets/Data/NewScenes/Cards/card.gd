@@ -40,10 +40,10 @@ var log : Log
 var ControlBase : Control
 
 func _ready() -> void:
+	drop_point_detector.monitoring = false
 	card_name.text = str(card_data.name)
 	card_type.text = str(card_data.Type.keys()[card_data.type])
-	card_data.Description =	card_data.get_description(player_stats)
-	card_effect.text = str(card_data.Description)
+	card_effect.text = card_data.get_description(player_stats)
 	cost.text = str(card_data.ap_cost)
 	mp_cost.text = str(card_data.mp_cost)
 	card_state_manager.init(self)
@@ -56,7 +56,7 @@ func _ready() -> void:
 	if ControlBase:
 		if not CardClicked.is_connected(ControlBase.on_trigger_pressed):
 			CardClicked.connect(ControlBase.on_trigger_pressed)
-
+			
 func _process(delta: float) -> void:
 	card_state_manager.process(delta)
 
@@ -77,13 +77,13 @@ func play() -> void:
 	if not card_data:
 		return
 	log.text += '[br]' + card_data.LogMessage
+	reset_live_preview()
 	is_playable.visible = false
 	card_data.activate_card(targets, player_stats)
 	animate_out()
 
 func update_description() -> void:
-	card_data.Description = card_data.get_description(player_stats)
-	card_effect.text = card_data.Description
+	card_effect.text = card_data.get_description(player_stats)
 
 func animate_out() -> void:
 	if not deck_position or not Discard_position:
@@ -171,6 +171,23 @@ func _gui_input(event: InputEvent) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if not targets.has(area):
 		targets.append(area)
-		
+	_update_live_preview()
+	
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	targets.erase(area)
+	_update_live_preview()
+
+func _update_live_preview() -> void:
+	if not card_data:
+		return
+	if targets.is_empty():
+		reset_live_preview()
+		return
+	var live_targets := targets if card_data.is_SingleTarget() else card_data._get_targets(targets)
+	card_effect.text = card_data.get_live_description(player_stats, live_targets)
+
+func reset_live_preview() -> void:
+	if not card_data:
+		return
+	card_effect.text = card_data.get_description(player_stats)
+	Events.hide_enemy_resistances.emit()

@@ -5,19 +5,31 @@ class_name ActiveEffectManager extends Node
 @onready var player_view: PlayerView = $"../../Control_Layer/Control_Base/Base_Margin/MarginContainer/PlayerView"
 @onready var phase_manager: PhaseManager = $"../PhaseManager"
 
-var _effect_cycle_timer: Timer
-var _player_effect_index: int = 0
-var _is_player_icon_hovered: bool = false
 const EFFECT_DISPLAY_DURATION: float = 2.0
-const ENEMY_TICK_DELAY: float = 0.3  
+const ENEMY_TICK_DELAY: float = 0.3
 
-var _enemy_entries: Dictionary = {}
-var _enemy_order: Array[Stat_Manager] = []
+class EffectDisplayEntry:
+	var stat_manager: Stat_Manager
+	var icon: TextureRect
+	var label: Label
+	var get_effects: Callable
+	var index: int = 0
+	var hovered: bool = false
+
+	func _init(sm: Stat_Manager, icon_: TextureRect, label_: Label, get_effects_: Callable) -> void:
+		stat_manager = sm
+		icon = icon_
+		label = label_
+		get_effects = get_effects_
+
+var _entries: Dictionary = {}          # Stat_Manager -> EffectDisplayEntry
+var _entry_order: Array[Stat_Manager] = []
+var _effect_cycle_timer: Timer
 
 
 func _ready() -> void:
 	_setup_effect_cycle_timer()
-	_connect_player_icon_hover_signal()
+	_register_player()
 
 	enemy_manager.connect_and_catch_up(_on_enemy_registered)
 	enemy_manager.enemy_unregistered.connect(_on_enemy_unregistered)
@@ -36,100 +48,82 @@ func _setup_effect_cycle_timer() -> void:
 	add_child(_effect_cycle_timer)
 
 
-func _connect_player_icon_hover_signal() -> void:
-	var player_icon = player_view.player_bars_container.statuseffecticon
-	player_icon.mouse_entered.connect(func(): _is_player_icon_hovered = true; _check_pause_timer())
-	player_icon.mouse_exited.connect(func(): _is_player_icon_hovered = false; _check_pause_timer())
+func _register_player() -> void:
+	var entry := EffectDisplayEntry.new(
+		player_stat_manager,
+		player_view.player_bars_container.statuseffecticon,
+		player_view.player_bars_container.turns_remaining,
+		func(): return player_stat_manager.Player.ActiveEffects
+	)
+	_add_entry(player_stat_manager, entry)
 
 
 func _on_enemy_registered(view: EnemyView, stat_manager: Stat_Manager) -> void:
-	if _enemy_entries.has(stat_manager):
+	if _entries.has(stat_manager):
 		return
-	_enemy_entries[stat_manager] = {"view": view, "index": 0, "hovered": false}
-	_enemy_order.append(stat_manager)
-
-	var icon = view.enemy_bars_container.statuseffecticon
-	icon.mouse_entered.connect(_on_enemy_icon_hover.bind(stat_manager, true))
-	icon.mouse_exited.connect(_on_enemy_icon_hover.bind(stat_manager, false))
-
-
-func _on_enemy_unregistered(view: EnemyView, stat_manager: Stat_Manager) -> void:
-	if stat_manager and _enemy_entries.has(stat_manager):
-		_enemy_entries.erase(stat_manager)
-		_enemy_order.erase(stat_manager)
+	var entry := EffectDisplayEntry.new(
+		stat_manager,
+		view.enemy_bars_container.statuseffecticon,
+		view.enemy_bars_container.turns_remaining,
+		func(): return stat_manager.Entity.ActiveEffects
+	)
+	_add_entry(stat_manager, entry)
 
 
-func _on_enemy_icon_hover(stat_manager: Stat_Manager, hovered: bool) -> void:
-	if _enemy_entries.has(stat_manager):
-		_enemy_entries[stat_manager]["hovered"] = hovered
+func _add_entry(stat_manager: Stat_Manager, entry: EffectDisplayEntry) -> void:
+	_entries[stat_manager] = entry
+	_entry_order.append(stat_manager)
+	entry.icon.mouse_entered.connect(_on_icon_hover.bind(stat_manager, true))
+	entry.icon.mouse_exited.connect(_on_icon_hover.bind(stat_manager, false))
+
+
+func _on_enemy_unregistered(_view: EnemyView, stat_manager: Stat_Manager) -> void:
+	if stat_manager and _entries.has(stat_manager):
+		_entries.erase(stat_manager)
+		_entry_order.erase(stat_manager)
+
+
+func _on_icon_hover(stat_manager: Stat_Manager, hovered: bool) -> void:
+	if _entries.has(stat_manager):
+		_entries[stat_manager].hovered = hovered
 	_check_pause_timer()
 
 
 func _check_pause_timer() -> void:
-	var any_enemy_hovered := false
-	for entry in _enemy_entries.values():
-		if entry["hovered"]:
-			any_enemy_hovered = true
-			break
-	_effect_cycle_timer.paused = _is_player_icon_hovered or any_enemy_hovered
+	for entry in _entries.values():
+		if entry.hovered:
+			_effect_cycle_timer.paused = true
+			return
+	_effect_cycle_timer.paused = false
 
 
 func _on_effect_cycle_tick() -> void:
-	_advance_player_effect()
-	for stat_manager in _enemy_order:
-		_advance_enemy_effect(stat_manager)
+	for stat_manager in _entry_order:
+		_advance_entry(_entries[stat_manager])
 
 
-func _advance_player_effect() -> void:
-	var effects = player_stat_manager.Player.ActiveEffects.filter(func(e): return e != null)
-	if effects.is_empty():
-		player_view.player_bars_container.statuseffecticon.texture = null
-		player_view.player_bars_container.turns_remaining.text = ""
-		return
-	if effects.size() == 1:
-		player_view.player_bars_container.statuseffecticon.texture = effects[0].status_icon
-		player_view.player_bars_container.turns_remaining.text = str(effects[0].current_duration)
-		return
-	_player_effect_index = _player_effect_index % effects.size()
-	var effect = effects[_player_effect_index]
-	_tween_icon_swap(
-		player_view.player_bars_container.statuseffecticon,
-		player_view.player_bars_container.turns_remaining,
-		effect
-	)
-	_player_effect_index = (_player_effect_index + 1) % effects.size()
-
-
-func _advance_enemy_effect(stat_manager: Stat_Manager) -> void:
-	var entry: Dictionary = _enemy_entries.get(stat_manager)
-	if not entry:
-		return
-	var view: EnemyView = entry["view"]
-	var effects = stat_manager.Entity.ActiveEffects.filter(func(e): return e != null)
+func _advance_entry(entry: EffectDisplayEntry) -> void:
+	var effects: Array = entry.get_effects.call().filter(func(e): return e != null)
 
 	if effects.is_empty():
-		view.enemy_bars_container.statuseffecticon.texture = null
-		view.enemy_bars_container.turns_remaining.text = ""
-		return
-	if effects.size() == 1:
-		view.enemy_bars_container.statuseffecticon.texture = effects[0].status_icon
-		view.enemy_bars_container.turns_remaining.text = str(effects[0].current_duration)
+		entry.icon.texture = null
+		entry.label.text = ""
 		return
 
-	entry["index"] = entry["index"] % effects.size()
-	var effect = effects[entry["index"]]
-	_tween_icon_swap(
-		view.enemy_bars_container.statuseffecticon,
-		view.enemy_bars_container.turns_remaining,
-		effect
-	)
-	entry["index"] = (entry["index"] + 1) % effects.size()
+	entry.index = entry.index % effects.size()
+	var effect = effects[entry.index]
+
+	if effects.size() == 1:
+		entry.icon.texture = effect.status_icon
+		entry.label.text = str(effect.current_duration)
+	else:
+		_tween_icon_swap(entry.icon, entry.label, effect)
+
+	entry.index = (entry.index + 1) % effects.size()
 
 
 func _tween_icon_swap(icon: TextureRect, label: Label, effect: Resource) -> void:
-	var tween = create_tween()
-	tween.set_parallel(false)
-
+	var tween := create_tween()
 	tween.tween_property(icon, "modulate:a", 0.0, 0.15)
 	tween.tween_callback(func():
 		icon.texture = effect.status_icon
@@ -139,27 +133,32 @@ func _tween_icon_swap(icon: TextureRect, label: Label, effect: Resource) -> void
 
 
 func display_active_effects() -> void:
-	_player_effect_index = 0
-	for stat_manager in _enemy_order:
-		_enemy_entries[stat_manager]["index"] = 0
+	for stat_manager in _entry_order:
+		_entries[stat_manager].index = 0
 	_on_effect_cycle_tick()
 
 ########################################################################
 
-func tick_effects(target: Stat_Manager) -> void:
-	var target_array
+func tick_effects(stat_manager: Stat_Manager) -> void:
 	var target_stats
-	if target.Entity is CharacterInstance:
-		target_array = target.Player.ActiveEffects
-		target_stats = target.Player
-	elif target.Entity is EnemyBattlerStats:
-		target_stats = target.Entity
-		target_array = target.Entity.ActiveEffects
+	var target_array: Array
+
+	if stat_manager.Entity is CharacterInstance:
+		target_stats = stat_manager.Player
+		target_array = stat_manager.Player.ActiveEffects
+	elif stat_manager.Entity is EnemyBattlerStats:
+		target_stats = stat_manager.Entity
+		target_array = stat_manager.Entity.ActiveEffects
 	else:
 		return
+
 	for i in range(target_array.size() - 1, -1, -1):
-		if target_array[i] is StatusEffect:
-			target_array[i].on_tick(target_stats)
+		var effect = target_array[i]
+		if effect is StatusEffect:
+			effect.on_tick(target_stats)
+			if effect.current_duration <= 0 and target_array.has(effect):
+				effect.on_remove(target_stats)
+
 	display_active_effects()
 
 
@@ -174,7 +173,8 @@ func _on_enemy_battle_end() -> void:
 
 
 func _tick_enemies_sequentially() -> void:
-	for stat_manager in _enemy_order:
-		tick_effects(stat_manager)
-		if stat_manager != _enemy_order.back():
+	var enemies := _entry_order.filter(func(sm): return sm != player_stat_manager)
+	for i in enemies.size():
+		tick_effects(enemies[i])
+		if i < enemies.size() - 1:
 			await get_tree().create_timer(ENEMY_TICK_DELAY, true, false, false).timeout

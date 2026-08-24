@@ -53,6 +53,8 @@ func load_stats() -> void:
 				_max_san = stat_instance.stat_total_value
 	Stats_Changed.emit()
 
+
+
 func reset_block() -> void:
 	current_block = 0
 	current_san_block = 0
@@ -76,7 +78,7 @@ func san_heal(amount: int) -> void:
 	self.current_sanity = clampi(self.current_sanity + amount, 0, self.Max_SAN)
 	
 func take_damage(amount: int, damagetype: DamageType) -> void:
-	self.current_health -= amount
+	self.current_health -= amount + buff_damage_modifier
 func take_san_damage(amount: int) -> void:
 	self.current_sanity -= amount
 	

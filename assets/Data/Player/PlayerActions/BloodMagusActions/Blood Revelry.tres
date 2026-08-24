@@ -4,12 +4,13 @@
 
 [resource]
 script = ExtResource("1_uaevp")
+DamageUpDuration = 2
 name = "Blood Revelry"
 rarity = 1
 type = 1
 target = 1
 mp_cost = 2
 ap_cost = 1
-Description = "Clear all Blood Syphon from a Target. Heal 3 and gain +1 Damage for each stack Cleared. Lasts for 1 turn."
+Description = "Clear all Blood Syphon from a Target. Heal 3 and gain +1 Damage for each stack Cleared. Lasts for 2 turns."
 LogMessage = "\"The essence of your foes, it fills you with confidence!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

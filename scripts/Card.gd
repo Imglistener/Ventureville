@@ -16,6 +16,9 @@ enum Rarities{Common, Rare, Legendary}
 func is_SingleTarget() -> bool:
 	return target == Target.ONEENEMY
 
+func get_live_description(_character: CharacterInstance, _live_targets: Array[Node]) -> String:
+	return get_description(_character) if has_method("get_description") else Description
+
 func _get_targets(targets: Array[Node]) -> Array[Node]:
 	if not targets:
 		return []

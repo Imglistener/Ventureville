@@ -3,7 +3,7 @@ var tree
 var applied_to: BaseBattlerStats
 var amount: int
 func _init() -> void:
-	status_icon = preload("res://assets/GUI/AttackUP.png")
+	status_icon = preload("res://assets/GUI/Attack_UP_icon.png")
 func on_apply(targets: Array[Node], duration : int = 1) -> void:
 	if targets[0]:
 		tree = targets[0].get_tree()
