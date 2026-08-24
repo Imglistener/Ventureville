@@ -4,8 +4,7 @@ const MAGIC_ARC : int = 8
 
 @onready var area_2d: Area2D = $Area2D
 @onready var Ark: MagicArc = $ARK/Line2D
-@onready var enemy: EnemyView = $"../../Control_Layer/Enemy"
-
+var current_target_enemy: EnemyView = null
 var current_card : CardUI
 var targeting := false
 var border_tweens: Dictionary = {}
@@ -80,10 +79,10 @@ func _on_card_aim_ended(_card: CardUI) -> void:
 	area_2d.monitoring = false
 	area_2d.monitorable = false
 	current_card = null
-	var border := enemy.border
-	if border:
-		border.visible = false
-		_clear_border(border)
+	if current_target_enemy and current_target_enemy.border:
+		current_target_enemy.border.visible = false
+		_clear_border(current_target_enemy.border)
+	current_target_enemy = null
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if not current_card or not targeting:
@@ -91,17 +90,21 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if not current_card.is_ancestor_of(area):
 		current_card.targets.append(area)
 		Ark.set_targeted()
-		var border := enemy.border
-		if border:
-			border.visible = true
-			_pulse_border(border)
+		var target_enemy := area as EnemyView
+		if target_enemy:
+			current_target_enemy = target_enemy
+			if target_enemy.border:
+				target_enemy.border.visible = true
+				_pulse_border(target_enemy.border)
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if not current_card or not targeting:
 		return
 	current_card.targets.erase(area)
 	Ark.set_idle()
-	var border := enemy.border
-	if border:
-		border.visible = false
-		_clear_border(border)
+	var target_enemy := area as EnemyView
+	if target_enemy and target_enemy.border:
+		target_enemy.border.visible = false
+		_clear_border(target_enemy.border)
+	if current_target_enemy == target_enemy:
+		current_target_enemy = null

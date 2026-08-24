@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://bqtf5udkjk5ck"]
+
+[ext_resource type="Script" uid="uid://bqke2kfn75vda" path="res://assets/Data/Player/PlayerActions/CardEffects/BloodRevelry.gd" id="1_uaevp"]
+
+[resource]
+script = ExtResource("1_uaevp")
+DamageUpDuration = 2
+name = "Blood Revelry"
+rarity = 1
+type = 1
+target = 1
+mp_cost = 2
+ap_cost = 1
+Description = "Clear all Blood Syphon from a Target. Heal 3 and gain +1 Damage for each stack Cleared. Lasts for 2 turns."
+LogMessage = "\"The essence of your foes, it fills you with confidence!\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

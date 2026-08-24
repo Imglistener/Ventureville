@@ -1,0 +1,18 @@
+[gd_resource type="Resource" format=3 uid="uid://da7agmvhlfw1p"]
+
+[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="1_epbsp"]
+[ext_resource type="Script" uid="uid://dgrnd3rrnnssm" path="res://assets/Data/Player/PlayerActions/CardEffects/SyphonEssence.gd" id="2_3jcpk"]
+[ext_resource type="Resource" uid="uid://c3rlpuyyf0q7e" path="res://assets/Status Effects/Buffs/Regeneration.tres" id="2_523bt"]
+
+[resource]
+script = ExtResource("2_3jcpk")
+BloodSyphonEffect = ExtResource("1_epbsp")
+RegenEffect = ExtResource("2_523bt")
+name = "Syphon Essence"
+type = 2
+target = 1
+mp_cost = 2
+ap_cost = 1
+Description = "Apply 5 Blood Syphon to a Target. Gain that much Regeneration."
+LogMessage = "\"Your enemy's life force  is yours!\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

@@ -1,0 +1,251 @@
+[gd_scene format=3 uid="uid://ba11nm04rufpg"]
+
+[ext_resource type="Shader" uid="uid://ds0oi5spicmse" path="res://assets/Data/NewScenes/Scroll.gdshader" id="1_5fw15"]
+[ext_resource type="Texture2D" uid="uid://csgwkwwy343rx" path="res://background.png" id="2_5fw15"]
+[ext_resource type="Texture2D" uid="uid://cx76h8fp6cixc" path="res://assets/venture.png" id="2_wv1hi"]
+[ext_resource type="Texture2D" uid="uid://dkr62mk01xwek" path="res://assets/KennyUI/Border/panel-border-005.png" id="3_wv3ba"]
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="4_1y24m"]
+[ext_resource type="Script" uid="uid://dnxw7v8o1v4ds" path="res://assets/Data/NewScenes/menu.gd" id="5_cyk10"]
+[ext_resource type="Script" uid="uid://cumib5hreuqhc" path="res://assets/Data/Scripts/menusoundsystem.gd" id="5_g3xed"]
+[ext_resource type="AudioStream" uid="uid://dthpwusghe2wg" path="res://assets/hover.wav" id="6_ev6ap"]
+[ext_resource type="Shader" uid="uid://cn0qexl43jnt" path="res://assets/Data/NewScenes/btns.gdshader" id="6_phpw1"]
+[ext_resource type="AudioStream" uid="uid://diyc8a23kpu7b" path="res://assets/click.wav" id="7_cema7"]
+[ext_resource type="AudioStream" uid="uid://b6rhlqaei2c1p" path="res://assets/backmusic.mp3" id="8_ev6ap"]
+[ext_resource type="PackedScene" uid="uid://x7vpyvvyiqmh" path="res://assets/Data/NewScenes/menu_functionality.tscn" id="8_psem4"]
+[ext_resource type="Shader" uid="uid://b3isi0mn6v52j" path="res://assets/Data/NewScenes/blur.gdshader" id="9_psem4"]
+[ext_resource type="PackedScene" uid="uid://bry8jp3ptxan4" path="res://settings_menu.tscn" id="9_rmcc2"]
+[ext_resource type="Script" uid="uid://bks2iopiopm0u" path="res://scripts/buttons_manager.gd" id="11_yg3jl"]
+[ext_resource type="PackedScene" uid="uid://dj8ypdap4kava" path="res://assets/Data/NewScenes/confirmation_menu.tscn" id="12_d8q3p"]
+[ext_resource type="PackedScene" uid="uid://bqemt5b2t7onn" path="res://assets/Data/NewScenes/game_menu.tscn" id="14_2cw05"]
+[ext_resource type="Script" uid="uid://by1n1serxe8is" path="res://assets/Data/NewScenes/sfxPlayer.gd" id="16_718u8"]
+[ext_resource type="Script" uid="uid://bdf3wn0cm3yhg" path="res://assets/Data/NewScenes/MenuGameManager.gd" id="19_lek1t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyk10"]
+shader = ExtResource("1_5fw15")
+shader_parameter/intensity = 0.1690000080275
+shader_parameter/softness = 0.6050000287375
+shader_parameter/scroll_speed = 0.05000009737499988
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_718u8"]
+shader = ExtResource("6_phpw1")
+shader_parameter/offset_x = -89.99998052500001
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_phpw1"]
+shader = ExtResource("6_phpw1")
+shader_parameter/offset_x = -89.99998052500001
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lek1t"]
+shader = ExtResource("6_phpw1")
+shader_parameter/offset_x = -89.99998052500001
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cw05"]
+shader = ExtResource("9_psem4")
+shader_parameter/blur_amount = 0.0
+
+[node name="MainControl" type="Control" unique_id=715438311]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1651528106]
+layer = -100
+
+[node name="Wallpaper" type="TextureRect" parent="Background" unique_id=1048155814]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_cyk10")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_5fw15")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/Wallpaper" unique_id=516389457]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 65
+
+[node name="TextureRect" type="TextureRect" parent="Background/Wallpaper/MarginContainer" unique_id=1946691153]
+custom_minimum_size = Vector2(500, 720)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("2_wv1hi")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Background/Wallpaper/MarginContainer" unique_id=429785807]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Version "
+
+[node name="MainContainer" type="MarginContainer" parent="." unique_id=30098144]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 45
+theme_override_constants/margin_bottom = 20
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuMargin" type="MarginContainer" parent="MainContainer" unique_id=1989916133]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="MenuBackgrounds" type="VBoxContainer" parent="MainContainer/MenuMargin" unique_id=710410546]
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 56
+alignment = 1
+
+[node name="Selected1" type="NinePatchRect" parent="MainContainer/MenuMargin/MenuBackgrounds" unique_id=727623435]
+custom_minimum_size = Vector2(120.72, 80)
+layout_mode = 2
+texture = ExtResource("3_wv3ba")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Selected2" type="NinePatchRect" parent="MainContainer/MenuMargin/MenuBackgrounds" unique_id=1744076097]
+custom_minimum_size = Vector2(120.72, 80)
+layout_mode = 2
+texture = ExtResource("3_wv3ba")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Selected3" type="NinePatchRect" parent="MainContainer/MenuMargin/MenuBackgrounds" unique_id=913192082]
+custom_minimum_size = Vector2(120.72, 80)
+layout_mode = 2
+texture = ExtResource("3_wv3ba")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MenuButtons" type="VBoxContainer" parent="MainContainer/MenuMargin" unique_id=1602621820]
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 68
+alignment = 1
+script = ExtResource("5_cyk10")
+launch_on_ready = true
+
+[node name="StartGame" type="Button" parent="MainContainer/MenuMargin/MenuButtons" unique_id=356865429]
+material = SubResource("ShaderMaterial_718u8")
+layout_mode = 2
+theme = ExtResource("4_1y24m")
+theme_override_colors/font_pressed_color = Color(0.51953125, 0.51953125, 0.51953125, 1)
+theme_override_colors/font_hover_color = Color(0.96875, 0.9010191, 0.6697998, 1)
+theme_override_font_sizes/font_size = 38
+text = "Start Game"
+
+[node name="Options" type="Button" parent="MainContainer/MenuMargin/MenuButtons" unique_id=2086746462]
+material = SubResource("ShaderMaterial_phpw1")
+layout_mode = 2
+theme = ExtResource("4_1y24m")
+theme_override_colors/font_pressed_color = Color(0.51953125, 0.51953125, 0.51953125, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8864746, 0.765625, 1)
+theme_override_font_sizes/font_size = 38
+text = "Options"
+
+[node name="ExitGame" type="Button" parent="MainContainer/MenuMargin/MenuButtons" unique_id=459479986]
+material = SubResource("ShaderMaterial_lek1t")
+layout_mode = 2
+theme = ExtResource("4_1y24m")
+theme_override_colors/font_pressed_color = Color(0.51953125, 0.51953125, 0.51953125, 1)
+theme_override_colors/font_hover_color = Color(1, 0.93362427, 0.70703125, 1)
+theme_override_font_sizes/font_size = 38
+text = "Exit Game"
+
+[node name="MenuSound" type="Node" parent="MainContainer/MenuMargin/MenuButtons" unique_id=1143633670]
+script = ExtResource("5_g3xed")
+hoversfx = ExtResource("6_ev6ap")
+clickSfx = ExtResource("7_cema7")
+
+[node name="MenuFunctionality" parent="MainContainer/MenuMargin/MenuButtons" unique_id=1426699049 node_paths=PackedStringArray("Menu", "Selection") instance=ExtResource("8_psem4")]
+Menu = NodePath("..")
+Selection = NodePath("../../MenuBackgrounds")
+
+[node name="MainGameContainer" parent="." unique_id=1045209314 instance=ExtResource("14_2cw05")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 490.0
+offset_bottom = 600.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="SeparatorLayer" type="CanvasLayer" parent="." unique_id=590689728]
+layer = 0
+
+[node name="Pause Blur" type="ColorRect" parent="SeparatorLayer" unique_id=550968360]
+process_mode = 3
+material = SubResource("ShaderMaterial_2cw05")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.57032317, 0.57032317, 0.57032317, 0.28300002)
+metadata/_edit_lock_ = true
+
+[node name="SettingsMenu" parent="SeparatorLayer" unique_id=1148530878 instance=ExtResource("9_rmcc2")]
+visible = false
+offset_left = -432.0
+offset_top = -250.0
+offset_right = 432.0
+offset_bottom = 250.0
+hover_sfx = ExtResource("6_ev6ap")
+click_sfx = ExtResource("7_cema7")
+
+[node name="ConfirmationMenu" parent="SeparatorLayer" unique_id=1762095933 instance=ExtResource("12_d8q3p")]
+visible = false
+offset_top = 350.0
+offset_bottom = 650.0
+
+[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=1919179141 groups=["SFXBus"]]
+max_polyphony = 3
+bus = &"SFX"
+script = ExtResource("16_718u8")
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1597455058 groups=["BGMBus"]]
+process_mode = 3
+stream = ExtResource("8_ev6ap")
+volume_db = -11.679
+autoplay = true
+bus = &"BGM"
+playback_type = 1
+
+[node name="Extra" type="AudioStreamPlayer" parent="." unique_id=197545972 groups=["SFXBus"]]
+
+[node name="ButtonsManager" type="Node" parent="." unique_id=1567339997]
+script = ExtResource("11_yg3jl")
+
+[node name="GameStateManager" type="Node" parent="." unique_id=1965692829]
+script = ExtResource("19_lek1t")

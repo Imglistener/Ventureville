@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://byl4wjrvc8avn"]
+
+[ext_resource type="Script" uid="uid://b57o0qhyeejnf" path="res://assets/Data/EnemyActions/Inflame.gd" id="1_adytb"]
+[ext_resource type="AudioStream" uid="uid://cdpg4x53v00cu" path="res://assets/SFX/Gladius.wav" id="2_mcg25"]
+
+[node name="BuffAction" type="Node" unique_id=1089871370]
+script = ExtResource("1_adytb")
+ActionEffect = 4
+SoundEffect = ExtResource("2_mcg25")
+Description = "\"The beast gathers heat! It is scorching hot!\""

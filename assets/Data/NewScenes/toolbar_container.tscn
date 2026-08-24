@@ -3,13 +3,17 @@
 [ext_resource type="Script" uid="uid://p6bwojul8amu" path="res://assets/Data/NewScenes/toolbar_container.gd" id="1_42ohh"]
 [ext_resource type="Texture2D" uid="uid://bo8cmn5oe17m4" path="res://assets/KennyUI/Border/panel-border-015.png" id="1_s2172"]
 [ext_resource type="Texture2D" uid="uid://bby71buwvwo53" path="res://assets/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_44.png" id="2_42ohh"]
-[ext_resource type="Texture2D" uid="uid://b72j2iee4py8h" path="res://assets/Edinnu_UI_asset_pack/Menu_buttons/Menu_button (1).png" id="3_732sv"]
-[ext_resource type="Texture2D" uid="uid://bwy6nqsfoc14g" path="res://assets/Wenrexa/PNG/Btn_Question.png" id="4_kypne"]
-[ext_resource type="Texture2D" uid="uid://cjswaqly8ch3m" path="res://assets/Wenrexa/PNG/Icon_deck.png" id="5_8n8w1"]
-[ext_resource type="Texture2D" uid="uid://r7s4o67r50w3" path="res://assets/GUI/Icon65.png" id="6_euu2n"]
+[ext_resource type="Texture2D" uid="uid://dkr62mk01xwek" path="res://assets/KennyUI/Border/panel-border-005.png" id="4_euu2n"]
+[ext_resource type="Texture2D" uid="uid://bbnqgjgdplat1" path="res://assets/GUI/Whats_up_info_icon.png" id="5_42ohh"]
+[ext_resource type="Texture2D" uid="uid://b5yocb3d8pe4t" path="res://assets/GUI/Whats_up_info_icon_press.png" id="6_8n8w1"]
+[ext_resource type="Texture2D" uid="uid://cdvcvnc4s31l6" path="res://assets/GUI/View_Deck_button.png" id="7_732sv"]
+[ext_resource type="Texture2D" uid="uid://dwxowh5dhkw5p" path="res://assets/GUI/Whats_up_info_icon_highlighted.png" id="7_euu2n"]
 [ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="7_regow"]
-[ext_resource type="Texture2D" uid="uid://cmfj8g5onuj24" path="res://assets/Edinnu_UI_asset_pack/Menu_buttons/Menu_button (18).png" id="8_sl5rt"]
-[ext_resource type="Script" uid="uid://du5ckfar1fpqk" path="res://assets/Data/NewScenes/turn_counter_label.gd" id="10_42ohh"]
+[ext_resource type="Texture2D" uid="uid://bo4fc51800s21" path="res://assets/GUI/View_Deck_button_press.png" id="9_euu2n"]
+[ext_resource type="Texture2D" uid="uid://6uvu5inxhr5t" path="res://assets/GUI/pause_button.png" id="10_regow"]
+[ext_resource type="Texture2D" uid="uid://djryw3cay4ld7" path="res://assets/GUI/View_Deck_button_highlighted.png" id="10_sl5rt"]
+[ext_resource type="Texture2D" uid="uid://cssutum2bhlmt" path="res://assets/GUI/pause_button_press.png" id="11_sl5rt"]
+[ext_resource type="Texture2D" uid="uid://dmlmwcncoyhmj" path="res://assets/GUI/pause_button_highlighted.png" id="12_27oji"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ho52x"]
 
@@ -18,19 +22,17 @@
 [sub_resource type="LabelSettings" id="LabelSettings_nxbgt"]
 font = ExtResource("7_regow")
 font_size = 14
-font_color = Color(0.037497986, 0.0027770996, 0.35546875, 1)
+font_color = Color(1, 0.890625, 0, 1)
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_16u5j"]
-font = ExtResource("7_regow")
-font_size = 31
-font_color = Color(0, 0, 0, 1)
-outline_size = 8
 
 [node name="toolbar_container" type="MarginContainer" unique_id=82390871]
 material = SubResource("ShaderMaterial_ho52x")
 custom_minimum_size = Vector2(0, 70)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
 size_flags_vertical = 2
 script = ExtResource("1_42ohh")
 
@@ -69,10 +71,11 @@ theme_override_constants/margin_right = 18
 theme_override_constants/margin_bottom = 6
 
 [node name="NavMenu" type="NinePatchRect" parent="toolbar/MarginContainer" unique_id=1831951411]
+self_modulate = Color(0.90588236, 0.7764706, 0.38431373, 1)
 custom_minimum_size = Vector2(212.865, 40)
 layout_mode = 2
 size_flags_horizontal = 8
-texture = ExtResource("3_732sv")
+texture = ExtResource("4_euu2n")
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
@@ -85,123 +88,69 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 8
+mouse_filter = 2
 
 [node name="PauseMenuIcons" type="HBoxContainer" parent="toolbar/MarginContainer/NavMenu/MarginContainer" unique_id=1859210933]
 custom_minimum_size = Vector2(120, 12)
 layout_mode = 2
-size_flags_horizontal = 8
 size_flags_vertical = 4
-theme_override_constants/separation = 18
+mouse_filter = 2
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="Help" type="TextureButton" parent="toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons" unique_id=1965760346]
-custom_minimum_size = Vector2(50, 45)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-texture_normal = ExtResource("4_kypne")
-texture_pressed = ExtResource("4_kypne")
-texture_hover = ExtResource("4_kypne")
-texture_disabled = ExtResource("4_kypne")
-texture_focused = ExtResource("4_kypne")
+texture_normal = ExtResource("5_42ohh")
+texture_pressed = ExtResource("6_8n8w1")
+texture_hover = ExtResource("7_euu2n")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Show Deck" type="TextureButton" parent="toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons" unique_id=1277710609]
-custom_minimum_size = Vector2(50, 45)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-texture_normal = ExtResource("5_8n8w1")
-texture_pressed = ExtResource("5_8n8w1")
-texture_hover = ExtResource("5_8n8w1")
-texture_disabled = ExtResource("5_8n8w1")
-texture_focused = ExtResource("5_8n8w1")
+texture_normal = ExtResource("7_732sv")
+texture_pressed = ExtResource("9_euu2n")
+texture_hover = ExtResource("10_sl5rt")
 ignore_texture_size = true
 stretch_mode = 0
-flip_h = true
 
 [node name="Pause" type="TextureButton" parent="toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons" unique_id=13308016]
-custom_minimum_size = Vector2(50, 45)
+custom_minimum_size = Vector2(40, 30)
 layout_mode = 2
-texture_normal = ExtResource("6_euu2n")
-texture_pressed = ExtResource("6_euu2n")
-texture_hover = ExtResource("6_euu2n")
-texture_disabled = ExtResource("6_euu2n")
-texture_focused = ExtResource("6_euu2n")
+texture_normal = ExtResource("10_regow")
+texture_pressed = ExtResource("11_sl5rt")
+texture_hover = ExtResource("12_27oji")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="toolbar/MarginContainer" unique_id=1495240362]
 layout_mode = 2
-theme_override_constants/separation = 360
+mouse_filter = 2
+theme_override_constants/separation = 300
 
-[node name="NinePatchRect" type="NinePatchRect" parent="toolbar/MarginContainer/HBoxContainer" unique_id=164451611]
-custom_minimum_size = Vector2(190.155, 58)
+[node name="MarginContainer2" type="MarginContainer" parent="toolbar/MarginContainer/HBoxContainer" unique_id=237713965]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("3_732sv")
-region_rect = Rect2(0, 0, 30, 34)
-patch_margin_left = 20
-patch_margin_top = 12
-patch_margin_right = 21
-patch_margin_bottom = 13
-
-[node name="MarginContainer2" type="MarginContainer" parent="toolbar/MarginContainer/HBoxContainer/NinePatchRect" unique_id=237713965]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="toolbar/MarginContainer/HBoxContainer/NinePatchRect/MarginContainer2" unique_id=80393731]
+[node name="VBoxContainer" type="VBoxContainer" parent="toolbar/MarginContainer/HBoxContainer/MarginContainer2" unique_id=80393731]
 layout_mode = 2
 theme_override_constants/separation = -3
 
-[node name="PlayerName" type="Label" parent="toolbar/MarginContainer/HBoxContainer/NinePatchRect/MarginContainer2/VBoxContainer" unique_id=1250253265]
+[node name="PlayerName" type="Label" parent="toolbar/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1250253265]
 layout_mode = 2
-text = "PLAYER NAME"
+text = "PlayerName | ClassName"
 label_settings = SubResource("LabelSettings_nxbgt")
 
-[node name="Currency" type="Label" parent="toolbar/MarginContainer/HBoxContainer/NinePatchRect/MarginContainer2/VBoxContainer" unique_id=1213402671]
+[node name="Currency" type="Label" parent="toolbar/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1213402671]
 layout_mode = 2
-text = "CURRENCY"
+text = "Level"
 label_settings = SubResource("LabelSettings_nxbgt")
 
-[node name="Turn Counter Display" type="NinePatchRect" parent="toolbar/MarginContainer/HBoxContainer" unique_id=26639190]
-custom_minimum_size = Vector2(212.865, 40)
-layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("8_sl5rt")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 20
-
-[node name="MarginContainer" type="MarginContainer" parent="toolbar/MarginContainer/HBoxContainer/Turn Counter Display" unique_id=2016955401]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 8
-
-[node name="Turn_Counter_Label" type="Label" parent="toolbar/MarginContainer/HBoxContainer/Turn Counter Display/MarginContainer" unique_id=1102670266]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Your Turn!"
-label_settings = SubResource("LabelSettings_16u5j")
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("10_42ohh")
+[connection signal="pressed" from="toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Pause" to="." method="on_button_press"]

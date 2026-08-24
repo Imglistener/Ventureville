@@ -10,7 +10,7 @@ func enter() -> void:
 	card_UI.card_targeting = true
 	var offset := Vector2(get_viewport().size.x/2, -card_UI.size.y/ 2)
 	offset.x -= card_UI.size.x / 2
-	card_UI.animate_to_position(card_UI.parent.position + Vector2(200, -50), 0.2)
+	card_UI.animate_to_position(card_UI.parent.position + Vector2(300, -150), 0.2)
 	card_UI.z_index = 100                        # consistent with hover z
 	card_UI.drop_point_detector.monitoring = false
 	Events.card_aim_started.emit(card_UI)

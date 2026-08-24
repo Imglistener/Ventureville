@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://dj8ypdap4kava"]
+
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="1_aer8f"]
+[ext_resource type="Script" uid="uid://cumib5hreuqhc" path="res://assets/Data/Scripts/menusoundsystem.gd" id="2_pg12u"]
+[ext_resource type="AudioStream" uid="uid://dthpwusghe2wg" path="res://assets/hover.wav" id="3_w0roi"]
+[ext_resource type="AudioStream" uid="uid://diyc8a23kpu7b" path="res://assets/click.wav" id="4_m2rp2"]
+[ext_resource type="Texture2D" uid="uid://dkr62mk01xwek" path="res://assets/KennyUI/Border/panel-border-005.png" id="5_q4h3p"]
+[ext_resource type="Script" uid="uid://mone5bchshvg" path="res://scripts/messagebox_functionality.gd" id="6_w0roi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pg12u"]
+bg_color = Color(0, 0, 0, 0.6431373)
+
+[node name="ConfirmationMenu" type="PanelContainer" unique_id=1762095933]
+custom_minimum_size = Vector2(700, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -150.0
+offset_right = 350.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_pg12u")
+
+[node name="ConfirmationMargin" type="MarginContainer" parent="." unique_id=99481467]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ConfirmationMargin" unique_id=726963524]
+layout_mode = 2
+texture = ExtResource("5_q4h3p")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConfirmationMargin" unique_id=377011450]
+layout_mode = 2
+theme_override_constants/separation = 26
+
+[node name="Notice" type="Label" parent="ConfirmationMargin/VBoxContainer" unique_id=181373209]
+layout_mode = 2
+theme = ExtResource("1_aer8f")
+theme_override_colors/font_color = Color(0.94628906, 1, 0.3125, 1)
+theme_override_font_sizes/font_size = 41
+text = "Message:"
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="ConfirmationMargin/VBoxContainer" unique_id=1139700648]
+layout_mode = 2
+theme = ExtResource("1_aer8f")
+theme_override_font_sizes/font_size = 27
+text = "Do you really want to quit the game?"
+horizontal_alignment = 1
+
+[node name="options" type="HBoxContainer" parent="ConfirmationMargin/VBoxContainer" unique_id=323512988]
+layout_mode = 2
+theme_override_constants/separation = 103
+alignment = 1
+
+[node name="MenuSound" type="Node" parent="ConfirmationMargin/VBoxContainer/options" unique_id=1258547990]
+script = ExtResource("2_pg12u")
+hoversfx = ExtResource("3_w0roi")
+clickSfx = ExtResource("4_m2rp2")
+
+[node name="No" type="Button" parent="ConfirmationMargin/VBoxContainer/options" unique_id=2064899499]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("1_aer8f")
+text = "No"
+
+[node name="Yes" type="Button" parent="ConfirmationMargin/VBoxContainer/options" unique_id=613364686]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("1_aer8f")
+text = "Yes"
+
+[node name="MessageboxFunctionality" type="Node" parent="." unique_id=614075686]
+script = ExtResource("6_w0roi")
+OFFSET = Vector2(0, 500)

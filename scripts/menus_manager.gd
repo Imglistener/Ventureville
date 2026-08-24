@@ -5,13 +5,18 @@ class_name MenusManager extends Node
 @onready var player_stat_manager: Stat_Manager = $"../PlayerStatManager"
 @onready var hand: CardHand = $"../../Control_Layer/Control_Base/Base_Margin/StandbyContainer/HandLayer/Hand"
 @onready var phase_manager: PhaseManager = $"../PhaseManager"
-@onready var ap_bar: TextureProgressBar = $"../../Control_Layer/Control_Base/AP_Bar"
+@onready var AP: TextureRect = $"../../Control_Layer/Control_Base/AP_Background"
 @onready var mana_ui: Mana_UI = $"../../Control_Layer/Control_Base/Mana_UI"
-@onready var enemy: EnemyView = $"../../Control_Layer/Enemy"
 @onready var deck_pile: TextureButton = $"../../Node2D_Layer/DeckPile"
 @onready var discard_pile: TextureButton = $"../../Node2D_Layer/DiscardPile"
-@onready var end_turn: Button = $"../../Control_Layer/Control_Base/End Turn"
+@onready var end_turn: TextureButton = $"../../Control_Layer/Control_Base/End Turn"
 @onready var toolbar_container: Toolbar = $"../../Control_Layer/Control_Base/toolbar_container"
+@onready var pause_menu: PauseMenu = $"../../Control_Layer/Pause Layer/Pause Menu"
+@onready var pause_blur: ColorRect = $"../../Control_Layer/Pause Layer/Pause Blur"
+@onready var turn_counter: Label = $"../../Control_Layer/TurnCounter"
+@onready var items_menu: ItemsMenu = $"../../Control_Layer/Control_Base/ItemsMenu"
+@onready var Return: TextureButton = $"../../Control_Layer/Control_Base/Return"
+@onready var enemy_manager: Node = $"../EnemyManager"
 
 var Dialogue_manager: Dialogue_Manager 
 var talk: Button
@@ -44,10 +49,48 @@ func _ready() -> void:
 		Dialogue_manager.Dialogue_Done.connect(_on_dialogue_end)
 	if not phase_manager.is_node_ready():
 		await phase_manager.ready
+	if not pause_menu.resume.pressed.is_connected(_resume_game):
+		pause_menu.resume.pressed.connect(_resume_game)
+	if not toolbar_container.pause.pressed.is_connected(_pause_game):
+		toolbar_container.pause.pressed.connect(_pause_game)
+	if not standby_menu.items.pressed.is_connected(_on_items_pressed):
+		standby_menu.items.pressed.connect(_on_items_pressed)
+	if not Return.pressed.is_connected(_on_return_pressed):
+		Return.pressed.connect(_on_return_pressed)
 	phase_manager.connect_signals()
+	setup_toolbar_display()
 
-
-
+func handle_blur(paused: bool) -> void:
+	var t = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	t.tween_property(pause_blur.material, "shader_parameter/blur_amount", 0.0 if paused else 2.0, 0.4)
+	await t.finished
+func _resume_game()-> void:
+	get_tree().paused = false
+	pause_menu.visible = false
+	pause_blur.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	handle_blur(true)
+	
+func _pause_game()-> void:
+	get_tree().paused = true
+	pause_menu.visible = true
+	pause_blur.mouse_filter = Control.MOUSE_FILTER_STOP
+	handle_blur(false)
+func setup_toolbar_display() -> void:
+	var player_data: String
+	player_data = player_stat_manager.Player.entity_name
+	player_data += " | "
+	match player_stat_manager.Player.player_class:
+		CharacterInstance.PlayerClasses.BloodMagus:
+			player_data += "Blood Magus"
+		CharacterInstance.PlayerClasses.DarkMagus:
+			player_data += "Dark Magus"
+		CharacterInstance.PlayerClasses.VoiceMagus:
+			player_data += "Illusionist"
+		CharacterInstance.PlayerClasses.FoulTarnished:
+			player_data += "Tarnished"
+	
+	toolbar_container.player_name.text = str(player_data)
+	toolbar_container.currency.text = "Forbidden Forest" + " | " + str(player_stat_manager.Player.character_level)
 func fade_node(to_hide : Node, remove_from_container: bool) -> void:
 	if to_hide:
 		var original_scale = to_hide.scale
@@ -59,6 +102,7 @@ func fade_node(to_hide : Node, remove_from_container: bool) -> void:
 			to_hide.scale = original_scale
 	if remove_from_container:
 		to_hide.visible = false
+	to_hide.hide()
 
 func show_node(to_show : Node) -> void:
 	to_show.visible = true
@@ -73,6 +117,37 @@ func show_node(to_show : Node) -> void:
 	
 	emit_signal("node_visible")
 	
+func splash_out(node: Node, direction: Vector2, distance: float, duration: float = 0.3) -> void:
+	var start_pos: Vector2 = node.position
+	var target_pos: Vector2 = start_pos + direction.normalized() * distance
+	
+
+	var tween := create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(node, "position", target_pos, duration)\
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(node, "modulate:a", 0.0, duration)\
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	await tween.finished
+	node.hide()
+	node.position = start_pos
+	
+func splash_in(node: Node, direction: Vector2, distance: float, duration: float = 0.3) -> void:
+	node.show()
+	var target_pos: Vector2 = node.position
+	var start_pos: Vector2 = target_pos - direction.normalized() * distance
+
+	node.position = start_pos
+	node.modulate.a = 0.0
+
+	var tween := create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(node, "position", target_pos, duration)\
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	tween.tween_property(node, "modulate:a", 1.0, duration)\
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+
+	await tween.finished
 
 func _input(event: InputEvent) -> void:
 	if not dialogue_node.visible:
@@ -84,6 +159,21 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 
+func _on_items_pressed() -> void:
+	fade_node(standby_menu, false)
+	items_menu.show()
+	splash_in(items_menu, Vector2.UP, 250, 0.5)
+	splash_in(Return, Vector2.LEFT, 250, 0.5)
+	splash_in(AP, Vector2.LEFT, 400, 0.5)
+	
+	await node_visible
+
+func _on_return_pressed() -> void:
+	splash_out(items_menu, Vector2.DOWN, 250, 0.5)
+	splash_out(Return, Vector2.RIGHT, 250, 0.5)
+	show_node(standby_menu)
+	splash_out(AP, Vector2.RIGHT, 400, 0.5)
+	await node_visible
 
 func _on_talk_pressed() -> void:
 	Dialogue_manager.call_dialogue(enemy_stat_manager, dialogue_node.dialogue_box, player_stat_manager)
@@ -113,7 +203,7 @@ func _update_turn_label(phase: PhaseManager.Phases) -> void:
 			new_text = "Enemy Turn!"
 		_:
 			return
-	toolbar_container.turn_counter_label.animate_turn_label(new_text)
+	turn_counter.animate_turn_label(new_text)
 			
 func PhaseUI_active(phase : PhaseManager.Phases) -> void:
 	match phase:
@@ -123,29 +213,28 @@ func PhaseUI_active(phase : PhaseManager.Phases) -> void:
 		PhaseManager.Phases.PlayerStandbyEnd:
 			phase_manager.call_deferred('advance_to_next_phase')
 		PhaseManager.Phases.PlayerBattleStart:
-			transition_to(end_turn)
+			splash_in(end_turn, Vector2.LEFT, 300, 0.5)
 			end_turn.disabled = false
-			enemy.enemy_view.disabled = false
+			for view in enemy_manager.get_enemy_views():
+				view.enemy_view.disabled = false
 			transition_to(hand, standby_menu)
-			transition_to(ap_bar)
-			transition_to(mana_ui)
-			transition_to(deck_pile)
-			transition_to(discard_pile)
+			splash_in(AP, Vector2.LEFT, 400, 0.5)
+			splash_in(mana_ui, Vector2.RIGHT, 300, 0.5)
+			splash_in(deck_pile, Vector2.RIGHT, 300, 0.5)
+			splash_in(discard_pile, Vector2.RIGHT, 300, 0.5)
 			await node_visible
 			hand.start_turn() 
 		PhaseManager.Phases.PlayerBattleEnd:
 			end_turn.disabled = true
-			fade_node(end_turn, true)
-			enemy.enemy_view.disabled = true
-			for i in hand.get_children():
-				fade_node(i, false)
-				i.queue_free()
-			fade_node(hand, false)
-			fade_node(ap_bar, false)
-			fade_node(mana_ui, false)
-			fade_node(deck_pile, false)
-			fade_node(discard_pile, false)
-			fade_node(standby_menu, false)
+			splash_out(end_turn, Vector2.RIGHT, 300, 0.5)
+			for view in enemy_manager.get_enemy_views():
+				view.enemy_view.disabled = false
+			hand.clear_hand()
+			splash_out(AP, Vector2.RIGHT, 400, 0.5)
+			splash_out(mana_ui, Vector2.LEFT, 300, 0.5)
+			splash_out(deck_pile, Vector2.LEFT, 300, 0.5)
+			splash_out(discard_pile, Vector2.LEFT, 300, 0.5)
+			splash_out(standby_menu, Vector2.DOWN, 300, 0.5)
 		PhaseManager.Phases.EnemyStandbyStart:
 			_update_turn_label(phase)
 		PhaseManager.Phases.EnemyStandbyEnd:

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="EnemyBattlerStats" format=3 uid="uid://co47st2kp2mm3"]
+
+[ext_resource type="Texture2D" uid="uid://cbpmfyeb0wmbp" path="res://assets/Black Knight.png" id="1_2l5x0"]
+[ext_resource type="Script" uid="uid://djvjp04eqmhrw" path="res://assets/Enemies/Data/Enemies/Dialogue/DialogueInstance.gd" id="1_ylbqn"]
+[ext_resource type="Script" uid="uid://b3icxqpmtwr18" path="res://assets/Data/Entities/EnemyBattlerStats.gd" id="2_2l5x0"]
+[ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="3_2c1n4"]
+
+[sub_resource type="Resource" id="Resource_2l5x0"]
+script = ExtResource("1_ylbqn")
+Speaker = 1
+Line = "\"Despite warning, you trespass. Therefore you shall face death...\""
+metadata/_custom_type_script = "uid://djvjp04eqmhrw"
+
+[sub_resource type="Resource" id="Resource_2c1n4"]
+script = ExtResource("1_ylbqn")
+Line = "\"I mean you no harm, I only wish to enter the castle. But if you stand in my way...\""
+metadata/_custom_type_script = "uid://djvjp04eqmhrw"
+
+[sub_resource type="Resource" id="Resource_gdjo0"]
+script = ExtResource("1_ylbqn")
+Speaker = 1
+Line = "\"Then fall to my blade!\""
+metadata/_custom_type_script = "uid://djvjp04eqmhrw"
+
+[resource]
+script = ExtResource("2_2l5x0")
+Base_HP = 400
+Base_SAN = 250
+Resists = 5
+Is_Vul_to = 4
+Difficulty = 1
+Battler_Art_Normal = ExtResource("1_2l5x0")
+DamageBonus = 5.0
+Dialogue = Array[ExtResource("1_ylbqn")]([SubResource("Resource_2l5x0"), SubResource("Resource_2c1n4"), SubResource("Resource_gdjo0")])
+metadata/_custom_type_script = "uid://b3icxqpmtwr18"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3 uid="uid://ce1s75bc8dcd2"]
+
+[ext_resource type="Script" uid="uid://dwd0cnekx5gmo" path="res://assets/Data/Player/PlayerActions/CardEffects/BloodSacrifice.gd" id="1_rlt6t"]
+
+[resource]
+script = ExtResource("1_rlt6t")
+name = "Blood Sacrifice"
+rarity = 2
+type = 1
+mp_cost = 2
+Description = "Sacrifice half your current health. Draw 3 and gain 2 AP."
+LogMessage = "\"Your sacrifice was accepted... You feel unstoppable.\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

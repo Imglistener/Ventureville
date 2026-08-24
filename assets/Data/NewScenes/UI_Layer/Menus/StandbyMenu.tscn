@@ -5,7 +5,6 @@
 [ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="2_hj5of"]
 [ext_resource type="Script" uid="uid://cumib5hreuqhc" path="res://assets/Data/Scripts/menusoundsystem.gd" id="3_fxqob"]
 [ext_resource type="AudioStream" uid="uid://dthpwusghe2wg" path="res://assets/hover.wav" id="4_7o46m"]
-[ext_resource type="Script" uid="uid://b825pf5cylms5" path="res://assets/Data/Scripts/buttonhandlesystem.gd" id="4_rex6c"]
 [ext_resource type="AudioStream" uid="uid://diyc8a23kpu7b" path="res://assets/click.wav" id="5_akeyu"]
 
 [node name="Background" type="NinePatchRect" unique_id=578769339]
@@ -85,8 +84,5 @@ clip_text = true
 script = ExtResource("3_fxqob")
 hoversfx = ExtResource("4_7o46m")
 clickSfx = ExtResource("5_akeyu")
-
-[node name="MenuSystem" type="Node" parent="Margin/ButtonContainer" unique_id=1425486274]
-script = ExtResource("4_rex6c")
 
 [node name="MenuSFXPlayer" type="AudioStreamPlayer" parent="." unique_id=940532075]

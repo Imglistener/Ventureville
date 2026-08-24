@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterInstance" format=3 uid="uid://t2ur053bpxih"]
+
+[ext_resource type="Script" uid="uid://cs2ejlgorfek8" path="res://assets/Data/Player/CharacterInstance.gd" id="1_xxgwi"]
+[ext_resource type="Resource" uid="uid://b5hkm5hwk5cuc" path="res://assets/Data/Player/Deck/Deck.tres" id="2_2vf67"]
+[ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="3_sn7ju"]
+[ext_resource type="Resource" uid="uid://bf04hmv3nnbgw" path="res://assets/Data/Stats/Revised Stats/Health.tres" id="4_buok2"]
+[ext_resource type="Resource" uid="uid://bxetxvy80ay0c" path="res://assets/Data/Stats/Revised Stats/Sanity.tres" id="5_ipnik"]
+[ext_resource type="Resource" uid="uid://cr5xuv3tmjx6m" path="res://assets/Data/Stats/Revised Stats/Strength.tres" id="6_svd80"]
+[ext_resource type="Resource" uid="uid://ceoqilwthbnl5" path="res://assets/Data/Stats/Revised Stats/Entropy.tres" id="7_824v4"]
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="8_xsxko"]
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="9_6w6lt"]
+
+[resource]
+script = ExtResource("1_xxgwi")
+starting_deck = ExtResource("2_2vf67")
+draw_power = 5
+max_mana = 4
+player_class = 1
+entity_name = "Paul"
+AP = 3
+stats = Array[ExtResource("3_sn7ju")]([ExtResource("4_buok2"), ExtResource("5_ipnik"), ExtResource("6_svd80"), ExtResource("7_824v4"), ExtResource("8_xsxko"), ExtResource("9_6w6lt")])

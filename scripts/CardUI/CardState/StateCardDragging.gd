@@ -5,7 +5,7 @@ const TILT_LIMIT := 0.50         # max tilt in radians (~14 degrees), clamp so i
 const TILT_LERP := 0.1           # how snappily it chases the target tilt, lower = floatier
 const DRAG_SCALE_MULTIPLIER := 1.05  # subtle scale-up to feel "lifted"
 
-func process(delta: float) -> void:
+func process(_delta: float) -> void:
 	if abs(card_UI.rotation) > 0.001:
 		card_UI.rotation = lerp(card_UI.rotation, 0.0, TILT_LERP)
 	else:
@@ -20,9 +20,10 @@ func enter() -> void:
 	
 
 func exit() -> void:
+	card_UI.reset_live_preview()
 	card_UI.tween = card_UI.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	card_UI.tween.tween_property(card_UI, "rotation", 0.0, 0.2)
-
+	
 func on_input(event: InputEvent) -> void:
 	var single_targeted := card_UI.card_data.is_SingleTarget()
 	var mouse_motion := event is InputEventMouseMotion

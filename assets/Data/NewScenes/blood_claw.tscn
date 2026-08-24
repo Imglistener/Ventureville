@@ -1,0 +1,469 @@
+[gd_scene format=3 uid="uid://cqthgofwtrf2p"]
+
+[ext_resource type="Script" uid="uid://c27ajngb7knf4" path="res://assets/Data/NewScenes/blood_claw.gd" id="1_e706x"]
+[ext_resource type="Texture2D" uid="uid://6fwneg4utfr4" path="res://assets/VFX Free Pack/Effect_BloodImpact/30fps/Spritesheets/Effect_BloodImpact_1_69x60.png" id="1_qmd5k"]
+[ext_resource type="Texture2D" uid="uid://cjnhi37gpjyqs" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame1.png" id="2_e706x"]
+[ext_resource type="Texture2D" uid="uid://bgp52yyxcyron" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame2.png" id="3_7npbs"]
+[ext_resource type="Texture2D" uid="uid://bnw71cqwt1j61" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame3.png" id="4_q2h4j"]
+[ext_resource type="Texture2D" uid="uid://cm2v643cuhyq6" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame4.png" id="5_jsrlt"]
+[ext_resource type="Texture2D" uid="uid://d3tpl5mu2qwgc" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame5.png" id="6_coovh"]
+[ext_resource type="Texture2D" uid="uid://cqxjhvx1vvr7t" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame6.png" id="7_so3ns"]
+[ext_resource type="Texture2D" uid="uid://bb7ln5untisxm" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame7.png" id="8_qt21f"]
+[ext_resource type="Texture2D" uid="uid://cr6p5rfc56822" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part2(loop)/frames/BloodMage_skill1_loop_frame1.png" id="9_ry1lk"]
+[ext_resource type="Texture2D" uid="uid://det8cbhcs6w5t" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part2(loop)/frames/BloodMage_skill1_loop_frame2.png" id="10_uhnr7"]
+[ext_resource type="Texture2D" uid="uid://bfcu2ytnmi8c8" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part2(loop)/frames/BloodMage_skill1_loop_frame3.png" id="11_l5sw7"]
+[ext_resource type="Texture2D" uid="uid://dgc48ta2i7him" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part2(loop)/frames/BloodMage_skill1_loop_frame4.png" id="12_k38pj"]
+[ext_resource type="Texture2D" uid="uid://wyewpwknabvl" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part2(loop)/frames/BloodMage_skill1_loop_frame5.png" id="13_1m3oi"]
+[ext_resource type="Texture2D" uid="uid://cyr0v68mckh5l" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame8.png" id="14_2teqn"]
+[ext_resource type="Texture2D" uid="uid://buhk08383i47v" path="res://Pixel Art VFX - Vampire - FREE Version/VFX2/Frames/Vampire_skill2_frame1.png" id="16_7npbs"]
+[ext_resource type="Texture2D" uid="uid://pa4li1qa15c4" path="res://Pixel Art VFX - Vampire - FREE Version/VFX2/Frames/Vampire_skill2_frame2.png" id="17_l5sw7"]
+[ext_resource type="Texture2D" uid="uid://qrihh0ku25m" path="res://Pixel Art VFX - Vampire - FREE Version/VFX2/Frames/Vampire_skill2_frame3.png" id="18_k38pj"]
+[ext_resource type="Texture2D" uid="uid://i3b4h8aa2c6b" path="res://Pixel Art VFX - Vampire - FREE Version/VFX2/Frames/Vampire_skill2_frame4.png" id="19_1m3oi"]
+[ext_resource type="Texture2D" uid="uid://c1h0w2xht82ku" path="res://Pixel Art VFX - Vampire - FREE Version/VFX2/Frames/Vampire_skill2_frame5.png" id="20_2teqn"]
+[ext_resource type="Texture2D" uid="uid://qk0clw4wbvgl" path="res://Pixel Art VFX - Vampire - FREE Version/VFX2/Frames/Vampire_skill2_frame6.png" id="21_kmvpv"]
+[ext_resource type="Texture2D" uid="uid://bj5jualj751d8" path="res://Pixel Art VFX - Vampire - FREE Version/VFX2/Frames/Vampire_skill2_frame7.png" id="22_2hr1a"]
+[ext_resource type="Texture2D" uid="uid://dicayhje1bxb8" path="res://Pixel Art VFX - Vampire - FREE Version/VFX2/Frames/Vampire_skill2_frame8.png" id="23_te63r"]
+[ext_resource type="Texture2D" uid="uid://vqcc2xqxnumt" path="res://Pixel Art VFX - Vampire - FREE Version/VFX2/Frames/Vampire_skill2_frame9.png" id="24_8hvea"]
+[ext_resource type="AudioStream" uid="uid://bx04w74ncdfeb" path="res://assets/SFX/BloodClaw.wav" id="25_k38pj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmvpv"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(69, 60, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hr1a"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(138, 60, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te63r"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(207, 60, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hvea"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(276, 60, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0svmc"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(345, 60, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t26d8"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(0, 120, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5htx"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(69, 120, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tienj"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(138, 120, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4q02"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(207, 120, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3eur"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(276, 120, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3js0"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(345, 120, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjrft"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(0, 180, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wls6"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(69, 180, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x0g6"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(138, 180, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7g8l"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(207, 180, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1vxs"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(276, 180, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb6g4"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(345, 180, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip1p7"]
+atlas = ExtResource("1_qmd5k")
+region = Rect2(0, 240, 69, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1rsp1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmvpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hr1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te63r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hvea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0svmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t26d8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5htx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tienj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4q02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3eur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3js0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjrft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wls6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x0g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7g8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1vxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mb6g4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip1p7")
+}],
+"loop": false,
+"name": &"Idiot",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e706x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7npbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q2h4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jsrlt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_coovh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_so3ns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qt21f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ry1lk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uhnr7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_l5sw7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_k38pj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1m3oi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2teqn")
+}],
+"loop": false,
+"name": &"Idiot2",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_7npbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_l5sw7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_k38pj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1m3oi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_2teqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_kmvpv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_2hr1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_te63r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_8hvea")
+}],
+"loop": false,
+"name": &"Idiot3",
+"speed": 30.0
+}]
+
+[sub_resource type="Animation" id="Animation_72iqq"]
+resource_name = "BloodClaw"
+length = 0.93333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bang:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 0.6333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.58205354, 0.58205354, 0.58205354, 0), Color(1, 1, 1, 0), Color(0.52734375, 0.52734375, 0.52734375, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Buildup:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Buildup")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Idiot2", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Buildup:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.35),
+"transitions": PackedFloat32Array(1, 0.2773922),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(0, 0)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bang")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.46666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Idiot", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Claw:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.26666668, 0.36666667, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 3.999999, 1, 0.57435006),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(4.8672786, 4.8672786, 4.8672786, 1), Color(4.8672786, 4.8672786, 4.8672786, 1), Color(4.8672786, 4.8672786, 4.8672786, 0)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Claw")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.23333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Idiot3", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Bang:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.46666667, 0.73333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(5, 5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AudioStreamPlayer:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7npbs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buildup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bang:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.58203125, 0.58203125, 0.58203125, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Buildup:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Claw:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bang:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0s8k"]
+_data = {
+&"BloodClaw": SubResource("Animation_72iqq"),
+&"RESET": SubResource("Animation_7npbs")
+}
+
+[node name="BloodClaw" type="Node2D" unique_id=1763003323]
+script = ExtResource("1_e706x")
+
+[node name="Bang" type="AnimatedSprite2D" parent="." unique_id=1910609266]
+modulate = Color(0.58203125, 0.58203125, 0.58203125, 1)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_1rsp1")
+animation = &"Idiot"
+frame = 17
+frame_progress = 1.0
+
+[node name="Buildup" type="AnimatedSprite2D" parent="." unique_id=2052582422]
+sprite_frames = SubResource("SpriteFrames_1rsp1")
+animation = &"Idiot2"
+frame = 12
+frame_progress = 1.0
+
+[node name="Claw" type="AnimatedSprite2D" parent="." unique_id=620392984]
+rotation = 5.290093
+scale = Vector2(2.065, 2.065)
+sprite_frames = SubResource("SpriteFrames_1rsp1")
+animation = &"Idiot3"
+frame = 8
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1050654406]
+libraries/ = SubResource("AnimationLibrary_i0s8k")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=345459494]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1954445963]
+stream = ExtResource("25_k38pj")

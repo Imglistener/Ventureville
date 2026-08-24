@@ -35,7 +35,8 @@ layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 texture = ExtResource("2_hyb8y")
-expand_mode = 3
+expand_mode = 1
+stretch_mode = 4
 
 [node name="PlayerBarsContainer" parent="PlayerContainer" unique_id=2061961984 instance=ExtResource("3_4nq6f")]
 layout_mode = 2

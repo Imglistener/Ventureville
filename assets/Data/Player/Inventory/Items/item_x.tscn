@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://sq1kp5qg28f7"]
+
+[ext_resource type="Texture2D" uid="uid://bolb4eopeie4u" path="res://assets/GUI/Bleeding.png" id="1_eroga"]
+[ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="1_svyis"]
+[ext_resource type="Script" uid="uid://cvinx5gx8hkuc" path="res://scripts/item_button.gd" id="3_svyis"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svyis"]
+bg_color = Color(0, 0, 0, 0.5372549)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_brqwa"]
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="Theme" id="Theme_jcqbx"]
+default_font = ExtResource("1_svyis")
+default_font_size = 20
+Button/colors/font_hover_color = Color(1, 0.83880615, 0.45703125, 1)
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_svyis")
+Button/styles/hover = SubResource("StyleBoxFlat_svyis")
+Button/styles/normal = SubResource("StyleBoxTexture_brqwa")
+
+[node name="Item_X" type="Button" unique_id=535404352]
+custom_minimum_size = Vector2(450, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = SubResource("Theme_jcqbx")
+text = "Fool"
+icon = ExtResource("1_eroga")
+alignment = 0
+script = ExtResource("3_svyis")

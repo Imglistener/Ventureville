@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://8lwicdc5w83e"]
+
+[ext_resource type="PackedScene" uid="uid://xrhwnbgpj1x1" path="res://assets/Data/NewScenes/blood_barrier.tscn" id="1_p8b7k"]
+[ext_resource type="Script" uid="uid://b204etewibv56" path="res://assets/Data/Player/PlayerActions/CardEffects/Blood Aias.gd" id="2_xjotg"]
+
+[resource]
+script = ExtResource("2_xjotg")
+VFX = ExtResource("1_p8b7k")
+name = "Blood Aias"
+rarity = 1
+type = 3
+mp_cost = 3
+ap_cost = 2
+Description = "Gain 12 Shield and 12 SAN Shield.  Reduce the AP and MP Costs of Every \"{Blood_Aias}\" in your Deck by 1."
+LogMessage = "\"Blood Petals rush to protect you from harm!\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

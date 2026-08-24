@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PhaseData" format=3 uid="uid://bq73hncp0fm8n"]
+
+[ext_resource type="Script" uid="uid://b7q1devc168hg" path="res://assets/Enemies/Data/Enemies/EnemyInstance/PhaseData/PhaseData.gd" id="1_n20hd"]
+[ext_resource type="Texture2D" uid="uid://cilf0o0jgrxln" path="res://assets/Alice (1).png" id="1_upxro"]
+[ext_resource type="AudioStream" uid="uid://0nwvuc6uyl86" path="res://assets/SFX/AliceBattleMusic (2).ogg" id="2_wal1r"]
+
+[resource]
+script = ExtResource("1_n20hd")
+Normal = ExtResource("1_upxro")
+Hover = ExtResource("1_upxro")
+DamageBonus = 6
+PhaseBGM = ExtResource("2_wal1r")
+metadata/_custom_type_script = "uid://b7q1devc168hg"

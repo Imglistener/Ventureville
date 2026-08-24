@@ -21,11 +21,11 @@ func is_usable() -> bool:
 func use_action() -> void:
 	if not Enemy or not target:
 		return
+	super()
 	var tween := create_tween().set_trans(Tween.TRANS_QUINT).set_parallel(false)
 	var entity := Enemy.Enemy.Entity
 	var original_scale := Enemy.scale
-	SoundBus.stream = SoundEffect
-	SoundBus.play()
+	SoundBus.play_sfx(SoundEffect)
 	tween.tween_property(Enemy, "scale", original_scale * Vector2(0.6, 1.4), 0.2)
 	tween.tween_property(Enemy, "scale", original_scale * Vector2(1.8, 0.5), 0.15) \
 		.set_trans(Tween.TRANS_EXPO)
@@ -44,5 +44,5 @@ func use_action() -> void:
 		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	tween.tween_property(Enemy, "scale", original_scale, 0.2)
 	tween.finished.connect(func():
-		Events.EnemyActionCompleted.emit(Enemy)
+		Events.EnemyActionCompleted.emit(self)
 	)

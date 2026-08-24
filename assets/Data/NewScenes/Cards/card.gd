@@ -7,6 +7,7 @@ extends TextureRect
 @export var aimingSFX	: AudioStream
 
 signal ReparentRequest(card: CardUI)
+signal CardClicked(card: CardUI)
 
 @onready var is_playable: ColorRect = $IsPlayable
 
@@ -33,25 +34,71 @@ var cards_colliding:= []
 var hand_position: Vector2
 var hand_rotation: float
 var hand_position_set: bool = false
+var deck_position: Vector2
+var Discard_position: Vector2
+var log : Log
+var ControlBase : Control
 
 func _ready() -> void:
+	drop_point_detector.monitoring = false
 	card_name.text = str(card_data.name)
 	card_type.text = str(card_data.Type.keys()[card_data.type])
-	card_effect.text = str(card_data.Description)
+	card_effect.text = card_data.get_description(player_stats)
 	cost.text = str(card_data.ap_cost)
 	mp_cost.text = str(card_data.mp_cost)
 	card_state_manager.init(self)
-
+	manage_card_rarity()
+	log = get_tree().get_first_node_in_group('Log')
+	if not player_stats.Stats_Changed.is_connected(update_description):
+		player_stats.Stats_Changed.connect(update_description)
+	if not Events.card_played.is_connected(update_costs):
+		Events.card_played.connect(update_costs.unbind(1))
+	if ControlBase:
+		if not CardClicked.is_connected(ControlBase.on_trigger_pressed):
+			CardClicked.connect(ControlBase.on_trigger_pressed)
+			
 func _process(delta: float) -> void:
 	card_state_manager.process(delta)
+
+func manage_card_rarity() -> void:
+	match card_data.rarity:
+		Card.Rarities.Common:
+			card_name.add_theme_color_override("font_color", Color.WHITE)
+		Card.Rarities.Rare:
+			card_name.add_theme_color_override("font_color", Color.AQUA)
+		Card.Rarities.Legendary:
+			card_name.add_theme_color_override("font_color", Color.GOLD)
+
+func update_costs() -> void:
+	cost.text = str(card_data.ap_cost)
+	mp_cost.text = str(card_data.mp_cost)
 
 func play() -> void:
 	if not card_data:
 		return
-	
+	log.text += '[br]' + card_data.LogMessage
+	reset_live_preview()
+	is_playable.visible = false
 	card_data.activate_card(targets, player_stats)
+	animate_out()
 
-	queue_free()
+func update_description() -> void:
+	card_effect.text = card_data.get_description(player_stats)
+
+func animate_out() -> void:
+	if not deck_position or not Discard_position:
+		return
+	if tween and tween.is_running():
+		tween.kill()
+	tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	tween.parallel().tween_property(self, "scale", Vector2(0.1, 0.1), 0.2)
+	tween.parallel().tween_property(self, "global_position", Discard_position, 0.4)
+	tween.parallel().tween_property(self, 'modulate', Color(0.0, 0.0, 0.0, 0.0), 0.4)
+	tween.finished.connect(
+		func():
+			queue_free()
+	)
+	
 
 func animate_to_hand() -> void:
 	if not hand_position_set:
@@ -77,7 +124,7 @@ func is_card_focused(value: bool) -> void:
 		sfx.play()
 		await animate_card(0)
 	else:
-		z_index = get_index()              # Restore to hand stack positio
+		z_index = get_index()             
 		await animate_card(1)
 	
 func animate_card(type: int) -> void:
@@ -108,16 +155,39 @@ func _on_mouse_entered() -> void:
 	is_card_focused(true)
 
 func _input(event: InputEvent) -> void:
+	var hand = get_parent() as CardHand
+	if hand and hand.is_arranging:
+		return
 	card_state_manager.on_input(event)
-func _on_gui_input(event: InputEvent) -> void:
+	
+		
+func _gui_input(event: InputEvent) -> void:
 	card_state_manager.on_gui_input(event)
-
-
-
+	if event is InputEventMouseButton:
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			CardClicked.emit(self)
+			
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if not targets.has(area):
 		targets.append(area)
-		
+	_update_live_preview()
+	
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	targets.erase(area)
+	_update_live_preview()
+
+func _update_live_preview() -> void:
+	if not card_data:
+		return
+	if targets.is_empty():
+		reset_live_preview()
+		return
+	var live_targets := targets if card_data.is_SingleTarget() else card_data._get_targets(targets)
+	card_effect.text = card_data.get_live_description(player_stats, live_targets)
+
+func reset_live_preview() -> void:
+	if not card_data:
+		return
+	card_effect.text = card_data.get_description(player_stats)
+	Events.hide_enemy_resistances.emit()

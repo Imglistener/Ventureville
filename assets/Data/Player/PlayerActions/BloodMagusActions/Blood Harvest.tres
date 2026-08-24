@@ -1,0 +1,19 @@
+[gd_resource type="Resource" format=3 uid="uid://cfgl5f0160fhq"]
+
+[ext_resource type="Script" uid="uid://cpgl6gtw0efgv" path="res://assets/Data/Player/PlayerActions/CardEffects/Blood Harvest.gd" id="1_img8m"]
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="1_jdeo2"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="2_bcpql"]
+
+[resource]
+script = ExtResource("1_img8m")
+base_damage = 8
+StatsScaled = ExtResource("1_jdeo2")
+damage_type = ExtResource("2_bcpql")
+name = "Blood Harvest"
+rarity = 2
+target = 2
+mp_cost = 3
+ap_cost = 3
+Description = "Deal {scaled} Blood Damage to All Enemies. Heal twice as much."
+LogMessage = "\"You feel the delicious essence of your foe rejuvenate you!\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

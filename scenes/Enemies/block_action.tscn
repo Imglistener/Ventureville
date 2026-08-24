@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c1nxupf5v130f"]
+
+[ext_resource type="Script" uid="uid://cjj2676j1ie6h" path="res://assets/Data/EnemyActions/Stalk.gd" id="1_v83kg"]
+
+[node name="BlockAction" type="Node" unique_id=1459789831]
+script = ExtResource("1_v83kg")
+block_gained = 10
+ActionType = 1
+ActionEffect = 1
+ActionChance = 3.0
+Description = "\"The creature stands perfectly still...\""

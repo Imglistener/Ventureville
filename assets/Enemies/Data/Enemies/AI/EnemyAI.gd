@@ -10,6 +10,7 @@ func _ready() -> void:
 	setup_action_chances()
 	for action in get_children():
 		action.target = target
+		action.log = get_tree().get_first_node_in_group('Log')
 
 func get_action() -> EnemyAction:
 	var action : EnemyAction = get_conditional_action()
@@ -31,6 +32,7 @@ func get_conditional_action() -> EnemyAction:
 	return null
 
 func get_chance_action() -> EnemyAction:
+	
 	var action: EnemyAction
 	var roll := randf_range(0.0, TotalChance)
 	
@@ -45,6 +47,7 @@ func get_chance_action() -> EnemyAction:
 
 
 func setup_action_chances() -> void:
+	TotalChance = 0
 	var action : EnemyAction
 	for child in get_children():
 		action = child as EnemyAction

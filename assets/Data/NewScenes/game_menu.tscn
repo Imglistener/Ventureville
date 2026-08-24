@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://bqemt5b2t7onn"]
+
+[ext_resource type="Script" uid="uid://coylg2b6x5yeh" path="res://assets/Data/NewScenes/game_menu.gd" id="1_deg26"]
+[ext_resource type="Texture2D" uid="uid://dkr62mk01xwek" path="res://assets/KennyUI/Border/panel-border-005.png" id="1_hsqq3"]
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="1_xim11"]
+[ext_resource type="Script" uid="uid://cumib5hreuqhc" path="res://assets/Data/Scripts/menusoundsystem.gd" id="2_76pw0"]
+[ext_resource type="Script" uid="uid://dnxw7v8o1v4ds" path="res://assets/Data/NewScenes/menu.gd" id="2_gp2cx"]
+[ext_resource type="AudioStream" uid="uid://dthpwusghe2wg" path="res://assets/hover.wav" id="3_3xk70"]
+[ext_resource type="Shader" uid="uid://cn0qexl43jnt" path="res://assets/Data/NewScenes/btns.gdshader" id="3_yhmim"]
+[ext_resource type="AudioStream" uid="uid://diyc8a23kpu7b" path="res://assets/click.wav" id="4_hsqq3"]
+[ext_resource type="PackedScene" uid="uid://x7vpyvvyiqmh" path="res://assets/Data/NewScenes/menu_functionality.tscn" id="6_hsqq3"]
+[ext_resource type="Script" uid="uid://5m3rru1xdg5j" path="res://assets/Data/NewScenes/MenuTooltip.gd" id="10_etfu5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_deg26"]
+shader = ExtResource("3_yhmim")
+shader_parameter/offset_x = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_etfu5"]
+shader = ExtResource("3_yhmim")
+shader_parameter/offset_x = 0.0
+
+[node name="MainGameContainer" type="MarginContainer" unique_id=1045209314]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_right = 45
+script = ExtResource("1_deg26")
+
+[node name="MenuBackgrounds" type="VBoxContainer" parent="." unique_id=1837447665]
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 56
+alignment = 1
+
+[node name="Selected1" type="NinePatchRect" parent="MenuBackgrounds" unique_id=607896215]
+custom_minimum_size = Vector2(120.72, 80)
+layout_mode = 2
+texture = ExtResource("1_hsqq3")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Selected2" type="NinePatchRect" parent="MenuBackgrounds" unique_id=2013203528]
+custom_minimum_size = Vector2(120.72, 80)
+layout_mode = 2
+texture = ExtResource("1_hsqq3")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Selected3" type="NinePatchRect" parent="MenuBackgrounds" unique_id=1401799007]
+custom_minimum_size = Vector2(120.72, 80)
+layout_mode = 2
+texture = ExtResource("1_hsqq3")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Selected4" type="NinePatchRect" parent="MenuBackgrounds" unique_id=1368206007]
+custom_minimum_size = Vector2(120.72, 80)
+layout_mode = 2
+texture = ExtResource("1_hsqq3")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Separator" type="HBoxContainer" parent="." unique_id=1275249033]
+layout_mode = 2
+theme_override_constants/separation = 17
+
+[node name="Menu" type="VBoxContainer" parent="Separator" unique_id=322493756]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 68
+script = ExtResource("2_gp2cx")
+
+[node name="Continue" type="Button" parent="Separator/Menu" unique_id=683995704]
+material = SubResource("ShaderMaterial_deg26")
+layout_mode = 2
+theme = ExtResource("1_xim11")
+theme_override_colors/font_pressed_color = Color(0.51953125, 0.51953125, 0.51953125, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8864746, 0.765625, 1)
+theme_override_font_sizes/font_size = 38
+text = "Continue"
+
+[node name="NewGame" type="Button" parent="Separator/Menu" unique_id=457736522]
+material = SubResource("ShaderMaterial_etfu5")
+layout_mode = 2
+theme = ExtResource("1_xim11")
+theme_override_colors/font_pressed_color = Color(0.51953125, 0.51953125, 0.51953125, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8864746, 0.765625, 1)
+theme_override_font_sizes/font_size = 38
+text = "New Game"
+
+[node name="LoadGame" type="Button" parent="Separator/Menu" unique_id=1455770338]
+material = SubResource("ShaderMaterial_etfu5")
+layout_mode = 2
+theme = ExtResource("1_xim11")
+theme_override_colors/font_pressed_color = Color(0.51953125, 0.51953125, 0.51953125, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8864746, 0.765625, 1)
+theme_override_font_sizes/font_size = 38
+text = "Load Game"
+
+[node name="Return" type="Button" parent="Separator/Menu" unique_id=428794806]
+material = SubResource("ShaderMaterial_etfu5")
+layout_mode = 2
+theme = ExtResource("1_xim11")
+theme_override_colors/font_pressed_color = Color(0.51953125, 0.51953125, 0.51953125, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8864746, 0.765625, 1)
+theme_override_font_sizes/font_size = 38
+text = "Return"
+
+[node name="MenuSound" type="Node" parent="Separator/Menu" unique_id=874533541]
+script = ExtResource("2_76pw0")
+hoversfx = ExtResource("3_3xk70")
+clickSfx = ExtResource("4_hsqq3")
+
+[node name="MenuFunctionality" parent="Separator/Menu" unique_id=1426699049 node_paths=PackedStringArray("Menu", "Selection") instance=ExtResource("6_hsqq3")]
+Menu = NodePath("..")
+Selection = NodePath("../../../MenuBackgrounds")
+
+[node name="Tooltip" type="VBoxContainer" parent="Separator" unique_id=1132886933]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 79
+script = ExtResource("10_etfu5")
+
+[node name="DescContinue" type="Label" parent="Separator/Tooltip" unique_id=1281901516]
+material = SubResource("ShaderMaterial_deg26")
+layout_mode = 2
+theme = ExtResource("1_xim11")
+theme_override_font_sizes/font_size = 31
+text = "Resume from where you left off."
+vertical_alignment = 1
+
+[node name="DescNewGame" type="Label" parent="Separator/Tooltip" unique_id=1073975269]
+material = SubResource("ShaderMaterial_etfu5")
+layout_mode = 2
+theme = ExtResource("1_xim11")
+theme_override_font_sizes/font_size = 31
+text = "Awaken anew."
+vertical_alignment = 1
+
+[node name="DescLoadGame" type="Label" parent="Separator/Tooltip" unique_id=903380885]
+material = SubResource("ShaderMaterial_etfu5")
+layout_mode = 2
+theme = ExtResource("1_xim11")
+theme_override_font_sizes/font_size = 31
+text = "Recall to a previous memory."
+vertical_alignment = 1
+
+[node name="DescReturn" type="Label" parent="Separator/Tooltip" unique_id=1793164005]
+material = SubResource("ShaderMaterial_etfu5")
+layout_mode = 2
+theme = ExtResource("1_xim11")
+theme_override_font_sizes/font_size = 31
+text = "Go back to the Main Menu."
+vertical_alignment = 1

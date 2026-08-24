@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterInstance" format=3 uid="uid://u7b6uhn5848s"]
+
+[ext_resource type="Script" uid="uid://cs2ejlgorfek8" path="res://assets/Data/Player/CharacterInstance.gd" id="1_maj5l"]
+[ext_resource type="Resource" uid="uid://b5hkm5hwk5cuc" path="res://assets/Data/Player/Deck/Deck.tres" id="2_nnlon"]
+[ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="3_ur88k"]
+[ext_resource type="Resource" uid="uid://bf04hmv3nnbgw" path="res://assets/Data/Stats/Revised Stats/Health.tres" id="4_hshm0"]
+[ext_resource type="Resource" uid="uid://bxetxvy80ay0c" path="res://assets/Data/Stats/Revised Stats/Sanity.tres" id="5_mtcro"]
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="6_t28vv"]
+[ext_resource type="Resource" uid="uid://cr5xuv3tmjx6m" path="res://assets/Data/Stats/Revised Stats/Strength.tres" id="7_daeg0"]
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="8_vvxdr"]
+[ext_resource type="Resource" uid="uid://ceoqilwthbnl5" path="res://assets/Data/Stats/Revised Stats/Entropy.tres" id="9_14d0m"]
+
+[resource]
+script = ExtResource("1_maj5l")
+starting_deck = ExtResource("2_nnlon")
+draw_power = 6
+max_mana = 3
+player_class = 2
+entity_name = "Jericho"
+AP = 3
+stats = Array[ExtResource("3_ur88k")]([ExtResource("4_hshm0"), ExtResource("5_mtcro"), ExtResource("6_t28vv"), ExtResource("7_daeg0"), ExtResource("8_vvxdr"), ExtResource("9_14d0m")])

@@ -2,7 +2,7 @@ class_name BlockEffect extends CardEffect
 
 
 var Effect:	PackedScene = preload("res://assets/Data/NewScenes/block_visual_effect.tscn")
-var amount = 0
+var amount : int
 
 func activate(targets : Array[Node]) -> void:
 	for target in targets:
@@ -10,6 +10,7 @@ func activate(targets : Array[Node]) -> void:
 			continue
 		if target is EnemyView:
 			target.Enemy.Entity.current_block += amount
+			target.Enemy.Entity.block_gained.emit(amount, target.Enemy.Entity.entity_name)
 			var appliedEffect = Effect.instantiate()
 			target.add_child(appliedEffect)
 			if not appliedEffect.is_node_ready():
@@ -26,5 +27,6 @@ func activate(targets : Array[Node]) -> void:
 			appliedEffect.play_animation()
 			
 			target.Player.current_block += amount
+			target.Player.block_gained.emit(amount, target.Player.entity_name)
 			
 			

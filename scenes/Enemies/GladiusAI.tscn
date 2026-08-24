@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dc8i55bgbn4vw"]
+
+[ext_resource type="Script" uid="uid://c5qdvnlyyivep" path="res://assets/Enemies/Data/Enemies/AI/EnemyAI.gd" id="1_ehces"]
+[ext_resource type="Script" uid="uid://dejffgtp42irn" path="res://assets/Data/EnemyActions/TripleBite.gd" id="2_fxaxo"]
+[ext_resource type="Resource" uid="uid://baw4foxkqfik2" path="res://assets/Enemies/Data/Damage Types/Fire.tres" id="3_qeo0w"]
+[ext_resource type="AudioStream" uid="uid://db4dsbvk3qi3c" path="res://assets/SFX/wolf_triple_bite.wav" id="4_q3unc"]
+[ext_resource type="Script" uid="uid://cjj2676j1ie6h" path="res://assets/Data/EnemyActions/Stalk.gd" id="5_feyab"]
+[ext_resource type="AudioStream" uid="uid://blr6kihmmbqi7" path="res://assets/SFX/stalk.wav" id="6_kcfkb"]
+[ext_resource type="Script" uid="uid://b57o0qhyeejnf" path="res://assets/Data/EnemyActions/Inflame.gd" id="7_0nvfi"]
+[ext_resource type="Texture2D" uid="uid://cj4fwwuajvkw8" path="res://assets/Neo Gladius Phase2.png" id="8_fxaxo"]
+[ext_resource type="Texture2D" uid="uid://drxlvx02kbsua" path="res://assets/Neo Gladius Phase2 Highlighted.png" id="9_qeo0w"]
+[ext_resource type="AudioStream" uid="uid://cdpg4x53v00cu" path="res://assets/SFX/Gladius.wav" id="10_vrytb"]
+
+[node name="EnemyAI" type="Node" unique_id=1564454232]
+script = ExtResource("1_ehces")
+
+[node name="AttackAction" type="Node" parent="." unique_id=165351316]
+script = ExtResource("2_fxaxo")
+damagetype = ExtResource("3_qeo0w")
+ActionType = 1
+SoundEffect = ExtResource("4_q3unc")
+ActionChance = 5.0
+Description = "\"The great beast attacks with a triple gnawing!\""
+
+[node name="BlockAction" type="Node" parent="." unique_id=1949219695]
+script = ExtResource("5_feyab")
+block_gained = 10
+ActionType = 1
+ActionEffect = 1
+SoundEffect = ExtResource("6_kcfkb")
+ActionChance = 3.0
+Description = "\"Gladius is stalking...\""
+
+[node name="BuffAction" type="Node" parent="." unique_id=1508084932]
+script = ExtResource("7_0nvfi")
+Phase_2_Normal = ExtResource("8_fxaxo")
+Phase_2_Hover = ExtResource("9_qeo0w")
+ActionEffect = 4
+SoundEffect = ExtResource("10_vrytb")
+Description = "\"The beast gathers heat! It is scorching hot!\""

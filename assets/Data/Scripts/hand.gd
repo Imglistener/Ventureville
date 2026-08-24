@@ -6,8 +6,9 @@ class_name CardHand extends Node2D
 @onready var deck_manager: DeckManager = $"../../../../../../Functionality/DeckManager"
 
 var is_card_highlighted: bool
+var is_arranging: bool = false
 
-
+signal card_drawn
 func start_turn() -> void:
 	if not player_stat_manager.is_node_ready():
 		await player_stat_manager.ready
@@ -21,21 +22,26 @@ func draw_card(amount: int) -> void:
 	for i in range(amount):
 		var CardScene = deck_manager.ready_card_drawn()
 		add_child(CardScene)
-		
+		card_drawn.emit()
+		arrange_hand()
+
 		#await CardScene.move_cad(CardScene, start_pos, Vector2(i*spacing, CardScene.global_position.y), 0.5)
 func arrange_hand():
-	var offset: int = 250
-	
+	is_arranging = true
+	var max_offset: int = 550
+	var offset: float = max_offset * (float(get_child_count()) / 6)
+	var curve_height: int = 60  # tweak to taste
+
 	var final_pos: Vector2
 	var final_rot: float
-	
+	var last_tween: Tween
 	for i in get_children():
 		var hand_ratio: float = 0.5
 		if get_child_count() > 1:
-			if i:
-				hand_ratio = float(i.get_index()) / (float(get_child_count()) - 1.0)
-				final_pos = Vector2(hand_ratio * offset, 0)
-				final_rot = lerp_angle(-0.2, 0.2, float(i.get_index()) / float(get_child_count() - 1))
+			hand_ratio = float(i.get_index()) / (float(get_child_count()) - 1.0)
+			var curve_y: float = -curve_height * 4.0 * hand_ratio * (1.0 - hand_ratio)
+			final_pos = Vector2(hand_ratio * offset, curve_y)
+			final_rot = lerp_angle(-0.4, 0.4, hand_ratio)
 		else:
 			final_rot = 0
 			final_pos = Vector2(50, 0)
@@ -46,14 +52,19 @@ func arrange_hand():
 			i.hand_position = final_pos
 			i.hand_rotation = final_rot
 			i.hand_position_set = true
-			await tween.finished
+			last_tween = tween
 
+	# Await only once, after all tweens are started
+	if last_tween:
+		await last_tween.finished
+
+	is_arranging = false
 func define_playable() -> void:
 	for i in get_children():
 		# Stack cards left-to-right so rightmost is on top
 		i.z_index = i.get_index()
 		i.is_playable.z_as_relative = true
-		i.is_playable.z_index = -1
+		i.is_playable.z_index = i.get_index()-1
 	
 		if i.card_data.mp_cost <= player_stat_manager.Player.mana and i.card_data.ap_cost <= player_stat_manager.Player.AP:
 			i.is_playable.visible = true
@@ -62,4 +73,12 @@ func define_playable() -> void:
 		else:
 			i.is_playable.visible = false
 			i.is_playable.z_as_relative = true
-			i.is_playable.z_index = 0
+			i.is_playable.z_index = i.get_index() - 1
+
+func clear_hand() -> void:
+	for child in get_children():
+		if child is CardUI:
+			if not child:
+				continue
+			child.animate_out()
+	await get_tree().create_timer(0.2).timeout

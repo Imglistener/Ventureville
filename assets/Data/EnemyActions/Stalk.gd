@@ -9,14 +9,14 @@ func _ready() -> void:
 func use_action() -> void:
 	if not Enemy or not target:
 		return
+	super()
 	var block_effect := BlockEffect.new()
 	block_effect.amount = block_gained
-	SFXBus.stream = SoundEffect
-	SFXBus.play()
+	SFXBus.play_sfx(SoundEffect)
 
 	get_tree().create_timer(2.8, false).timeout.connect(
 		func():
 			block_effect.activate([Enemy])
-			Events.EnemyActionCompleted.emit(Enemy)
+			Events.EnemyActionCompleted.emit(self)
 			
 	)

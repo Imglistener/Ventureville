@@ -11,9 +11,10 @@ func enter() -> void:
 		played = true
 		card_UI.play()
 		var hand : CardHand = card.get_parent()
-		hand.define_playable()
+		await card.tree_exited
 		hand.arrange_hand()
-		
+		hand.define_playable()
+	card_UI.drop_point_detector.monitoring = false
 func process(_delta: float) -> void:		
 	if played:
 		return

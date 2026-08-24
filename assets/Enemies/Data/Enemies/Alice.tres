@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="EnemyBattlerStats" format=3 uid="uid://t4bhsemp13xl"]
+
+[ext_resource type="Script" uid="uid://djvjp04eqmhrw" path="res://assets/Enemies/Data/Enemies/Dialogue/DialogueInstance.gd" id="1_ffihv"]
+[ext_resource type="Texture2D" uid="uid://d2xsvo2vfxtw4" path="res://assets/alice.png" id="1_veeok"]
+[ext_resource type="Script" uid="uid://b3icxqpmtwr18" path="res://assets/Data/Entities/EnemyBattlerStats.gd" id="2_veeok"]
+[ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="3_dgbv4"]
+
+[sub_resource type="Resource" id="Resource_dgbv4"]
+script = ExtResource("1_ffihv")
+Line = "\"...\""
+metadata/_custom_type_script = "uid://djvjp04eqmhrw"
+
+[sub_resource type="Resource" id="Resource_vrnyn"]
+script = ExtResource("1_ffihv")
+Speaker = 2
+Line = "You don't understand what you're looking at."
+metadata/_custom_type_script = "uid://djvjp04eqmhrw"
+
+[sub_resource type="Resource" id="Resource_lgpqv"]
+script = ExtResource("1_ffihv")
+Line = "\"...\""
+metadata/_custom_type_script = "uid://djvjp04eqmhrw"
+
+[sub_resource type="Resource" id="Resource_fwdk3"]
+script = ExtResource("1_ffihv")
+Speaker = 2
+Line = "Your head hurts."
+metadata/_custom_type_script = "uid://djvjp04eqmhrw"
+
+[resource]
+script = ExtResource("2_veeok")
+Base_HP = 300
+Base_SAN = 300
+Resists = 4
+Is_Vul_to = 5
+Difficulty = 2
+Battler_Art_Normal = ExtResource("1_veeok")
+DamageBonus = 5.0
+Dialogue = Array[ExtResource("1_ffihv")]([SubResource("Resource_dgbv4"), SubResource("Resource_vrnyn"), SubResource("Resource_lgpqv"), SubResource("Resource_fwdk3")])
+entity_name = "!$#%@#$"
+Battler_Type = 1
+metadata/_custom_type_script = "uid://b3icxqpmtwr18"

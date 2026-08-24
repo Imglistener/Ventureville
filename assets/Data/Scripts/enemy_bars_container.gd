@@ -5,5 +5,5 @@ class_name EnemyBarsContainer extends MarginContainer
 @onready var enemy_hp_counter: Label = $VBoxContainer/enemy_hp/enemy_hp_counter
 @onready var enemy_san: TextureProgressBar = $VBoxContainer/Enemy_san
 @onready var enemy_san_counter: Label = $VBoxContainer/Enemy_san/Enemy_san_counter
-@onready var statuseffecticon: TextureRect = $Statuseffecticon
-@onready var turns_remaining: Label = $Statuseffecticon/turns_remaining
+@onready var statuseffecticon: TextureRect =$MarginContainer/Statuseffecticon
+@onready var turns_remaining: Label = $MarginContainer/Statuseffecticon/turns_remaining
