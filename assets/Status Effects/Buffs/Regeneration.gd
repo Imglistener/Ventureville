@@ -1,7 +1,7 @@
 class_name Regeneration extends StatusEffect
 
 func _init() -> void:
-	status_icon = preload("res://assets/Wenrexa/PNG/Icon27.png")
+	status_icon = preload("res://assets/GUI/regen_2_Icon.png")
 func on_apply(targets: Array[Node], duration : int = 1) -> void:
 	for target in targets:
 		if not target:

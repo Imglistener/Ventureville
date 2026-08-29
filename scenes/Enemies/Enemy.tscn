@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cid0ju5a74w0u"]
 
 [ext_resource type="Script" uid="uid://8r6qobsx3y77" path="res://scenes/Enemies/gladius.gd" id="1_6vx3i"]
+[ext_resource type="Texture2D" uid="uid://bjwmyu0eb7wpj" path="res://assets/GUI/Status_splash_Resist_1.png" id="2_myw8k"]
 [ext_resource type="Texture2D" uid="uid://d2xsvo2vfxtw4" path="res://assets/alice.png" id="2_p0j1s"]
+[ext_resource type="Texture2D" uid="uid://dl65sfl1ds3sj" path="res://assets/GUI/Status_splash_Vulnerable_2.png" id="3_65cbk"]
 [ext_resource type="Script" uid="uid://dvj68adj207sy" path="res://assets/Data/Scripts/enemy_view.gd" id="3_hrax5"]
 [ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="4_3mehh"]
 [ext_resource type="Texture2D" uid="uid://boyx52878drbv" path="res://assets/KennyUI/Border/panel-border-000.png" id="4_hrax5"]
@@ -12,8 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://dkr62mk01xwek" path="res://assets/KennyUI/Border/panel-border-005.png" id="8_mh1ew"]
 [ext_resource type="Script" uid="uid://cdivs16ftli1n" path="res://scripts/bars/animated_bar.gd" id="9_6hsbo"]
 [ext_resource type="LabelSettings" uid="uid://cwvkv70rf748a" path="res://assets/Label_Settings.tres" id="10_xox7x"]
-[ext_resource type="Texture2D" uid="uid://dp5d7o5axqpuv" path="res://assets/GUI/Resists.png" id="13_ht5qr"]
-[ext_resource type="Texture2D" uid="uid://b8pp7te4ajl00" path="res://assets/GUI/Vulnerable.png" id="14_myw8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjvsk"]
 size = Vector2(494.297, 314.11603)
@@ -165,8 +165,8 @@ _data = {
 [node name="Enemy" type="Area2D" unique_id=438713798 groups=["Enemies"]]
 collision_layer = 4
 script = ExtResource("1_6vx3i")
-resistant_icon = ExtResource("13_ht5qr")
-vulnerable_icon = ExtResource("14_myw8k")
+resistant_icon = ExtResource("2_myw8k")
+vulnerable_icon = ExtResource("3_65cbk")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1067368722]
 scale = Vector2(0.76, 0.76)
@@ -376,21 +376,20 @@ horizontal_alignment = 1
 
 [node name="DamageRes" type="MarginContainer" parent="EnemyBarsContainer/MarginContainer" unique_id=466232217]
 layout_mode = 2
-theme_override_constants/margin_top = 49
-theme_override_constants/margin_bottom = -52
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_bottom = -92
 
 [node name="Resists" type="TextureRect" parent="EnemyBarsContainer/MarginContainer/DamageRes" unique_id=575211709]
-visible = false
-custom_minimum_size = Vector2(90, 60)
+custom_minimum_size = Vector2(150, 138.425)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("13_ht5qr")
-expand_mode = 1
+size_flags_vertical = 4
+texture = ExtResource("2_myw8k")
+expand_mode = 2
 stretch_mode = 4
 
 [node name="DmgNumbers" type="Marker2D" parent="." unique_id=1345748465]
-visible = false
-position = Vector2(0, -233)
+position = Vector2(0, -170)
 
 [node name="Death" type="AnimationPlayer" parent="." unique_id=72518885]
 libraries/ = SubResource("AnimationLibrary_ht5qr")

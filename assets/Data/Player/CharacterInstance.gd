@@ -31,13 +31,13 @@ func take_damage(damage : int, damage_type: DamageType) -> void:
 	if damage_type:
 		var resistance = damage_type.Associated_Stat.stat_resistance_value
 		var final_damage := clampi(damage - resistance, 0, damage)
-		DamageNumbers.display_number(final_damage, false, damage_numbers)
+		DamageNumbers.display_number(final_damage, damage_number_anchor, damage_numbers)
 		self.current_health -= final_damage
 		damage_taken.emit(final_damage, entity_name)
 	
 	else:
 		self.current_health -= damage
-		DamageNumbers.display_number(damage, false, damage_numbers)
+		DamageNumbers.display_number(damage, damage_number_anchor, damage_numbers)
 		damage_taken.emit(damage, entity_name)
 	if self.current_health == 0:
 			entity_died.emit(entity_name)
@@ -64,7 +64,7 @@ func take_san_damage(amount: int) -> void:
 	
 
 func heal(amount: int) -> void:
-	DamageNumbers.display_healing_number(amount, false, damage_numbers)
+	DamageNumbers.display_healing_number(amount, damage_number_anchor, damage_numbers)
 	self.current_health += amount
 	health_restored.emit(amount, entity_name)
 	Stats_Changed.emit()

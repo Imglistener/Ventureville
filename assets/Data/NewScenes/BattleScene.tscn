@@ -262,12 +262,9 @@ texture_normal = ExtResource("20_cs5ql")
 texture_pressed = ExtResource("21_c1pur")
 texture_hover = ExtResource("22_c1pur")
 
-[node name="DamageNumbers" type="Node2D" parent="Control_Layer" unique_id=1054874820 groups=["DamageNumbers"]]
+[node name="DamageNumbersPlayer" type="Node2D" parent="Control_Layer" unique_id=1054874820 groups=["DamageNumbersPlayer"]]
 z_index = 10
 position = Vector2(1038.1616, 510.72748)
-
-[node name="DamageNumbersEnemy" type="Node2D" parent="Control_Layer" unique_id=1450103725 groups=["DamageNumbers"]]
-position = Vector2(783.6156, 111.939804)
 
 [node name="Pause Layer" type="CanvasLayer" parent="Control_Layer" unique_id=206101572]
 layer = 5

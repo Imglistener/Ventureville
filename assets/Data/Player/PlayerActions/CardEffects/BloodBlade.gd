@@ -43,7 +43,7 @@ func _calculate_total(character: CharacterInstance) -> int:
 	var bonus := 0
 	if index != -1:
 		bonus = character.stats[index].stat_scaling_value
-	return base_damage + bonus
+	return base_damage + bonus + character.get_attack_bonus()
 
 func get_description(character: CharacterInstance) -> String:
 	var total := _calculate_total(character)

@@ -32,4 +32,5 @@ theme = SubResource("Theme_jcqbx")
 text = "Fool"
 icon = ExtResource("1_eroga")
 alignment = 0
+expand_icon = true
 script = ExtResource("3_svyis")

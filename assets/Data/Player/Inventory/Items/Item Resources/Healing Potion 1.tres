@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://x68h21ei6wvj" path="res://assets/Data/Player/Inventory/Items/Item Scripts/Item Effects/HealingItem.gd" id="1_belfv"]
 [ext_resource type="Script" uid="uid://1pn375m8pd4b" path="res://assets/Data/Scripts/Item.gd" id="1_itwko"]
-[ext_resource type="Texture2D" uid="uid://bolb4eopeie4u" path="res://assets/GUI/Bleeding.png" id="1_ktddt"]
+[ext_resource type="Texture2D" uid="uid://bkgycg6hnwb4t" path="res://assets/GUI/potion_healing_1.png" id="2_belfv"]
 
 [sub_resource type="Resource" id="Resource_0ccq8"]
 script = ExtResource("1_belfv")
@@ -14,5 +14,5 @@ script = ExtResource("1_itwko")
 item_name = "Small Potion of Healing"
 item_description = "Blood Red liquid swirls around in this glass vial. Restores 30 HP."
 item_effect = SubResource("Resource_0ccq8")
-item_icon = ExtResource("1_ktddt")
+item_icon = ExtResource("2_belfv")
 metadata/_custom_type_script = "uid://1pn375m8pd4b"
