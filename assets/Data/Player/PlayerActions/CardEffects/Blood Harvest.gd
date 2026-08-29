@@ -24,7 +24,7 @@ func _calculate_total(character: CharacterInstance) -> int:
 	var index := character.stats.find(StatsScaled)
 	var bonus := 0
 	if index != -1:
-		bonus = character.stats[index].stat_scaling_value
+		bonus = character.stats[index].stat_scaling_value + character.get_attack_bonus()
 	return base_damage + bonus
 
 func get_description(character: CharacterInstance) -> String:

@@ -80,13 +80,13 @@ func take_damage(damage: int, damage_type: DamageType = null) -> void:
 	self.current_block = clampi(current_block - initial_damage, 0, current_block)
 	damage = calculate_type_adjusted_damage(damage, damage_type)
 	self.current_health -= damage
-	DamageNumbers.display_number(damage, true, damage_numbers)
+	DamageNumbers.display_number(damage, damage_number_anchor, damage_numbers)
 	damage_taken.emit(damage, entity_name) 
 	if self.current_health == 0:
 			entity_died.emit(entity_name)
 
 func heal(amount: int) -> void:
-	DamageNumbers.display_healing_number(amount, true, damage_numbers)
+	DamageNumbers.display_healing_number(amount, damage_number_anchor, damage_numbers)
 	self.current_health += amount
 	health_restored.emit(amount, entity_name)
 	

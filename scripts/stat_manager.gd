@@ -82,6 +82,8 @@ func _initialize_entity(entity_type: Variant) -> void:
 		setup_ai()
 		enemy.update_enemy_view(Entity.Battler_Art_Normal, Entity.Battler_Art_Hovered)
 		Entity.damage_numbers = enemy.dmg_numbers.global_position
+		Entity.damage_number_anchor = enemy.dmg_numbers
+
 		enemy.enemy_hp.max_value = Entity.Max_HP
 		enemy.enemy_hp.value	= Entity.current_health
 		enemy.enemy_san.max_value	= Entity.Max_SAN
@@ -102,7 +104,8 @@ func _initialize_entity(entity_type: Variant) -> void:
 		items_menu.player_inventory = Player.player_inventory
 		items_menu.display_items_and_quantities()
 		Player.starting_deck.intialize_deck_contents()
-		Player.damage_numbers = get_tree().get_nodes_in_group("DamageNumbers")[0].global_position
+		Player.damage_numbers = get_tree().get_first_node_in_group("DamageNumbersPlayer").global_position
+		Player.damage_number_anchor = get_tree().get_first_node_in_group("DamageNumbersPlayer")
 		log.connect_to_entity(Player)
 		player_view.player_bars_container.player_hp.max_value = Player.Max_HP
 		player_view.player_bars_container.player_hp.value = Player.current_health

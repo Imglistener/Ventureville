@@ -31,11 +31,15 @@ var current_sanity	: int : set = set_sanity
 var current_block	: int : set = set_block
 var current_san_block: int: set = set_san_block
 var damage_numbers: Vector2
+var damage_number_anchor: Node2D  # NEW: the Node2D floating labels should be parented under for this entity
 var buff_damage_modifier: int
 
 func modify_buff_modifier(amount: int) -> void:
 	buff_damage_modifier = amount
 	Stats_Changed.emit()
+
+func get_attack_bonus() -> int: 
+	return buff_damage_modifier
 
 func true_take_damage(amount: int) -> void:
 	current_health -= amount

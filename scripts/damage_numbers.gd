@@ -5,6 +5,7 @@ const LABEL_SETTINGS = preload("res://assets/Label_Settings.tres")
 const COLORS = {
 	"Burning": Color.ORANGE,
 	"Blood Syphon": Color.RED,
+	"DamageUp": Color.ORANGE,
 	"damage": Color("#FFF"),
 	"crit": Color("#B22"),
 	"heal": Color(0.313, 1.0, 0.0, 1.0),
@@ -17,16 +18,30 @@ const COLORS = {
 const RAND_OFFSET := 30  # Max pixels of random spread
 
 
-func display_effect(status: StatusEffect, is_from_player: bool, source_position: Vector2, wore_off: bool = false) -> void:
-	var color : Color
-	var font_size: int = 30
-	if status is BloodSyphon:
-		var text = "Blood Syphon"
-		color = COLORS["Blood Syphon"]
-		_spawn_label(text, color, font_size, is_from_player, source_position - Vector2(150, 150), wore_off)
-	
+func display_effect(status: StatusEffect, anchor: Node2D, source_position: Vector2, wore_off: bool = false) -> void:
+	if not anchor:
+		return
 
-func display_number(value: int, is_from_player: bool, source_position: Vector2, is_crit: bool = false) -> void:
+	var text: String
+	var color: Color
+	var font_size: int = 30
+
+	if status is BloodSyphon:
+		text = "Blood Syphon"
+		color = COLORS["Blood Syphon"]
+	elif status is DamageUP:
+		text = "Damage Up"
+		color = COLORS["DamageUp"]
+	else:
+		return
+
+	_spawn_label(text, color, font_size, anchor, source_position - Vector2(150, -150), wore_off)
+
+
+func display_number(value: int, anchor: Node2D, source_position: Vector2, is_crit: bool = false) -> void:
+	if not anchor:
+		return
+
 	var color: Color
 	var text: String
 	var font_size := 30
@@ -44,35 +59,42 @@ func display_number(value: int, is_from_player: bool, source_position: Vector2, 
 		color = COLORS["damage"]
 
 	var offset := Vector2(randf_range(-RAND_OFFSET, RAND_OFFSET), randf_range(-RAND_OFFSET * 0.5, RAND_OFFSET * 0.5))
-	_spawn_label(text, color, font_size, is_from_player, source_position + offset, false)
+	_spawn_label(text, color, font_size, anchor, source_position + offset, false)
 
 
-func display_healing_number(value: int, is_from_player: bool, source_position: Vector2) -> void:
+func display_healing_number(value: int, anchor: Node2D, source_position: Vector2) -> void:
+	if not anchor:
+		return
+
 	var color := COLORS["heal"] if value > 0 else COLORS["zero"]
 	var offset := Vector2(randf_range(-RAND_OFFSET, RAND_OFFSET), randf_range(-RAND_OFFSET * 0.5, RAND_OFFSET * 0.5))
-	_spawn_label("+" + str(value), color, 30, is_from_player, source_position + offset, true)
+	_spawn_label("+" + str(value), color, 30, anchor, source_position + offset, true)
 
 
-func display_san_number(value: int, is_from_player: bool, source_position: Vector2, is_heal: bool = false) -> void:
+func display_san_number(value: int, anchor: Node2D, source_position: Vector2, is_heal: bool = false) -> void:
+	if not anchor:
+		return
+
 	var color := COLORS["san_heal"] if is_heal else COLORS["san_damage"]
 	var text := ("+" if is_heal else "") + str(value)
 	var offset := Vector2(randf_range(-RAND_OFFSET, RAND_OFFSET), randf_range(-RAND_OFFSET * 0.5, RAND_OFFSET * 0.5))
-	_spawn_label(text, color, 28, is_from_player, source_position + offset, is_heal)
+	_spawn_label(text, color, 28, anchor, source_position + offset, is_heal)
 
 
-func _spawn_label(text: String, color: Color, font_size: int, is_from_player: bool, position: Vector2, floats_up: bool) -> void:
+func _spawn_label(text: String, color: Color, font_size: int, anchor: Node2D, position: Vector2, floats_up: bool) -> void:
 	var number := Label.new()
 	number.text = text
-	number.z_index = 10
+	number.z_as_relative = false
+	number.z_index = 500
 	number.label_settings = LABEL_SETTINGS.duplicate()
 	number.label_settings.font_color = color
 	number.label_settings.font_size = font_size * 2
 	number.label_settings.outline_size = 1
 	number.modulate.a = 0.0
 
-	var group_index := 1 if is_from_player else 0
-	var anchor: Node2D = get_tree().get_nodes_in_group("DamageNumbers")[group_index]
 	anchor.add_child(number)
+	
+	number.top_level = true  # ignore the anchor's inherited scale/rotation (e.g. a scaled-down enemy hierarchy) — position is still set explicitly below
 	number.global_position = position
 
 	await get_tree().process_frame
