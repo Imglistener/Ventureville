@@ -32,6 +32,12 @@ func display_effect(status: StatusEffect, anchor: Node2D, source_position: Vecto
 	elif status is DamageUP:
 		text = "Damage Up"
 		color = COLORS["DamageUp"]
+	elif status is Regeneration:
+		text = "Regeneration"
+		color = COLORS["heal"]
+	elif status is Concussed:
+		text = "Concussed"
+		color = Color.REBECCA_PURPLE
 	else:
 		return
 
@@ -94,7 +100,7 @@ func _spawn_label(text: String, color: Color, font_size: int, anchor: Node2D, po
 
 	anchor.add_child(number)
 	
-	number.top_level = true  # ignore the anchor's inherited scale/rotation (e.g. a scaled-down enemy hierarchy) — position is still set explicitly below
+	number.top_level = true 
 	number.global_position = position
 
 	await get_tree().process_frame

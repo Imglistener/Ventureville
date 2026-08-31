@@ -1,6 +1,6 @@
 [gd_resource type="Resource" format=3 uid="uid://d4auimgetdkq6"]
 
-[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="1_lvj2y"]
+[ext_resource type="Resource" uid="uid://bsdqh2bx5brhw" path="res://assets/Status Effects/Debuffs/Concussed.tres" id="1_ohh5m"]
 [ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="2_nha04"]
 [ext_resource type="Resource" uid="uid://c3rlpuyyf0q7e" path="res://assets/Status Effects/Buffs/Regeneration.tres" id="2_ohh5m"]
 [ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="3_nha04"]
@@ -11,7 +11,7 @@ script = ExtResource("3_ohh5m")
 base_damage = 10
 base_cost = 10
 StatsScaled = ExtResource("2_nha04")
-AppliedEffect = ExtResource("1_lvj2y")
+AppliedEffect = ExtResource("1_ohh5m")
 RegenEffect = ExtResource("2_ohh5m")
 damage_type = ExtResource("3_nha04")
 name = "Blood Blade"

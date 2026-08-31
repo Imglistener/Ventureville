@@ -1,22 +1,25 @@
 [gd_scene format=3 uid="uid://nody171fluag"]
 
+[ext_resource type="Script" uid="uid://dmgetaf5b3vd8" path="res://assets/Data/NewScenes/Cards/Cardframe.gd" id="1_3go67"]
 [ext_resource type="Texture2D" uid="uid://b2cqst3j3trnh" path="res://assets/GUI/Card_Game_border.png" id="1_x53gr"]
 [ext_resource type="Script" uid="uid://cyen3w4wa8tip" path="res://assets/Data/NewScenes/Cards/card.gd" id="2_8hmw1"]
 [ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="3_8hmw1"]
 [ext_resource type="Resource" uid="uid://be12tcnli2021" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Barrier.tres" id="3_80gmr"]
-[ext_resource type="Texture2D" uid="uid://bealobhm404qw" path="res://assets/GUI/icons/ChatGPT Image Apr 15, 2026, 05_04_17 PM.png" id="4_1wehq"]
 [ext_resource type="AudioStream" uid="uid://cnuxlqejtckb5" path="res://assets/SFX/card_hover.wav" id="4_80gmr"]
 [ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="5_bb8u2"]
 [ext_resource type="AudioStream" uid="uid://p68vnmwk5kiw" path="res://assets/SFX/card_click.wav" id="5_x53gr"]
 [ext_resource type="AudioStream" uid="uid://cs43hedoluabf" path="res://assets/SFX/711353__rising_moon__magic_loop.mp3" id="6_80gmr"]
 [ext_resource type="Script" uid="uid://dbqo6v48is40i" path="res://scripts/CardUI/CardState/CardStateManager.gd" id="8_ktvkk"]
 [ext_resource type="Script" uid="uid://um2yjt6eq6j1" path="res://scripts/CardUI/CardState/StateCardDragging.gd" id="9_5cyc0"]
+[ext_resource type="Texture2D" uid="uid://cx76h8fp6cixc" path="res://assets/venture.png" id="9_x53gr"]
 [ext_resource type="Script" uid="uid://ba8tlvahvwcu3" path="res://scripts/CardUI/CardState/StateCardIdling.gd" id="10_igbv7"]
 [ext_resource type="Script" uid="uid://y5w4mn6hr4iu" path="res://scripts/CardUI/CardState/StateCardClicked.gd" id="11_80gmr"]
 [ext_resource type="Script" uid="uid://btv4edn2vhq6g" path="res://scripts/CardUI/CardState/StateCardHovering.gd" id="12_x53gr"]
 [ext_resource type="Script" uid="uid://4cta7ix0hl1f" path="res://scripts/CardUI/CardState/StateCardReleased.gd" id="13_jv0el"]
 [ext_resource type="Texture2D" uid="uid://cxou5rhtoktyl" path="res://assets/GUI/orb_ver_2.png" id="16_x53gr"]
 [ext_resource type="Texture2D" uid="uid://b8qcjheona08j" path="res://assets/GUI/Mana Gem.png" id="17_jv0el"]
+[ext_resource type="Shader" uid="uid://dbxxvumw1awb" path="res://drop shadow.gdshader" id="18_odcj6"]
+[ext_resource type="Texture2D" uid="uid://dolcfbwx0h72n" path="res://assets/PNG/Grid.png" id="19_3go67"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m4iia"]
 font = ExtResource("3_8hmw1")
@@ -135,13 +138,25 @@ shader_parameter/pulse_amount = 0.41200001957
 shader_parameter/fade_strength = 0.3050000144875
 shader_parameter/fade_bias = 0.7170000340575
 
-[node name="Card" type="TextureRect" unique_id=515759519 groups=["Cards"]]
-offset_left = -224.0
-offset_top = -303.99997
-offset_right = 443.0
-offset_bottom = 614.0
-scale = Vector2(0.35, 0.35)
-pivot_offset = Vector2(333, 459)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfg1p"]
+shader = ExtResource("18_odcj6")
+shader_parameter/shadow_offset = Vector2(2, 2)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+
+[node name="CardFrame" type="MarginContainer" unique_id=740277961]
+custom_minimum_size = Vector2(694, 1013)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -280.0
+offset_right = -586.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3go67")
+
+[node name="Card" type="TextureRect" parent="." unique_id=515759519 groups=["Cards"]]
+layout_mode = 2
 mouse_filter = 0
 texture = ExtResource("1_x53gr")
 expand_mode = 4
@@ -151,16 +166,29 @@ HoverSFX = ExtResource("4_80gmr")
 clickedSFX = ExtResource("5_x53gr")
 aimingSFX = ExtResource("6_80gmr")
 
-[node name="CardName" type="Label" parent="." unique_id=1886172814]
+[node name="Frame" type="MarginContainer" parent="Card" unique_id=83995678]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -170.50012
-offset_top = 31.428558
-offset_right = 170.49988
-offset_bottom = 140.42859
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Card/Frame" unique_id=1869460091]
+layout_mode = 2
+theme_override_constants/separation = 27
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Card/Frame/VBoxContainer2" unique_id=361603248]
+layout_mode = 2
+theme_override_constants/separation = 397
+
+[node name="CardNameMargin" type="MarginContainer" parent="Card/Frame/VBoxContainer2/VBoxContainer" unique_id=1033055533]
+layout_mode = 2
+theme_override_constants/margin_left = -3
+theme_override_constants/margin_top = 27
+
+[node name="CardName" type="Label" parent="Card/Frame/VBoxContainer2/VBoxContainer/CardNameMargin" unique_id=1886172814]
+layout_mode = 2
 theme = ExtResource("5_bb8u2")
 theme_type_variation = &"TooltipLabel"
 theme_override_constants/outline_size = 12
@@ -168,48 +196,27 @@ theme_override_font_sizes/font_size = 61
 text = "CARD NAME"
 horizontal_alignment = 1
 
-[node name="CardType" type="Label" parent="." unique_id=1643071682]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.36549866
-anchor_top = 0.52857524
-anchor_right = 0.62567323
-anchor_bottom = 0.59175605
-offset_left = -1.5258789e-05
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CardTypeMargin" type="MarginContainer" parent="Card/Frame/VBoxContainer2/VBoxContainer" unique_id=102163325]
+layout_mode = 2
+theme_override_constants/margin_left = 117
+theme_override_constants/margin_right = 127
+
+[node name="CardType" type="Label" parent="Card/Frame/VBoxContainer2/VBoxContainer/CardTypeMargin" unique_id=1643071682]
+layout_mode = 2
 text = "TYPE"
 label_settings = SubResource("LabelSettings_m4iia")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="CardIcon" type="TextureRect" parent="." unique_id=289330355]
-custom_minimum_size = Vector2(400, 310)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.17514522
-anchor_top = 0.12712243
-anchor_right = 0.7748454
-anchor_bottom = 0.559767
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_1wehq")
-expand_mode = 3
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+[node name="MarginContainer" type="MarginContainer" parent="Card/Frame/VBoxContainer2" unique_id=1490276840]
+layout_mode = 2
+theme_override_constants/margin_left = 41
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 29
 
-[node name="CardEffect" type="RichTextLabel" parent="." unique_id=672723650]
+[node name="CardEffect" type="RichTextLabel" parent="Card/Frame/VBoxContainer2/MarginContainer" unique_id=672723650]
 custom_minimum_size = Vector2(500, 300)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.08299818
-anchor_top = 0.5955035
-anchor_right = 0.89196247
-anchor_bottom = 0.9608306
-offset_top = 3.0517578e-05
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("5_bb8u2")
 theme_override_constants/outline_size = 6
@@ -222,46 +229,66 @@ horizontal_alignment = 1
 justification_flags = 129
 metadata/_edit_use_anchors_ = true
 
-[node name="CardAnimation" type="AnimationPlayer" parent="." unique_id=717851961]
+[node name="CardIcon" type="TextureRect" parent="Card" unique_id=289330355]
+custom_minimum_size = Vector2(400, 310)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25224978
+anchor_top = 0.05242589
+anchor_right = 0.99587816
+anchor_bottom = 0.58890516
+offset_left = 1.5258789e-05
+offset_right = -96.0
+offset_bottom = -95.32025
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.24, 1.24)
+mouse_filter = 2
+texture = ExtResource("9_x53gr")
+expand_mode = 3
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="CardAnimation" type="AnimationPlayer" parent="Card" unique_id=717851961]
 libraries/ = SubResource("AnimationLibrary_bb8u2")
 
-[node name="DropPointDetector" type="Area2D" parent="." unique_id=1454532745]
+[node name="DropPointDetector" type="Area2D" parent="Card" unique_id=1454532745]
 collision_mask = 2
 
-[node name="Collision" type="CollisionShape2D" parent="DropPointDetector" unique_id=854725221]
+[node name="Collision" type="CollisionShape2D" parent="Card/DropPointDetector" unique_id=854725221]
 position = Vector2(331.46918, 457.93286)
 scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("RectangleShape2D_8hmw1")
 debug_color = Color(0, 0.60038817, 0.70000815, 0)
 
-[node name="CardStateManager" type="Node" parent="." unique_id=613156116 node_paths=PackedStringArray("starting_state") groups=["StateManager"]]
+[node name="CardStateManager" type="Node" parent="Card" unique_id=613156116 node_paths=PackedStringArray("starting_state") groups=["StateManager"]]
 script = ExtResource("8_ktvkk")
 starting_state = NodePath("CardStateIdling")
 metadata/_custom_type_script = "uid://dbqo6v48is40i"
 
-[node name="CardStateDragging" type="Node" parent="CardStateManager" unique_id=1597663080]
+[node name="CardStateDragging" type="Node" parent="Card/CardStateManager" unique_id=1597663080]
 script = ExtResource("9_5cyc0")
 state = 3
 
-[node name="CardStateIdling" type="Node" parent="CardStateManager" unique_id=719726011]
+[node name="CardStateIdling" type="Node" parent="Card/CardStateManager" unique_id=719726011]
 script = ExtResource("10_igbv7")
 
-[node name="CardStateClicked" type="Node" parent="CardStateManager" unique_id=876801751]
+[node name="CardStateClicked" type="Node" parent="Card/CardStateManager" unique_id=876801751]
 script = ExtResource("11_80gmr")
 state = 2
 
-[node name="CardStateHovering" type="Node" parent="CardStateManager" unique_id=1588237784]
+[node name="CardStateHovering" type="Node" parent="Card/CardStateManager" unique_id=1588237784]
 script = ExtResource("12_x53gr")
 state = 4
 
-[node name="CardStateReleased" type="Node" parent="CardStateManager" unique_id=232672706]
+[node name="CardStateReleased" type="Node" parent="Card/CardStateManager" unique_id=232672706]
 script = ExtResource("13_jv0el")
 state = 5
 
-[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=745794655]
+[node name="SFX" type="AudioStreamPlayer" parent="Card" unique_id=745794655]
 bus = &"SFX"
 
-[node name="IsPlayable" type="ColorRect" parent="." unique_id=1133534713]
+[node name="IsPlayable" type="ColorRect" parent="Card" unique_id=1133534713]
 show_behind_parent = true
 z_index = -1
 z_as_relative = false
@@ -277,7 +304,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=423875402]
+[node name="TextureRect" type="TextureRect" parent="Card" unique_id=423875402]
 layout_mode = 1
 offset_left = 11.428589
 offset_top = 19.999998
@@ -288,7 +315,7 @@ pivot_offset = Vector2(20, 20)
 texture = ExtResource("16_x53gr")
 expand_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect" unique_id=433200826]
+[node name="MarginContainer" type="MarginContainer" parent="Card/TextureRect" unique_id=433200826]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -302,7 +329,7 @@ offset_bottom = 19.56665
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="APCost" type="Label" parent="TextureRect/MarginContainer" unique_id=2146630464]
+[node name="APCost" type="Label" parent="Card/TextureRect/MarginContainer" unique_id=2146630464]
 layout_mode = 2
 theme = ExtResource("5_bb8u2")
 theme_override_constants/outline_size = 1
@@ -310,7 +337,7 @@ theme_override_font_sizes/font_size = 19
 text = "3"
 horizontal_alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=1898304432]
+[node name="TextureRect2" type="TextureRect" parent="Card" unique_id=1898304432]
 layout_mode = 1
 offset_left = 4.834
 offset_top = 78.899
@@ -322,7 +349,7 @@ texture = ExtResource("17_jv0el")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect2" unique_id=1077688965]
+[node name="MarginContainer" type="MarginContainer" parent="Card/TextureRect2" unique_id=1077688965]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -336,7 +363,7 @@ offset_bottom = 15.509716
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MPCost" type="Label" parent="TextureRect2/MarginContainer" unique_id=387431464]
+[node name="MPCost" type="Label" parent="Card/TextureRect2/MarginContainer" unique_id=387431464]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("5_bb8u2")
@@ -345,7 +372,20 @@ theme_override_font_sizes/font_size = 15
 text = "3"
 horizontal_alignment = 1
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="area_entered" from="DropPointDetector" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="DropPointDetector" to="." method="_on_area_2d_area_exited"]
+[node name="disabled_mask" type="TextureRect" parent="Card" unique_id=333984200]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+material = SubResource("ShaderMaterial_qfg1p")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_3go67")
+expand_mode = 1
+
+[connection signal="mouse_entered" from="Card" to="Card" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Card" to="Card" method="_on_mouse_exited"]
+[connection signal="area_entered" from="Card/DropPointDetector" to="Card" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Card/DropPointDetector" to="Card" method="_on_area_2d_area_exited"]

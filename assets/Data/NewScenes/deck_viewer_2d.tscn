@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bxhnejwbij1n3"]
+
+[node name="DeckViewer2D" type="MarginContainer" unique_id=1412893859]
+offset_right = 3486.0
+offset_bottom = 2030.0
+scale = Vector2(0.355, 0.355)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=2036952227]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=743472238]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+columns = 5

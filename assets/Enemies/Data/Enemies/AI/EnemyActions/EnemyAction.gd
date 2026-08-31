@@ -3,7 +3,7 @@ extends Node
 
 enum ActionTypes {Conditional, ChanceBased}
 enum ActionEffects {Attack, Defend, Buff, Debuff, Transition}
-
+@export var Enemy_Data : EnemyData
 @export var ActionType: ActionTypes
 @export var ActionEffect: ActionEffects
 @export var SoundEffect : AudioStream
@@ -24,4 +24,12 @@ func use_action() -> void:
 	if self.log:
 		self.log.text += "[br]"
 		self.log.text += (Description)
-		
+
+func setup_from_data() -> void:
+	if not Enemy_Data:
+		return
+	ActionType = Enemy_Data.ActionType
+	ActionEffect = Enemy_Data.ActionEffect
+	SoundEffect = Enemy_Data.SoundEffect
+	ActionChance = Enemy_Data.ActionChance
+	Description = Enemy_Data.Description

@@ -8,7 +8,7 @@ class_name CardHand extends Node2D
 var is_card_highlighted: bool
 var is_arranging: bool = false
 
-signal card_drawn
+
 func start_turn() -> void:
 	if not player_stat_manager.is_node_ready():
 		await player_stat_manager.ready
@@ -22,10 +22,10 @@ func draw_card(amount: int) -> void:
 	for i in range(amount):
 		var CardScene = deck_manager.ready_card_drawn()
 		add_child(CardScene)
-		card_drawn.emit()
+		Events.card_drawn.emit(CardScene.card_data)
 		arrange_hand()
+		
 
-		#await CardScene.move_cad(CardScene, start_pos, Vector2(i*spacing, CardScene.global_position.y), 0.5)
 func arrange_hand():
 	is_arranging = true
 	var max_offset: int = 550
@@ -66,7 +66,7 @@ func define_playable() -> void:
 		i.is_playable.z_as_relative = true
 		i.is_playable.z_index = i.get_index()-1
 	
-		if i.card_data.mp_cost <= player_stat_manager.Player.mana and i.card_data.ap_cost <= player_stat_manager.Player.AP:
+		if i.card_data.mp_cost <= player_stat_manager.Player.mana and i.card_data.ap_cost <= player_stat_manager.Player.AP and not i.card_disabled:
 			i.is_playable.visible = true
 			i.is_playable.z_as_relative = false
 			i.is_playable.z_index = i.get_index()  # Match parent card's z_index exactly

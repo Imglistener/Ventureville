@@ -43,3 +43,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
+
+[node name="EffectGuide" type="Marker2D" parent="." unique_id=1983511620]
+position = Vector2(137, 208)

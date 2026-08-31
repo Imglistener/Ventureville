@@ -11,8 +11,8 @@ signal CardClicked(card: CardUI)
 
 @onready var is_playable: ColorRect = $IsPlayable
 
-@onready var card_name: Label = $CardName
-@onready var card_type: Label = $CardType
+@onready var card_name: Label = $Frame/VBoxContainer2/VBoxContainer/CardNameMargin/CardName
+@onready var card_type: Label = $Frame/VBoxContainer2/VBoxContainer/CardTypeMargin/CardType
 @onready var card_icon: TextureRect = $CardIcon
 @onready var card_effect: RichTextLabel = $CardEffect
 @onready var drop_point_detector: Area2D = $DropPointDetector
@@ -20,6 +20,7 @@ signal CardClicked(card: CardUI)
 @onready var sfx: AudioStreamPlayer = $SFX
 @onready var cost: Label = $TextureRect/MarginContainer/APCost
 @onready var mp_cost: Label = $TextureRect2/MarginContainer/MPCost
+@onready var disabled_mask: TextureRect = $disabled_mask
 
 var player_stats: CharacterInstance
 var drag_offset: Vector2
@@ -38,6 +39,7 @@ var deck_position: Vector2
 var Discard_position: Vector2
 var log : Log
 var ControlBase : Control
+var card_disabled := false
 
 func _ready() -> void:
 	drop_point_detector.monitoring = false
@@ -156,7 +158,7 @@ func _on_mouse_entered() -> void:
 
 func _input(event: InputEvent) -> void:
 	var hand = get_parent() as CardHand
-	if hand and hand.is_arranging:
+	if hand and hand.is_arranging or card_disabled:
 		return
 	card_state_manager.on_input(event)
 	

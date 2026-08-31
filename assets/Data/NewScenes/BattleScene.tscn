@@ -52,6 +52,7 @@
 [ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="40_h2n7a"]
 [ext_resource type="Script" uid="uid://bs3r5fddsx6y5" path="res://scripts/enemy_turn_order_manager.gd" id="45_sotth"]
 [ext_resource type="Script" uid="uid://cy7yn1fq5hrgv" path="res://scripts/enemy_manager.gd" id="46_qkuvq"]
+[ext_resource type="Script" uid="uid://bespv1ko6kvui" path="res://scripts/turn_tracking_manager.gd" id="51_li6wq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f33sq"]
 shader = ExtResource("20_w5vtb")
@@ -262,9 +263,9 @@ texture_normal = ExtResource("20_cs5ql")
 texture_pressed = ExtResource("21_c1pur")
 texture_hover = ExtResource("22_c1pur")
 
-[node name="DamageNumbersPlayer" type="Node2D" parent="Control_Layer" unique_id=1054874820 groups=["DamageNumbersPlayer"]]
+[node name="DamageNumbersPlayer" type="Marker2D" parent="Control_Layer" unique_id=880212843 groups=["DamageNumbersPlayer"]]
 z_index = 10
-position = Vector2(1038.1616, 510.72748)
+position = Vector2(1104.4111, 249.56091)
 
 [node name="Pause Layer" type="CanvasLayer" parent="Control_Layer" unique_id=206101572]
 layer = 5
@@ -538,6 +539,9 @@ script = ExtResource("45_sotth")
 
 [node name="EnemyManager" type="Node" parent="Functionality" unique_id=1458255868 groups=["EnemyManager"]]
 script = ExtResource("46_qkuvq")
+
+[node name="TurnTrackingManager" type="Node" parent="Functionality" unique_id=448396394]
+script = ExtResource("51_li6wq")
 
 [node name="SFX" type="AudioStreamPlayer" parent="." unique_id=1786813656 groups=["SFXBus"]]
 max_polyphony = 8
