@@ -31,3 +31,8 @@ func use_action() -> void:
 		func():
 			Events.EnemyActionCompleted.emit(self)
 	)
+
+func setup_from_data() -> void:
+	super()
+	Damage = Enemy_Data.Damage
+	damagetype = Enemy_Data.DamageElement

@@ -20,8 +20,8 @@ func activate(targets : Array[Node]) -> void:
 			
 		if target is Stat_Manager:
 			var appliedEffect = Effect.instantiate() as VisualEffect
-			target.player_view.add_child(appliedEffect)
-			appliedEffect.position = target.player_view.position + Vector2(130, 180)
+			target.player_view.effect_guide.add_child(appliedEffect)
+			appliedEffect.global_position = target.player_view.effect_guide.global_position
 			if not appliedEffect.is_node_ready():
 				await appliedEffect.ready
 			appliedEffect.play_animation()

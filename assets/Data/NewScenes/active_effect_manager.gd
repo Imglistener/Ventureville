@@ -30,7 +30,6 @@ var _effect_cycle_timer: Timer
 func _ready() -> void:
 	_setup_effect_cycle_timer()
 	_register_player()
-
 	enemy_manager.connect_and_catch_up(_on_enemy_registered)
 	enemy_manager.enemy_unregistered.connect(_on_enemy_unregistered)
 
@@ -38,7 +37,7 @@ func _ready() -> void:
 	Events.EnemyBattleEnd.connect(_on_enemy_battle_end.unbind(1))
 	Events.effect_applied.connect(display_active_effects)
 	Events.effect_display.connect(DamageNumbers.display_effect)
-
+	Events.StatusWoreOff.connect(_track_removal_effects)
 
 func _setup_effect_cycle_timer() -> void:
 	_effect_cycle_timer = Timer.new()
@@ -178,3 +177,10 @@ func _tick_enemies_sequentially() -> void:
 		tick_effects(enemies[i])
 		if i < enemies.size() - 1:
 			await get_tree().create_timer(ENEMY_TICK_DELAY, true, false, false).timeout
+
+func _track_removal_effects(effect: StatusEffect, Entity: BaseBattlerStats) -> void:
+	for stat_manager in enemy_manager._view_to_stat_manager.values():
+		if stat_manager is Stat_Manager:
+			if stat_manager.Entity == Entity and effect not in stat_manager.Entity.ActiveEffects:
+				if effect is Concussed:
+					stat_manager.EnemyThoughts.enable_attacks()

@@ -8,7 +8,7 @@ class_name CardHand extends Node2D
 var is_card_highlighted: bool
 var is_arranging: bool = false
 
-signal card_drawn
+
 func start_turn() -> void:
 	if not player_stat_manager.is_node_ready():
 		await player_stat_manager.ready
@@ -22,10 +22,10 @@ func draw_card(amount: int) -> void:
 	for i in range(amount):
 		var CardScene = deck_manager.ready_card_drawn()
 		add_child(CardScene)
-		card_drawn.emit()
+		Events.card_drawn.emit(CardScene.card_data)
 		arrange_hand()
+		
 
-		#await CardScene.move_cad(CardScene, start_pos, Vector2(i*spacing, CardScene.global_position.y), 0.5)
 func arrange_hand():
 	is_arranging = true
 	var max_offset: int = 550

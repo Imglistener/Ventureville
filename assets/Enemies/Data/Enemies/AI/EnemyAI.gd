@@ -5,6 +5,7 @@ class_name EnemyAI extends Node
 
 @onready var TotalChance:= 0
 
+
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("player")
 	setup_action_chances()
@@ -65,3 +66,18 @@ func _set_enemy(value: EnemyView) -> void:
 func _set_target(value: Stat_Manager) -> void:
 	target = value
 	
+func disable_attacks() -> void:
+	for move in get_children():
+		if not move or move.ActionType != EnemyAction.ActionTypes.ChanceBased or move.ActionEffect != EnemyAction.ActionEffects.Attack:
+			continue
+		else:
+			move.ActionChance = 0
+	setup_action_chances()
+
+func enable_attacks() -> void:
+	for move in get_children():
+		if not move or move.ActionType != EnemyAction.ActionTypes.ChanceBased or move.ActionEffect != EnemyAction.ActionEffects.Attack:
+			continue
+		if move is EnemyAction:
+			move.ActionChance = move.Enemy_Data.ActionChance
+	setup_action_chances()

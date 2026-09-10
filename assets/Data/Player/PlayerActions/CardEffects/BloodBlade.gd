@@ -39,12 +39,14 @@ func apply_effect(targets: Array[Node]) -> void:
 		RegenEffect.on_apply(self_target, apply_count)
 		
 func _calculate_total(character: CharacterInstance) -> int:
-	var index := character.stats.find(StatsScaled)
-	var bonus := 0
-	if index != -1:
-		bonus = character.stats[index].stat_scaling_value
-	return base_damage + bonus + character.get_attack_bonus()
-
+	if character:
+		var index := character.stats.find(StatsScaled)
+		var bonus := 0
+		if index != -1:
+			bonus = character.stats[index].stat_scaling_value
+		return base_damage + bonus + character.get_attack_bonus()
+	else:
+		return 0
 func get_description(character: CharacterInstance) -> String:
 	var total := _calculate_total(character)
 	return Description.replace("{scaled}", str(total))

@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://biyjdfjp3h6q" path="res://assets/Data/NewScenes/UI_Layer/mana_ui.tscn" id="7_ax5al"]
 [ext_resource type="PackedScene" uid="uid://cid0ju5a74w0u" path="res://scenes/Enemies/Enemy.tscn" id="8_3esf3"]
 [ext_resource type="PackedScene" uid="uid://c3o1p5gd0mc7w" path="res://scenes/CardtargetSelector/card_target_selector.tscn" id="10_a03hs"]
+[ext_resource type="PackedScene" uid="uid://bxhnejwbij1n3" path="res://assets/Data/NewScenes/deck_viewer_2d.tscn" id="10_jiv1t"]
 [ext_resource type="Script" uid="uid://rpgcyv34bk5l" path="res://scripts/stat_manager.gd" id="10_rgo70"]
 [ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="11_68fdq"]
 [ext_resource type="Script" uid="uid://cg3oixktuv3ya" path="res://scripts/resource_ui_manager.gd" id="13_w7muy"]
@@ -52,6 +53,7 @@
 [ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="40_h2n7a"]
 [ext_resource type="Script" uid="uid://bs3r5fddsx6y5" path="res://scripts/enemy_turn_order_manager.gd" id="45_sotth"]
 [ext_resource type="Script" uid="uid://cy7yn1fq5hrgv" path="res://scripts/enemy_manager.gd" id="46_qkuvq"]
+[ext_resource type="Script" uid="uid://bespv1ko6kvui" path="res://scripts/turn_tracking_manager.gd" id="51_li6wq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f33sq"]
 shader = ExtResource("20_w5vtb")
@@ -163,6 +165,13 @@ theme_override_constants/margin_bottom = 90
 [node name="PlayerView" parent="Control_Layer/Control_Base/Base_Margin/MarginContainer" unique_id=1803275803 instance=ExtResource("3_iuswa")]
 layout_mode = 2
 
+[node name="DeckViewer2D" parent="Control_Layer/Control_Base/Base_Margin" unique_id=1412893859 instance=ExtResource("10_jiv1t")]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 69
+theme_override_constants/margin_right = 0
+
 [node name="AP_Background" parent="Control_Layer/Control_Base" unique_id=1581570366 instance=ExtResource("6_ivt5a")]
 visible = false
 layout_mode = 0
@@ -262,9 +271,9 @@ texture_normal = ExtResource("20_cs5ql")
 texture_pressed = ExtResource("21_c1pur")
 texture_hover = ExtResource("22_c1pur")
 
-[node name="DamageNumbersPlayer" type="Node2D" parent="Control_Layer" unique_id=1054874820 groups=["DamageNumbersPlayer"]]
+[node name="DamageNumbersPlayer" type="Marker2D" parent="Control_Layer" unique_id=880212843 groups=["DamageNumbersPlayer"]]
 z_index = 10
-position = Vector2(1038.1616, 510.72748)
+position = Vector2(1104.4111, 249.56091)
 
 [node name="Pause Layer" type="CanvasLayer" parent="Control_Layer" unique_id=206101572]
 layer = 5
@@ -539,6 +548,9 @@ script = ExtResource("45_sotth")
 [node name="EnemyManager" type="Node" parent="Functionality" unique_id=1458255868 groups=["EnemyManager"]]
 script = ExtResource("46_qkuvq")
 
+[node name="TurnTrackingManager" type="Node" parent="Functionality" unique_id=448396394]
+script = ExtResource("51_li6wq")
+
 [node name="SFX" type="AudioStreamPlayer" parent="." unique_id=1786813656 groups=["SFXBus"]]
 max_polyphony = 8
 bus = &"SFX"
@@ -555,7 +567,9 @@ playback_type = 1
 
 [node name="Extra" type="AudioStreamPlayer" parent="." unique_id=375572522 groups=["SFXBus"]]
 
+[connection signal="pressed" from="Control_Layer/Control_Base/toolbar_container/toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Show Deck" to="Functionality/MenusManager" method="_toggle_deck_view"]
 [connection signal="pressed" from="Control_Layer/Control_Base/End Turn" to="Functionality/PhaseManager" method="emit_specific_phase" binds= [&"PlayerBattleEnd"]]
 
+[editable path="Control_Layer/Control_Base/toolbar_container"]
 [editable path="Control_Layer/Control_Base/Base_Margin/StandbyContainer/Background"]
 [editable path="Control_Layer/Control_Base/AP_Background"]

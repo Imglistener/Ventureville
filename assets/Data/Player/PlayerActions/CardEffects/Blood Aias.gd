@@ -11,8 +11,8 @@ func apply_effect(targets : Array[Node]) -> void:
 	san_block_effect.amount = BaseSanShield
 	var Visual = VFX.instantiate()
 	if targets[0] is Stat_Manager:	
-		targets[0].player_view.add_child(Visual)
-		Visual.global_position += Vector2(130, 180)
+		targets[0].player_view.effect_guide.add_child(Visual)
+		Visual.global_position = targets[0].player_view.effect_guide.global_position
 	Visual.animation_player.play("BloodBarrier")
 	var ended = func():
 		Visual.queue_free()

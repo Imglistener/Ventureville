@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Concussed" format=3 uid="uid://bsdqh2bx5brhw"]
+
+[ext_resource type="Script" uid="uid://bpe7kfcmfm6sc" path="res://assets/Status Effects/Debuffs/Concussed.gd" id="1_i751s"]
+[ext_resource type="Texture2D" uid="uid://dtam7b2bbehql" path="res://assets/GUI/concussed.png" id="2_m5v7k"]
+
+[resource]
+script = ExtResource("1_i751s")
+status_name = 4
+default_duration = 1
+status_icon = ExtResource("2_m5v7k")
+status_description = "\"Entity is Concussed. Cannot use Attacks.\""
+metadata/_custom_type_script = "uid://bpe7kfcmfm6sc"

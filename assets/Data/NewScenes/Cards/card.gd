@@ -1,25 +1,28 @@
 class_name CardUI
-extends TextureRect
+extends MarginContainer
+enum CardMode{ PLAYABLE , DISPLAYING }
 
 @export var card_data : Card 
 @export var HoverSFX	: AudioStream
 @export var clickedSFX	: AudioStream
 @export var aimingSFX	: AudioStream
-
+@export var Mode : CardMode
 signal ReparentRequest(card: CardUI)
 signal CardClicked(card: CardUI)
 
-@onready var is_playable: ColorRect = $IsPlayable
+@onready var is_playable: ColorRect = $CardAnchor/CardScaler/CardFrame/IsPlayable
+@onready var card_scaler: Control = $CardAnchor/CardScaler
 
-@onready var card_name: Label = $CardName
-@onready var card_type: Label = $CardType
-@onready var card_icon: TextureRect = $CardIcon
-@onready var card_effect: RichTextLabel = $CardEffect
+@onready var card_name: Label = $CardAnchor/CardScaler/Frame/VBoxContainer2/VBoxContainer/CardNameMargin/CardName
+@onready var card_type: Label = $CardAnchor/CardScaler/Frame/VBoxContainer2/VBoxContainer/CardTypeMargin/CardType
+@onready var card_icon: TextureRect = $CardAnchor/CardScaler/CardVisual/MarginContainer2/CardIcon
+@onready var card_effect: RichTextLabel = $CardAnchor/CardScaler/Frame/VBoxContainer2/MarginContainer/CardEffect
 @onready var drop_point_detector: Area2D = $DropPointDetector
 @onready var card_state_manager: CardStateManager = $CardStateManager
 @onready var sfx: AudioStreamPlayer = $SFX
-@onready var cost: Label = $TextureRect/MarginContainer/APCost
-@onready var mp_cost: Label = $TextureRect2/MarginContainer/MPCost
+@onready var cost: Label = $CardAnchor/CardScaler/CardVisual/APTexture/MarginContainer/APCost
+@onready var mp_cost: Label = $CardAnchor/CardScaler/CardVisual/MPTexture/MarginContainer/MPCost
+@onready var disabled_mask: TextureRect = $CardAnchor/CardScaler/disabled_mask
 
 var player_stats: CharacterInstance
 var drag_offset: Vector2
@@ -38,19 +41,23 @@ var deck_position: Vector2
 var Discard_position: Vector2
 var log : Log
 var ControlBase : Control
+var card_disabled := false
+var is_displaying := false
+const DESIGN_SIZE := Vector2(694.0, 1013.0)
 
 func _ready() -> void:
 	drop_point_detector.monitoring = false
 	card_name.text = str(card_data.name)
-	card_type.text = str(card_data.Type.keys()[card_data.type])
+	card_type.text = str(card_data.Type.keys()[card_data.type]).left(1) + str(card_data.Type.keys()[card_data.type]).right(-1).to_lower()
 	card_effect.text = card_data.get_description(player_stats)
 	cost.text = str(card_data.ap_cost)
 	mp_cost.text = str(card_data.mp_cost)
 	card_state_manager.init(self)
 	manage_card_rarity()
 	log = get_tree().get_first_node_in_group('Log')
-	if not player_stats.Stats_Changed.is_connected(update_description):
-		player_stats.Stats_Changed.connect(update_description)
+	if player_stats:
+		if not player_stats.Stats_Changed.is_connected(update_description):
+				player_stats.Stats_Changed.connect(update_description)
 	if not Events.card_played.is_connected(update_costs):
 		Events.card_played.connect(update_costs.unbind(1))
 	if ControlBase:
@@ -118,6 +125,7 @@ func _on_mouse_exited()-> void:
 
 func is_card_focused(value: bool) -> void:
 	if card_dragging == true: return
+	if is_displaying == true: return
 	if value:
 		z_index = 100
 		sfx.stream = HoverSFX
@@ -156,17 +164,17 @@ func _on_mouse_entered() -> void:
 
 func _input(event: InputEvent) -> void:
 	var hand = get_parent() as CardHand
-	if hand and hand.is_arranging:
+	if hand and hand.is_arranging or card_disabled:
 		return
 	card_state_manager.on_input(event)
-	
+
 		
 func _gui_input(event: InputEvent) -> void:
 	card_state_manager.on_gui_input(event)
 	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT and Mode == CardMode.PLAYABLE:
 			CardClicked.emit(self)
-			
+
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if not targets.has(area):
@@ -176,6 +184,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	targets.erase(area)
 	_update_live_preview()
+func _on_display_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		CardClicked.emit(self) 
 
 func _update_live_preview() -> void:
 	if not card_data:
@@ -191,3 +202,10 @@ func reset_live_preview() -> void:
 		return
 	card_effect.text = card_data.get_description(player_stats)
 	Events.hide_enemy_resistances.emit()
+
+func set_display_size(size: Vector2) -> void:
+	custom_minimum_size = size
+	custom_maximum_size = size
+	card_scaler.size = DESIGN_SIZE
+	card_scaler.pivot_offset = Vector2.ZERO
+	card_scaler.scale = size / DESIGN_SIZE

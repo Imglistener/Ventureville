@@ -22,6 +22,7 @@ func on_remove(_target: BaseBattlerStats) -> void:
 	var existing = find_same_effect(_target.ActiveEffects)
 	if existing:
 		_target.ActiveEffects.erase(existing)
+		Events.StatusWoreOff.emit(self, _target)
 		
 func is_applicable(targets: Array[Node]) -> bool:
 	return false
