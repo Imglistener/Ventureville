@@ -168,6 +168,9 @@ layout_mode = 2
 [node name="DeckViewer2D" parent="Control_Layer/Control_Base/Base_Margin" unique_id=1412893859 instance=ExtResource("10_jiv1t")]
 visible = false
 layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 69
+theme_override_constants/margin_right = 0
 
 [node name="AP_Background" parent="Control_Layer/Control_Base" unique_id=1581570366 instance=ExtResource("6_ivt5a")]
 visible = false
@@ -564,7 +567,9 @@ playback_type = 1
 
 [node name="Extra" type="AudioStreamPlayer" parent="." unique_id=375572522 groups=["SFXBus"]]
 
+[connection signal="pressed" from="Control_Layer/Control_Base/toolbar_container/toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Show Deck" to="Functionality/MenusManager" method="_toggle_deck_view"]
 [connection signal="pressed" from="Control_Layer/Control_Base/End Turn" to="Functionality/PhaseManager" method="emit_specific_phase" binds= [&"PlayerBattleEnd"]]
 
+[editable path="Control_Layer/Control_Base/toolbar_container"]
 [editable path="Control_Layer/Control_Base/Base_Margin/StandbyContainer/Background"]
 [editable path="Control_Layer/Control_Base/AP_Background"]

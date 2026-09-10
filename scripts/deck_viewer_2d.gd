@@ -10,7 +10,9 @@ func _ready() -> void:
 			for i in range(card_deck.Obtained_Cards[card]):
 				var card_ui = card_scene.instantiate() as CardUI
 				card_ui.card_data = card
+				card_ui.Mode = CardUI.CardMode.DISPLAYING
 				grid_container.add_child(card_ui)
 				card_ui.set_display_size(Vector2(247.0, 406.5))
 				card_ui.is_displaying = true
 				card_ui.is_playable.hide()
+				

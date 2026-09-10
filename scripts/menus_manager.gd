@@ -17,6 +17,8 @@ class_name MenusManager extends Node
 @onready var items_menu: ItemsMenu = $"../../Control_Layer/Control_Base/ItemsMenu"
 @onready var Return: TextureButton = $"../../Control_Layer/Control_Base/Return"
 @onready var enemy_manager: Node = $"../EnemyManager"
+@onready var show_deck: TextureButton = $"../../Control_Layer/Control_Base/toolbar_container/toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Show Deck"
+@onready var deck_viewer_2d: CardViewer = $"../../Control_Layer/Control_Base/Base_Margin/DeckViewer2D"
 
 var Dialogue_manager: Dialogue_Manager 
 var talk: Button
@@ -245,5 +247,11 @@ func PhaseUI_active(phase : PhaseManager.Phases) -> void:
 			pass 
 	
 		
-	
+func _toggle_deck_view() -> void:
+	if deck_viewer_2d.is_visible_in_tree() and get_tree().paused == false:
+		deck_viewer_2d.hide()
+	else:
+		deck_viewer_2d.show()
+
+		
 	

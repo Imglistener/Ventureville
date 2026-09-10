@@ -48,7 +48,7 @@ const DESIGN_SIZE := Vector2(694.0, 1013.0)
 func _ready() -> void:
 	drop_point_detector.monitoring = false
 	card_name.text = str(card_data.name)
-	card_type.text = str(card_data.Type.keys()[card_data.type])
+	card_type.text = str(card_data.Type.keys()[card_data.type]).left(1) + str(card_data.Type.keys()[card_data.type]).right(-1).to_lower()
 	card_effect.text = card_data.get_description(player_stats)
 	cost.text = str(card_data.ap_cost)
 	mp_cost.text = str(card_data.mp_cost)
@@ -164,17 +164,17 @@ func _on_mouse_entered() -> void:
 
 func _input(event: InputEvent) -> void:
 	var hand = get_parent() as CardHand
-	if hand and hand.is_arranging:
+	if hand and hand.is_arranging or card_disabled:
 		return
 	card_state_manager.on_input(event)
-	
+
 		
 func _gui_input(event: InputEvent) -> void:
 	card_state_manager.on_gui_input(event)
 	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT and Mode == CardMode.PLAYABLE:
 			CardClicked.emit(self)
-			
+
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if not targets.has(area):
@@ -184,6 +184,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	targets.erase(area)
 	_update_live_preview()
+func _on_display_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		CardClicked.emit(self) 
 
 func _update_live_preview() -> void:
 	if not card_data:

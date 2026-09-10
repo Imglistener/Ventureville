@@ -5,7 +5,8 @@ class_name CardStateManager extends Node
 var current_state: CardState
 var states:= {}
 
-func init(card: CardUI)-> void:
+# CardStateManager.gd
+func init(card: CardUI) -> void:
 	for Child in get_children():
 		if Child is CardState:
 			states[Child.state] = Child
@@ -14,15 +15,20 @@ func init(card: CardUI)-> void:
 			Child.card_UI = card
 			if not card.gui_input.is_connected(Child.on_gui_input):
 				card.gui_input.connect(Child.on_gui_input)
-	if starting_state:
-		starting_state.enter()
-		current_state = starting_state
+	var start := starting_state
+	if card.Mode == CardUI.CardMode.DISPLAYING:
+		start = states.get(CardState.State.DISPLAYING, starting_state)
+	if start:
+		start.enter()
+		current_state = start
+
 func process(delta: float) -> void:
 	if current_state:
 		current_state.process(delta)
 func on_input(event: InputEvent) -> void:
 	if current_state:
 		current_state.on_input(event)
+
 func  on_gui_input(event: InputEvent) -> void:
 	if current_state:
 		current_state.on_gui_input(event)

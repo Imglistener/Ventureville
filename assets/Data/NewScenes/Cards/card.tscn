@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://nody171fluag"]
 
-[ext_resource type="Texture2D" uid="uid://b2cqst3j3trnh" path="res://assets/GUI/Card_Game_border.png" id="1_x53gr"]
 [ext_resource type="Script" uid="uid://cyen3w4wa8tip" path="res://assets/Data/NewScenes/Cards/card.gd" id="2_8hmw1"]
 [ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="3_8hmw1"]
 [ext_resource type="Resource" uid="uid://be12tcnli2021" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Barrier.tres" id="3_80gmr"]
 [ext_resource type="AudioStream" uid="uid://cnuxlqejtckb5" path="res://assets/SFX/card_hover.wav" id="4_80gmr"]
 [ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="5_bb8u2"]
 [ext_resource type="AudioStream" uid="uid://p68vnmwk5kiw" path="res://assets/SFX/card_click.wav" id="5_x53gr"]
+[ext_resource type="Texture2D" uid="uid://cf65ba4oj2g0t" path="res://assets/GUI/Card_Game_border_blood.png" id="6_3go67"]
 [ext_resource type="AudioStream" uid="uid://cs43hedoluabf" path="res://assets/SFX/711353__rising_moon__magic_loop.mp3" id="6_80gmr"]
 [ext_resource type="Script" uid="uid://dbqo6v48is40i" path="res://scripts/CardUI/CardState/CardStateManager.gd" id="8_ktvkk"]
 [ext_resource type="Script" uid="uid://um2yjt6eq6j1" path="res://scripts/CardUI/CardState/StateCardDragging.gd" id="9_5cyc0"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://b8qcjheona08j" path="res://assets/GUI/Mana Gem.png" id="17_jv0el"]
 [ext_resource type="Shader" uid="uid://dbxxvumw1awb" path="res://drop shadow.gdshader" id="18_odcj6"]
 [ext_resource type="Texture2D" uid="uid://dolcfbwx0h72n" path="res://assets/PNG/Grid.png" id="19_3go67"]
+[ext_resource type="Script" uid="uid://bnhx61xmu13i1" path="res://scripts/CardUI/CardState/CardStateDisplaying.gd" id="20_3go67"]
 
 [sub_resource type="Shader" id="Shader_80gmr"]
 code = "shader_type canvas_item;
@@ -65,9 +66,10 @@ shader_parameter/fade_bias = 0.7170000340575
 
 [sub_resource type="LabelSettings" id="LabelSettings_m4iia"]
 font = ExtResource("3_8hmw1")
-font_size = 32
-font_color = Color(0, 0, 0, 1)
-outline_size = 8
+font_size = 34
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qfg1p"]
 shader = ExtResource("18_odcj6")
@@ -172,7 +174,7 @@ mouse_filter = 2
 layout_mode = 0
 offset_right = 694.0
 offset_bottom = 1013.0
-texture = ExtResource("1_x53gr")
+texture = ExtResource("6_3go67")
 expand_mode = 1
 
 [node name="IsPlayable" type="ColorRect" parent="CardAnchor/CardScaler/CardFrame" unique_id=1133534713]
@@ -217,10 +219,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="APTexture" type="TextureRect" parent="CardAnchor/CardScaler/CardVisual" unique_id=423875402]
 layout_mode = 1
-offset_left = 17.0
-offset_top = 46.0
-offset_right = 97.0
-offset_bottom = 126.0
+offset_left = -20.142853
+offset_top = -16.85714
+offset_right = 59.857147
+offset_bottom = 63.14286
 pivot_offset = Vector2(20, 20)
 texture = ExtResource("16_x53gr")
 expand_mode = 1
@@ -249,13 +251,14 @@ anchor_left = 0.75314426
 anchor_top = -0.038499508
 anchor_right = 0.9692826
 anchor_bottom = 0.2082922
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -577.1427
+offset_top = 34.285774
+offset_right = -577.1427
+offset_bottom = 34.28575
 pivot_offset = Vector2(20, 20)
 size_flags_horizontal = 0
 texture = ExtResource("17_jv0el")
 expand_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="CardAnchor/CardScaler/CardVisual/MPTexture" unique_id=1077688965]
 layout_mode = 1
@@ -330,6 +333,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/margin_left = 41
+theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 29
 
@@ -338,6 +342,7 @@ custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("5_bb8u2")
+theme_override_constants/line_separation = -15
 theme_override_font_sizes/normal_font_size = 39
 text = "Inflict X BLOOD Damage.
 Chance to apply Bleeding for 3 Turns."
@@ -392,6 +397,10 @@ state = 4
 [node name="CardStateReleased" type="Node" parent="CardStateManager" unique_id=232672706]
 script = ExtResource("13_jv0el")
 state = 5
+
+[node name="CardStateDisplaying" type="Node" parent="CardStateManager" unique_id=19580351]
+script = ExtResource("20_3go67")
+state = 6
 
 [node name="SFX" type="AudioStreamPlayer" parent="." unique_id=745794655]
 bus = &"SFX"
