@@ -21,11 +21,14 @@ func apply_effect(targets: Array[Node]) -> void:
 	player.Player.heal(total * 2)
 
 func _calculate_total(character: CharacterInstance) -> int:
-	var index := character.stats.find(StatsScaled)
-	var bonus := 0
-	if index != -1:
-		bonus = character.stats[index].stat_scaling_value + character.get_attack_bonus()
-	return base_damage + bonus
+	if character:
+		var index := character.stats.find(StatsScaled)
+		var bonus := 0
+		if index != -1:
+			bonus = character.stats[index].stat_scaling_value + character.get_attack_bonus()
+		return base_damage + bonus
+	else:
+		return 0
 
 func get_description(character: CharacterInstance) -> String:
 	var total := _calculate_total(character)

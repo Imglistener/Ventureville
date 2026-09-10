@@ -26,17 +26,16 @@ func on_Player_battle_start(_turn: Variant = null) -> void: # FIX 4: shuffle onc
 
 func ready_card_drawn() -> CardUI:
 	var CardData = CardDeck.draw_card()
-	var CardScene = preload("res://assets/Data/NewScenes/Cards/card.tscn").instantiate()
+	var CardScene = preload("res://assets/Data/NewScenes/Cards/card.tscn").instantiate() as CardUI
 	var start_pos = Vector2(800, 0)
-	if CardScene is CardFrame:
-		print("Cardscene is cardframe")
-	CardScene.card.Discard_position = discard_pile.position
-	CardScene.card.deck_position = deck_pile.position
-	CardScene.card.global_position = start_pos
-	CardScene.card.parent = targeting_area
-	CardScene.card.player_stats = player_stat_manager.Player
-	CardScene.card.card_data = CardData
-	CardScene.card.ControlBase = control_base
+
+	CardScene.Discard_position = discard_pile.position
+	CardScene.deck_position = deck_pile.position
+	CardScene.global_position = start_pos
+	CardScene.parent = targeting_area
+	CardScene.player_stats = player_stat_manager.Player
+	CardScene.card_data = CardData
+	CardScene.ControlBase = control_base
 	return CardScene
 
 func update_tracked_cards() -> void:

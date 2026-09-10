@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://nody171fluag"]
 
-[ext_resource type="Script" uid="uid://dmgetaf5b3vd8" path="res://assets/Data/NewScenes/Cards/Cardframe.gd" id="1_3go67"]
 [ext_resource type="Texture2D" uid="uid://b2cqst3j3trnh" path="res://assets/GUI/Card_Game_border.png" id="1_x53gr"]
 [ext_resource type="Script" uid="uid://cyen3w4wa8tip" path="res://assets/Data/NewScenes/Cards/card.gd" id="2_8hmw1"]
 [ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="3_8hmw1"]
@@ -21,11 +20,59 @@
 [ext_resource type="Shader" uid="uid://dbxxvumw1awb" path="res://drop shadow.gdshader" id="18_odcj6"]
 [ext_resource type="Texture2D" uid="uid://dolcfbwx0h72n" path="res://assets/PNG/Grid.png" id="19_3go67"]
 
+[sub_resource type="Shader" id="Shader_80gmr"]
+code = "shader_type canvas_item;
+render_mode blend_add;
+
+uniform vec4 glow_color : source_color = vec4(0.3, 0.7, 1.0, 1.0);
+uniform float thickness : hint_range(0.01, 0.2) = 0.06;
+uniform float softness : hint_range(0.005, 0.1) = 0.03;
+uniform float intensity : hint_range(0.0, 3.0) = 1.5;
+uniform float pulse_speed : hint_range(0.0, 5.0) = 1.5;
+uniform float pulse_amount : hint_range(0.0, 0.5) = 0.15;
+uniform float fade_strength : hint_range(0.0, 4.0) = 1.5; // 0 = no fade, higher = tighter fade
+uniform float fade_bias : hint_range(0.0, 1.0) = 0.2;     // lifts the fade floor at center
+
+void fragment() {
+    vec2 uv = UV;
+
+    // Edge glow
+    float dist_x = min(uv.x, 1.0 - uv.x);
+    float dist_y = min(uv.y, 1.0 - uv.y);
+    float dist = min(dist_x, dist_y);
+    float glow = 1.0 - smoothstep(thickness, thickness + softness, dist);
+
+    // Distance from center [0,1] where 0 = center, 1 = corner
+    vec2 centered = abs(uv - 0.5) * 2.0;
+    float center_dist = max(centered.x, centered.y); // use max for rectangular feel
+    float fade = 1.0 - smoothstep(fade_bias, 1.0, pow(center_dist, 1.0 / max(fade_strength, 0.001)));
+
+    float pulse = 1.0 + sin(TIME * pulse_speed) * pulse_amount;
+    float alpha = glow * fade * intensity * pulse;
+    COLOR = vec4(glow_color.rgb, alpha * glow_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x53gr"]
+shader = SubResource("Shader_80gmr")
+shader_parameter/glow_color = Color(0.8156863, 0.6392157, 0.21960784, 1)
+shader_parameter/thickness = 0.09400000376648
+shader_parameter/softness = 0.07400000316574
+shader_parameter/intensity = 1.0510000499225
+shader_parameter/pulse_speed = 3.334000158365
+shader_parameter/pulse_amount = 0.41200001957
+shader_parameter/fade_strength = 0.3050000144875
+shader_parameter/fade_bias = 0.7170000340575
+
 [sub_resource type="LabelSettings" id="LabelSettings_m4iia"]
 font = ExtResource("3_8hmw1")
 font_size = 32
 font_color = Color(0, 0, 0, 1)
 outline_size = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfg1p"]
+shader = ExtResource("18_odcj6")
+shader_parameter/shadow_offset = Vector2(2, 2)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_bb8u2"]
 resource_name = "Drag"
@@ -93,80 +140,92 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hmw1"]
-size = Vector2(628.3723, 935.86584)
+size = Vector2(666.46173, 997.7438)
 
-[sub_resource type="Shader" id="Shader_80gmr"]
-code = "shader_type canvas_item;
-render_mode blend_add;
-
-uniform vec4 glow_color : source_color = vec4(0.3, 0.7, 1.0, 1.0);
-uniform float thickness : hint_range(0.01, 0.2) = 0.06;
-uniform float softness : hint_range(0.005, 0.1) = 0.03;
-uniform float intensity : hint_range(0.0, 3.0) = 1.5;
-uniform float pulse_speed : hint_range(0.0, 5.0) = 1.5;
-uniform float pulse_amount : hint_range(0.0, 0.5) = 0.15;
-uniform float fade_strength : hint_range(0.0, 4.0) = 1.5; // 0 = no fade, higher = tighter fade
-uniform float fade_bias : hint_range(0.0, 1.0) = 0.2;     // lifts the fade floor at center
-
-void fragment() {
-    vec2 uv = UV;
-
-    // Edge glow
-    float dist_x = min(uv.x, 1.0 - uv.x);
-    float dist_y = min(uv.y, 1.0 - uv.y);
-    float dist = min(dist_x, dist_y);
-    float glow = 1.0 - smoothstep(thickness, thickness + softness, dist);
-
-    // Distance from center [0,1] where 0 = center, 1 = corner
-    vec2 centered = abs(uv - 0.5) * 2.0;
-    float center_dist = max(centered.x, centered.y); // use max for rectangular feel
-    float fade = 1.0 - smoothstep(fade_bias, 1.0, pow(center_dist, 1.0 / max(fade_strength, 0.001)));
-
-    float pulse = 1.0 + sin(TIME * pulse_speed) * pulse_amount;
-    float alpha = glow * fade * intensity * pulse;
-    COLOR = vec4(glow_color.rgb, alpha * glow_color.a);
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x53gr"]
-shader = SubResource("Shader_80gmr")
-shader_parameter/glow_color = Color(0.8156863, 0.6392157, 0.21960784, 1)
-shader_parameter/thickness = 0.09400000376648
-shader_parameter/softness = 0.07400000316574
-shader_parameter/intensity = 1.0510000499225
-shader_parameter/pulse_speed = 3.334000158365
-shader_parameter/pulse_amount = 0.41200001957
-shader_parameter/fade_strength = 0.3050000144875
-shader_parameter/fade_bias = 0.7170000340575
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfg1p"]
-shader = ExtResource("18_odcj6")
-shader_parameter/shadow_offset = Vector2(2, 2)
-shader_parameter/shadow_color = Color(0, 0, 0, 1)
-
-[node name="CardFrame" type="MarginContainer" unique_id=740277961]
-custom_minimum_size = Vector2(694, 1013)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -280.0
-offset_right = -586.0
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_3go67")
-
-[node name="Card" type="TextureRect" parent="." unique_id=515759519 groups=["Cards"]]
-layout_mode = 2
+[node name="Card" type="MarginContainer" unique_id=548236104 groups=["Cards"]]
+offset_left = -224.0
+offset_top = -303.99997
+offset_right = 470.0
+offset_bottom = 709.0
+scale = Vector2(0.35, 0.35)
+pivot_offset = Vector2(333, 459)
+size_flags_horizontal = 0
+size_flags_vertical = 0
 mouse_filter = 0
-texture = ExtResource("1_x53gr")
-expand_mode = 4
 script = ExtResource("2_8hmw1")
 card_data = ExtResource("3_80gmr")
 HoverSFX = ExtResource("4_80gmr")
 clickedSFX = ExtResource("5_x53gr")
 aimingSFX = ExtResource("6_80gmr")
 
-[node name="Frame" type="MarginContainer" parent="Card" unique_id=83995678]
+[node name="CardAnchor" type="Control" parent="." unique_id=609675404]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CardScaler" type="Control" parent="CardAnchor" unique_id=1001042619]
+anchors_preset = 0
+offset_right = 694.0
+offset_bottom = 1013.0
+mouse_filter = 2
+
+[node name="CardFrame" type="TextureRect" parent="CardAnchor/CardScaler" unique_id=465053708]
+layout_mode = 0
+offset_right = 694.0
+offset_bottom = 1013.0
+texture = ExtResource("1_x53gr")
+expand_mode = 1
+
+[node name="IsPlayable" type="ColorRect" parent="CardAnchor/CardScaler/CardFrame" unique_id=1133534713]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+material = SubResource("ShaderMaterial_x53gr")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.017363096
+anchor_top = -0.01271875
+anchor_right = 1.0000719
+anchor_bottom = 1.0083612
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CardVisual" type="Control" parent="CardAnchor/CardScaler" unique_id=1050708657]
+anchors_preset = 0
+offset_right = 694.0
+offset_bottom = 1013.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="CardAnchor/CardScaler/CardVisual" unique_id=957915910]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_bottom = 358
+
+[node name="CardIcon" type="TextureRect" parent="CardAnchor/CardScaler/CardVisual/MarginContainer2" unique_id=289330355]
+custom_minimum_size = Vector2(400, 310)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("9_x53gr")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="APTexture" type="TextureRect" parent="CardAnchor/CardScaler/CardVisual" unique_id=423875402]
+layout_mode = 1
+offset_left = 17.0
+offset_top = 46.0
+offset_right = 97.0
+offset_bottom = 126.0
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("16_x53gr")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CardAnchor/CardScaler/CardVisual/APTexture" unique_id=433200826]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -174,20 +233,77 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Card/Frame" unique_id=1869460091]
+[node name="APCost" type="Label" parent="CardAnchor/CardScaler/CardVisual/APTexture/MarginContainer" unique_id=2146630464]
 layout_mode = 2
-theme_override_constants/separation = 27
+size_flags_horizontal = 4
+theme = ExtResource("5_bb8u2")
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 48
+text = "3"
+horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Card/Frame/VBoxContainer2" unique_id=361603248]
-layout_mode = 2
-theme_override_constants/separation = 397
+[node name="MPTexture" type="TextureRect" parent="CardAnchor/CardScaler/CardVisual" unique_id=1898304432]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75314426
+anchor_top = -0.038499508
+anchor_right = 0.9692826
+anchor_bottom = 0.2082922
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+size_flags_horizontal = 0
+texture = ExtResource("17_jv0el")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="CardNameMargin" type="MarginContainer" parent="Card/Frame/VBoxContainer2/VBoxContainer" unique_id=1033055533]
+[node name="MarginContainer" type="MarginContainer" parent="CardAnchor/CardScaler/CardVisual/MPTexture" unique_id=1077688965]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -41.49028
+offset_right = 12.5
+offset_bottom = 44.50972
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MPCost" type="Label" parent="CardAnchor/CardScaler/CardVisual/MPTexture/MarginContainer" unique_id=387431464]
 layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_bb8u2")
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 48
+text = "3"
+horizontal_alignment = 1
+
+[node name="Frame" type="MarginContainer" parent="CardAnchor/CardScaler" unique_id=83995678]
+layout_mode = 0
+offset_right = 694.0
+offset_bottom = 1013.0
+theme_override_constants/margin_top = 9
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CardAnchor/CardScaler/Frame" unique_id=1869460091]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 23
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardAnchor/CardScaler/Frame/VBoxContainer2" unique_id=361603248]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 388
+
+[node name="CardNameMargin" type="MarginContainer" parent="CardAnchor/CardScaler/Frame/VBoxContainer2/VBoxContainer" unique_id=1033055533]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/margin_left = -3
 theme_override_constants/margin_top = 27
 
-[node name="CardName" type="Label" parent="Card/Frame/VBoxContainer2/VBoxContainer/CardNameMargin" unique_id=1886172814]
+[node name="CardName" type="Label" parent="CardAnchor/CardScaler/Frame/VBoxContainer2/VBoxContainer/CardNameMargin" unique_id=1886172814]
 layout_mode = 2
 theme = ExtResource("5_bb8u2")
 theme_type_variation = &"TooltipLabel"
@@ -196,30 +312,32 @@ theme_override_font_sizes/font_size = 61
 text = "CARD NAME"
 horizontal_alignment = 1
 
-[node name="CardTypeMargin" type="MarginContainer" parent="Card/Frame/VBoxContainer2/VBoxContainer" unique_id=102163325]
+[node name="CardTypeMargin" type="MarginContainer" parent="CardAnchor/CardScaler/Frame/VBoxContainer2/VBoxContainer" unique_id=102163325]
 layout_mode = 2
-theme_override_constants/margin_left = 117
-theme_override_constants/margin_right = 127
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="CardType" type="Label" parent="Card/Frame/VBoxContainer2/VBoxContainer/CardTypeMargin" unique_id=1643071682]
+[node name="CardType" type="Label" parent="CardAnchor/CardScaler/Frame/VBoxContainer2/VBoxContainer/CardTypeMargin" unique_id=1643071682]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "TYPE"
 label_settings = SubResource("LabelSettings_m4iia")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Card/Frame/VBoxContainer2" unique_id=1490276840]
+[node name="MarginContainer" type="MarginContainer" parent="CardAnchor/CardScaler/Frame/VBoxContainer2" unique_id=1490276840]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme_override_constants/margin_left = 41
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 29
 
-[node name="CardEffect" type="RichTextLabel" parent="Card/Frame/VBoxContainer2/MarginContainer" unique_id=672723650]
+[node name="CardEffect" type="RichTextLabel" parent="CardAnchor/CardScaler/Frame/VBoxContainer2/MarginContainer" unique_id=672723650]
 custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("5_bb8u2")
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 39
 text = "Inflict X BLOOD Damage.
 Chance to apply Bleeding for 3 Turns."
@@ -229,163 +347,56 @@ horizontal_alignment = 1
 justification_flags = 129
 metadata/_edit_use_anchors_ = true
 
-[node name="CardIcon" type="TextureRect" parent="Card" unique_id=289330355]
-custom_minimum_size = Vector2(400, 310)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.25224978
-anchor_top = 0.05242589
-anchor_right = 0.99587816
-anchor_bottom = 0.58890516
-offset_left = 1.5258789e-05
-offset_right = -96.0
-offset_bottom = -95.32025
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.24, 1.24)
-mouse_filter = 2
-texture = ExtResource("9_x53gr")
-expand_mode = 3
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+[node name="disabled_mask" type="TextureRect" parent="CardAnchor/CardScaler" unique_id=333984200]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+material = SubResource("ShaderMaterial_qfg1p")
+layout_mode = 0
+offset_right = 694.0
+offset_bottom = 1013.0
+texture = ExtResource("19_3go67")
+expand_mode = 1
 
-[node name="CardAnimation" type="AnimationPlayer" parent="Card" unique_id=717851961]
+[node name="CardAnimation" type="AnimationPlayer" parent="." unique_id=717851961]
 libraries/ = SubResource("AnimationLibrary_bb8u2")
 
-[node name="DropPointDetector" type="Area2D" parent="Card" unique_id=1454532745]
+[node name="DropPointDetector" type="Area2D" parent="." unique_id=1454532745]
 collision_mask = 2
 
-[node name="Collision" type="CollisionShape2D" parent="Card/DropPointDetector" unique_id=854725221]
-position = Vector2(331.46918, 457.93286)
+[node name="Collision" type="CollisionShape2D" parent="DropPointDetector" unique_id=854725221]
+position = Vector2(344.33725, 502.85733)
 scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("RectangleShape2D_8hmw1")
 debug_color = Color(0, 0.60038817, 0.70000815, 0)
 
-[node name="CardStateManager" type="Node" parent="Card" unique_id=613156116 node_paths=PackedStringArray("starting_state") groups=["StateManager"]]
+[node name="CardStateManager" type="Node" parent="." unique_id=613156116 node_paths=PackedStringArray("starting_state") groups=["StateManager"]]
 script = ExtResource("8_ktvkk")
 starting_state = NodePath("CardStateIdling")
 metadata/_custom_type_script = "uid://dbqo6v48is40i"
 
-[node name="CardStateDragging" type="Node" parent="Card/CardStateManager" unique_id=1597663080]
+[node name="CardStateDragging" type="Node" parent="CardStateManager" unique_id=1597663080]
 script = ExtResource("9_5cyc0")
 state = 3
 
-[node name="CardStateIdling" type="Node" parent="Card/CardStateManager" unique_id=719726011]
+[node name="CardStateIdling" type="Node" parent="CardStateManager" unique_id=719726011]
 script = ExtResource("10_igbv7")
 
-[node name="CardStateClicked" type="Node" parent="Card/CardStateManager" unique_id=876801751]
+[node name="CardStateClicked" type="Node" parent="CardStateManager" unique_id=876801751]
 script = ExtResource("11_80gmr")
 state = 2
 
-[node name="CardStateHovering" type="Node" parent="Card/CardStateManager" unique_id=1588237784]
+[node name="CardStateHovering" type="Node" parent="CardStateManager" unique_id=1588237784]
 script = ExtResource("12_x53gr")
 state = 4
 
-[node name="CardStateReleased" type="Node" parent="Card/CardStateManager" unique_id=232672706]
+[node name="CardStateReleased" type="Node" parent="CardStateManager" unique_id=232672706]
 script = ExtResource("13_jv0el")
 state = 5
 
-[node name="SFX" type="AudioStreamPlayer" parent="Card" unique_id=745794655]
+[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=745794655]
 bus = &"SFX"
 
-[node name="IsPlayable" type="ColorRect" parent="Card" unique_id=1133534713]
-show_behind_parent = true
-z_index = -1
-z_as_relative = false
-material = SubResource("ShaderMaterial_x53gr")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -10.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="TextureRect" type="TextureRect" parent="Card" unique_id=423875402]
-layout_mode = 1
-offset_left = 11.428589
-offset_top = 19.999998
-offset_right = 52.261932
-offset_bottom = 60.0
-scale = Vector2(2.6, 2.6)
-pivot_offset = Vector2(20, 20)
-texture = ExtResource("16_x53gr")
-expand_mode = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="Card/TextureRect" unique_id=433200826]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -15.433351
-offset_right = 5.5
-offset_bottom = 19.56665
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="APCost" type="Label" parent="Card/TextureRect/MarginContainer" unique_id=2146630464]
-layout_mode = 2
-theme = ExtResource("5_bb8u2")
-theme_override_constants/outline_size = 1
-theme_override_font_sizes/font_size = 19
-text = "3"
-horizontal_alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="Card" unique_id=1898304432]
-layout_mode = 1
-offset_left = 4.834
-offset_top = 78.899
-offset_right = 49.81685
-offset_bottom = 148.8989
-scale = Vector2(3.785, 3.785)
-pivot_offset = Vector2(20, 20)
-texture = ExtResource("17_jv0el")
-expand_mode = 3
-stretch_mode = 4
-
-[node name="MarginContainer" type="MarginContainer" parent="Card/TextureRect2" unique_id=1077688965]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -12.490284
-offset_right = 4.0
-offset_bottom = 15.509716
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MPCost" type="Label" parent="Card/TextureRect2/MarginContainer" unique_id=387431464]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("5_bb8u2")
-theme_override_constants/outline_size = 1
-theme_override_font_sizes/font_size = 15
-text = "3"
-horizontal_alignment = 1
-
-[node name="disabled_mask" type="TextureRect" parent="Card" unique_id=333984200]
-visible = false
-self_modulate = Color(0, 0, 0, 1)
-material = SubResource("ShaderMaterial_qfg1p")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("19_3go67")
-expand_mode = 1
-
-[connection signal="mouse_entered" from="Card" to="Card" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Card" to="Card" method="_on_mouse_exited"]
-[connection signal="area_entered" from="Card/DropPointDetector" to="Card" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Card/DropPointDetector" to="Card" method="_on_area_2d_area_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="area_entered" from="DropPointDetector" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="DropPointDetector" to="." method="_on_area_2d_area_exited"]

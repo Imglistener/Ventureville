@@ -66,7 +66,7 @@ func define_playable() -> void:
 		i.is_playable.z_as_relative = true
 		i.is_playable.z_index = i.get_index()-1
 	
-		if i.card_data.mp_cost <= player_stat_manager.Player.mana and i.card_data.ap_cost <= player_stat_manager.Player.AP and not i.card_disabled:
+		if i.card_data.mp_cost <= player_stat_manager.Player.mana and i.card_data.ap_cost <= player_stat_manager.Player.AP:
 			i.is_playable.visible = true
 			i.is_playable.z_as_relative = false
 			i.is_playable.z_index = i.get_index()  # Match parent card's z_index exactly

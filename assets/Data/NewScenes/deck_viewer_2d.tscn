@@ -1,17 +1,33 @@
 [gd_scene format=3 uid="uid://bxhnejwbij1n3"]
 
-[node name="DeckViewer2D" type="MarginContainer" unique_id=1412893859]
-offset_right = 3486.0
-offset_bottom = 2030.0
-scale = Vector2(0.355, 0.355)
-size_flags_horizontal = 6
-size_flags_vertical = 6
+[ext_resource type="PackedScene" uid="uid://nody171fluag" path="res://assets/Data/NewScenes/Cards/card.tscn" id="1_cdjdt"]
+[ext_resource type="Script" uid="uid://c5i56bby75bvu" path="res://scripts/deck_viewer_2d.gd" id="1_w4jkm"]
+[ext_resource type="Resource" uid="uid://b5hkm5hwk5cuc" path="res://assets/Data/Player/Deck/Deck.tres" id="2_s54pg"]
+
+[node name="DeckViewer2D" type="MarginContainer" unique_id=1412893859 node_paths=PackedStringArray("grid_container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_w4jkm")
+card_deck = ExtResource("2_s54pg")
+grid_container = NodePath("ScrollContainer/GridContainer")
+card_scene = ExtResource("1_cdjdt")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=2036952227]
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=743472238]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-columns = 5
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 30
+columns = 4

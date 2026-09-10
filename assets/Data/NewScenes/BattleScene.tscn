@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://biyjdfjp3h6q" path="res://assets/Data/NewScenes/UI_Layer/mana_ui.tscn" id="7_ax5al"]
 [ext_resource type="PackedScene" uid="uid://cid0ju5a74w0u" path="res://scenes/Enemies/Enemy.tscn" id="8_3esf3"]
 [ext_resource type="PackedScene" uid="uid://c3o1p5gd0mc7w" path="res://scenes/CardtargetSelector/card_target_selector.tscn" id="10_a03hs"]
+[ext_resource type="PackedScene" uid="uid://bxhnejwbij1n3" path="res://assets/Data/NewScenes/deck_viewer_2d.tscn" id="10_jiv1t"]
 [ext_resource type="Script" uid="uid://rpgcyv34bk5l" path="res://scripts/stat_manager.gd" id="10_rgo70"]
 [ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="11_68fdq"]
 [ext_resource type="Script" uid="uid://cg3oixktuv3ya" path="res://scripts/resource_ui_manager.gd" id="13_w7muy"]
@@ -162,6 +163,10 @@ theme_override_constants/margin_top = -90
 theme_override_constants/margin_bottom = 90
 
 [node name="PlayerView" parent="Control_Layer/Control_Base/Base_Margin/MarginContainer" unique_id=1803275803 instance=ExtResource("3_iuswa")]
+layout_mode = 2
+
+[node name="DeckViewer2D" parent="Control_Layer/Control_Base/Base_Margin" unique_id=1412893859 instance=ExtResource("10_jiv1t")]
+visible = false
 layout_mode = 2
 
 [node name="AP_Background" parent="Control_Layer/Control_Base" unique_id=1581570366 instance=ExtResource("6_ivt5a")]
