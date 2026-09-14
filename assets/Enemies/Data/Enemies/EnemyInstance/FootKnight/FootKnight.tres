@@ -5,12 +5,24 @@
 [ext_resource type="Script" uid="uid://b3icxqpmtwr18" path="res://assets/Data/Entities/EnemyBattlerStats.gd" id="2_as0wr"]
 [ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="3_nj8f5"]
 
+[sub_resource type="Resource" id="Resource_jxemv"]
+script = ExtResource("1_yeoxi")
+Line = "\"Woah... So, no head?\""
+metadata/_custom_type_script = "uid://djvjp04eqmhrw"
+
+[sub_resource type="Resource" id="Resource_f3oim"]
+script = ExtResource("1_yeoxi")
+Speaker = 2
+Line = "The enemies have no interest in your sarcasm. They are out for blood."
+metadata/_custom_type_script = "uid://djvjp04eqmhrw"
+
 [resource]
 script = ExtResource("2_as0wr")
 Resists = 4
 Is_Vul_to = 2
 Battler_Art_Normal = ExtResource("1_as0wr")
 DamageBonus = 5.0
+Dialogue = Array[ExtResource("1_yeoxi")]([SubResource("Resource_jxemv"), SubResource("Resource_f3oim")])
 entity_name = "Foot Knight"
 Battler_Type = 1
 metadata/_custom_type_script = "uid://b3icxqpmtwr18"

@@ -18,6 +18,8 @@ class_name EnemyView extends Area2D
 @export var resistant_icon: Texture
 @export var vulnerable_icon: Texture
 @onready var resist_display: TextureRect = $EnemyBarsContainer/MarginContainer/DamageRes/Resists
+@onready var status_tooltip_marker: Marker2D = $StatusTooltipMarker
+@onready var collision: CollisionShape2D = $Collision
 
 
 var Enemy: Stat_Manager
@@ -40,7 +42,9 @@ func play_death_animation() -> void:
 		await anim.animation_finished
 	else:
 		await get_tree().create_timer(0.1).timeout
-
+	monitoring = false
+	collision.disabled = true
+	
 func _on_reveal(damage_type: DamageType, enemies: Array) -> void:
 	if Enemy.Entity not in enemies:
 		resist_display.visible = false

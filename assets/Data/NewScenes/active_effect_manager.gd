@@ -4,6 +4,7 @@ class_name ActiveEffectManager extends Node
 @onready var enemy_manager: EnemyManager = $"../EnemyManager"
 @onready var player_view: PlayerView = $"../../Control_Layer/Control_Base/Base_Margin/MarginContainer/PlayerView"
 @onready var phase_manager: PhaseManager = $"../PhaseManager"
+@export var tooltip : PackedScene
 
 const EFFECT_DISPLAY_DURATION: float = 2.0
 const ENEMY_TICK_DELAY: float = 0.3
@@ -15,7 +16,7 @@ class EffectDisplayEntry:
 	var get_effects: Callable
 	var index: int = 0
 	var hovered: bool = false
-
+	var current_effect: StatusEffect
 	func _init(sm: Stat_Manager, icon_: TextureRect, label_: Label, get_effects_: Callable) -> void:
 		stat_manager = sm
 		icon = icon_
@@ -85,8 +86,43 @@ func _on_enemy_unregistered(_view: EnemyView, stat_manager: Stat_Manager) -> voi
 func _on_icon_hover(stat_manager: Stat_Manager, hovered: bool) -> void:
 	if _entries.has(stat_manager):
 		_entries[stat_manager].hovered = hovered
+		var entry := _entries[stat_manager] as EffectDisplayEntry
+		entry.hovered = hovered
+		if hovered and entry.current_effect:
+			var tooltip_scene = tooltip.instantiate() as StatusEffectTooltip
+			if stat_manager.Entity is EnemyBattlerStats:
+				var view = enemy_manager._view_to_stat_manager.find_key(stat_manager)
+				tooltip_scene.displayed_status = entry.current_effect
+				view.status_tooltip_marker.add_child(tooltip_scene)
+			else:
+				var view = stat_manager.player_view as PlayerView
+				tooltip_scene.displayed_status = entry.current_effect
+				view.status_effect_marker.add_child(tooltip_scene)
+			tooltip_scene.show_tooltip()
+			tooltip_scene.z_index = 5
+		elif not hovered and entry.current_effect:
+			clear_tooltips(stat_manager)
+		
+
 	_check_pause_timer()
 
+func clear_tooltips(stat_manager: Stat_Manager) -> void:
+	if stat_manager.Entity is EnemyBattlerStats:
+		var enemy_view = enemy_manager._view_to_stat_manager.find_key(stat_manager) as EnemyView
+		if not enemy_view:
+			return
+		for child in enemy_view.status_tooltip_marker.get_children():
+			if not child:
+				continue
+			if child is StatusEffectTooltip:
+				child.queue_free()
+	else:
+		for child in player_view.status_effect_marker.get_children():
+			if not child:
+				continue
+			if child is StatusEffectTooltip:
+					child.queue_free()
+	
 
 func _check_pause_timer() -> void:
 	for entry in _entries.values():
@@ -107,11 +143,12 @@ func _advance_entry(entry: EffectDisplayEntry) -> void:
 	if effects.is_empty():
 		entry.icon.texture = null
 		entry.label.text = ""
+		entry.current_effect = null
 		return
 
 	entry.index = entry.index % effects.size()
 	var effect = effects[entry.index]
-
+	entry.current_effect = effect
 	if effects.size() == 1:
 		entry.icon.texture = effect.status_icon
 		entry.label.text = str(effect.current_duration)

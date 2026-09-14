@@ -1,0 +1,287 @@
+[gd_scene format=3 uid="uid://cxrkf84krrwpa"]
+
+[ext_resource type="Script" uid="uid://b4pbwud1i4ou1" path="res://scripts/character_plate.gd" id="1_eech1"]
+[ext_resource type="Texture2D" uid="uid://cdlgjildby10k" path="res://assets/illusionist/illusionist_portrait_V2.png" id="1_foe0w"]
+[ext_resource type="Resource" uid="uid://ru1l2yap3myn" path="res://assets/Data/Stats/Loadouts/dark magus loadout.tres" id="2_llrao"]
+[ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="2_vx0ad"]
+[ext_resource type="Texture2D" uid="uid://d1loaat2tpydr" path="res://assets/KennyUI/Border/panel-border-013.png" id="3_vt61q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sqh54"]
+
+[node name="CharacterPlate" type="PanelContainer" unique_id=945835768]
+custom_minimum_size = Vector2(350, 500)
+custom_maximum_size = Vector2(350, 500)
+offset_right = 350.0
+offset_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_eech1")
+loadout = ExtResource("2_llrao")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=387987813]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="Portrait" type="TextureRect" parent="MarginContainer" unique_id=978920848]
+layout_mode = 2
+texture = ExtResource("1_foe0w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2055878260]
+layout_mode = 2
+theme_override_constants/separation = -64
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=731234138]
+layout_mode = 2
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=971349177]
+layout_mode = 2
+alignment = 2
+
+[node name="StatsContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1327465101]
+custom_minimum_size = Vector2(300, 210)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_sqh54")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer" unique_id=978311733]
+layout_mode = 2
+
+[node name="StatNames" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer" unique_id=602657088]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatNames" unique_id=1156218919]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatNames/MarginContainer" unique_id=1585170389]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_vx0ad")
+theme_override_font_sizes/font_size = 18
+text = "Health:"
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatNames" unique_id=890569144]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatNames/MarginContainer2" unique_id=1103854515]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_vx0ad")
+theme_override_font_sizes/font_size = 18
+text = "Sanity:"
+vertical_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatNames" unique_id=761935982]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatNames/MarginContainer3" unique_id=1747786627]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_vx0ad")
+theme_override_font_sizes/font_size = 18
+text = "Blood:"
+vertical_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatNames" unique_id=6013490]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatNames/MarginContainer4" unique_id=318181351]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_vx0ad")
+theme_override_font_sizes/font_size = 18
+text = "Entropy:"
+vertical_alignment = 1
+
+[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatNames" unique_id=1629234905]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatNames/MarginContainer5" unique_id=1638509668]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_vx0ad")
+theme_override_font_sizes/font_size = 18
+text = "Influence:"
+vertical_alignment = 1
+
+[node name="MarginContainer6" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatNames" unique_id=1694211020]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatNames/MarginContainer6" unique_id=2040823834]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_vx0ad")
+theme_override_font_sizes/font_size = 18
+text = "Strength:"
+vertical_alignment = 1
+
+[node name="MarginContainer7" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatNames" unique_id=1503832555]
+layout_mode = 2
+
+[node name="StatValues" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer" unique_id=1651621072]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatValues" unique_id=529125534]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatValues/MarginContainer" unique_id=1915429064]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_vx0ad")
+theme_override_font_sizes/font_size = 18
+text = "Health:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatValues" unique_id=1762156055]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatValues/MarginContainer2" unique_id=376093163]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_vx0ad")
+theme_override_font_sizes/font_size = 18
+text = "Sanity:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatValues" unique_id=2090580045]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatValues/MarginContainer3" unique_id=568601505]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_vx0ad")
+theme_override_font_sizes/font_size = 18
+text = "Blood:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatValues" unique_id=430382624]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatValues/MarginContainer4" unique_id=1356088879]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_vx0ad")
+theme_override_font_sizes/font_size = 18
+text = "Entropy:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatValues" unique_id=914855202]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatValues/MarginContainer5" unique_id=388279055]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_vx0ad")
+theme_override_font_sizes/font_size = 18
+text = "Influence:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="MarginContainer6" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatValues" unique_id=1612152742]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatValues/MarginContainer6" unique_id=58717913]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_vx0ad")
+theme_override_font_sizes/font_size = 18
+text = "Strength:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="MarginContainer7" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StatsContainer/HBoxContainer/StatValues" unique_id=1894484477]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=979814001]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/PanelContainer" unique_id=1744899298]
+custom_minimum_size = Vector2(250, 50)
+custom_maximum_size = Vector2(250, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_vt61q")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer" unique_id=1724605284]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=1447845659]
+layout_mode = 2
+theme_override_constants/line_spacing = -24
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("2_vx0ad")
+theme_override_font_sizes/font_size = 27
+text = "Illusionist
+Voice Magus"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://b0suco0qv6qr6"]
+
+[ext_resource type="Shader" uid="uid://ds0oi5spicmse" path="res://assets/Data/NewScenes/Scroll.gdshader" id="1_s2h2v"]
+[ext_resource type="Texture2D" uid="uid://csgwkwwy343rx" path="res://background.png" id="2_ync51"]
+[ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="3_sqh54"]
+[ext_resource type="PackedScene" uid="uid://cxrkf84krrwpa" path="res://assets/Data/NewScenes/character_plate.tscn" id="3_ync51"]
+[ext_resource type="Resource" uid="uid://q4k28yxqvglt" path="res://assets/Data/Stats/Loadouts/blood magus loadout.tres" id="5_v4nh1"]
+[ext_resource type="Resource" uid="uid://cdtxxb4485h7e" path="res://assets/Data/Stats/Loadouts/voice magus loadout.tres" id="6_rth7w"]
+[ext_resource type="Resource" uid="uid://gfjj537ouvj3" path="res://assets/Data/Stats/Loadouts/physical magus loadout.tres" id="7_kmbt1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ghndp"]
+shader = ExtResource("1_s2h2v")
+shader_parameter/intensity = 0.1650000078375
+shader_parameter/softness = 0.64800003078
+shader_parameter/scroll_speed = 0.05000009737499988
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[node name="CharacterCreationBase" type="Control" unique_id=75566319]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1410394238]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="MarginContainer" unique_id=113078607]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ghndp")
+layout_mode = 2
+texture = ExtResource("2_ync51")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=1049846213]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 35
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer" unique_id=1043797968]
+layout_mode = 2
+theme_override_constants/separation = -137
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=915153940]
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=637186019]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=144465680]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_sqh54")
+theme_override_font_sizes/font_size = 32
+text = "Select Your Starting Class:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=1465083607]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 154
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 60
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/MarginContainer/VBoxContainer/MainContainer" unique_id=668313499]
+layout_mode = 2
+
+[node name="CharactersSelectMenu" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/MainContainer/ScrollContainer" unique_id=796595270]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CharacterPlate" parent="MarginContainer/MarginContainer/VBoxContainer/MainContainer/ScrollContainer/CharactersSelectMenu" unique_id=945835768 instance=ExtResource("3_ync51")]
+layout_mode = 2
+
+[node name="CharacterPlate2" parent="MarginContainer/MarginContainer/VBoxContainer/MainContainer/ScrollContainer/CharactersSelectMenu" unique_id=239023180 instance=ExtResource("3_ync51")]
+layout_mode = 2
+loadout = ExtResource("5_v4nh1")
+
+[node name="CharacterPlate3" parent="MarginContainer/MarginContainer/VBoxContainer/MainContainer/ScrollContainer/CharactersSelectMenu" unique_id=626879223 instance=ExtResource("3_ync51")]
+layout_mode = 2
+loadout = ExtResource("6_rth7w")
+
+[node name="CharacterPlate4" parent="MarginContainer/MarginContainer/VBoxContainer/MainContainer/ScrollContainer/CharactersSelectMenu" unique_id=79531705 instance=ExtResource("3_ync51")]
+layout_mode = 2
+loadout = ExtResource("7_kmbt1")

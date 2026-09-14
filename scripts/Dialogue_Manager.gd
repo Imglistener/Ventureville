@@ -1,4 +1,5 @@
 class_name Dialogue_Manager extends Node
+@onready var game_state_manager: GameStateManager = $"../../../../../../Functionality/GameStateManager"
 
 var enemy_stat_manager: Stat_Manager
 var player_stat_manager: Stat_Manager
@@ -11,17 +12,27 @@ var is_dialogue_done : bool = false
 var speaker: String
 signal Dialogue_Done
 
-
+func _dialogue_logic() -> Array[DialogueLine]:
+	var dialogue := game_state_manager.battle_info.get_dialogue(get_tree().get_first_node_in_group('EnemyManager').get_enemy_views().size())
+	return dialogue
+	
 func call_dialogue(enemy: Stat_Manager, DialogueBox : RichTextLabel, Player: Stat_Manager) -> void:
 	if not enemy.Entity is EnemyBattlerStats:
 		return
 	enemy_stat_manager = enemy
-	if enemy_stat_manager.Entity.Dialogue:
-		enemy_dialogue = enemy_stat_manager.Entity.Dialogue
-	if not dialogue_box:
-		dialogue_box = DialogueBox
-	if not player_stat_manager:
-		player_stat_manager = Player
+	if not game_state_manager.battle_info.is_unique_battle:
+		enemy_dialogue = _dialogue_logic()
+		if not dialogue_box:
+			dialogue_box = DialogueBox
+		if not player_stat_manager:
+			player_stat_manager = Player
+	else:
+		if enemy_stat_manager.Entity.Dialogue:
+			enemy_dialogue = enemy_stat_manager.Entity.Dialogue
+		if not dialogue_box:
+			dialogue_box = DialogueBox
+		if not player_stat_manager:
+			player_stat_manager = Player
 	
 func update_index() -> void:
 	current_message_index += 1
@@ -37,7 +48,7 @@ func print_message() -> void:
 		DialogueLine.SPEAKER.PLAYER:
 			speaker = player_stat_manager.Player.entity_name
 		DialogueLine.SPEAKER.ENEMY:
-			speaker = enemy_stat_manager.Entity.EnemyName
+			speaker = enemy_stat_manager.Entity.entity_name
 		DialogueLine.SPEAKER.NONE:
 			speaker = ""
 		DialogueLine.SPEAKER.UNKNOWN:

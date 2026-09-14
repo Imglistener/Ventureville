@@ -12,3 +12,10 @@ func grab_signals(number: int, callables: Array[Callable]) -> void:
 		var button = menu_buttons[i] as Button
 		if not button.pressed.is_connected(callables[i]):
 			button.pressed.connect(callables[i])
+
+func setup_buttons_and_tooltips() -> Dictionary:
+	var buttons_to_tooltips := {}
+	for i in menu.get_children().size():
+		if menu.get_children()[i] is Button:
+			buttons_to_tooltips[menu.get_children()[i]] = tooltip.get_children()[i]
+	return buttons_to_tooltips

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Loadout" format=3 uid="uid://ru1l2yap3myn"]
+
+[ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="1_ekro1"]
+[ext_resource type="Resource" uid="uid://bf04hmv3nnbgw" path="res://assets/Data/Stats/Revised Stats/Health.tres" id="2_0lbif"]
+[ext_resource type="Resource" uid="uid://bxetxvy80ay0c" path="res://assets/Data/Stats/Revised Stats/Sanity.tres" id="3_602hj"]
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="4_pakuc"]
+[ext_resource type="Resource" uid="uid://ceoqilwthbnl5" path="res://assets/Data/Stats/Revised Stats/Entropy.tres" id="5_h1etm"]
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="6_1ua12"]
+[ext_resource type="Resource" uid="uid://cr5xuv3tmjx6m" path="res://assets/Data/Stats/Revised Stats/Strength.tres" id="7_f2k1n"]
+[ext_resource type="Script" uid="uid://c5jttqmnrhsf0" path="res://assets/Data/Stats/Loadouts/loadout.gd" id="8_fwd16"]
+
+[resource]
+script = ExtResource("8_fwd16")
+loadout_name = "Entromancer
+Dark Magus"
+loadout_stats = Array[ExtResource("1_ekro1")]([ExtResource("2_0lbif"), ExtResource("3_602hj"), ExtResource("4_pakuc"), ExtResource("5_h1etm"), ExtResource("6_1ua12"), ExtResource("7_f2k1n")])
+health_level = 10
+sanity_level = 10
+blood_level = 5
+influence_level = 5
+entropy_level = 15
+strength_level = 5

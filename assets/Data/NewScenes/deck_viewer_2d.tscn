@@ -19,13 +19,22 @@ theme_override_constants/margin_right = 22
 theme_override_constants/margin_bottom = 10
 script = ExtResource("1_w4jkm")
 card_deck = ExtResource("2_s54pg")
-grid_container = NodePath("ScrollContainer/GridContainer")
+grid_container = NodePath("ScrollContainer/MarginContainer/GridContainer")
 card_scene = ExtResource("1_cdjdt")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=2036952227]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=743472238]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer" unique_id=1861475631]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/MarginContainer" unique_id=743472238]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

@@ -249,3 +249,5 @@ script = ExtResource("11_yg3jl")
 
 [node name="GameStateManager" type="Node" parent="." unique_id=1965692829]
 script = ExtResource("19_lek1t")
+
+[editable path="MainGameContainer"]

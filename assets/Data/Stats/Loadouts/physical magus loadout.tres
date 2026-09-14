@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Loadout" format=3 uid="uid://gfjj537ouvj3"]
+
+[ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="1_1i55p"]
+[ext_resource type="Resource" uid="uid://bf04hmv3nnbgw" path="res://assets/Data/Stats/Revised Stats/Health.tres" id="2_amu35"]
+[ext_resource type="Resource" uid="uid://bxetxvy80ay0c" path="res://assets/Data/Stats/Revised Stats/Sanity.tres" id="3_l4hop"]
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="4_hln3q"]
+[ext_resource type="Resource" uid="uid://ceoqilwthbnl5" path="res://assets/Data/Stats/Revised Stats/Entropy.tres" id="5_opi0s"]
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="6_os8rl"]
+[ext_resource type="Resource" uid="uid://cr5xuv3tmjx6m" path="res://assets/Data/Stats/Revised Stats/Strength.tres" id="7_5kw4t"]
+[ext_resource type="Script" uid="uid://c5jttqmnrhsf0" path="res://assets/Data/Stats/Loadouts/loadout.gd" id="8_g3wnn"]
+
+[resource]
+script = ExtResource("8_g3wnn")
+loadout_name = "Tarnished
+Physical Magus"
+loadout_stats = Array[ExtResource("1_1i55p")]([ExtResource("2_amu35"), ExtResource("3_l4hop"), ExtResource("4_hln3q"), ExtResource("5_opi0s"), ExtResource("6_os8rl"), ExtResource("7_5kw4t")])
+health_level = 10
+sanity_level = 10
+blood_level = 5
+influence_level = 5
+entropy_level = 5
+strength_level = 15

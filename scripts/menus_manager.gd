@@ -18,7 +18,7 @@ class_name MenusManager extends Node
 @onready var Return: TextureButton = $"../../Control_Layer/Control_Base/Return"
 @onready var enemy_manager: Node = $"../EnemyManager"
 @onready var show_deck: TextureButton = $"../../Control_Layer/Control_Base/toolbar_container/toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Show Deck"
-@onready var deck_viewer_2d: CardViewer = $"../../Control_Layer/Control_Base/Base_Margin/DeckViewer2D"
+@onready var deck_viewer_2d: CardViewer = $"../../Control_Layer/Pause Layer/DeckViewer2D"
 
 var Dialogue_manager: Dialogue_Manager 
 var talk: Button
@@ -178,6 +178,8 @@ func _on_return_pressed() -> void:
 	await node_visible
 
 func _on_talk_pressed() -> void:
+	if enemy_manager.get_enemy_views().size() > 1:
+		pass
 	Dialogue_manager.call_dialogue(enemy_stat_manager, dialogue_node.dialogue_box, player_stat_manager)
 	talk.disabled = true
 	transition_to(dialogue_node, standby_menu)
