@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="BattleInfo" format=3 uid="uid://v8t1nllhkb3"]
+
+[ext_resource type="Script" uid="uid://djvjp04eqmhrw" path="res://assets/Enemies/Data/Enemies/Dialogue/DialogueInstance.gd" id="1_sf3y1"]
+[ext_resource type="Script" uid="uid://b3icxqpmtwr18" path="res://assets/Data/Entities/EnemyBattlerStats.gd" id="2_fplv6"]
+[ext_resource type="Resource" uid="uid://cvwnlcbly6crn" path="res://assets/Enemies/Data/Enemies/EnemyInstance/FootKnight/FootKnight.tres" id="3_1j1tj"]
+[ext_resource type="Script" uid="uid://4xdxcladhu8j" path="res://assets/Enemies/Data/battle data/battle_info.gd" id="4_04lp0"]
+
+[sub_resource type="Resource" id="Resource_5tr58"]
+script = ExtResource("1_sf3y1")
+Line = "\"We don't have to do this, you know.\""
+metadata/_custom_type_script = "uid://djvjp04eqmhrw"
+
+[sub_resource type="Resource" id="Resource_xnchq"]
+script = ExtResource("1_sf3y1")
+Speaker = 1
+Line = "\"...\""
+metadata/_custom_type_script = "uid://djvjp04eqmhrw"
+
+[sub_resource type="Resource" id="Resource_ep6pk"]
+script = ExtResource("1_sf3y1")
+Speaker = 2
+Line = "You don't think you can talk your way out of this one. The enemy is out for blood."
+metadata/_custom_type_script = "uid://djvjp04eqmhrw"
+
+[sub_resource type="Resource" id="Resource_btt2r"]
+script = ExtResource("1_sf3y1")
+Line = "\"Attacking me all at once? And here I thought this world had a code of honour.\""
+metadata/_custom_type_script = "uid://djvjp04eqmhrw"
+
+[sub_resource type="Resource" id="Resource_1t18k"]
+script = ExtResource("1_sf3y1")
+Speaker = 1
+Line = "\"...\""
+metadata/_custom_type_script = "uid://djvjp04eqmhrw"
+
+[sub_resource type="Resource" id="Resource_wc54s"]
+script = ExtResource("1_sf3y1")
+Speaker = 2
+Line = "Talking yields no result. Prepare for battle."
+metadata/_custom_type_script = "uid://djvjp04eqmhrw"
+
+[resource]
+script = ExtResource("4_04lp0")
+battle_id = 1
+enemies_involved = Array[ExtResource("2_fplv6")]([ExtResource("3_1j1tj"), ExtResource("3_1j1tj")])
+basic_dialogue_1 = Array[ExtResource("1_sf3y1")]([SubResource("Resource_5tr58"), SubResource("Resource_xnchq"), SubResource("Resource_ep6pk")])
+basic_dialogue_2 = Array[ExtResource("1_sf3y1")]([SubResource("Resource_btt2r"), SubResource("Resource_1t18k"), SubResource("Resource_wc54s")])

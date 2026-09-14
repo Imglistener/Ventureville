@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Loadout" format=3 uid="uid://q4k28yxqvglt"]
+
+[ext_resource type="Texture2D" uid="uid://clhppi5kqrsky" path="res://assets/Data/Classes/BloodMagus/BloodMagus.png" id="1_ejf3i"]
+[ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="1_yx5wv"]
+[ext_resource type="Resource" uid="uid://bf04hmv3nnbgw" path="res://assets/Data/Stats/Revised Stats/Health.tres" id="2_ejf3i"]
+[ext_resource type="Resource" uid="uid://bxetxvy80ay0c" path="res://assets/Data/Stats/Revised Stats/Sanity.tres" id="3_f1s6i"]
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="4_xvry4"]
+[ext_resource type="Resource" uid="uid://ceoqilwthbnl5" path="res://assets/Data/Stats/Revised Stats/Entropy.tres" id="5_a23h1"]
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="6_e13ed"]
+[ext_resource type="Resource" uid="uid://cr5xuv3tmjx6m" path="res://assets/Data/Stats/Revised Stats/Strength.tres" id="7_abknm"]
+[ext_resource type="Script" uid="uid://c5jttqmnrhsf0" path="res://assets/Data/Stats/Loadouts/loadout.gd" id="8_6eghw"]
+
+[resource]
+script = ExtResource("8_6eghw")
+loadout_name = "Hemomancer
+Blood Magus"
+loadout_stats = Array[ExtResource("1_yx5wv")]([ExtResource("2_ejf3i"), ExtResource("3_f1s6i"), ExtResource("4_xvry4"), ExtResource("5_a23h1"), ExtResource("6_e13ed"), ExtResource("7_abknm")])
+health_level = 10
+sanity_level = 10
+blood_level = 15
+influence_level = 5
+entropy_level = 5
+strength_level = 5
+character_portrait = ExtResource("1_ejf3i")

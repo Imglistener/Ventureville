@@ -346,6 +346,7 @@ label_settings = ExtResource("10_xox7x")
 
 [node name="MarginContainer" type="MarginContainer" parent="EnemyBarsContainer" unique_id=1746009064]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_top = 55
 theme_override_constants/margin_bottom = -20
 
@@ -376,6 +377,7 @@ horizontal_alignment = 1
 
 [node name="DamageRes" type="MarginContainer" parent="EnemyBarsContainer/MarginContainer" unique_id=466232217]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_top = 17
 theme_override_constants/margin_bottom = -92
 
@@ -391,6 +393,9 @@ stretch_mode = 4
 
 [node name="DmgNumbers" type="Marker2D" parent="." unique_id=1345748465]
 position = Vector2(0, -170)
+
+[node name="StatusTooltipMarker" type="Marker2D" parent="." unique_id=1631388925]
+position = Vector2(184, -120)
 
 [node name="Death" type="AnimationPlayer" parent="." unique_id=72518885]
 libraries/ = SubResource("AnimationLibrary_ht5qr")

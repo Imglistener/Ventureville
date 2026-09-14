@@ -53,7 +53,9 @@
 [ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="40_h2n7a"]
 [ext_resource type="Script" uid="uid://bs3r5fddsx6y5" path="res://scripts/enemy_turn_order_manager.gd" id="45_sotth"]
 [ext_resource type="Script" uid="uid://cy7yn1fq5hrgv" path="res://scripts/enemy_manager.gd" id="46_qkuvq"]
+[ext_resource type="PackedScene" uid="uid://b8k3ee0s1c4ei" path="res://assets/Data/NewScenes/status_tooltip_base.tscn" id="49_h2n7a"]
 [ext_resource type="Script" uid="uid://bespv1ko6kvui" path="res://scripts/turn_tracking_manager.gd" id="51_li6wq"]
+[ext_resource type="Resource" uid="uid://v8t1nllhkb3" path="res://assets/Enemies/Data/battle data/battle_1.tres" id="51_sqjrh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f33sq"]
 shader = ExtResource("20_w5vtb")
@@ -107,6 +109,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("2_4a4b7")
 
@@ -164,13 +168,6 @@ theme_override_constants/margin_bottom = 90
 
 [node name="PlayerView" parent="Control_Layer/Control_Base/Base_Margin/MarginContainer" unique_id=1803275803 instance=ExtResource("3_iuswa")]
 layout_mode = 2
-
-[node name="DeckViewer2D" parent="Control_Layer/Control_Base/Base_Margin" unique_id=1412893859 instance=ExtResource("10_jiv1t")]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 69
-theme_override_constants/margin_right = 0
 
 [node name="AP_Background" parent="Control_Layer/Control_Base" unique_id=1581570366 instance=ExtResource("6_ivt5a")]
 visible = false
@@ -329,6 +326,16 @@ theme_override_colors/font_color = Color(1, 0.9375, 0, 1)
 theme_override_constants/outline_size = 31
 theme_override_font_sizes/font_size = 110
 text = "VICTORY!"
+
+[node name="DeckViewer2D" parent="Control_Layer/Pause Layer" unique_id=1412893859 instance=ExtResource("10_jiv1t")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1255.0
+offset_bottom = 704.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 69
+theme_override_constants/margin_right = 0
 
 [node name="Pause Menu" type="PanelContainer" parent="Control_Layer/Pause Layer" unique_id=1540107876]
 process_mode = 3
@@ -538,9 +545,11 @@ script = ExtResource("22_qogb6")
 
 [node name="ActiveEffectManager" type="Node" parent="Functionality" unique_id=1964430043]
 script = ExtResource("25_3d1y2")
+tooltip = ExtResource("49_h2n7a")
 
 [node name="GameStateManager" type="Node" parent="Functionality" unique_id=1041496057]
 script = ExtResource("36_a7dmv")
+battle_info = ExtResource("51_sqjrh")
 
 [node name="EnemyTurnOrderManager" type="Node" parent="Functionality" unique_id=1699957479]
 script = ExtResource("45_sotth")

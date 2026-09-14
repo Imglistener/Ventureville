@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Loadout" format=3 uid="uid://cdtxxb4485h7e"]
+
+[ext_resource type="Texture2D" uid="uid://cdlgjildby10k" path="res://assets/illusionist/illusionist_portrait_V2.png" id="1_h81cx"]
+[ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="1_xyxnl"]
+[ext_resource type="Resource" uid="uid://bf04hmv3nnbgw" path="res://assets/Data/Stats/Revised Stats/Health.tres" id="2_h81cx"]
+[ext_resource type="Resource" uid="uid://bxetxvy80ay0c" path="res://assets/Data/Stats/Revised Stats/Sanity.tres" id="3_e1b3c"]
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="4_ce0bo"]
+[ext_resource type="Resource" uid="uid://ceoqilwthbnl5" path="res://assets/Data/Stats/Revised Stats/Entropy.tres" id="5_o6522"]
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="6_ykb7v"]
+[ext_resource type="Resource" uid="uid://cr5xuv3tmjx6m" path="res://assets/Data/Stats/Revised Stats/Strength.tres" id="7_q7hj1"]
+[ext_resource type="Script" uid="uid://c5jttqmnrhsf0" path="res://assets/Data/Stats/Loadouts/loadout.gd" id="8_1qjex"]
+
+[resource]
+script = ExtResource("8_1qjex")
+loadout_name = "Illusionist
+Voice Magus"
+loadout_stats = Array[ExtResource("1_xyxnl")]([ExtResource("2_h81cx"), ExtResource("3_e1b3c"), ExtResource("4_ce0bo"), ExtResource("5_o6522"), ExtResource("6_ykb7v"), ExtResource("7_q7hj1")])
+health_level = 10
+sanity_level = 10
+blood_level = 5
+influence_level = 15
+entropy_level = 5
+strength_level = 5
+character_portrait = ExtResource("1_h81cx")

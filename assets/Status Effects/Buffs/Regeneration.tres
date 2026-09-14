@@ -7,5 +7,5 @@
 script = ExtResource("1_nkrwk")
 status_name = 8
 status_icon = ExtResource("2_3t4n8")
-status_description = "\"Target Heals twice the remaining Duration each Standby.\" "
+status_description = "Affected Entity Heals twice the remaining Duration each Standby. "
 metadata/_custom_type_script = "uid://obt7t7nyffks"
