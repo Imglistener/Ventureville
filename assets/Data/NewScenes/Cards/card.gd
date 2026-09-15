@@ -214,7 +214,7 @@ func set_display_size(size: Vector2) -> void:
 
 func nulled() -> void:
 	var Deck_Manager := get_tree().get_first_node_in_group('DeckManager') as DeckManager
-	for card in Deck_Manager.CardDeck.Battle_Deck:
+	for card in Deck_Manager.CardDeck.Discard_Pile:
 		if card is Card:
 			if card == self.card_data:
-				Deck_Manager.CardDeck.Battle_Deck.erase(card)
+				Deck_Manager.CardDeck.Discard_Pile.erase(card)

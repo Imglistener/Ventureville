@@ -83,6 +83,8 @@ func create_instance() -> Resource:
 	instance.battle_deck = instance.starting_deck.duplicate()
 	instance.set_character_level()
 	instance.player_inventory = instance.player_inventory.new_inventory()
+	instance.ActiveEffects.clear()
+	instance.BattleConditions.clear()
 	return instance
 #Load Character:
 func Load_Player() -> Resource:
@@ -96,5 +98,6 @@ func Load_Player() -> Resource:
 	instance.battle_deck = instance.starting_deck.duplicate()
 	instance.set_character_level()
 	instance.reset_AP()
-
+	instance.ActiveEffects.clear()
+	instance.BattleConditions.clear()
 	return instance

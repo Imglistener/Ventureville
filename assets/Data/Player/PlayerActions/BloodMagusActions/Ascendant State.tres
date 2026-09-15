@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://dkcdc1ypd22a3"]
+
+[ext_resource type="Resource" uid="uid://4q4xspdp2y3s" path="res://assets/Status Effects/Buffs/Conditions/ascendant_ritual.tres" id="1_iipfx"]
+[ext_resource type="Script" uid="uid://bhr5nvs5bt3rw" path="res://assets/Data/Player/PlayerActions/CardEffects/Ascendant State.gd" id="2_6tuvk"]
+
+[resource]
+script = ExtResource("2_6tuvk")
+blood_tax = 20
+condition = ExtResource("1_iipfx")
+name = "Ascendant State"
+rarity = 2
+type = 1
+mp_cost = 2
+ap_cost = 1
+is_card_nullable = true
+Description = "Sacrifice 20 HP. Gain 1 Ascendant Ritual."
+LogMessage = "\"An ancient ritual fills you with supernatural powers!\""

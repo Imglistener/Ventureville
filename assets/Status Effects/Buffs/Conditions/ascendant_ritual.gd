@@ -12,14 +12,8 @@ func on_tick(targets : Array[Node]) -> void:
 				
 func activate(targets: Array[Node]) -> void:
 	var player = targets[0].get_tree().get_first_node_in_group('player') as Stat_Manager
-	if _find_same_effect(player.Player.BattleConditions):
+	if find_same_effect(player.Player.BattleConditions):
 		return
-	player.Player.BattleConditions.append(self.duplicate())
-	Events.BattleConditionActivated.emit(self.duplicate(), player.Player)
-
-
-func _find_same_effect(effects: Array) -> Battle_Condition:
-	for effect in effects:
-		if effect.get_script() == self.get_script():
-			return effect
-	return null
+	var activated_condition = self.duplicate()
+	player.Player.BattleConditions.append(activated_condition)
+	Events.BattleConditionActivated.emit(activated_condition, player.Player)

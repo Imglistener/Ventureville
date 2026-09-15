@@ -7,3 +7,4 @@ class_name EnemyBarsContainer extends MarginContainer
 @onready var enemy_san_counter: Label = $VBoxContainer/Enemy_san/Enemy_san_counter
 @onready var statuseffecticon: TextureRect =$MarginContainer/Statuseffecticon
 @onready var turns_remaining: Label = $MarginContainer/Statuseffecticon/turns_remaining
+@onready var perma_buff_icon: TextureRect = $MarginContainer/perma_buff_icon
