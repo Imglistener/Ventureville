@@ -3,10 +3,13 @@ extends Card
 @export var BaseShield: int = 12
 @export var BaseSanShield : int = 12
 @export var VFX : PackedScene
+@export var blood_tax: int
 
 func apply_effect(targets : Array[Node]) -> void:
 	var block_effect := BlockEffect.new()
 	var san_block_effect := SanBlockEffect.new()
+	var player := targets[0].get_tree().get_first_node_in_group('player') as Stat_Manager
+	player.Player.true_take_damage(blood_tax)
 	block_effect.amount = BaseShield
 	san_block_effect.amount = BaseSanShield
 	var Visual = VFX.instantiate()

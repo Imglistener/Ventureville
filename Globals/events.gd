@@ -31,3 +31,4 @@ signal item_used(item: Item)
 
 #StatusSignals
 signal StatusWoreOff(status: StatusEffect, entity: BaseBattlerStats)
+signal BattleConditionActivated(battle_condition: Battle_Condition, entity: BaseBattlerStats)

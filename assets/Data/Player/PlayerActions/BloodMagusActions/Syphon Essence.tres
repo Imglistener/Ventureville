@@ -8,11 +8,12 @@
 script = ExtResource("2_3jcpk")
 BloodSyphonEffect = ExtResource("1_epbsp")
 RegenEffect = ExtResource("2_523bt")
+blood_tax = 15
 name = "Syphon Essence"
 type = 2
 target = 1
 mp_cost = 2
 ap_cost = 1
-Description = "Apply 5 Blood Syphon to a Target. Gain that much Regeneration."
-LogMessage = "\"Your enemy's life force  is yours!\""
+Description = "Sacrifice 15 HP. Apply 5 Blood Syphon to a Target. Gain that much Regeneration."
+LogMessage = "\"Your Enemy's Blood flows freely as you siphon its essence!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

@@ -328,6 +328,7 @@ theme_override_font_sizes/font_size = 110
 text = "VICTORY!"
 
 [node name="DeckViewer2D" parent="Control_Layer/Pause Layer" unique_id=1412893859 instance=ExtResource("10_jiv1t")]
+visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -540,7 +541,7 @@ script = ExtResource("17_8fh2q")
 [node name="PhaseManager" type="Node" parent="Functionality" unique_id=1122656434]
 script = ExtResource("18_wsofm")
 
-[node name="DeckManager" type="Node" parent="Functionality" unique_id=2074880241]
+[node name="DeckManager" type="Node" parent="Functionality" unique_id=2074880241 groups=["DeckManager"]]
 script = ExtResource("22_qogb6")
 
 [node name="ActiveEffectManager" type="Node" parent="Functionality" unique_id=1964430043]

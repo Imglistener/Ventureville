@@ -1,6 +1,6 @@
 extends Card
 @export var base_damage: int
-@export var base_cost : int
+@export var blood_tax : int
 @export var StatsScaled: StatInstance
 @export var AppliedEffect: StatusEffect      # BloodSyphon.tres
 @export var RegenEffect: StatusEffect        # Regeneration.tres
@@ -23,7 +23,7 @@ func apply_effect(targets: Array[Node]) -> void:
 	var deal_damage := AttackEffect.new()
 	deal_damage.damage_type = damage_type
 	deal_damage.amount = total
-	player.Player.true_take_damage(base_cost)
+	player.Player.true_take_damage(blood_tax)
 	deal_damage.activate(targets)
 
 	var applied_duration := 3
