@@ -10,6 +10,7 @@ enum Rarities{Common, Rare, Legendary}
 @export var target: Target
 @export var mp_cost: int
 @export var ap_cost: int
+@export var is_card_nullable: bool = false
 @export_multiline var Description: String
 @export_multiline var LogMessage: String
 
@@ -39,6 +40,7 @@ func activate_card(targets: Array[Node], characterstats: CharacterInstance) -> v
 	characterstats.AP -= ap_cost
 	if is_SingleTarget():
 		apply_effect(targets)
+		
 	else:
 		apply_effect(_get_targets(targets))
 

@@ -88,6 +88,8 @@ func play() -> void:
 	is_playable.visible = false
 	card_data.activate_card(targets, player_stats)
 	animate_out()
+	if card_data.is_card_nullable:
+		nulled()
 
 func update_description() -> void:
 	card_effect.text = card_data.get_description(player_stats)
@@ -209,3 +211,10 @@ func set_display_size(size: Vector2) -> void:
 	card_scaler.size = DESIGN_SIZE
 	card_scaler.pivot_offset = Vector2.ZERO
 	card_scaler.scale = size / DESIGN_SIZE
+
+func nulled() -> void:
+	var Deck_Manager := get_tree().get_first_node_in_group('DeckManager') as DeckManager
+	for card in Deck_Manager.CardDeck.Battle_Deck:
+		if card is Card:
+			if card == self.card_data:
+				Deck_Manager.CardDeck.Battle_Deck.erase(card)
