@@ -7,7 +7,7 @@ enum CONDITION_TYPES{Passive, Active}
 @export var condition_type : CONDITION_TYPES
 @export var condition_icon : Texture2D
 @export_multiline var condition_description: String
-
+@export var trigger_once: bool = false   # Active-only: remove self after firing once
 
 func is_condition_passive() -> bool:
 	return condition_type == CONDITION_TYPES.Passive
@@ -15,14 +15,38 @@ func is_condition_passive() -> bool:
 func is_condition_active() -> bool:
 	return condition_type == CONDITION_TYPES.Active
 
-func on_apply(targets: Array[Node]) -> void:
+# Active conditions: checked every tick, returns whether the payload should fire
+func on_conditions_met(_targets: Array[Node]) -> bool:
+	return false
+
+# Passive conditions: runs every tick, unconditionally
+func on_tick(_targets: Array[Node]) -> void:
 	pass
 
-func on_tick(targets: Array[Node]) -> void:
+# Active conditions: the actual payload, run once on_conditions_met returns true
+func on_trigger(_targets: Array[Node]) -> void:
 	pass
 
+# Attaches the condition to an entity
+func activate(_targets: Array[Node]) -> void:
+	pass
+
+# Removes the condition from whatever pool it's attached to
 func on_expired(targets: Array[Node]) -> void:
-	pass
+	if targets.is_empty() or not targets[0]:
+		return
+	var player = targets[0].get_tree().get_first_node_in_group('player') as Stat_Manager
+	if not player:
+		return
+	var existing = find_same_effect(player.Player.BattleConditions)
+	if existing:
+		player.Player.BattleConditions.erase(existing)
+		Events.BattleConditionExpired.emit(existing, player.Player)
 
-func activate(targets: Array[Node]) -> void:
-	pass
+
+func find_same_effect(effects: Array) -> Battle_Condition:
+	for effect in effects:
+		if effect.get_script() == self.get_script():
+			return effect
+	return null
+	

@@ -8,6 +8,9 @@ class_name CardHand extends Node2D
 var is_card_highlighted: bool
 var is_arranging: bool = false
 
+func _ready() -> void:
+	if not Events.calling_arrange_hand.is_connected(arrange_hand):
+		Events.calling_arrange_hand.connect(arrange_hand)
 
 func start_turn() -> void:
 	if not player_stat_manager.is_node_ready():
@@ -45,14 +48,15 @@ func arrange_hand():
 		else:
 			final_rot = 0
 			final_pos = Vector2(50, 0)
-		if i:
-			var tween = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
-			tween.parallel().tween_property(i, "position", final_pos, 0.03 + (i.get_index() * 0.075))
-			tween.parallel().tween_property(i, "rotation", final_rot, 0.2 + (i.get_index() * 0.075))
-			i.hand_position = final_pos
-			i.hand_rotation = final_rot
-			i.hand_position_set = true
-			last_tween = tween
+		if i is CardUI:
+				var tween = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+				tween.parallel().tween_property(i, "position", final_pos, 0.03 + (i.get_index() * 0.075))
+				tween.parallel().tween_property(i, "rotation", final_rot, 0.2 + (i.get_index() * 0.075))
+				i.hand_position = final_pos
+				i.hand_rotation = final_rot
+				i.hand_position_set = true
+				last_tween = tween
+				
 
 	# Await only once, after all tweens are started
 	if last_tween:

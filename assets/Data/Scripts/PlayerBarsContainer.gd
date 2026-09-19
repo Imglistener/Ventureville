@@ -8,3 +8,4 @@ class_name PlayerBarsContainer extends MarginContainer
 @onready var player_san_counter: Label = $VBoxContainer/player_san/player_san_counter
 @onready var statuseffecticon: TextureRect = $VBoxContainer3/Statuseffecticon
 @onready var turns_remaining: Label = $VBoxContainer3/Statuseffecticon/turns_remaining
+@onready var perma_buff_icon: TextureRect = $VBoxContainer3/perma_buff_icon

@@ -41,9 +41,13 @@ var deck_position: Vector2
 var Discard_position: Vector2
 var log : Log
 var ControlBase : Control
+var is_selected := false
+
 var card_disabled := false
 var is_displaying := false
 const DESIGN_SIZE := Vector2(694.0, 1013.0)
+
+
 
 func _ready() -> void:
 	drop_point_detector.monitoring = false
@@ -58,8 +62,8 @@ func _ready() -> void:
 	if player_stats:
 		if not player_stats.Stats_Changed.is_connected(update_description):
 				player_stats.Stats_Changed.connect(update_description)
-	if not Events.card_played.is_connected(update_costs):
-		Events.card_played.connect(update_costs.unbind(1))
+	if not Events.card_cost_changed.is_connected(_on_cost_changed):
+		Events.card_cost_changed.connect(_on_cost_changed)
 	if ControlBase:
 		if not CardClicked.is_connected(ControlBase.on_trigger_pressed):
 			CardClicked.connect(ControlBase.on_trigger_pressed)
@@ -67,6 +71,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	card_state_manager.process(delta)
 
+	
 func manage_card_rarity() -> void:
 	match card_data.rarity:
 		Card.Rarities.Common:
@@ -75,6 +80,10 @@ func manage_card_rarity() -> void:
 			card_name.add_theme_color_override("font_color", Color.AQUA)
 		Card.Rarities.Legendary:
 			card_name.add_theme_color_override("font_color", Color.GOLD)
+
+func _on_cost_changed(card: Card) -> void:
+	if card == card_data:
+		update_costs()
 
 func update_costs() -> void:
 	cost.text = str(card_data.ap_cost)
@@ -123,29 +132,11 @@ func _on_mouse_exited()-> void:
 		return
 	if card_targeting:
 		return
-	is_card_focused(false)
+	Events.card_unselected.emit(self)
 
-func is_card_focused(value: bool) -> void:
-	if card_dragging == true: return
-	if is_displaying == true: return
-	if value:
-		z_index = 100
-		sfx.stream = HoverSFX
-		sfx.play()
-		await animate_card(0)
-	else:
-		z_index = get_index()             
-		await animate_card(1)
+
 	
-func animate_card(type: int) -> void:
-	var t: Tween = create_tween()
-	
-	match type:
-		0:
-			t.tween_property(self, "scale", Vector2(0.42 , 0.42), 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-		1:
-			t.tween_property(self, "scale", original_scale, 0.55).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
-	await t.finished
+
 
 func move_card(card: CardUI, start_pos:Vector2, target_pos: Vector2, duration: float) -> void:
 	var Tw: Tween = create_tween()
@@ -154,15 +145,15 @@ func move_card(card: CardUI, start_pos:Vector2, target_pos: Vector2, duration: f
 
 
 func animate_to_position(new_position: Vector2, duration: float) -> void:
+	if tween:
+		return
 	tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "global_position", new_position, duration)
 
 func _on_mouse_entered() -> void:
-	if card_dragging:
+	if card_dragging or card_targeting:
 		return
-	if card_targeting:
-		return
-	is_card_focused(true)
+	Events.card_selected.emit(self)
 
 func _input(event: InputEvent) -> void:
 	var hand = get_parent() as CardHand
@@ -214,7 +205,7 @@ func set_display_size(size: Vector2) -> void:
 
 func nulled() -> void:
 	var Deck_Manager := get_tree().get_first_node_in_group('DeckManager') as DeckManager
-	for card in Deck_Manager.CardDeck.Battle_Deck:
+	for card in Deck_Manager.CardDeck.Discard_Pile:
 		if card is Card:
 			if card == self.card_data:
-				Deck_Manager.CardDeck.Battle_Deck.erase(card)
+				Deck_Manager.CardDeck.Discard_Pile.erase(card)

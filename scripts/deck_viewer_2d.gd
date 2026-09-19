@@ -15,4 +15,4 @@ func _ready() -> void:
 				card_ui.set_display_size(Vector2(247.0, 406.5))
 				card_ui.is_displaying = true
 				card_ui.is_playable.hide()
-				
+				print("Card Name: ", card.name, " , Card Type: " , Card.Type.find_key(card.type), " , Card Description: " , card.Description)

@@ -6,7 +6,8 @@ extends RichTextLabel
 signal tween_finished
 
 func type_text(new_text: String):
-	# Stop any running tween
+	if sfx.playing:
+		sfx.stop_loop()
 	
 	
 	text = new_text

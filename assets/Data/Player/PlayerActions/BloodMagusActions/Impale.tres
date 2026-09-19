@@ -1,0 +1,25 @@
+[gd_resource type="Resource" format=3 uid="uid://de6m6tryd6i87"]
+
+[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="1_jfa3l"]
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="2_gi8d2"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="3_f0h6h"]
+[ext_resource type="Script" uid="uid://bhg0khuceyhcv" path="res://assets/Data/Player/PlayerActions/CardEffects/Impale.gd" id="4_tpjb2"]
+
+[resource]
+script = ExtResource("4_tpjb2")
+base_damage = 15
+blood_tax = 20
+StatsScaled = ExtResource("2_gi8d2")
+damage_type = ExtResource("3_f0h6h")
+AppliedEffect = ExtResource("1_jfa3l")
+name = "Impale"
+rarity = 2
+target = 1
+mp_cost = 2
+ap_cost = 1
+is_card_nullable = true
+Description = "Sacrifice 20 HP. Deal {scaled} Blood Damage.
+Apply 2 Blood Syphon.
+If Lethal, recover the sacrificed HP."
+LogMessage = "\"Your Blood a stake, you impale from below!\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

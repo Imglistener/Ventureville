@@ -32,5 +32,7 @@ func decrease_cost() -> void:
 		mp_cost -= 1
 	if ap_cost > 0: 
 		ap_cost -= 1
+	Events.card_cost_changed.emit(self)
+
 func get_description(_character: CharacterInstance) -> String:
 	return Description.replace("{Blood_Aias}", str(self.name))

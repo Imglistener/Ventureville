@@ -54,6 +54,7 @@
 [ext_resource type="Script" uid="uid://bs3r5fddsx6y5" path="res://scripts/enemy_turn_order_manager.gd" id="45_sotth"]
 [ext_resource type="Script" uid="uid://cy7yn1fq5hrgv" path="res://scripts/enemy_manager.gd" id="46_qkuvq"]
 [ext_resource type="PackedScene" uid="uid://b8k3ee0s1c4ei" path="res://assets/Data/NewScenes/status_tooltip_base.tscn" id="49_h2n7a"]
+[ext_resource type="PackedScene" uid="uid://jktwbefoh0gv" path="res://assets/Data/NewScenes/battlecondition_tooltip_base.tscn" id="50_1iiwq"]
 [ext_resource type="Script" uid="uid://bespv1ko6kvui" path="res://scripts/turn_tracking_manager.gd" id="51_li6wq"]
 [ext_resource type="Resource" uid="uid://v8t1nllhkb3" path="res://assets/Enemies/Data/battle data/battle_1.tres" id="51_sqjrh"]
 
@@ -547,6 +548,7 @@ script = ExtResource("22_qogb6")
 [node name="ActiveEffectManager" type="Node" parent="Functionality" unique_id=1964430043]
 script = ExtResource("25_3d1y2")
 tooltip = ExtResource("49_h2n7a")
+condition_tooltip = ExtResource("50_1iiwq")
 
 [node name="GameStateManager" type="Node" parent="Functionality" unique_id=1041496057]
 script = ExtResource("36_a7dmv")
@@ -582,4 +584,5 @@ playback_type = 1
 
 [editable path="Control_Layer/Control_Base/toolbar_container"]
 [editable path="Control_Layer/Control_Base/Base_Margin/StandbyContainer/Background"]
+[editable path="Control_Layer/Control_Base/Base_Margin/MarginContainer/PlayerView"]
 [editable path="Control_Layer/Control_Base/AP_Background"]

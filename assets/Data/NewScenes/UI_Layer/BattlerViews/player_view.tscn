@@ -49,3 +49,6 @@ position = Vector2(137, 208)
 
 [node name="StatusEffectMarker" type="Marker2D" parent="." unique_id=706211563]
 position = Vector2(-255, 256)
+
+[node name="ConditionEffectMarker" type="Marker2D" parent="." unique_id=2054543990]
+position = Vector2(-129, 191)

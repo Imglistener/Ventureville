@@ -9,16 +9,22 @@
 [ext_resource type="Resource" uid="uid://cfgl5f0160fhq" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Harvest.tres" id="7_s4rde"]
 [ext_resource type="Resource" uid="uid://ce1s75bc8dcd2" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Sacrifice.tres" id="8_1frsc"]
 [ext_resource type="Resource" uid="uid://cegj65gylisf8" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Malady.tres" id="8_kfyem"]
+[ext_resource type="Resource" uid="uid://dkcdc1ypd22a3" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Ascendant State.tres" id="9_kfyem"]
+[ext_resource type="Resource" uid="uid://cn7xypl6lls1m" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Crimson Spear.tres" id="10_3v31f"]
+[ext_resource type="Resource" uid="uid://de6m6tryd6i87" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Impale.tres" id="11_0354w"]
 
 [resource]
 script = ExtResource("1_dyacs")
 Obtained_Cards = {
-ExtResource("4_ao31u"): 5,
-ExtResource("5_8wy8p"): 4,
-ExtResource("5_sy2il"): 2,
-ExtResource("6_sy2il"): 4,
+ExtResource("4_ao31u"): 2,
+ExtResource("5_8wy8p"): 2,
+ExtResource("5_sy2il"): 0,
+ExtResource("6_sy2il"): 2,
 ExtResource("7_s4rde"): 2,
 ExtResource("8_1frsc"): 2,
-ExtResource("8_kfyem"): 3
+ExtResource("8_kfyem"): 2,
+ExtResource("9_kfyem"): 1,
+ExtResource("10_3v31f"): 2,
+ExtResource("11_0354w"): 2
 }
-Cards_in_Deck = Array[ExtResource("1_7abai")]([ExtResource("4_ao31u"), ExtResource("5_8wy8p"), ExtResource("5_sy2il"), ExtResource("6_sy2il"), ExtResource("7_s4rde"), ExtResource("8_1frsc"), ExtResource("8_kfyem")])
+Cards_in_Deck = Array[ExtResource("1_7abai")]([ExtResource("4_ao31u"), ExtResource("5_8wy8p"), ExtResource("5_sy2il"), ExtResource("6_sy2il"), ExtResource("7_s4rde"), ExtResource("8_1frsc"), ExtResource("8_kfyem"), ExtResource("9_kfyem"), ExtResource("10_3v31f"), ExtResource("11_0354w")])
