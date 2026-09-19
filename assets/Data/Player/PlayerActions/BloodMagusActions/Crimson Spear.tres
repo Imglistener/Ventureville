@@ -1,0 +1,18 @@
+[gd_resource type="Resource" format=3 uid="uid://cn7xypl6lls1m"]
+
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="1_gx74k"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="2_osapc"]
+[ext_resource type="Script" uid="uid://d325lpth34xbm" path="res://assets/Data/Player/PlayerActions/CardEffects/CrimsonSpear.gd" id="3_gdaio"]
+
+[resource]
+script = ExtResource("3_gdaio")
+blood_tax = 8
+StatsScaled = ExtResource("1_gx74k")
+damage_type = ExtResource("2_osapc")
+name = "Crimson Spear"
+rarity = 1
+target = 1
+mp_cost = 2
+ap_cost = 1
+Description = "Sacrifice 8 HP. Deal {scaled} Blood Damage, then addtional Blood Damage equal to the Target's Blood Syphon."
+LogMessage = "\"Your Crimson Spear drinks in your Enemy's Blood!\""

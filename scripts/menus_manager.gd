@@ -29,7 +29,7 @@ signal input_received(event)
 
 func transition_to(node_shown: Node, hide_node: Node = null) -> void:
 	if hide_node:
-		fade_node(hide_node, true)
+		await fade_node(hide_node, true)
 	show_node(node_shown)
 
 func _ready() -> void:
@@ -45,8 +45,8 @@ func _ready() -> void:
 		Dialogue_manager = dialogue_node.dialogue_manager
 	if not talk.pressed.is_connected(_on_talk_pressed):
 		talk.pressed.connect(_on_talk_pressed)
-	if not battle.pressed.is_connected(phase_manager.advance_to_next_phase):
-		battle.pressed.connect(phase_manager.advance_to_next_phase)
+	if not battle.pressed.is_connected(_on_battle_pressed):
+		battle.pressed.connect(_on_battle_pressed)
 	if not Dialogue_manager.Dialogue_Done.is_connected(_on_dialogue_end):
 		Dialogue_manager.Dialogue_Done.connect(_on_dialogue_end)
 	if not phase_manager.is_node_ready():
@@ -71,7 +71,11 @@ func _resume_game()-> void:
 	pause_menu.visible = false
 	pause_blur.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	handle_blur(true)
-	
+
+func _on_battle_pressed() -> void:
+	battle.disabled = true
+	phase_manager.advance_to_next_phase()
+
 func _pause_game()-> void:
 	get_tree().paused = true
 	pause_menu.visible = true
@@ -178,24 +182,27 @@ func _on_return_pressed() -> void:
 	await node_visible
 
 func _on_talk_pressed() -> void:
+	talk.disabled = true
 	if enemy_manager.get_enemy_views().size() > 1:
 		pass
 	Dialogue_manager.call_dialogue(enemy_stat_manager, dialogue_node.dialogue_box, player_stat_manager)
-	talk.disabled = true
-	transition_to(dialogue_node, standby_menu)
-	await node_visible
-	Dialogue_manager.on_menus_manager_advance_dialogue()
+	if not dialogue_node.visible:
+		call_deferred('transition_to', dialogue_node, standby_menu)
+		await node_visible
+		Dialogue_manager.on_menus_manager_advance_dialogue()
 	
 	
 func _on_dialogue_end() -> void:
+	
 	transition_to(standby_menu, dialogue_node)
-	await get_tree().process_frame
 	Dialogue_manager.dialogue_box.text = ""
 	Dialogue_manager.is_dialogue_done = false
+	await node_visible
 	talk.disabled = false
 
 func _Show_Standby_Menu() -> void:
 	transition_to(standby_menu)
+	battle.disabled = false
 	await get_tree().process_frame
 
 func _update_turn_label(phase: PhaseManager.Phases) -> void:

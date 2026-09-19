@@ -6,12 +6,12 @@
 [resource]
 script = ExtResource("2_xjotg")
 VFX = ExtResource("1_p8b7k")
-blood_cost = 15
+blood_tax = 10
 name = "Blood Aias"
 rarity = 1
 type = 3
 mp_cost = 3
 ap_cost = 2
-Description = "Sacrifice 15 HP. Gain 12 Shield and 12 SAN Shield.  Reduce the AP and MP Costs of Every \"{Blood_Aias}\" in your Deck by 1."
+Description = "Sacrifice 10 HP. Gain 12 Shield and 12 SAN Shield.  Reduce the AP and MP Costs of Every \"{Blood_Aias}\" in your Deck by 1."
 LogMessage = "\"Blood Petals rush to protect you from harm!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

@@ -14,6 +14,9 @@ func apply_effect(targets : Array[Node]) -> void:
 			for effect in enemy.Enemy.Entity.ActiveEffects:
 				if effect is BloodSyphon:
 					for multiplier in range(2):
-						enemy.Enemy.Entity.take_damage(effect.current_duration + player.Player.get_attack_bonus(), damage_type)
+						var damage = AttackEffect.new()
+						damage.amount = effect.current_duration + player.Player.get_attack_bonus()
+						damage.damage_type = damage_type
+						damage.activate(targets)
 					return
 			enemy.Enemy.Entity.take_damage(player.Player.get_attack_bonus())

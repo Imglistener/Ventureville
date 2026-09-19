@@ -20,6 +20,7 @@
 [ext_resource type="Shader" uid="uid://dbxxvumw1awb" path="res://drop shadow.gdshader" id="18_odcj6"]
 [ext_resource type="Texture2D" uid="uid://dolcfbwx0h72n" path="res://assets/PNG/Grid.png" id="19_3go67"]
 [ext_resource type="Script" uid="uid://bnhx61xmu13i1" path="res://scripts/CardUI/CardState/CardStateDisplaying.gd" id="20_3go67"]
+[ext_resource type="Script" uid="uid://co60oxiudsive" path="res://scripts/CardUI/CardState/CardStateSelected.gd" id="21_afvpp"]
 
 [sub_resource type="Shader" id="Shader_80gmr"]
 code = "shader_type canvas_item;
@@ -401,6 +402,10 @@ state = 5
 [node name="CardStateDisplaying" type="Node" parent="CardStateManager" unique_id=19580351]
 script = ExtResource("20_3go67")
 state = 6
+
+[node name="CardStateSelected" type="Node" parent="CardStateManager" unique_id=1134409915]
+script = ExtResource("21_afvpp")
+state = 7
 
 [node name="SFX" type="AudioStreamPlayer" parent="." unique_id=745794655]
 bus = &"SFX"

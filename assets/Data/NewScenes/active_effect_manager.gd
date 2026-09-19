@@ -236,9 +236,9 @@ func _on_condition_icon_hover(stat_manager: Stat_Manager, hovered: bool) -> void
 		tooltip_scene.displayed_condition = entry.current_condition
 		if stat_manager.Entity is EnemyBattlerStats:
 			var view = enemy_manager._view_to_stat_manager.find_key(stat_manager)
-			view.status_tooltip_marker.add_child(tooltip_scene)
+			view.condition_effect_marker.add_child(tooltip_scene)
 		else:
-			player_view.status_effect_marker.add_child(tooltip_scene)
+			player_view.condition_effect_marker.add_child(tooltip_scene)
 		tooltip_scene.show_tooltip()
 		tooltip_scene.z_index = 5
 	elif not hovered and entry.current_condition:
@@ -252,13 +252,13 @@ func clear_condition_tooltips(stat_manager: Stat_Manager) -> void:
 		var enemy_view = enemy_manager._view_to_stat_manager.find_key(stat_manager) as EnemyView
 		if not enemy_view:
 			return
-		for child in enemy_view.status_tooltip_marker.get_children():
+		for child in enemy_view.condition_effect_marker.get_children():
 			if not child:
 				continue
 			if child is BattleConditionTooltip:
 				child.queue_free()
 	else:
-		for child in player_view.status_effect_marker.get_children():
+		for child in player_view.condition_effect_marker.get_children():
 			if not child:
 				continue
 			if child is BattleConditionTooltip:

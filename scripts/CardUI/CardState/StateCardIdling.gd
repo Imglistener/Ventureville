@@ -11,6 +11,5 @@ func enter() -> void:
 	card_UI.animate_to_hand()
 	
 func on_gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("mouse_left"):
-		card_UI.drag_offset = card_UI.get_global_mouse_position() - card_UI.global_position
-		TransitionRequest.emit(self, CardState.State.CLICKED)
+	if event is InputEventMouseMotion:
+		TransitionRequest.emit(self, CardState.State.SELECTED)

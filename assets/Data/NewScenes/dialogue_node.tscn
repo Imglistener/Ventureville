@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://d322xxcr14ue" path="res://assets/SFX/typing_loop.wav" id="5_ls3l6"]
 [ext_resource type="AudioStream" uid="uid://joaxswd5yfxd" path="res://assets/SFX/typing_done.wav" id="6_a285r"]
 [ext_resource type="Script" uid="uid://bnw1n1cq8bkrb" path="res://scripts/Dialogue_Manager.gd" id="7_jxemv"]
+[ext_resource type="Script" uid="uid://by1n1serxe8is" path="res://assets/Data/NewScenes/sfxPlayer.gd" id="8_f3oim"]
 
 [node name="dialogue-node" type="NinePatchRect" unique_id=770245451]
 visible = false
@@ -53,3 +54,5 @@ stop_sound = ExtResource("6_a285r")
 script = ExtResource("7_jxemv")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=718281267]
+bus = &"SFX"
+script = ExtResource("8_f3oim")

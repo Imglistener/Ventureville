@@ -3,3 +3,4 @@ class_name PlayerView extends NinePatchRect
 @onready var player_bars_container: PlayerBarsContainer = $PlayerContainer/PlayerBarsContainer
 @onready var effect_guide: Marker2D = $EffectGuide
 @onready var status_effect_marker: Marker2D = $StatusEffectMarker
+@onready var condition_effect_marker: Marker2D = $ConditionEffectMarker

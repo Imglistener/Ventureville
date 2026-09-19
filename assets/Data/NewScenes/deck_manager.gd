@@ -20,7 +20,7 @@ func _ready() -> void:
 
 	CardDeck = player_stat_manager.Player.starting_deck
 
-func on_Player_battle_start(_turn: Variant = null) -> void: # FIX 4: shuffle once here
+func on_Player_battle_start(_turn: Variant = null) -> void: 
 	CardDeck.shuffle_deck()
 	update_tracked_cards()
 
