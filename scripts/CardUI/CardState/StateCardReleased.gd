@@ -18,5 +18,5 @@ func enter() -> void:
 func process(_delta: float) -> void:		
 	if played:
 		return
-	card_UI.animate_card(1)
+	card_UI.animate_to_hand()
 	TransitionRequest.emit(self, CardState.State.IDLING)

@@ -43,4 +43,8 @@ func on_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			TransitionRequest.emit(self, CardState.State.RELEASED)
 	else:
+		
 		TransitionRequest.emit(self, CardState.State.IDLING)
+
+func on_gui_input(event: InputEvent) -> void:
+	print(event.as_text(), " Was caught through on_gui_input, but it won't do anything.")

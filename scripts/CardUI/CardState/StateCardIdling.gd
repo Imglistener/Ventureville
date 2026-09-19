@@ -11,5 +11,6 @@ func enter() -> void:
 	card_UI.animate_to_hand()
 	
 func on_gui_input(event: InputEvent) -> void:
+	if card_UI.card_state_manager.current_state.state != CardState.State.IDLING: return
 	if event is InputEventMouseMotion:
 		TransitionRequest.emit(self, CardState.State.SELECTED)

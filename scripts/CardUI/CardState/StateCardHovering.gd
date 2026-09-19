@@ -1,25 +1,34 @@
 extends CardState
 
-const	 MOUSE_Y_SNAPBACKTHRESHOLD := 650
+const MOUSE_Y_SNAPBACKTHRESHOLD := 650
+const TARGET_OFFSET := Vector2(300, -150)
 
+var move_tween: Tween
 
 func enter() -> void:
 	card_UI.targets.clear()
 	card_UI.sfx.stream = card_UI.aimingSFX
 	card_UI.sfx.play()
 	card_UI.card_targeting = true
-	var offset := Vector2(get_viewport().size.x/2, -card_UI.size.y/ 2)
-	offset.x -= card_UI.size.x / 2
-	card_UI.animate_to_position(card_UI.parent.position + Vector2(300, -150), 0.2)
-	card_UI.z_index = 100                        # consistent with hover z
+	card_UI.z_index = 100
 	card_UI.drop_point_detector.monitoring = false
+
+	if move_tween and move_tween.is_valid():
+		move_tween.kill()
+	move_tween = card_UI.create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
+	move_tween.tween_property(card_UI, "global_position", card_UI.parent.position + TARGET_OFFSET, 0.2)
+
 	Events.card_aim_started.emit(card_UI)
-	
+
 func exit() -> void:
-	card_UI.z_index = card_UI.get_index()        # restore to hand stack position
+	if move_tween and move_tween.is_valid():
+		move_tween.kill()
+	card_UI.z_index = card_UI.get_index()
 	Events.card_aim_finished.emit(card_UI)
 	card_UI.card_targeting = false
 	card_UI.sfx.stop()
+
+
 func on_input(event: InputEvent) -> void:
 	var mouse_motion := event is InputEventMouseMotion
 	var mouse_at_bottom := card_UI.get_global_mouse_position().y > MOUSE_Y_SNAPBACKTHRESHOLD

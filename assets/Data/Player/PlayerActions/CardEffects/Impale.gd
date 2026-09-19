@@ -26,7 +26,8 @@ func apply_effect(targets: Array[Node]) -> void:
 
 	if AppliedEffect and AppliedEffect.is_applicable(targets):
 		AppliedEffect.on_apply(targets, syphon_duration)
-
+		
+	
 	if was_alive and target.Enemy.Entity.current_health <= 0:
 		player.Player.heal(blood_tax)
 
