@@ -83,6 +83,8 @@ func _update_enemy_bars(view: EnemyView, stat_manager: Stat_Manager) -> void:
 
 
 func _update_player_bars(stat_manager: Stat_Manager) -> void:
+	await get_tree().process_frame
+	
 	var bars := player_view.player_bars_container
 	var player := stat_manager.Player
 

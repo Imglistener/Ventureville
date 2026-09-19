@@ -1,5 +1,8 @@
 class_name CardHand extends Node2D
 
+@export var spread_distance := 90.0    # hand-local px pushed onto the immediate neighbours
+@export var spread_falloff := 0.6      # each further card gets this fraction of the previous
+@export var spread_rotation := 0.08 
 @export var spacing: int
 @onready var targeting_area: Node2D = $"../../../../../../Node2D_Layer/TargetingArea"
 @onready var player_stat_manager: Stat_Manager =$"../../../../../../Functionality/PlayerStatManager"
@@ -7,10 +10,41 @@ class_name CardHand extends Node2D
 
 var is_card_highlighted: bool
 var is_arranging: bool = false
+var focused_card: CardUI
 
 func _ready() -> void:
 	if not Events.calling_arrange_hand.is_connected(arrange_hand):
 		Events.calling_arrange_hand.connect(arrange_hand)
+
+
+func set_focus(card: CardUI) -> void:
+	focused_card = card
+	_apply_focus()
+
+func clear_focus(card: CardUI) -> void:
+	if focused_card != card:   # A's exit can run after B's enter
+		return
+	focused_card = null
+	_apply_focus()
+
+func _apply_focus() -> void:
+	var focus_index := focused_card.get_index() if focused_card else -1
+	for c in get_children():
+		if not c is CardUI:
+			continue
+		if focus_index == -1 or c == focused_card:
+			c.focus_offset = Vector2.ZERO
+			c.focus_rotation = 0.0
+		else:
+			var dist: int = c.get_index() - focus_index
+			var dir := signf(dist)
+			var strength := pow(spread_falloff, absi(dist) - 1)
+			c.focus_offset = Vector2(dir * spread_distance * strength, 0.0)
+			c.focus_rotation = dir * spread_rotation * strength
+		# only cards resting in the hand get animated; the others pick the offset up later
+		var state := c.card_state_manager.current_state as CardState
+		if c != focused_card and state and state.state == CardState.State.IDLING:
+			c.animate_to_hand()
 
 func start_turn() -> void:
 	if not player_stat_manager.is_node_ready():
@@ -49,19 +83,23 @@ func arrange_hand():
 			final_rot = 0
 			final_pos = Vector2(50, 0)
 		if i is CardUI:
-				var tween = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
-				tween.parallel().tween_property(i, "position", final_pos, 0.03 + (i.get_index() * 0.075))
-				tween.parallel().tween_property(i, "rotation", final_rot, 0.2 + (i.get_index() * 0.075))
-				i.hand_position = final_pos
-				i.hand_rotation = final_rot
-				i.hand_position_set = true
-				last_tween = tween
+			if i.hand_tween and i.hand_tween.is_valid():
+				i.hand_tween.kill()
+			var tween = i.create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel(true)
+			tween.tween_property(i, "position", final_pos, 0.03 + (i.get_index() * 0.075))
+			tween.tween_property(i, "rotation", final_rot, 0.2 + (i.get_index() * 0.075))
+			i.hand_tween = tween
+			i.hand_position = final_pos
+			i.hand_rotation = final_rot
+			i.hand_position_set = true
+			last_tween = tween
+
 				
 
 	# Await only once, after all tweens are started
 	if last_tween:
 		await last_tween.finished
-
+	
 	is_arranging = false
 func define_playable() -> void:
 	for i in get_children():

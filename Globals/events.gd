@@ -13,6 +13,7 @@ signal effect_applied
 signal card_cost_changed(card : Card)
 signal effect_display(effect: StatusEffect, anchor: Node2D, source_position: Vector2)
 signal calling_arrange_hand
+signal card_exhausted(card: Card)
 
 #Phase Signals
 signal PlayerStandbyStart(current_phase: PhaseManager.Phases)

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" format=3 uid="uid://4q4xspdp2y3s"]
 
 [ext_resource type="Script" uid="uid://cofh7j3s3f5o5" path="res://assets/Status Effects/Debuffs/Blood Syphon.gd" id="1_0s6ie"]
-[ext_resource type="Texture2D" uid="uid://bolb4eopeie4u" path="res://assets/GUI/Bleeding.png" id="2_l1wbw"]
+[ext_resource type="Texture2D" uid="uid://c72b0da6vf1tq" path="res://assets/GUI/ascendant_Icon.png" id="2_0s6ie"]
 [ext_resource type="Script" uid="uid://pvto8b6wmks5" path="res://assets/Status Effects/Buffs/Conditions/ascendant_ritual.gd" id="3_swdlh"]
 
 [sub_resource type="Resource" id="Resource_qjksh"]
@@ -13,5 +13,5 @@ script = ExtResource("3_swdlh")
 blood_effect = SubResource("Resource_qjksh")
 amount_applied = 2
 condition_name = "Ascendant Ritual"
-condition_icon = ExtResource("2_l1wbw")
+condition_icon = ExtResource("2_0s6ie")
 condition_description = "Applies 2 Blood Syphon to All Enemies at the end of the turn."

@@ -36,17 +36,19 @@ var is_colliding_card: bool
 var cards_colliding:= []
 var hand_position: Vector2
 var hand_rotation: float
+var focus_offset := Vector2.ZERO
+var focus_rotation := 0.0
 var hand_position_set: bool = false
 var deck_position: Vector2
 var Discard_position: Vector2
 var log : Log
 var ControlBase : Control
 var is_selected := false
-
+var hand_tween: Tween
 var card_disabled := false
 var is_displaying := false
-const DESIGN_SIZE := Vector2(694.0, 1013.0)
 
+const DESIGN_SIZE := Vector2(694.0, 1013.0)
 
 
 func _ready() -> void:
@@ -123,9 +125,9 @@ func animate_to_hand() -> void:
 		return
 	if tween and tween.is_running():
 		tween.kill()
-	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	tween.parallel().tween_property(self, "position", hand_position, 0.3)
-	tween.parallel().tween_property(self, "rotation", hand_rotation, 0.3)
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel(true)
+	tween.tween_property(self, "position", hand_position + focus_offset, 0.3)
+	tween.tween_property(self, "rotation", hand_rotation + focus_rotation, 0.3)
 
 func _on_mouse_exited()-> void:
 	if card_dragging:
@@ -135,7 +137,6 @@ func _on_mouse_exited()-> void:
 	Events.card_unselected.emit(self)
 
 
-	
 
 
 func move_card(card: CardUI, start_pos:Vector2, target_pos: Vector2, duration: float) -> void:
@@ -163,6 +164,9 @@ func _input(event: InputEvent) -> void:
 
 		
 func _gui_input(event: InputEvent) -> void:
+	var hand = get_parent() as CardHand
+	if hand and hand.is_arranging or card_disabled:
+		return
 	card_state_manager.on_gui_input(event)
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT and Mode == CardMode.PLAYABLE:
@@ -209,3 +213,4 @@ func nulled() -> void:
 		if card is Card:
 			if card == self.card_data:
 				Deck_Manager.CardDeck.Discard_Pile.erase(card)
+				Events.card_exhausted.emit(self.card_data)
