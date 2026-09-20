@@ -1,4 +1,4 @@
-class_name Battle_Condition extends Resource
+class_name BattleCondition extends Resource
 
 enum CONDITION_TYPES{Passive, Active}
 
@@ -6,6 +6,7 @@ enum CONDITION_TYPES{Passive, Active}
 @export var condition_name : String
 @export var condition_type : CONDITION_TYPES
 @export var condition_icon : Texture2D
+@export var condition_texture: Texture2D
 @export_multiline var condition_description: String
 @export var trigger_once: bool = false   # Active-only: remove self after firing once
 
@@ -44,7 +45,7 @@ func on_expired(targets: Array[Node]) -> void:
 		Events.BattleConditionExpired.emit(existing, player.Player)
 
 
-func find_same_effect(effects: Array) -> Battle_Condition:
+func find_same_effect(effects: Array) -> BattleCondition:
 	for effect in effects:
 		if effect.get_script() == self.get_script():
 			return effect

@@ -1,9 +1,16 @@
 extends CardState
+## Aiming a single-target card (this node's `state` must be TARGETING).
+## Capture state: uses on_input only.
 
 const MOUSE_Y_SNAPBACKTHRESHOLD := 650
 const TARGET_OFFSET := Vector2(300, -150)
 
 var move_tween: Tween
+
+
+func uses_global_input() -> bool:
+	return true
+
 
 func enter() -> void:
 	card_UI.targets.clear()
@@ -20,6 +27,7 @@ func enter() -> void:
 
 	Events.card_aim_started.emit(card_UI)
 
+
 func exit() -> void:
 	if move_tween and move_tween.is_valid():
 		move_tween.kill()
@@ -32,8 +40,14 @@ func exit() -> void:
 func on_input(event: InputEvent) -> void:
 	var mouse_motion := event is InputEventMouseMotion
 	var mouse_at_bottom := card_UI.get_global_mouse_position().y > MOUSE_Y_SNAPBACKTHRESHOLD
-	if mouse_at_bottom and mouse_motion or event.is_action_pressed("mouse_right"):
-		TransitionRequest.emit(self, CardState.State.IDLING)
-	elif event.is_action_released("mouse_left") or event.is_action_pressed("mouse_left"):
+
+	if (mouse_at_bottom and mouse_motion) or event.is_action_pressed("mouse_right"):
+		request_transition(State.IDLING)
+	elif event.is_action_pressed("mouse_left"):
+		# Swallow the press so it doesn't also click whatever is under the cursor
+		# (e.g. an enemy button). Releases are deliberately NOT swallowed: eating
+		# a release in _input can leave the viewport's mouse-button state stuck.
 		get_viewport().set_input_as_handled()
-		TransitionRequest.emit(self, CardState.State.RELEASED)
+		request_transition(State.RELEASED)
+	elif event.is_action_released("mouse_left"):
+		request_transition(State.RELEASED)

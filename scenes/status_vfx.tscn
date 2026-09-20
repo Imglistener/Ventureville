@@ -1,0 +1,235 @@
+[gd_scene format=3 uid="uid://b6w0xgmjfbqlj"]
+
+[ext_resource type="Texture2D" uid="uid://d1w2f2i34owp" path="res://assets/GUI/bloodmage_Icon_no_b.png" id="1_xwcpf"]
+[ext_resource type="Script" uid="uid://dqh7ulcn4uvla" path="res://assets/Data/NewScenes/status_vfx.gd" id="2_eitjj"]
+[ext_resource type="Texture2D" uid="uid://cjnhi37gpjyqs" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame1.png" id="3_58n6q"]
+[ext_resource type="Texture2D" uid="uid://bgp52yyxcyron" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame2.png" id="4_qhvi7"]
+[ext_resource type="Texture2D" uid="uid://bnw71cqwt1j61" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame3.png" id="5_1xrcw"]
+[ext_resource type="Texture2D" uid="uid://cm2v643cuhyq6" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame4.png" id="6_fllds"]
+[ext_resource type="Texture2D" uid="uid://d3tpl5mu2qwgc" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame5.png" id="7_jplau"]
+[ext_resource type="Texture2D" uid="uid://cqxjhvx1vvr7t" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame6.png" id="8_o54po"]
+[ext_resource type="Texture2D" uid="uid://bb7ln5untisxm" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame7.png" id="9_72mgj"]
+[ext_resource type="Texture2D" uid="uid://cyr0v68mckh5l" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part1(start)/frames/BloodMage_skill1_start_frame8.png" id="10_oivys"]
+[ext_resource type="Texture2D" uid="uid://cr6p5rfc56822" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part2(loop)/frames/BloodMage_skill1_loop_frame1.png" id="11_8sguf"]
+[ext_resource type="Texture2D" uid="uid://det8cbhcs6w5t" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part2(loop)/frames/BloodMage_skill1_loop_frame2.png" id="12_b66sf"]
+[ext_resource type="Texture2D" uid="uid://bfcu2ytnmi8c8" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part2(loop)/frames/BloodMage_skill1_loop_frame3.png" id="13_cuvnm"]
+[ext_resource type="Texture2D" uid="uid://dgc48ta2i7him" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part2(loop)/frames/BloodMage_skill1_loop_frame4.png" id="14_3g3ps"]
+[ext_resource type="Texture2D" uid="uid://wyewpwknabvl" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part2(loop)/frames/BloodMage_skill1_loop_frame5.png" id="15_c5n52"]
+[ext_resource type="Texture2D" uid="uid://bmphhks67lvw" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part3(end)/frames/BloodMage_skill1_end_frame1.png" id="16_vovui"]
+[ext_resource type="Texture2D" uid="uid://cd0untg2oi02k" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part3(end)/frames/BloodMage_skill1_end_frame2.png" id="17_645lx"]
+[ext_resource type="Texture2D" uid="uid://od8e11vk2gre" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part3(end)/frames/BloodMage_skill1_end_frame3.png" id="18_sdgra"]
+[ext_resource type="Texture2D" uid="uid://oae6p0jhfh4k" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part3(end)/frames/BloodMage_skill1_end_frame4.png" id="19_mby45"]
+[ext_resource type="Texture2D" uid="uid://csyapgslvpntq" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part3(end)/frames/BloodMage_skill1_end_frame5.png" id="20_r32el"]
+[ext_resource type="Texture2D" uid="uid://c0t00rd3xk3yg" path="res://Pixel Art VFX - Blood Mage - FREE Version/VFX1/part3(end)/frames/BloodMage_skill1_end_frame6.png" id="21_cgowi"]
+
+[sub_resource type="Animation" id="Animation_idiwr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.15, 0.15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bdyur"]
+resource_name = "StatusVFX_basic"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.52, 1.5),
+"transitions": PackedFloat32Array(2.07053, 4.9245815, 4.9245815, 4.2870927),
+"update": 0,
+"values": [Vector2(0.15, 0.15), Vector2(0.2, 0.2), Vector2(0.2, 0.2), Vector2(0.25, 0.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1.9318738, 1.866068),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.90588236), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background_animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"blood_background"],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background_animation:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.52, 1.5),
+"transitions": PackedFloat32Array(2.07053, 4.9245815, 4.2870927),
+"update": 0,
+"values": [Vector2(5.15, 5.15), Vector2(5.2, 5.2), Vector2(5.25, 5.25)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Background_animation:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(2.4622886, 2.2973979, 2.6390178),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.90588236), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3v0us"]
+_data = {
+&"RESET": SubResource("Animation_idiwr"),
+&"StatusVFX_basic": SubResource("Animation_bdyur")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ghndp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_58n6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qhvi7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1xrcw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fllds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jplau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_o54po")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_72mgj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_oivys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8sguf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_b66sf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_cuvnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3g3ps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_c5n52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_vovui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_645lx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_sdgra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_mby45")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_r32el")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_cgowi")
+}],
+"loop": 0,
+"name": &"blood_background",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_58n6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qhvi7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1xrcw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fllds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jplau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_o54po")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_72mgj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_oivys")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="StatusVFX" type="Sprite2D" unique_id=78400879]
+z_index = 1
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_xwcpf")
+script = ExtResource("2_eitjj")
+displayed_icon = ExtResource("1_xwcpf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1041640281]
+libraries/ = SubResource("AnimationLibrary_3v0us")
+
+[node name="Background_animation" type="AnimatedSprite2D" parent="." unique_id=1857243414]
+self_modulate = Color(1, 1, 1, 0)
+z_index = -2
+scale = Vector2(5.25, 5.25)
+sprite_frames = SubResource("SpriteFrames_ghndp")
+animation = &"blood_background"
+frame = 18
+frame_progress = 1.0

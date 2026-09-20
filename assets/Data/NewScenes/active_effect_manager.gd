@@ -17,7 +17,7 @@ class ConditionDisplayEntry:
 	var get_conditions: Callable
 	var index: int = 0
 	var hovered: bool = false
-	var current_condition: Battle_Condition
+	var current_condition: BattleCondition
 	func _init(sm: Stat_Manager, icon_: TextureRect, get_conditions_: Callable) -> void:
 		stat_manager = sm
 		icon = icon_
@@ -276,7 +276,7 @@ func _advance_condition_entry(entry: ConditionDisplayEntry) -> void:
 
 	entry.icon.visible = true
 	entry.index = entry.index % conditions.size()
-	var condition: Battle_Condition = conditions[entry.index]
+	var condition: BattleCondition = conditions[entry.index]
 	entry.current_condition = condition
 	if conditions.size() == 1:
 		entry.icon.texture = condition.condition_icon
@@ -286,7 +286,7 @@ func _advance_condition_entry(entry: ConditionDisplayEntry) -> void:
 	entry.index = (entry.index + 1) % conditions.size()
 
 
-func _tween_condition_icon_swap(icon: TextureRect, condition: Battle_Condition) -> void:
+func _tween_condition_icon_swap(icon: TextureRect, condition: BattleCondition) -> void:
 	var tween := create_tween()
 	tween.tween_property(icon, "modulate:a", 0.0, 0.15)
 	tween.tween_callback(func():
@@ -317,7 +317,7 @@ func tick_conditions(stat_manager: Stat_Manager) -> void:
 
 	# Iterate backwards: trigger_once conditions may erase themselves mid-loop
 	for i in range(battle_conditions.size() - 1, -1, -1):
-		var condition: Battle_Condition = battle_conditions[i]
+		var condition: BattleCondition = battle_conditions[i]
 		if condition.is_condition_passive():
 			condition.on_tick(targets)
 		elif condition.is_condition_active():

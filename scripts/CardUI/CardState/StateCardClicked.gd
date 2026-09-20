@@ -1,22 +1,23 @@
 extends CardState
+## Card was pressed. Capture state: uses on_input only.
+##
+## Movement starts the drag whether or not the button is still held, so both
+## "press, drag, release" and "click to pick up, move, click to drop" work.
+## Right-click cancels.
+
+func uses_global_input() -> bool:
+	return true
+
 
 func enter() -> void:
-	print("Entering Clicked State...")
+	card_UI.z_index = 100
 	card_UI.sfx.stream = card_UI.clickedSFX
 	card_UI.sfx.play()
 	card_UI.drop_point_detector.monitoring = true
-	
-	
 
 
-		
-func on_gui_input(event: InputEvent) -> void:
-	print("GUI Input Event intercepted! ", event.as_text())
-	if card_UI.card_state_manager.current_state.state != CardState.State.CLICKED:
-		print("But the current state is not CLICKED therefore, we are Returning nothing.")
-		return
+func on_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		print("GUI Event is Mouse Motion, Moving to CardState Draggging.")
-		TransitionRequest.emit(self, CardState.State.DRAGGING)
-	else:
-		print("But for some reason, the event is not identified as MouseMotion...")
+		request_transition(State.DRAGGING)
+	elif event.is_action_pressed("mouse_right"):
+		request_transition(State.IDLING)
