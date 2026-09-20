@@ -18,7 +18,7 @@ const COLORS = {
 const RAND_OFFSET := 30  # Max pixels of random spread
 
 
-func display_effect(status: StatusEffect, anchor: Node2D, source_position: Vector2, wore_off: bool = false) -> void:
+func display_effect(status: Resource, anchor: Node2D, source_position: Vector2, wore_off: bool = false) -> void:
 	if not anchor:
 		return
 
@@ -38,9 +38,12 @@ func display_effect(status: StatusEffect, anchor: Node2D, source_position: Vecto
 	elif status is Concussed:
 		text = "Concussed"
 		color = Color.REBECCA_PURPLE
+	elif status is BattleCondition:
+		text = status.condition_name.to_upper()
+		color = Color.WHITE
 	else:
 		return
-
+	_spawn_VFX(anchor, status)
 	_spawn_label(text, color, font_size, anchor, source_position - Vector2(150, -150), wore_off)
 
 
@@ -86,6 +89,10 @@ func display_san_number(value: int, anchor: Node2D, source_position: Vector2, is
 	var offset := Vector2(randf_range(-RAND_OFFSET, RAND_OFFSET), randf_range(-RAND_OFFSET * 0.5, RAND_OFFSET * 0.5))
 	_spawn_label(text, color, 28, anchor, source_position + offset, is_heal)
 
+func _spawn_VFX(anchor: Node2D, effect: Resource, offset: Vector2 = Vector2(0, 70)) -> void:
+	var effect_VFX := StatusVisualPlay.new()
+	effect_VFX.icon = effect.effect_texture if effect is StatusEffect else effect.condition_texture
+	effect_VFX.activate(anchor, offset if effect is StatusEffect else Vector2.ZERO)
 
 func _spawn_label(text: String, color: Color, font_size: int, anchor: Node2D, position: Vector2, floats_up: bool) -> void:
 	var number := Label.new()

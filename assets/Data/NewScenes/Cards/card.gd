@@ -2,7 +2,8 @@ class_name CardUI
 extends MarginContainer
 enum CardMode{ PLAYABLE , DISPLAYING }
 
-@export var card_data : Card 
+@export var card_data : Card
+@export var start_with_show_card := true
 @export var HoverSFX	: AudioStream
 @export var clickedSFX	: AudioStream
 @export var aimingSFX	: AudioStream
@@ -69,10 +70,31 @@ func _ready() -> void:
 	if ControlBase:
 		if not CardClicked.is_connected(ControlBase.on_trigger_pressed):
 			CardClicked.connect(ControlBase.on_trigger_pressed)
-			
+	if Mode == CardUI.CardMode.PLAYABLE and start_with_show_card:
+		await show_card()
+		is_playable.show()
+
 func _process(delta: float) -> void:
 	card_state_manager.process(delta)
 
+func show_card() -> void:
+	modulate = Color(1.0, 1.0, 1.0, 0.0)
+	var show_tween : Tween
+	if show_tween and show_tween.is_valid():
+		show_tween.kill()
+	show_tween = create_tween().set_parallel(true)
+	show_tween.tween_property(self, 'modulate', Color(1.0, 1.0, 1.0, 1.0), 0.2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TransitionType.TRANS_CUBIC)
+	await show_tween.finished
+
+func hide_card() -> void:
+	modulate = Color(1.0, 1.0, 1.0, 1.0)
+	var show_tween : Tween
+	if show_tween.is_valid():
+		show_tween.kill()
+	show_tween = create_tween().set_parallel(true)
+	show_tween.tween_property(self, 'modulate', Color(1.0, 1.0, 1.0, 0.0), 0.3).set_ease(Tween.EASE_IN_OUT)
+	await show_tween.finished
+		
 	
 func manage_card_rarity() -> void:
 	match card_data.rarity:
@@ -126,8 +148,8 @@ func animate_to_hand() -> void:
 	if tween and tween.is_running():
 		tween.kill()
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel(true)
-	tween.tween_property(self, "position", hand_position + focus_offset, 0.3)
-	tween.tween_property(self, "rotation", hand_rotation + focus_rotation, 0.3)
+	tween.tween_property(self, "position", hand_position + focus_offset, 0.4)
+	tween.tween_property(self, "rotation", hand_rotation + focus_rotation, 0.4)
 
 func _on_mouse_exited()-> void:
 	if card_dragging:

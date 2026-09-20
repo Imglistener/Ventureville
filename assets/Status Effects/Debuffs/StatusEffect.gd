@@ -6,6 +6,7 @@ var current_duration : int = 0
 @export var status_name : StatusEffects
 @export var default_duration : int
 @export var status_icon : Texture
+@export var effect_texture: Texture2D
 @export_multiline var status_description: String
 
 

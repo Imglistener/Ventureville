@@ -27,7 +27,7 @@ func on_Player_battle_start(_turn: Variant = null) -> void:
 func ready_card_drawn() -> CardUI:
 	var CardData = CardDeck.draw_card()
 	var CardScene = preload("res://assets/Data/NewScenes/Cards/card.tscn").instantiate() as CardUI
-	var start_pos = Vector2(800, 0)
+	var start_pos = deck_pile.global_position + Vector2(0, -120)
 
 	CardScene.Discard_position = discard_pile.position
 	CardScene.deck_position = deck_pile.position

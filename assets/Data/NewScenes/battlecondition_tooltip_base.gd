@@ -1,6 +1,6 @@
 class_name BattleConditionTooltip extends Control
 
-@export var displayed_condition: Battle_Condition
+@export var displayed_condition: BattleCondition
 
 @onready var status_icon: TextureRect = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Status_Icon
 @onready var status_name: Label = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Status_Name

@@ -1,4 +1,4 @@
-extends Battle_Condition
+extends BattleCondition
 
 @export var blood_effect : StatusEffect
 @export var amount_applied: int
@@ -17,3 +17,4 @@ func activate(targets: Array[Node]) -> void:
 	var activated_condition = self.duplicate()
 	player.Player.BattleConditions.append(activated_condition)
 	Events.BattleConditionActivated.emit(activated_condition, player.Player)
+	Events.effect_display.emit(self, player.player_view.effect_guide, player.player_view.effect_guide.global_position)

@@ -11,6 +11,8 @@ class_name CardHand extends Node2D
 var is_card_highlighted: bool
 var is_arranging: bool = false
 var focused_card: CardUI
+# Lets overlapping arrange_hand() calls agree on who clears is_arranging.
+var _arrange_serial := 0
 
 func _ready() -> void:
 	if not Events.calling_arrange_hand.is_connected(arrange_hand):
@@ -45,6 +47,7 @@ func _apply_focus() -> void:
 		var state := c.card_state_manager.current_state as CardState
 		if c != focused_card and state and state.state == CardState.State.IDLING:
 			c.animate_to_hand()
+	
 
 func start_turn() -> void:
 	if not player_stat_manager.is_node_ready():
@@ -59,19 +62,29 @@ func draw_card(amount: int) -> void:
 	for i in range(amount):
 		var CardScene = deck_manager.ready_card_drawn()
 		add_child(CardScene)
+		if not CardScene.is_node_ready():
+			await CardScene.ready
 		Events.card_drawn.emit(CardScene.card_data)
-		arrange_hand()
-		
+		await arrange_hand()
+
+
+# A card being carried (clicked / dragging / targeting) or already released owns
+# its own transform through its state, so arranging must not tween it.
+func _is_carried(card: CardUI) -> bool:
+	var s := card.card_state_manager.current_state if card.card_state_manager else null
+	return s != null and (s.uses_global_input() or s.state == CardState.State.RELEASED)
 
 func arrange_hand():
 	is_arranging = true
+	_arrange_serial += 1
+	var serial := _arrange_serial
 	var max_offset: int = 550
 	var offset: float = max_offset * (float(get_child_count()) / 6)
 	var curve_height: int = 60  # tweak to taste
 
 	var final_pos: Vector2
 	var final_rot: float
-	var last_tween: Tween
+	var longest := 0.0
 	for i in get_children():
 		var hand_ratio: float = 0.5
 		if get_child_count() > 1:
@@ -83,24 +96,28 @@ func arrange_hand():
 			final_rot = 0
 			final_pos = Vector2(50, 0)
 		if i is CardUI:
-			if i.hand_tween and i.hand_tween.is_valid():
-				i.hand_tween.kill()
-			var tween = i.create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel(true)
-			tween.tween_property(i, "position", final_pos, 0.03 + (i.get_index() * 0.075))
-			tween.tween_property(i, "rotation", final_rot, 0.2 + (i.get_index() * 0.075))
-			i.hand_tween = tween
+			# Always record the slot so the card returns to the right place later.
 			i.hand_position = final_pos
 			i.hand_rotation = final_rot
 			i.hand_position_set = true
-			last_tween = tween
+			if _is_carried(i):
+				continue
+			if i.hand_tween and i.hand_tween.is_valid():
+				i.hand_tween.kill()
+			var pos_time: float = 0.03 + (i.get_index() * 0.075)
+			var rot_time: float = 0.2 + (i.get_index() * 0.075)
+			var tween = i.create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel(true)
+			tween.tween_property(i, "position", final_pos, pos_time)
+			tween.tween_property(i, "rotation", final_rot, rot_time)
+			i.hand_tween = tween
+			longest = maxf(longest, maxf(pos_time, rot_time))
+			
 
-				
-
-	# Await only once, after all tweens are started
-	if last_tween:
-		await last_tween.finished
-	
-	is_arranging = false
+	# A timer instead of `await last_tween.finished`: a killed tween or a freed
+	# card never emits `finished`, which used to leave is_arranging stuck on true.
+	await get_tree().create_timer(longest).timeout
+	if serial == _arrange_serial:
+		is_arranging = false
 func define_playable() -> void:
 	for i in get_children():
 		# Stack cards left-to-right so rightmost is on top

@@ -1,7 +1,7 @@
 extends Card
 
 @export var blood_tax: int
-@export var condition : Battle_Condition
+@export var condition : BattleCondition
 
 func apply_effect(targets: Array[Node]) -> void:
 	if targets.is_empty() or not targets[0]:

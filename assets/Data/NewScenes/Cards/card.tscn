@@ -179,6 +179,7 @@ texture = ExtResource("6_3go67")
 expand_mode = 1
 
 [node name="IsPlayable" type="ColorRect" parent="CardAnchor/CardScaler/CardFrame" unique_id=1133534713]
+visible = false
 show_behind_parent = true
 z_index = -1
 z_as_relative = false

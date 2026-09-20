@@ -1,17 +1,15 @@
 [gd_resource type="Resource" format=3 uid="uid://4q4xspdp2y3s"]
 
-[ext_resource type="Script" uid="uid://cofh7j3s3f5o5" path="res://assets/Status Effects/Debuffs/Blood Syphon.gd" id="1_0s6ie"]
-[ext_resource type="Texture2D" uid="uid://c72b0da6vf1tq" path="res://assets/GUI/ascendant_Icon.png" id="2_0s6ie"]
+[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="1_l1wbw"]
+[ext_resource type="Texture2D" uid="uid://c72b0da6vf1tq" path="res://assets/GUI/ascendant_Icon.png" id="2_swdlh"]
+[ext_resource type="Texture2D" uid="uid://d1w2f2i34owp" path="res://assets/GUI/bloodmage_Icon_no_b.png" id="3_nacvd"]
 [ext_resource type="Script" uid="uid://pvto8b6wmks5" path="res://assets/Status Effects/Buffs/Conditions/ascendant_ritual.gd" id="3_swdlh"]
-
-[sub_resource type="Resource" id="Resource_qjksh"]
-script = ExtResource("1_0s6ie")
-metadata/_custom_type_script = "uid://cofh7j3s3f5o5"
 
 [resource]
 script = ExtResource("3_swdlh")
-blood_effect = SubResource("Resource_qjksh")
+blood_effect = ExtResource("1_l1wbw")
 amount_applied = 2
 condition_name = "Ascendant Ritual"
-condition_icon = ExtResource("2_0s6ie")
-condition_description = "Applies 2 Blood Syphon to All Enemies at the end of the turn."
+condition_icon = ExtResource("2_swdlh")
+condition_texture = ExtResource("3_nacvd")
+condition_description = "At the end of your turn, apply 2 Blood Syphon to all Enemies."

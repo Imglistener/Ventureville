@@ -17,7 +17,7 @@ signal entity_died(entity_name: String)
 
 @export var stats : Array[StatInstance] = []
 var ActiveEffects: Array[StatusEffect] = []
-var BattleConditions: Array[Battle_Condition] = []
+var BattleConditions: Array[BattleCondition] = []
 var _max_hp: int = 1  # Backing variable
 var _max_san: int = 1
 var Max_HP : int:

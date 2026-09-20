@@ -13,6 +13,7 @@ func on_apply(targets: Array[Node], duration : int = 1) -> void:
 		var anchor: Node2D = target.Player.damage_number_anchor
 		if existing:
 			existing.current_duration += duration
+			Events.effect_display.emit(self, anchor, anchor.global_position)
 		else:
 			var instance = self.duplicate()
 			instance.current_duration = duration
