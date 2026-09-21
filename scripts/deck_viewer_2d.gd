@@ -1,10 +1,12 @@
 class_name CardViewer extends MarginContainer
 
-@export var card_deck : Deck
 @export var grid_container: GridContainer
 @export var card_scene : PackedScene
 
 func _ready() -> void:
+	if not get_tree().get_first_node_in_group('player').is_node_ready():
+		await get_tree().get_first_node_in_group('player').ready
+	var card_deck : Deck = get_tree().get_first_node_in_group('player').Player.starting_deck
 	for card in card_deck.Cards_in_Deck:
 		if card_deck.Obtained_Cards[card] > 0:
 			for i in range(card_deck.Obtained_Cards[card]):

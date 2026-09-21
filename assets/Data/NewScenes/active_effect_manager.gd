@@ -56,7 +56,7 @@ func _ready() -> void:
 	Events.PlayerBattleEnd.connect(_on_player_battle_end.unbind(1))
 	Events.EnemyBattleEnd.connect(_on_enemy_battle_end.unbind(1))
 	Events.effect_applied.connect(display_active_effects)
-	Events.effect_display.connect(DamageNumbers.display_effect)
+	Events.effect_display.connect(StatusLabels.display_effect)
 	Events.StatusWoreOff.connect(_track_removal_effects)
 	Events.BattleConditionActivated.connect(_on_condition_changed.unbind(2))
 	Events.BattleConditionExpired.connect(_on_condition_changed.unbind(2))

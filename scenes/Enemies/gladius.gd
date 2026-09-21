@@ -20,6 +20,7 @@ class_name EnemyView extends Area2D
 @onready var resist_display: TextureRect = $EnemyBarsContainer/MarginContainer/DamageRes/Resists
 @onready var status_tooltip_marker: Marker2D = $StatusTooltipMarker
 @onready var collision: CollisionShape2D = $Collision
+@onready var effect_vfx_marker: Marker2D = $EffectVFXMarker
 
 
 var Enemy: Stat_Manager

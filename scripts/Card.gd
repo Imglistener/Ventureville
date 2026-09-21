@@ -14,6 +14,9 @@ enum Rarities{Common, Rare, Legendary}
 @export_multiline var Description: String
 @export_multiline var LogMessage: String
 
+
+
+
 func is_SingleTarget() -> bool:
 	return target == Target.ONEENEMY
 

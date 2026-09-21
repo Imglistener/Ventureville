@@ -32,12 +32,11 @@ func apply_effect(targets: Array[Node]) -> void:
 		if AppliedEffect.is_applicable(targets):
 			AppliedEffect.current_duration = applied_duration
 			AppliedEffect.on_apply(targets)
-			
 
 	if apply_count > 0 and RegenEffect:
 		var self_target: Array[Node] = [player]
 		RegenEffect.on_apply(self_target, apply_count)
-		
+
 func _calculate_total(character: CharacterInstance) -> int:
 	if character:
 		var index := character.stats.find(StatsScaled)
@@ -47,6 +46,34 @@ func _calculate_total(character: CharacterInstance) -> int:
 		return base_damage + bonus + character.get_attack_bonus()
 	else:
 		return 0
+
 func get_description(character: CharacterInstance) -> String:
 	var total := _calculate_total(character)
 	return Description.replace("{scaled}", str(total))
+
+func get_live_description(character: CharacterInstance, live_targets: Array[Node]) -> String:
+	var total := _calculate_total(character)
+	var enemies := _resolve_enemies(live_targets)
+	if enemies.is_empty():
+		return get_description(character)
+
+	var entity := enemies[0]
+	Events.reveal_enemy_resistances.emit(damage_type, enemies)
+	var shown := entity.calculate_type_adjusted_damage(total, damage_type)
+	return Description.replace("{scaled}", str(shown))
+
+func _resolve_enemies(live_targets: Array[Node]) -> Array[EnemyBattlerStats]:
+	var enemies: Array[EnemyBattlerStats] = []
+	for t in live_targets:
+		var entity := _resolve_enemy_entity(t)
+		if entity:
+			enemies.append(entity)
+	return enemies
+
+func _resolve_enemy_entity(node: Node) -> EnemyBattlerStats:
+	var current := node
+	while current:
+		if current is EnemyView:
+			return current.Enemy.Entity as EnemyBattlerStats
+		current = current.get_parent()
+	return null

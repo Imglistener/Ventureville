@@ -78,6 +78,8 @@ func _on_card_aim_ended(_card: CardUI) -> void:
 	area_2d.position = Vector2.ZERO
 	area_2d.monitoring = false
 	area_2d.monitorable = false
+	if current_card:
+		current_card.reset_live_preview()
 	current_card = null
 	if current_target_enemy and current_target_enemy.border:
 		current_target_enemy.border.visible = false
@@ -89,6 +91,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		return
 	if not current_card.is_ancestor_of(area):
 		current_card.targets.append(area)
+		current_card.refresh_live_preview()
 		Ark.set_targeted()
 		var target_enemy := area as EnemyView
 		if target_enemy:
@@ -101,6 +104,7 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 	if not current_card or not targeting:
 		return
 	current_card.targets.erase(area)
+	current_card.refresh_live_preview()
 	Ark.set_idle()
 	var target_enemy := area as EnemyView
 	if target_enemy and target_enemy.border:

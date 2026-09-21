@@ -55,7 +55,6 @@ func start_turn() -> void:
 	if not deck_manager.is_node_ready():
 		await deck_manager.ready
 	draw_card(player_stat_manager.Entity.draw_power)
-	define_playable()
 	arrange_hand()
 
 func draw_card(amount: int) -> void:
@@ -66,7 +65,7 @@ func draw_card(amount: int) -> void:
 			await CardScene.ready
 		Events.card_drawn.emit(CardScene.card_data)
 		await arrange_hand()
-
+	define_playable()
 
 # A card being carried (clicked / dragging / targeting) or already released owns
 # its own transform through its state, so arranging must not tween it.

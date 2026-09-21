@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Events="*uid://be6xsbwafouf8"
-HoveredCard="*uid://d3hwcccknscp8"
 DamageNumbers="*uid://djnpb46xsrym5"
+StatusLabels="*uid://btavavp46re4c"
 
 [display]
 

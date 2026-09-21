@@ -12,7 +12,7 @@ func on_apply(targets: Array[Node], duration: int = 1) -> void:
 		if target is EnemyView:
 			var effects = target.Enemy.Entity.ActiveEffects
 			var existing = find_same_effect(effects)
-			var anchor: Node2D = target.Enemy.Entity.damage_number_anchor
+			var anchor: Marker2D = target.Enemy.enemy.effect_vfx_marker
 			if existing:
 				existing.current_duration += duration
 			else:
@@ -25,7 +25,7 @@ func on_apply(targets: Array[Node], duration: int = 1) -> void:
 		elif target is Stat_Manager:
 			var effects = target.Player.ActiveEffects
 			var existing = find_same_effect(effects)
-			var anchor: Node2D = target.Player.damage_number_anchor
+			var anchor: Marker2D = target.player_view.effect_guide
 			if existing:
 				existing.current_duration += duration
 			else:

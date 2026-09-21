@@ -26,8 +26,7 @@ func apply_effect(targets: Array[Node]) -> void:
 
 	if AppliedEffect and AppliedEffect.is_applicable(targets):
 		AppliedEffect.on_apply(targets, syphon_duration)
-		
-	
+
 	if was_alive and target.Enemy.Entity.current_health <= 0:
 		player.Player.heal(blood_tax)
 
@@ -44,3 +43,37 @@ func _calculate_total(character: CharacterInstance) -> int:
 func get_description(character: CharacterInstance) -> String:
 	var total := _calculate_total(character)
 	return Description.replace("{scaled}", str(total))
+
+func get_live_description(character: CharacterInstance, live_targets: Array[Node]) -> String:
+	var total := _calculate_total(character)
+	var enemies : Array[EnemyBattlerStats] = []
+	for t in live_targets:
+		var entity := _resolve_enemy_entity(t)
+		if entity:
+			enemies.append(entity)
+
+	if enemies.is_empty():
+		return get_description(character)
+
+	var all_resistant := true
+	var all_vulnerable := true
+	for e in enemies:
+		var state := e.get_resistance_state(damage_type)
+		all_resistant = all_resistant and state == EnemyBattlerStats.RESISTANCE_STATE.RESISTANT
+		all_vulnerable = all_vulnerable and state == EnemyBattlerStats.RESISTANCE_STATE.VULNERABLE
+
+	if all_resistant or all_vulnerable:
+		Events.hide_enemy_resistances.emit()
+		var shown := enemies[0].calculate_type_adjusted_damage(total, damage_type)
+		return Description.replace("{scaled}", str(shown))
+
+	Events.reveal_enemy_resistances.emit(damage_type, enemies)
+	return Description.replace("{scaled}", str(total))
+
+func _resolve_enemy_entity(node: Node) -> EnemyBattlerStats:
+	var current := node
+	while current:
+		if current is EnemyView:
+			return current.Enemy.Entity as EnemyBattlerStats
+		current = current.get_parent()
+	return null

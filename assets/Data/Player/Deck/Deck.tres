@@ -2,29 +2,29 @@
 
 [ext_resource type="Script" uid="uid://cpy8tjlulsna2" path="res://scripts/Card.gd" id="1_7abai"]
 [ext_resource type="Script" uid="uid://pqq147nh02w3" path="res://scripts/deck.gd" id="1_dyacs"]
+[ext_resource type="Resource" uid="uid://ddquxo4p134kp" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Claw.tres" id="2_lxatl"]
 [ext_resource type="Resource" uid="uid://da7agmvhlfw1p" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Syphon Essence.tres" id="4_ao31u"]
+[ext_resource type="Resource" uid="uid://cn7xypl6lls1m" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Crimson Spear.tres" id="5_3v31f"]
 [ext_resource type="Resource" uid="uid://d4auimgetdkq6" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/BloodBlade.tres" id="5_8wy8p"]
-[ext_resource type="Resource" uid="uid://bqtf5udkjk5ck" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Revelry.tres" id="5_sy2il"]
-[ext_resource type="Resource" uid="uid://8lwicdc5w83e" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Aias.tres" id="6_sy2il"]
-[ext_resource type="Resource" uid="uid://cfgl5f0160fhq" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Harvest.tres" id="7_s4rde"]
-[ext_resource type="Resource" uid="uid://ce1s75bc8dcd2" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Sacrifice.tres" id="8_1frsc"]
-[ext_resource type="Resource" uid="uid://cegj65gylisf8" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Malady.tres" id="8_kfyem"]
-[ext_resource type="Resource" uid="uid://dkcdc1ypd22a3" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Ascendant State.tres" id="9_kfyem"]
-[ext_resource type="Resource" uid="uid://cn7xypl6lls1m" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Crimson Spear.tres" id="10_3v31f"]
-[ext_resource type="Resource" uid="uid://de6m6tryd6i87" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Impale.tres" id="11_0354w"]
+[ext_resource type="Resource" uid="uid://cegj65gylisf8" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Malady.tres" id="6_0354w"]
+[ext_resource type="Resource" uid="uid://de6m6tryd6i87" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Impale.tres" id="7_5af0u"]
+[ext_resource type="Resource" uid="uid://cfgl5f0160fhq" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Harvest.tres" id="8_uii6r"]
+[ext_resource type="Resource" uid="uid://8lwicdc5w83e" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Aias.tres" id="9_25ebe"]
+[ext_resource type="Resource" uid="uid://dkcdc1ypd22a3" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Ascendant State.tres" id="10_py15j"]
+[ext_resource type="Resource" uid="uid://b0ecilk1kd45j" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Exultation.tres" id="11_0354w"]
 
 [resource]
 script = ExtResource("1_dyacs")
 Obtained_Cards = {
-ExtResource("4_ao31u"): 2,
+ExtResource("2_lxatl"): 4,
 ExtResource("5_8wy8p"): 2,
-ExtResource("5_sy2il"): 0,
-ExtResource("6_sy2il"): 2,
-ExtResource("7_s4rde"): 2,
-ExtResource("8_1frsc"): 2,
-ExtResource("8_kfyem"): 2,
-ExtResource("9_kfyem"): 1,
-ExtResource("10_3v31f"): 2,
-ExtResource("11_0354w"): 2
+ExtResource("4_ao31u"): 4,
+ExtResource("5_3v31f"): 2,
+ExtResource("10_py15j"): 1,
+ExtResource("7_5af0u"): 1,
+ExtResource("6_0354w"): 2,
+ExtResource("9_25ebe"): 4,
+ExtResource("8_uii6r"): 2,
+ExtResource("11_0354w"): 1
 }
-Cards_in_Deck = Array[ExtResource("1_7abai")]([ExtResource("4_ao31u"), ExtResource("5_8wy8p"), ExtResource("5_sy2il"), ExtResource("6_sy2il"), ExtResource("7_s4rde"), ExtResource("8_1frsc"), ExtResource("8_kfyem"), ExtResource("9_kfyem"), ExtResource("10_3v31f"), ExtResource("11_0354w")])
+Cards_in_Deck = Array[ExtResource("1_7abai")]([ExtResource("2_lxatl"), ExtResource("5_8wy8p"), ExtResource("4_ao31u"), ExtResource("5_3v31f"), ExtResource("6_0354w"), ExtResource("7_5af0u"), ExtResource("8_uii6r"), ExtResource("9_25ebe"), ExtResource("10_py15j"), ExtResource("11_0354w")])
