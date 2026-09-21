@@ -72,7 +72,6 @@ func _ready() -> void:
 			CardClicked.connect(ControlBase.on_trigger_pressed)
 	if Mode == CardUI.CardMode.PLAYABLE and start_with_show_card:
 		await show_card()
-		is_playable.show()
 
 func _process(delta: float) -> void:
 	card_state_manager.process(delta)
@@ -108,7 +107,8 @@ func manage_card_rarity() -> void:
 func _on_cost_changed(card: Card) -> void:
 	if card == card_data:
 		update_costs()
-
+func refresh_live_preview() -> void:
+	_update_live_preview()
 func update_costs() -> void:
 	cost.text = str(card_data.ap_cost)
 	mp_cost.text = str(card_data.mp_cost)
@@ -128,6 +128,7 @@ func update_description() -> void:
 	card_effect.text = card_data.get_description(player_stats)
 
 func animate_out() -> void:
+	is_playable.hide()
 	if not deck_position or not Discard_position:
 		return
 	if tween and tween.is_running():

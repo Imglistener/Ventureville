@@ -10,7 +10,7 @@ func on_apply(targets: Array[Node], duration : int = 1) -> void:
 		if effects == null:
 			continue
 		var existing = _find_same_effect(effects)
-		var anchor: Node2D = target.Player.damage_number_anchor
+		var anchor: Node2D = target.player_view.effect_guide
 		if existing:
 			existing.current_duration += duration
 			Events.effect_display.emit(self, anchor, anchor.global_position)

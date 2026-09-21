@@ -2,10 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://cqthgofwtrf2p" path="res://assets/Data/NewScenes/blood_claw.tscn" id="1_bb5s8"]
 [ext_resource type="Script" uid="uid://cu35h7tspqks8" path="res://assets/Data/Player/PlayerActions/CardEffects/BloodClaw.gd" id="1_msowe"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="2_c85yb"]
 
 [resource]
 script = ExtResource("1_msowe")
 BaseDamage = 8
+damage_type = ExtResource("2_c85yb")
 VFX = ExtResource("1_bb5s8")
 name = "Blood Claw"
 target = 1

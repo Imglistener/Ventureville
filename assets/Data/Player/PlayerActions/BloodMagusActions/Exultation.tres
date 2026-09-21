@@ -1,0 +1,19 @@
+[gd_resource type="Resource" format=3 uid="uid://b0ecilk1kd45j"]
+
+[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="1_4dsyp"]
+[ext_resource type="Resource" uid="uid://c3rlpuyyf0q7e" path="res://assets/Status Effects/Buffs/Regeneration.tres" id="2_po0vo"]
+[ext_resource type="Script" uid="uid://cnld2fbuuoq8y" path="res://assets/Data/Player/PlayerActions/CardEffects/Exultation.gd" id="3_47ax3"]
+
+[resource]
+script = ExtResource("3_47ax3")
+blood_syphon = ExtResource("1_4dsyp")
+regenaration = ExtResource("2_po0vo")
+name = "Exultation"
+rarity = 2
+type = 2
+target = 3
+mp_cost = 3
+ap_cost = 2
+Description = "Set your current HP to half of your max HP. Lose all your Regeneration, apply that much Blood Syphon to All Enemies."
+LogMessage = "\"Drunk on blood, you feel your ascent draw near!\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

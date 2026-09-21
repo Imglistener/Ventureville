@@ -4,7 +4,7 @@ extends RefCounted
 var statusVFX := preload("uid://b6w0xgmjfbqlj") as PackedScene
 var icon: Texture2D
 
-func activate(target: Marker2D, offset: Vector2 = Vector2.ZERO) -> void:
+func activate(target: Node2D, offset: Vector2 = Vector2.ZERO) -> void:
 	if not target:
 		return
 	var VFX_scene = statusVFX.instantiate() as StatusConditionVFX
