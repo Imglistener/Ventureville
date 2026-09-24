@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="BattleInfo" format=3 uid="uid://v8t1nllhkb3"]
 
 [ext_resource type="Script" uid="uid://djvjp04eqmhrw" path="res://assets/Enemies/Data/Enemies/Dialogue/DialogueInstance.gd" id="1_sf3y1"]
+[ext_resource type="AudioStream" uid="uid://v4u8e12mwvy6" path="res://assets/SFX/AliceBattleMusic (5).ogg" id="2_1j1tj"]
 [ext_resource type="Script" uid="uid://b3icxqpmtwr18" path="res://assets/Data/Entities/EnemyBattlerStats.gd" id="2_fplv6"]
 [ext_resource type="Resource" uid="uid://cvwnlcbly6crn" path="res://assets/Enemies/Data/Enemies/EnemyInstance/FootKnight/FootKnight.tres" id="3_1j1tj"]
 [ext_resource type="Script" uid="uid://4xdxcladhu8j" path="res://assets/Enemies/Data/battle data/battle_info.gd" id="4_04lp0"]

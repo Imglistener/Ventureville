@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RetainHand" format=3 uid="uid://buwgjmht4k2ed"]
+
+[ext_resource type="Texture2D" uid="uid://wli78bd6o7q6" path="res://assets/GUI/Retaineffect_12.png" id="1_m2ywo"]
+[ext_resource type="Script" uid="uid://bl58wwut6rtvd" path="res://assets/Status Effects/Buffs/Retain.gd" id="1_riogm"]
+[ext_resource type="Texture2D" uid="uid://d4dpqcap4i7jl" path="res://assets/GUI/retaineffect_Icon.png" id="3_fbe2a"]
+
+[resource]
+script = ExtResource("1_riogm")
+status_name = 10
+default_duration = 1
+status_icon = ExtResource("3_fbe2a")
+effect_texture = ExtResource("1_m2ywo")
+status_description = "\"You do not discard your hand at the end of the turn.\""
+metadata/_custom_type_script = "uid://cgy5kmno2u1aw"

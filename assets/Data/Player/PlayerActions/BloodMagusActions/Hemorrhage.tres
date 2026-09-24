@@ -1,0 +1,22 @@
+[gd_resource type="Resource" format=3 uid="uid://civmq0l1gc7r"]
+
+[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="1_oxmaa"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="2_mh7ji"]
+[ext_resource type="Script" uid="uid://deu43nawcgua1" path="res://assets/Data/Player/PlayerActions/CardEffects/Hemorrhage.gd" id="3_nrlvt"]
+
+[resource]
+script = ExtResource("3_nrlvt")
+blood_tax = 5
+fixed_damage = 15
+base_syphon_amount = 3
+bonus_syphon_amount = 2
+damage_type = ExtResource("2_mh7ji")
+AppliedEffect = ExtResource("1_oxmaa")
+name = "Hemorrhage"
+target = 1
+mp_cost = 2
+ap_cost = 1
+Description = "Sacrifice 5 HP, Deal 15 Blood Damage.
+Apply 3 Blood Syphon. If the Enemy is already affected; Apply 5 instead."
+LogMessage = "\"You bleed your enemy brutally, causing intense agony!\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

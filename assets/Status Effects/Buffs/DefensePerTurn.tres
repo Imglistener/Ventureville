@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DefensePerTurn" format=3 uid="uid://da7oufs5q2sne"]
+
+[ext_resource type="Script" uid="uid://b3i6hyxv0lmpt" path="res://assets/Status Effects/Buffs/DefensePerTurn.gd" id="1_dqo7m"]
+[ext_resource type="Texture2D" uid="uid://4ouatgvxl78u" path="res://assets/GUI/retain_block_nobg.png" id="1_eyojf"]
+[ext_resource type="Texture2D" uid="uid://ct4r5te31yheq" path="res://assets/GUI/Retain_block_Icon.png" id="3_jhc3m"]
+
+[resource]
+script = ExtResource("1_dqo7m")
+status_name = 9
+default_duration = 3
+status_icon = ExtResource("3_jhc3m")
+effect_texture = ExtResource("1_eyojf")
+status_description = "Gain block at the end of your turn."
+metadata/_custom_type_script = "uid://b3i6hyxv0lmpt"

@@ -234,13 +234,18 @@ func PhaseUI_active(phase : PhaseManager.Phases) -> void:
 			splash_in(deck_pile, Vector2.RIGHT, 300, 0.5)
 			splash_in(discard_pile, Vector2.RIGHT, 300, 0.5)
 			await node_visible
+			if hand.is_hand_hidden:
+				await hand.show_hand()
 			hand.start_turn() 
 		PhaseManager.Phases.PlayerBattleEnd:
 			end_turn.disabled = true
 			splash_out(end_turn, Vector2.RIGHT, 300, 0.5)
 			for view in enemy_manager.get_enemy_views():
 				view.enemy_view.disabled = false
-			hand.clear_hand()
+			if not hand.is_hand_hidden and hand.is_retaining_hand:
+				hand.hide_hand()
+			else:
+				hand.clear_hand()
 			splash_out(AP, Vector2.RIGHT, 400, 0.5)
 			splash_out(mana_ui, Vector2.LEFT, 300, 0.5)
 			splash_out(deck_pile, Vector2.LEFT, 300, 0.5)

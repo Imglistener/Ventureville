@@ -42,21 +42,17 @@
 [ext_resource type="Script" uid="uid://dynxswqu3fapp" path="res://assets/Data/NewScenes/CardsInDeck.gd" id="25_gt0no"]
 [ext_resource type="Texture2D" uid="uid://bj0gr4bt44qnx" path="res://assets/GUI/Globlet_discard_Deck_.png" id="26_b1rdx"]
 [ext_resource type="Texture2D" uid="uid://bxofv2pcbbus" path="res://assets/GUI/Deck_holder.png" id="28_b1rdx"]
-[ext_resource type="AudioStream" uid="uid://rlbhoeeuv874" path="res://assets/SFX/Alice.wav" id="29_t77tx"]
-[ext_resource type="Resource" uid="uid://cvwnlcbly6crn" path="res://assets/Enemies/Data/Enemies/EnemyInstance/FootKnight/FootKnight.tres" id="35_c1pur"]
 [ext_resource type="Script" uid="uid://ciqtc2gnl1c60" path="res://assets/Data/NewScenes/game_state_manager.gd" id="36_a7dmv"]
-[ext_resource type="PackedScene" uid="uid://bav3yg2u0ugyk" path="res://scenes/Enemies/FootKnightAI.tscn" id="36_c1pur"]
-[ext_resource type="Texture2D" uid="uid://rudac0x7kpaj" path="res://assets/2.png" id="37_7ub3u"]
-[ext_resource type="Script" uid="uid://djvjp04eqmhrw" path="res://assets/Enemies/Data/Enemies/Dialogue/DialogueInstance.gd" id="38_li6wq"]
+[ext_resource type="Resource" uid="uid://t4bhsemp13xl" path="res://assets/Enemies/Data/Enemies/Alice.tres" id="36_li6wq"]
+[ext_resource type="PackedScene" uid="uid://ty81e0bpoaog" path="res://scenes/Enemies/AliceAI.tscn" id="37_jiv1t"]
 [ext_resource type="Script" uid="uid://by1n1serxe8is" path="res://assets/Data/NewScenes/sfxPlayer.gd" id="38_pkylx"]
-[ext_resource type="Script" uid="uid://b3icxqpmtwr18" path="res://assets/Data/Entities/EnemyBattlerStats.gd" id="39_jiv1t"]
-[ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="40_h2n7a"]
 [ext_resource type="Script" uid="uid://bs3r5fddsx6y5" path="res://scripts/enemy_turn_order_manager.gd" id="45_sotth"]
 [ext_resource type="Script" uid="uid://cy7yn1fq5hrgv" path="res://scripts/enemy_manager.gd" id="46_qkuvq"]
 [ext_resource type="PackedScene" uid="uid://b8k3ee0s1c4ei" path="res://assets/Data/NewScenes/status_tooltip_base.tscn" id="49_h2n7a"]
 [ext_resource type="PackedScene" uid="uid://jktwbefoh0gv" path="res://assets/Data/NewScenes/battlecondition_tooltip_base.tscn" id="50_1iiwq"]
 [ext_resource type="Script" uid="uid://bespv1ko6kvui" path="res://scripts/turn_tracking_manager.gd" id="51_li6wq"]
 [ext_resource type="Resource" uid="uid://v8t1nllhkb3" path="res://assets/Enemies/Data/battle data/battle_1.tres" id="51_sqjrh"]
+[ext_resource type="AudioStream" uid="uid://rlbhoeeuv874" path="res://assets/SFX/Alice.wav" id="53_h2n7a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f33sq"]
 shader = ExtResource("20_w5vtb")
@@ -64,15 +60,6 @@ shader_parameter/blur_amount = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gyek"]
 size = Vector2(1246.9777, 360.58)
-
-[sub_resource type="Resource" id="Resource_sqjrh"]
-script = ExtResource("39_jiv1t")
-Resists = 2
-Battler_Art_Normal = ExtResource("37_7ub3u")
-DamageBonus = 5.0
-entity_name = "Foot Knight"
-Battler_Type = 1
-metadata/_custom_type_script = "uid://b3icxqpmtwr18"
 
 [node name="BattleScene" type="Node2D" unique_id=560536288]
 process_mode = 3
@@ -98,10 +85,7 @@ metadata/_edit_use_anchors_ = true
 layer = 2
 
 [node name="Enemy" parent="Control_Layer" unique_id=438713798 instance=ExtResource("8_3esf3")]
-position = Vector2(299, 383)
-
-[node name="Enemy2" parent="Control_Layer" unique_id=1787029152 instance=ExtResource("8_3esf3")]
-position = Vector2(752, 383)
+position = Vector2(555.3845, 369.53845)
 
 [node name="Control_Base" type="Control" parent="Control_Layer" unique_id=2000512818]
 layout_mode = 3
@@ -516,14 +500,8 @@ script = ExtResource("25_gt0no")
 [node name="EnemyStatManager" type="Node" parent="Functionality" unique_id=851315779 node_paths=PackedStringArray("enemy")]
 script = ExtResource("10_rgo70")
 enemy = NodePath("../../Control_Layer/Enemy")
-Entity = ExtResource("35_c1pur")
-enemy_ai = ExtResource("36_c1pur")
-
-[node name="EnemyStatManager2" type="Node" parent="Functionality" unique_id=1517701786 node_paths=PackedStringArray("enemy")]
-script = ExtResource("10_rgo70")
-enemy = NodePath("../../Control_Layer/Enemy2")
-Entity = SubResource("Resource_sqjrh")
-enemy_ai = ExtResource("36_c1pur")
+Entity = ExtResource("36_li6wq")
+enemy_ai = ExtResource("37_jiv1t")
 
 [node name="ResourceUIManager" type="Node" parent="Functionality" unique_id=522749599]
 script = ExtResource("13_w7muy")
@@ -571,7 +549,7 @@ script = ExtResource("38_pkylx")
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1188827278 groups=["BGMBus"]]
 process_mode = 3
-stream = ExtResource("29_t77tx")
+stream = ExtResource("53_h2n7a")
 volume_db = -11.679
 autoplay = true
 bus = &"BGM"

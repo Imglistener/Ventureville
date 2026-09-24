@@ -3,6 +3,7 @@ extends EnemyAction
 @export var Phase_2_Normal: Texture
 @export var Phase_2_Hover: Texture
 @export var threshold := 0
+
 var exhausted := false
 var SoundBus: AudioStreamPlayer
 

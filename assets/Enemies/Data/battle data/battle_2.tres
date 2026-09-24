@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BattleInfo" format=3 uid="uid://cvfghruynwwns"]
+
+[ext_resource type="Script" uid="uid://djvjp04eqmhrw" path="res://assets/Enemies/Data/Enemies/Dialogue/DialogueInstance.gd" id="1_xsums"]
+[ext_resource type="Script" uid="uid://b3icxqpmtwr18" path="res://assets/Data/Entities/EnemyBattlerStats.gd" id="2_j8cq6"]
+[ext_resource type="Script" uid="uid://4xdxcladhu8j" path="res://assets/Enemies/Data/battle data/battle_info.gd" id="3_cys0h"]
+[ext_resource type="Resource" uid="uid://b2hh5c4wlqtn5" path="res://assets/Enemies/Data/Enemies/Gladius Phase 1.tres" id="3_j8cq6"]
+
+[resource]
+script = ExtResource("3_cys0h")
+battle_id = 2
+enemies_involved = Array[ExtResource("2_j8cq6")]([ExtResource("3_j8cq6")])
+is_unique_battle = true
+metadata/_custom_type_script = "uid://4xdxcladhu8j"

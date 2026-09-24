@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dkr62mk01xwek" path="res://assets/KennyUI/Border/panel-border-005.png" id="4_hw7b7"]
 [ext_resource type="Script" uid="uid://cdivs16ftli1n" path="res://scripts/bars/animated_bar.gd" id="5_4rtgt"]
 [ext_resource type="LabelSettings" uid="uid://cwvkv70rf748a" path="res://assets/Label_Settings.tres" id="6_3r8k3"]
+[ext_resource type="LabelSettings" uid="uid://bphqm6e8i4apn" path="res://Stylebox/shields_labels.tres" id="7_lw3j4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mx5t"]
 content_margin_left = 4.0
@@ -77,6 +78,22 @@ MarginContainer/constants/margin_top = 8
 ProgressBar/styles/background = null
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_7oapq")
 
+[sub_resource type="LabelSettings" id="LabelSettings_lw3j4"]
+font = ExtResource("1_tbnqu")
+font_size = 8
+font_color = Color(0, 1, 0.8359375, 1)
+outline_size = 2
+outline_color = Color(0.029296875, 0.3125, 0.27267456, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_tbnqu"]
+font = ExtResource("1_tbnqu")
+font_size = 17
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 11
+shadow_color = Color(0, 0, 0, 0.62600005)
+shadow_offset = Vector2(1, 2.89)
+
 [node name="PlayerBarsContainer" type="MarginContainer" unique_id=2061961984]
 anchors_preset = 7
 anchor_left = 0.5
@@ -92,15 +109,15 @@ size_flags_horizontal = 8
 theme = SubResource("Theme_u8m8f")
 script = ExtResource("3_lw3j4")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=580231335]
+[node name="shields_vbox" type="VBoxContainer" parent="." unique_id=580231335]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 3
+size_flags_vertical = 8
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="player_shield" type="TextureProgressBar" parent="VBoxContainer2" unique_id=1711017065]
-custom_minimum_size = Vector2(275, 50)
+[node name="player_shield" type="TextureProgressBar" parent="shields_vbox" unique_id=1711017065]
+custom_minimum_size = Vector2(264, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 value = 100.0
@@ -115,8 +132,26 @@ tint_over = Color(1, 1, 1, 0)
 tint_progress = Color(1.2907221, 1.0815382, 3.1672676, 1)
 script = ExtResource("5_4rtgt")
 
-[node name="player_san_shield" type="TextureProgressBar" parent="VBoxContainer2" unique_id=964078708]
-custom_minimum_size = Vector2(275, 45)
+[node name="player_shield_label" type="Label" parent="shields_vbox/player_shield" unique_id=224725467]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -12.5
+offset_right = 22.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "BLOCK"
+label_settings = ExtResource("7_lw3j4")
+horizontal_alignment = 1
+
+[node name="player_san_shield" type="TextureProgressBar" parent="shields_vbox" unique_id=964078708]
+custom_minimum_size = Vector2(264, 22)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -133,13 +168,28 @@ tint_over = Color(1, 1, 1, 0)
 tint_progress = Color(1.4722497, 3.7038827, 4.6817894, 1)
 script = ExtResource("5_4rtgt")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1410548058]
+[node name="player_san_shield_label" type="Label" parent="shields_vbox/player_san_shield" unique_id=2132966798]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.5
+offset_top = -4.0
+offset_right = 33.5
+offset_bottom = 18.0
+grow_horizontal = 2
+text = "SAN_BLOCK"
+label_settings = SubResource("LabelSettings_lw3j4")
+horizontal_alignment = 1
+
+[node name="hp_san_vbox" type="VBoxContainer" parent="." unique_id=1410548058]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 11
+size_flags_vertical = 8
+theme_override_constants/separation = 0
 
-[node name="player_hp" type="TextureProgressBar" parent="VBoxContainer" unique_id=2007370472]
+[node name="player_hp" type="TextureProgressBar" parent="hp_san_vbox" unique_id=2007370472]
 custom_minimum_size = Vector2(264, 40)
 layout_mode = 2
 value = 12.0
@@ -152,7 +202,7 @@ texture_progress = ExtResource("2_lw3j4")
 tint_over = Color(0.08984375, 0.08254395, 0.053344727, 1)
 script = ExtResource("5_4rtgt")
 
-[node name="player_hp_counter" type="Label" parent="VBoxContainer/player_hp" unique_id=785690160]
+[node name="player_hp_counter" type="Label" parent="hp_san_vbox/player_hp" unique_id=785690160]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -167,9 +217,10 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "HP"
 label_settings = ExtResource("6_3r8k3")
+horizontal_alignment = 1
 
-[node name="player_san" type="TextureProgressBar" parent="VBoxContainer" unique_id=188910440]
-custom_minimum_size = Vector2(264, 35)
+[node name="player_san" type="TextureProgressBar" parent="hp_san_vbox" unique_id=188910440]
+custom_minimum_size = Vector2(264, 15)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -181,12 +232,12 @@ stretch_margin_right = 12
 texture_under = ExtResource("3_dyh3b")
 texture_over = ExtResource("4_hw7b7")
 texture_progress = ExtResource("2_lw3j4")
-tint_under = Color(0.45882353, 0.3019608, 0.3019608, 1)
+tint_under = Color(0.20075083, 0.010910034, 0.25390625, 1)
 tint_over = Color(0.25480175, 0.15710449, 0.34375, 1)
-tint_progress = Color(0.70980394, 0.64705884, 0.39607844, 1)
+tint_progress = Color(0.72597665, 0.28515625, 1, 0.7058824)
 script = ExtResource("5_4rtgt")
 
-[node name="player_san_counter" type="Label" parent="VBoxContainer/player_san" unique_id=1703255216]
+[node name="player_san_counter" type="Label" parent="hp_san_vbox/player_san" unique_id=1703255216]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -200,13 +251,14 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "SAN"
-label_settings = ExtResource("6_3r8k3")
+label_settings = SubResource("LabelSettings_tbnqu")
+horizontal_alignment = 1
 
 [node name="VBoxContainer3" type="MarginContainer" parent="." unique_id=635480488]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/margin_top = -55
-theme_override_constants/margin_bottom = 102
+theme_override_constants/margin_bottom = 69
 
 [node name="Statuseffecticon" type="TextureRect" parent="VBoxContainer3" unique_id=1081928048]
 custom_minimum_size = Vector2(55, 55)

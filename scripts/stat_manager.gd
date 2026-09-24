@@ -49,6 +49,8 @@ func setup_ai() -> void:
 	if EnemyThoughts:
 		EnemyThoughts.queue_free()
 	var EnemyThoughtsNew: EnemyAI = enemy_ai.instantiate()
+	if not enemy_ai:
+		print("lost enemy_ai")
 	add_child(EnemyThoughtsNew)
 	EnemyThoughts = EnemyThoughtsNew
 	EnemyThoughts.enemy = enemy
@@ -122,6 +124,9 @@ func _initialize_entity(entity_type: Variant) -> void:
 
 func phase_transition() -> void:
 	var phase_music: AudioStream
+	if not EnemyThoughts:
+		bgm.play(194)
+		return
 	var actionlibrary = EnemyThoughts.get_children()
 	for action in actionlibrary:
 		if action.ActionEffect == EnemyAction.ActionEffects.Transition:
