@@ -1,6 +1,7 @@
 extends TextureButton
 
 func _ready() -> void:
+	await get_tree().process_frame
 	pivot_offset.x = size.x/2
 	pivot_offset.y = size.y/2
 	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR

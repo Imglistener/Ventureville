@@ -1,0 +1,20 @@
+[gd_resource type="Resource" format=3 uid="uid://g3nn5n6i6f67"]
+
+[ext_resource type="Resource" uid="uid://da7oufs5q2sne" path="res://assets/Status Effects/Buffs/DefensePerTurn.tres" id="1_8mhkb"]
+[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="2_ppxxl"]
+[ext_resource type="Script" uid="uid://djfn2in0jtrki" path="res://assets/Data/Player/PlayerActions/CardEffects/Sanguine Rose.gd" id="3_032g0"]
+
+[resource]
+script = ExtResource("3_032g0")
+blood_tax = 10
+block_per_turn = ExtResource("1_8mhkb")
+blood_syphon = ExtResource("2_ppxxl")
+name = "Sanguine Rose"
+rarity = 1
+type = 1
+target = 3
+mp_cost = 2
+ap_cost = 1
+Description = "Gain Congealed Blood equal to all Blood Syphon on your enemies."
+LogMessage = "\"Your victims' blood hardens to protect you!\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

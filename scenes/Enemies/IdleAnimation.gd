@@ -21,7 +21,7 @@ func _play_loop() -> void:
 	idle_tween = target_node.create_tween()
 	idle_tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
-	var breathe_scale = base_scale * Vector2(1.02, 1.05)  # subtle x, more y
+	var breathe_scale = base_scale * Vector2(1.02, 1.02)  # subtle x, more y
 	
 	idle_tween.tween_property(target_node, "scale", breathe_scale, 1.8)
 	idle_tween.tween_property(target_node, "scale", base_scale, 1.8)

@@ -8,8 +8,10 @@ class_name CardHand extends Node2D
 @onready var player_stat_manager: Stat_Manager =$"../../../../../../Functionality/PlayerStatManager"
 @onready var deck_manager: DeckManager = $"../../../../../../Functionality/DeckManager"
 
+var is_retaining_hand = false
 var is_card_highlighted: bool
 var is_arranging: bool = false
+var is_hand_hidden = false
 var focused_card: CardUI
 # Lets overlapping arrange_hand() calls agree on who clears is_arranging.
 var _arrange_serial := 0
@@ -133,6 +135,18 @@ func define_playable() -> void:
 			i.is_playable.z_as_relative = true
 			i.is_playable.z_index = i.get_index() - 1
 
+func hide_hand() -> void: 
+	var hiding_tween = create_tween()
+	hiding_tween.tween_property(self, 'position', Vector2(112.187, 309.23 + 300), 0.3).set_ease(Tween.EASE_OUT)
+	is_hand_hidden = true
+	await hiding_tween.finished
+
+func show_hand() -> void:
+	var showing_tween = create_tween()
+	showing_tween.tween_property(self, 'position', Vector2(112.187, 309.23 - 300), 0.3).set_ease(Tween.EASE_OUT)
+	is_hand_hidden = false
+	await showing_tween.finished
+	
 func clear_hand() -> void:
 	for child in get_children():
 		if child is CardUI:
