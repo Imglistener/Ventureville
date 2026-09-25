@@ -2,12 +2,15 @@ extends Card
 
 @export var BaseShield: int = 8
 @export var VFX : PackedScene
+@export var retain_effect : RetainHand
 
 func apply_effect(targets : Array[Node]) -> void:
 	var block_effect := BlockEffect.new()
 	block_effect.amount = BaseShield
 	var Visual = VFX.instantiate()
-	if targets[0] is Stat_Manager:	
+	if targets[0] is Stat_Manager:
+		var effect = retain_effect.duplicate()
+		effect.on_apply(targets, 1)
 		targets[0].player_view.add_child(Visual)
 		Visual.global_position += Vector2(130, 180)
 	Visual.animation_player.play("BloodBarrier")

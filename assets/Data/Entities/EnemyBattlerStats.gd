@@ -11,12 +11,11 @@ enum RESISTANCE_STATE {NEUTRAL, RESISTANT, VULNERABLE}
 
 @export_group("Basic Variables")
 @export var Difficulty: DC
-@export var Has_Phase_2: bool
 @export var Battler_Art_Normal	: Texture
 @export var Battler_Art_Hovered	: Texture
 @export var Phase_2 : EnemyBattlerStats
 @export var DamageBonus: float
-
+@export var Enemy_AI : PackedScene
 
 @export_group("Dialogue")
 @export var Dialogue: Array[DialogueLine]

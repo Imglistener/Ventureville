@@ -143,7 +143,7 @@ func hide_hand() -> void:
 
 func show_hand() -> void:
 	var showing_tween = create_tween()
-	showing_tween.tween_property(self, 'position', Vector2(112.187, 309.23 - 300), 0.3).set_ease(Tween.EASE_OUT)
+	showing_tween.tween_property(self, 'position', Vector2(112.187, 309.23), 0.3).set_ease(Tween.EASE_OUT)
 	is_hand_hidden = false
 	await showing_tween.finished
 	

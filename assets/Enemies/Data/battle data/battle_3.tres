@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BattleInfo" format=3 uid="uid://6gutx58gp1xw"]
+
+[ext_resource type="Script" uid="uid://djvjp04eqmhrw" path="res://assets/Enemies/Data/Enemies/Dialogue/DialogueInstance.gd" id="1_j11xa"]
+[ext_resource type="AudioStream" uid="uid://rlbhoeeuv874" path="res://assets/SFX/Alice.wav" id="2_qll84"]
+[ext_resource type="Script" uid="uid://b3icxqpmtwr18" path="res://assets/Data/Entities/EnemyBattlerStats.gd" id="3_i4fm4"]
+[ext_resource type="Resource" uid="uid://t4bhsemp13xl" path="res://assets/Enemies/Data/Enemies/Alice.tres" id="4_i4fm4"]
+[ext_resource type="Script" uid="uid://4xdxcladhu8j" path="res://assets/Enemies/Data/battle data/battle_info.gd" id="4_s655q"]
+
+[resource]
+script = ExtResource("4_s655q")
+battle_id = 3
+enemies_involved = Array[ExtResource("3_i4fm4")]([ExtResource("4_i4fm4")])
+is_unique_battle = true
+is_boss_battle = true
+battle_music = ExtResource("2_qll84")
+metadata/_custom_type_script = "uid://4xdxcladhu8j"

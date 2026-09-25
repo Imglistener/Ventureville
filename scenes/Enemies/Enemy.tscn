@@ -17,7 +17,7 @@
 [ext_resource type="LabelSettings" uid="uid://cwvkv70rf748a" path="res://assets/Label_Settings.tres" id="10_xox7x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjvsk"]
-size = Vector2(494.297, 314.11603)
+size = Vector2(376, 248)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mx5t"]
 content_margin_left = 4.0
@@ -178,7 +178,7 @@ resistant_icon = ExtResource("2_myw8k")
 vulnerable_icon = ExtResource("3_65cbk")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1067368722]
-scale = Vector2(0.76, 0.76)
+position = Vector2(4, -20)
 shape = SubResource("RectangleShape2D_hjvsk")
 debug_color = Color(0, 0.60038817, 0.70000815, 0)
 

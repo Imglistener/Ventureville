@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://p68vnmwk5kiw" path="res://assets/SFX/card_click.wav" id="5_x53gr"]
 [ext_resource type="Texture2D" uid="uid://cf65ba4oj2g0t" path="res://assets/GUI/Card_Game_border_blood.png" id="6_3go67"]
 [ext_resource type="AudioStream" uid="uid://cs43hedoluabf" path="res://assets/SFX/711353__rising_moon__magic_loop.mp3" id="6_80gmr"]
+[ext_resource type="PackedScene" uid="uid://bkip6tvhofvrd" path="res://assets/Data/NewScenes/keyword_tooltip.tscn" id="6_jtxne"]
 [ext_resource type="Script" uid="uid://dbqo6v48is40i" path="res://scripts/CardUI/CardState/CardStateManager.gd" id="8_ktvkk"]
 [ext_resource type="Script" uid="uid://um2yjt6eq6j1" path="res://scripts/CardUI/CardState/StateCardDragging.gd" id="9_5cyc0"]
 [ext_resource type="Texture2D" uid="uid://cx76h8fp6cixc" path="res://assets/venture.png" id="9_x53gr"]
@@ -160,6 +161,7 @@ card_data = ExtResource("3_80gmr")
 HoverSFX = ExtResource("4_80gmr")
 clickedSFX = ExtResource("5_x53gr")
 aimingSFX = ExtResource("6_80gmr")
+keyword_tooltip_scene = ExtResource("6_jtxne")
 
 [node name="CardAnchor" type="Control" parent="." unique_id=609675404]
 layout_mode = 2
@@ -170,6 +172,21 @@ anchors_preset = 0
 offset_right = 694.0
 offset_bottom = 1013.0
 mouse_filter = 2
+
+[node name="KeywordTooltipsContainer2D" type="Node2D" parent="CardAnchor/CardScaler" unique_id=876596936]
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="KeywordTooltipAnchor" type="Marker2D" parent="CardAnchor/CardScaler/KeywordTooltipsContainer2D" unique_id=519834263]
+position = Vector2(685.7141, 22.85714)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="KeywordTooltipAnchor2" type="Marker2D" parent="CardAnchor/CardScaler/KeywordTooltipsContainer2D" unique_id=1689542664]
+position = Vector2(685.7141, 297.1427)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="KeywordTooltipAnchor3" type="Marker2D" parent="CardAnchor/CardScaler/KeywordTooltipsContainer2D" unique_id=1818761080]
+position = Vector2(685.7141, 571.4282)
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="CardFrame" type="TextureRect" parent="CardAnchor/CardScaler" unique_id=465053708]
 layout_mode = 0

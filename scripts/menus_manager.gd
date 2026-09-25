@@ -1,7 +1,6 @@
 class_name MenusManager extends Node
 @onready var dialogue_node: NinePatchRect = $"../../Control_Layer/Control_Base/Base_Margin/StandbyContainer/dialogue-node"
 @onready var standby_menu: NinePatchRect = $"../../Control_Layer/Control_Base/Base_Margin/StandbyContainer/Background"
-@onready var enemy_stat_manager: Stat_Manager = $"../EnemyStatManager"
 @onready var player_stat_manager: Stat_Manager = $"../PlayerStatManager"
 @onready var hand: CardHand = $"../../Control_Layer/Control_Base/Base_Margin/StandbyContainer/HandLayer/Hand"
 @onready var phase_manager: PhaseManager = $"../PhaseManager"
@@ -16,7 +15,7 @@ class_name MenusManager extends Node
 @onready var turn_counter: Label = $"../../Control_Layer/TurnCounter"
 @onready var items_menu: ItemsMenu = $"../../Control_Layer/Control_Base/ItemsMenu"
 @onready var Return: TextureButton = $"../../Control_Layer/Control_Base/Return"
-@onready var enemy_manager: Node = $"../EnemyManager"
+@onready var enemy_manager: Node = %EnemyManager
 @onready var show_deck: TextureButton = $"../../Control_Layer/Control_Base/toolbar_container/toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Show Deck"
 @onready var deck_viewer_2d: CardViewer = $"../../Control_Layer/Pause Layer/DeckViewer2D"
 
@@ -33,6 +32,8 @@ func transition_to(node_shown: Node, hide_node: Node = null) -> void:
 	show_node(node_shown)
 
 func _ready() -> void:
+	if not player_stat_manager.is_node_ready():
+		await player_stat_manager.ready
 	if not dialogue_node.is_node_ready():
 		await dialogue_node.ready
 	if not standby_menu.is_node_ready():
@@ -185,7 +186,7 @@ func _on_talk_pressed() -> void:
 	talk.disabled = true
 	if enemy_manager.get_enemy_views().size() > 1:
 		pass
-	Dialogue_manager.call_dialogue(enemy_stat_manager, dialogue_node.dialogue_box, player_stat_manager)
+	Dialogue_manager.call_dialogue(dialogue_node.dialogue_box, player_stat_manager)
 	if not dialogue_node.visible:
 		call_deferred('transition_to', dialogue_node, standby_menu)
 		await node_visible

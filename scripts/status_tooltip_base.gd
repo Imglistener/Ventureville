@@ -11,5 +11,33 @@ func show_tooltip() -> void:
 	if not displayed_status:
 		return
 	status_icon.texture = displayed_status.status_icon
-	status_name.text =  StatusEffect.StatusEffects.find_key(displayed_status.status_name) if not displayed_status.status_name == 2 else "Blood Syphon"
+	var status_name_text : String 
+	match displayed_status.status_name:
+		0:
+			status_name_text = "Burning"
+		1:
+			status_name_text = "Frostbite"
+		2:
+			status_name_text = "Blood Syphon"
+		3:
+			status_name_text = "Horrified"
+		4:
+			status_name_text = "Concussed"
+		5:
+			status_name_text = "Stunned"
+		6:
+			status_name_text = "Withering"
+		7:
+			status_name_text = "Damage Up"
+		8:
+			status_name_text = "Regeneration"
+		9:
+			status_name_text = "Congealed Blood"
+		10:
+			status_name_text = "Retain"
+		11:
+			status_name_text = "Poison"
+		_:
+			status_name_text = "Unknown"
+	status_name.text =  status_name_text
 	status_description.text = displayed_status.status_description

@@ -10,5 +10,5 @@ status_name = 10
 default_duration = 1
 status_icon = ExtResource("3_fbe2a")
 effect_texture = ExtResource("1_m2ywo")
-status_description = "\"You do not discard your hand at the end of the turn.\""
+status_description = "You do not discard your hand at the end of the turn."
 metadata/_custom_type_script = "uid://cgy5kmno2u1aw"

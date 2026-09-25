@@ -24,7 +24,7 @@ func on_apply(targets: Array[Node], duration : int = 1) -> void:
 				var instance = self.duplicate()
 				instance.current_duration = duration
 				effects.append(instance)
-				instance.applied_to = target.Player
+				instance.applied_to = anchor.get_tree().get_first_node_in_group('hand')
 				instance.on_activate()
 				Events.effect_applied.emit()
 				if anchor:

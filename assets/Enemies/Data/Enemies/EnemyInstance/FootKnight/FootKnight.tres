@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://rudac0x7kpaj" path="res://assets/2.png" id="1_as0wr"]
 [ext_resource type="Script" uid="uid://djvjp04eqmhrw" path="res://assets/Enemies/Data/Enemies/Dialogue/DialogueInstance.gd" id="1_yeoxi"]
 [ext_resource type="Script" uid="uid://b3icxqpmtwr18" path="res://assets/Data/Entities/EnemyBattlerStats.gd" id="2_as0wr"]
+[ext_resource type="PackedScene" uid="uid://bav3yg2u0ugyk" path="res://scenes/Enemies/FootKnightAI.tscn" id="3_20ic7"]
 [ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="3_nj8f5"]
 
 [sub_resource type="Resource" id="Resource_jxemv"]
@@ -22,6 +23,7 @@ Resists = 4
 Is_Vul_to = 2
 Battler_Art_Normal = ExtResource("1_as0wr")
 DamageBonus = 5.0
+Enemy_AI = ExtResource("3_20ic7")
 Dialogue = Array[ExtResource("1_yeoxi")]([SubResource("Resource_jxemv"), SubResource("Resource_f3oim")])
 entity_name = "Foot Knight"
 Battler_Type = 1

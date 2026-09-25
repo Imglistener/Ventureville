@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ctiu83gblres7"]
+
+[ext_resource type="Script" uid="uid://rpgcyv34bk5l" path="res://scripts/stat_manager.gd" id="1_itccm"]
+[ext_resource type="Resource" uid="uid://t4bhsemp13xl" path="res://assets/Enemies/Data/Enemies/Alice.tres" id="2_pnxg2"]
+[ext_resource type="PackedScene" uid="uid://ty81e0bpoaog" path="res://scenes/Enemies/AliceAI.tscn" id="3_1rw5e"]
+
+[node name="EnemyStatManager" type="Node" unique_id=641125097 node_paths=PackedStringArray("enemy")]
+script = ExtResource("1_itccm")
+enemy = NodePath("")
+Entity = ExtResource("2_pnxg2")
+enemy_ai = ExtResource("3_1rw5e")

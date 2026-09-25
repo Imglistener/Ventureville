@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bkip6tvhofvrd"]
+
+[ext_resource type="Script" uid="uid://cddpsf33d4rnq" path="res://scripts/keyword_tooltip.gd" id="1_qa4ji"]
+[ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="1_r2xp4"]
+[ext_resource type="Texture2D" uid="uid://kjxrlc0qrqoc" path="res://assets/KennyUI/Transparent border/panel-transparent-border-005.png" id="2_w8ad5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qa4ji"]
+texture = ExtResource("2_w8ad5")
+texture_margin_left = 32.0
+texture_margin_top = 16.0
+texture_margin_right = 32.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(0, 0, 48, 48)
+
+[node name="KeywordTooltip" type="Control" unique_id=2080764858]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_qa4ji")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2093189585]
+self_modulate = Color(0.16217999, 0.061199997, 0.18, 0.6666667)
+layout_mode = 1
+offset_right = 282.0
+offset_bottom = 122.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qa4ji")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=355710133]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_top = -10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1437972494]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=377014759]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+
+[node name="KeywordName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1865073035]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.7735596, 0.171875, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_r2xp4")
+theme_override_font_sizes/font_size = 19
+text = "Sacrifice"
+horizontal_alignment = 2
+
+[node name="KeywordDescription" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=739805051]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/line_separation = -12
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_r2xp4")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Lose health equal to the amount Sacrificed. Unblockable."
+fit_content = true
+scroll_active = false
+vertical_alignment = 1

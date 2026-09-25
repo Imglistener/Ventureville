@@ -13,7 +13,7 @@ var _is_dead: bool = false
 @onready var log: Log = $"../../Control_Layer/Control_Base/ColorRect/MarginContainer/ScrollContainer/Log"
 @onready var deck_manager: DeckManager = $"../DeckManager"
 @onready var items_menu: ItemsMenu = $"../../Control_Layer/Control_Base/ItemsMenu"
-@onready var enemy_manager: Node = $"../EnemyManager"
+@export var enemy_manager: EnemyManager
 
 @export var enemy_ai: PackedScene 
 var Player: CharacterInstance

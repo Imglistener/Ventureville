@@ -5,7 +5,6 @@ class_name GameStateManager extends Node
 @onready var menus_manager: MenusManager = $"../MenusManager"
 @onready var player_stat_manager: Stat_Manager = $"../PlayerStatManager"
 @onready var enemy_manager: EnemyManager = $"../EnemyManager"
-@export var battle_info : BattleInfo
 
 func _ready() -> void:
 	if not player_stat_manager.is_node_ready():
