@@ -60,7 +60,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("13_jgfr5")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Barrier",
 "speed": 30.0
 }, {
@@ -83,7 +83,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("19_s7y1i")
 }],
-"loop": false,
+"loop": 0,
 "name": &"BarrierBack",
 "speed": 30.0
 }]

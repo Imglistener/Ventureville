@@ -5,6 +5,7 @@ class_name CardViewer extends MarginContainer
 
 func _ready() -> void:
 	var player :=  get_tree().get_first_node_in_group('player') as Stat_Manager
+	await get_tree().process_frame
 	if not player.is_node_ready():
 		await player.ready
 	var card_deck : Deck = player.Player.starting_deck

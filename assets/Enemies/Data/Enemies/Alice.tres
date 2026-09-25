@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d2xsvo2vfxtw4" path="res://assets/alice.png" id="1_veeok"]
 [ext_resource type="Script" uid="uid://b3icxqpmtwr18" path="res://assets/Data/Entities/EnemyBattlerStats.gd" id="2_veeok"]
 [ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="3_dgbv4"]
+[ext_resource type="PackedScene" uid="uid://ty81e0bpoaog" path="res://scenes/Enemies/AliceAI.tscn" id="3_vrnyn"]
 
 [sub_resource type="Resource" id="Resource_dgbv4"]
 script = ExtResource("1_ffihv")
@@ -36,6 +37,7 @@ Is_Vul_to = 5
 Difficulty = 2
 Battler_Art_Normal = ExtResource("1_veeok")
 DamageBonus = 5.0
+Enemy_AI = ExtResource("3_vrnyn")
 Dialogue = Array[ExtResource("1_ffihv")]([SubResource("Resource_dgbv4"), SubResource("Resource_vrnyn"), SubResource("Resource_lgpqv"), SubResource("Resource_fwdk3")])
 entity_name = "!$#%@#$"
 Battler_Type = 1

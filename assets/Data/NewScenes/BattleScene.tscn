@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://n8lmyatugrbl" path="res://assets/3d-foggy-forest-landscape.jpg" id="1_83jjo"]
 [ext_resource type="Script" uid="uid://b3nj6xntkhkum" path="res://assets/Data/Scripts/control_base.gd" id="2_4a4b7"]
 [ext_resource type="PackedScene" uid="uid://digppdns1abl1" path="res://assets/Data/NewScenes/UI_Layer/Menus/StandbyMenu.tscn" id="2_htbe8"]
+[ext_resource type="Script" uid="uid://bi2vu0ouqx7m2" path="res://scripts/enemy_view_container.gd" id="2_li6wq"]
 [ext_resource type="PackedScene" uid="uid://cyd2vf8wy3bo4" path="res://assets/Data/NewScenes/UI_Layer/BattlerViews/player_view.tscn" id="3_iuswa"]
 [ext_resource type="PackedScene" uid="uid://dy2lvmmb2q1lw" path="res://assets/Data/NewScenes/toolbar_container.tscn" id="3_omkm2"]
 [ext_resource type="PackedScene" uid="uid://cwrwvtamgynf7" path="res://assets/Data/NewScenes/dialogue_node.tscn" id="5_5yol5"]
@@ -42,9 +43,8 @@
 [ext_resource type="Script" uid="uid://dynxswqu3fapp" path="res://assets/Data/NewScenes/CardsInDeck.gd" id="25_gt0no"]
 [ext_resource type="Texture2D" uid="uid://bj0gr4bt44qnx" path="res://assets/GUI/Globlet_discard_Deck_.png" id="26_b1rdx"]
 [ext_resource type="Texture2D" uid="uid://bxofv2pcbbus" path="res://assets/GUI/Deck_holder.png" id="28_b1rdx"]
+[ext_resource type="PackedScene" uid="uid://ctiu83gblres7" path="res://assets/Data/NewScenes/stat_manager.tscn" id="35_jiv1t"]
 [ext_resource type="Script" uid="uid://ciqtc2gnl1c60" path="res://assets/Data/NewScenes/game_state_manager.gd" id="36_a7dmv"]
-[ext_resource type="Resource" uid="uid://t4bhsemp13xl" path="res://assets/Enemies/Data/Enemies/Alice.tres" id="36_li6wq"]
-[ext_resource type="PackedScene" uid="uid://ty81e0bpoaog" path="res://scenes/Enemies/AliceAI.tscn" id="37_jiv1t"]
 [ext_resource type="Script" uid="uid://by1n1serxe8is" path="res://assets/Data/NewScenes/sfxPlayer.gd" id="38_pkylx"]
 [ext_resource type="Script" uid="uid://bs3r5fddsx6y5" path="res://scripts/enemy_turn_order_manager.gd" id="45_sotth"]
 [ext_resource type="Script" uid="uid://cy7yn1fq5hrgv" path="res://scripts/enemy_manager.gd" id="46_qkuvq"]
@@ -52,6 +52,7 @@
 [ext_resource type="PackedScene" uid="uid://jktwbefoh0gv" path="res://assets/Data/NewScenes/battlecondition_tooltip_base.tscn" id="50_1iiwq"]
 [ext_resource type="Script" uid="uid://bespv1ko6kvui" path="res://scripts/turn_tracking_manager.gd" id="51_li6wq"]
 [ext_resource type="Resource" uid="uid://v8t1nllhkb3" path="res://assets/Enemies/Data/battle data/battle_1.tres" id="51_sqjrh"]
+[ext_resource type="Script" uid="uid://bjge3i4gnlaou" path="res://scripts/battle_builder.gd" id="52_jiv1t"]
 [ext_resource type="AudioStream" uid="uid://rlbhoeeuv874" path="res://assets/SFX/Alice.wav" id="53_h2n7a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f33sq"]
@@ -84,8 +85,18 @@ metadata/_edit_use_anchors_ = true
 [node name="Control_Layer" type="CanvasLayer" parent="." unique_id=1717132867]
 layer = 2
 
-[node name="Enemy" parent="Control_Layer" unique_id=438713798 instance=ExtResource("8_3esf3")]
-position = Vector2(555.3845, 369.53845)
+[node name="EnemyViewContainer" type="Node2D" parent="Control_Layer" unique_id=2071511609]
+script = ExtResource("2_li6wq")
+enemy_view_scene = ExtResource("8_3esf3")
+
+[node name="Enemy_1" type="Marker2D" parent="Control_Layer/EnemyViewContainer" unique_id=136331498]
+position = Vector2(529, 335)
+
+[node name="Enemy_2" type="Marker2D" parent="Control_Layer/EnemyViewContainer" unique_id=1777279399]
+position = Vector2(777, 335)
+
+[node name="Enemy_3" type="Marker2D" parent="Control_Layer/EnemyViewContainer" unique_id=757763809]
+position = Vector2(329, 334)
 
 [node name="Control_Base" type="Control" parent="Control_Layer" unique_id=2000512818]
 layout_mode = 3
@@ -497,21 +508,16 @@ script = ExtResource("25_gt0no")
 
 [node name="Functionality" type="Node" parent="." unique_id=401213274]
 
-[node name="EnemyStatManager" type="Node" parent="Functionality" unique_id=851315779 node_paths=PackedStringArray("enemy")]
-script = ExtResource("10_rgo70")
-enemy = NodePath("../../Control_Layer/Enemy")
-Entity = ExtResource("36_li6wq")
-enemy_ai = ExtResource("37_jiv1t")
-
 [node name="ResourceUIManager" type="Node" parent="Functionality" unique_id=522749599]
 script = ExtResource("13_w7muy")
 
 [node name="ResourceManager" type="Node" parent="Functionality" unique_id=1817792797]
 script = ExtResource("14_a3qp2")
 
-[node name="PlayerStatManager" type="Node" parent="Functionality" unique_id=692489589 groups=["player"]]
+[node name="PlayerStatManager" type="Node" parent="Functionality" unique_id=692489589 node_paths=PackedStringArray("enemy_manager") groups=["player"]]
 script = ExtResource("10_rgo70")
 Entity = ExtResource("24_t77tx")
+enemy_manager = NodePath("../EnemyManager")
 
 [node name="MenusManager" type="Node" parent="Functionality" unique_id=1582759824]
 process_mode = 3
@@ -530,16 +536,24 @@ condition_tooltip = ExtResource("50_1iiwq")
 
 [node name="GameStateManager" type="Node" parent="Functionality" unique_id=1041496057]
 script = ExtResource("36_a7dmv")
-battle_info = ExtResource("51_sqjrh")
 
 [node name="EnemyTurnOrderManager" type="Node" parent="Functionality" unique_id=1699957479]
 script = ExtResource("45_sotth")
 
 [node name="EnemyManager" type="Node" parent="Functionality" unique_id=1458255868 groups=["EnemyManager"]]
+unique_name_in_owner = true
 script = ExtResource("46_qkuvq")
 
 [node name="TurnTrackingManager" type="Node" parent="Functionality" unique_id=448396394]
 script = ExtResource("51_li6wq")
+
+[node name="BattleBuilder" type="Node" parent="Functionality" unique_id=321217465 node_paths=PackedStringArray("enemy_view_container", "enemy_manager", "bgm")]
+script = ExtResource("52_jiv1t")
+enemy_view_container = NodePath("../../Control_Layer/EnemyViewContainer")
+enemy_manager = NodePath("../EnemyManager")
+bgm = NodePath("../../BGM")
+battle_info = ExtResource("51_sqjrh")
+SM = ExtResource("35_jiv1t")
 
 [node name="SFX" type="AudioStreamPlayer" parent="." unique_id=1786813656 groups=["SFXBus"]]
 max_polyphony = 8

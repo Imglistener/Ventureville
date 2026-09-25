@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://g3nn5n6i6f67" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Rose.tres" id="12_5af0u"]
 [ext_resource type="Resource" uid="uid://ce1s75bc8dcd2" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Sacrifice.tres" id="13_uii6r"]
 [ext_resource type="Resource" uid="uid://civmq0l1gc7r" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Hemorrhage.tres" id="14_25ebe"]
+[ext_resource type="Resource" uid="uid://be12tcnli2021" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Barrier.tres" id="15_py15j"]
 
 [resource]
 script = ExtResource("1_dyacs")
@@ -29,8 +30,9 @@ ExtResource("6_0354w"): 2,
 ExtResource("9_25ebe"): 4,
 ExtResource("8_uii6r"): 2,
 ExtResource("11_0354w"): 1,
-ExtResource("12_5af0u"): 2,
-ExtResource("13_uii6r"): 2,
-ExtResource("14_25ebe"): 2
+ExtResource("12_5af0u"): 1,
+ExtResource("13_uii6r"): 1,
+ExtResource("14_25ebe"): 1,
+ExtResource("15_py15j"): 2
 }
-Cards_in_Deck = Array[ExtResource("1_7abai")]([ExtResource("2_lxatl"), ExtResource("5_8wy8p"), ExtResource("4_ao31u"), ExtResource("5_3v31f"), ExtResource("6_0354w"), ExtResource("7_5af0u"), ExtResource("8_uii6r"), ExtResource("9_25ebe"), ExtResource("10_py15j"), ExtResource("11_0354w"), ExtResource("12_5af0u"), ExtResource("13_uii6r"), ExtResource("14_25ebe")])
+Cards_in_Deck = Array[ExtResource("1_7abai")]([ExtResource("2_lxatl"), ExtResource("5_8wy8p"), ExtResource("4_ao31u"), ExtResource("5_3v31f"), ExtResource("6_0354w"), ExtResource("7_5af0u"), ExtResource("8_uii6r"), ExtResource("9_25ebe"), ExtResource("10_py15j"), ExtResource("11_0354w"), ExtResource("12_5af0u"), ExtResource("13_uii6r"), ExtResource("14_25ebe"), ExtResource("15_py15j")])

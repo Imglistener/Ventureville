@@ -1,18 +1,21 @@
 class_name CardUI
 extends MarginContainer
 enum CardMode{ PLAYABLE , DISPLAYING }
-
+const MAX_KEYWORD_TOOLTIPS := 3
 @export var card_data : Card
 @export var start_with_show_card := true
 @export var HoverSFX	: AudioStream
 @export var clickedSFX	: AudioStream
 @export var aimingSFX	: AudioStream
 @export var Mode : CardMode
+@export var keyword_tooltip_scene : PackedScene
+@onready var keyword_tooltips_container_2d: Node2D = $CardAnchor/CardScaler/KeywordTooltipsContainer2D
 signal ReparentRequest(card: CardUI)
 signal CardClicked(card: CardUI)
 
 @onready var is_playable: ColorRect = $CardAnchor/CardScaler/CardFrame/IsPlayable
 @onready var card_scaler: Control = $CardAnchor/CardScaler
+
 
 @onready var card_name: Label = $CardAnchor/CardScaler/Frame/VBoxContainer2/VBoxContainer/CardNameMargin/CardName
 @onready var card_type: Label = $CardAnchor/CardScaler/Frame/VBoxContainer2/VBoxContainer/CardTypeMargin/CardType
@@ -48,7 +51,7 @@ var is_selected := false
 var hand_tween: Tween
 var card_disabled := false
 var is_displaying := false
-
+var _keyword_tooltips: Array[KeywordTooltip] = [] 
 const DESIGN_SIZE := Vector2(694.0, 1013.0)
 
 
@@ -72,10 +75,13 @@ func _ready() -> void:
 			CardClicked.connect(ControlBase.on_trigger_pressed)
 	if Mode == CardUI.CardMode.PLAYABLE and start_with_show_card:
 		await show_card()
+	ready_keyword_tooltips()
 
 func _process(delta: float) -> void:
 	card_state_manager.process(delta)
-
+	if is_displaying and not _keyword_tooltips.is_empty() and _keyword_tooltips[0].visible:
+		_reposition_keyword_tooltips()
+	
 func show_card() -> void:
 	modulate = Color(1.0, 1.0, 1.0, 0.0)
 	var show_tween : Tween
@@ -157,6 +163,8 @@ func _on_mouse_exited()-> void:
 		return
 	if card_targeting:
 		return
+	if is_displaying:
+		hide_keyword_tooltips()
 	Events.card_unselected.emit(self)
 
 
@@ -177,6 +185,10 @@ func animate_to_position(new_position: Vector2, duration: float) -> void:
 func _on_mouse_entered() -> void:
 	if card_dragging or card_targeting:
 		return
+	if is_displaying:
+		show_keyword_tooltips()
+		
+				
 	Events.card_selected.emit(self)
 
 func _input(event: InputEvent) -> void:
@@ -237,3 +249,43 @@ func nulled() -> void:
 			if card == self.card_data:
 				Deck_Manager.CardDeck.Discard_Pile.erase(card)
 				Events.card_exhausted.emit(self.card_data)
+
+func ready_keyword_tooltips() -> void:
+	var keywords: Array[String] = []
+	for keyword in KeywordTooltip.KeywordList.keys():
+		if card_data.Description.contains(keyword):
+			keywords.append(keyword)
+
+	if keywords.is_empty() or keywords.size() > MAX_KEYWORD_TOOLTIPS:
+		return
+	if not _keyword_tooltips.is_empty():
+		return  # already built
+
+	var markers := keyword_tooltips_container_2d.get_children()
+	for i in mini(keywords.size(), markers.size()):
+		var tooltip := keyword_tooltip_scene.instantiate() as KeywordTooltip
+		markers[i].add_child(tooltip)
+		tooltip.top_level = true      # ignore card/scaler transforms
+		tooltip.show_tooltip(keywords[i])
+		tooltip.hide()
+		_keyword_tooltips.append(tooltip)
+
+func show_keyword_tooltips() -> void:
+	_set_keyword_tooltips_visible(true)
+
+
+func hide_keyword_tooltips() -> void:
+	_set_keyword_tooltips_visible(false)
+	
+func _set_keyword_tooltips_visible(value: bool) -> void:
+	for tooltip in _keyword_tooltips:
+		tooltip.visible = value
+	if value:
+		_reposition_keyword_tooltips()
+
+func _reposition_keyword_tooltips() -> void:
+	for tooltip in _keyword_tooltips:
+		var marker := tooltip.get_parent() as Marker2D
+		tooltip.scale = Vector2.ONE
+		tooltip.rotation = 0.0
+		tooltip.global_position = marker.global_position
