@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b4q17krleilfc"]
+
+[ext_resource type="PackedScene" uid="uid://borv7bx230xl" path="res://assets/Data/NewScenes/card_viewer_container.tscn" id="1_ah441"]
+[ext_resource type="Script" uid="uid://kys780awmyw" path="res://assets/Data/Scripts/deck_editor_container.gd" id="1_lnjk4"]
+[ext_resource type="Resource" uid="uid://dnux8rwh6xw2l" path="res://assets/Data/Classes/BloodMagus.tres" id="2_ap0pw"]
+[ext_resource type="PackedScene" uid="uid://cul4hcol7nbxx" path="res://assets/Data/NewScenes/deck_editor_viewer.tscn" id="2_ufk87"]
+[ext_resource type="PackedScene" uid="uid://dqbnpvvarw7du" path="res://assets/Data/NewScenes/card_inventory_viewer.tscn" id="3_c7qqx"]
+[ext_resource type="Script" uid="uid://drvmlksoqg4xf" path="res://assets/Data/Scripts/deck_editor_manager.gd" id="6_0owim"]
+
+[node name="DeckEditorContainer" type="MarginContainer" unique_id=904396566]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lnjk4")
+player_stats = ExtResource("2_ap0pw")
+metadata/_edit_use_anchors_ = true
+
+[node name="MainEditorContainer" type="HBoxContainer" parent="." unique_id=1389006589]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="CardViewerContainer" parent="MainEditorContainer" unique_id=1198060287 instance=ExtResource("1_ah441")]
+custom_minimum_size = Vector2(350, 620)
+custom_maximum_size = Vector2(-1, 620)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="DeckEditorViewer" parent="MainEditorContainer" unique_id=962833877 node_paths=PackedStringArray("card_manager") instance=ExtResource("2_ufk87")]
+layout_mode = 2
+card_manager = NodePath("../..")
+
+[node name="CardInventoryViewer" parent="MainEditorContainer" unique_id=1260716519 node_paths=PackedStringArray("card_manager") instance=ExtResource("3_c7qqx")]
+layout_mode = 2
+card_manager = NodePath("../..")
+
+[node name="DeckEditorManager" type="Node" parent="." unique_id=1615122215]
+script = ExtResource("6_0owim")

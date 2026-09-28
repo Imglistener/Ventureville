@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://y5w4mn6hr4iu" path="res://scripts/CardUI/CardState/StateCardClicked.gd" id="11_80gmr"]
 [ext_resource type="Script" uid="uid://btv4edn2vhq6g" path="res://scripts/CardUI/CardState/StateCardHovering.gd" id="12_x53gr"]
 [ext_resource type="Script" uid="uid://4cta7ix0hl1f" path="res://scripts/CardUI/CardState/StateCardReleased.gd" id="13_jv0el"]
+[ext_resource type="Texture2D" uid="uid://28c6af17kw7j" path="res://assets/PNG/Button04.png" id="15_ttips"]
+[ext_resource type="Script" uid="uid://ogbn3f86umye" path="res://assets/Data/Scripts/amount_owned_label.gd" id="16_4rgl6"]
 [ext_resource type="Texture2D" uid="uid://cxou5rhtoktyl" path="res://assets/GUI/orb_ver_2.png" id="16_x53gr"]
 [ext_resource type="Texture2D" uid="uid://b8qcjheona08j" path="res://assets/GUI/Mana Gem.png" id="17_jv0el"]
 [ext_resource type="Shader" uid="uid://dbxxvumw1awb" path="res://drop shadow.gdshader" id="18_odcj6"]
@@ -173,20 +175,12 @@ offset_right = 694.0
 offset_bottom = 1013.0
 mouse_filter = 2
 
-[node name="KeywordTooltipsContainer2D" type="Node2D" parent="CardAnchor/CardScaler" unique_id=876596936]
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="KeywordTooltipAnchor" type="Marker2D" parent="CardAnchor/CardScaler/KeywordTooltipsContainer2D" unique_id=519834263]
-position = Vector2(685.7141, 22.85714)
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="KeywordTooltipAnchor2" type="Marker2D" parent="CardAnchor/CardScaler/KeywordTooltipsContainer2D" unique_id=1689542664]
-position = Vector2(685.7141, 297.1427)
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="KeywordTooltipAnchor3" type="Marker2D" parent="CardAnchor/CardScaler/KeywordTooltipsContainer2D" unique_id=1818761080]
-position = Vector2(685.7141, 571.4282)
-scale = Vector2(0.99999994, 0.99999994)
+[node name="KeywordTooltipContainer" type="VBoxContainer" parent="CardAnchor/CardScaler" unique_id=1035114297]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.98806065
+anchor_right = 0.98806065
+metadata/_edit_use_anchors_ = true
 
 [node name="CardFrame" type="TextureRect" parent="CardAnchor/CardScaler" unique_id=465053708]
 layout_mode = 0
@@ -380,6 +374,47 @@ offset_right = 694.0
 offset_bottom = 1013.0
 texture = ExtResource("19_3go67")
 expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CardAnchor/CardScaler" unique_id=1181915661]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -57.1427
+offset_top = -51.428467
+offset_right = -17.1427
+offset_bottom = -11.428467
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="CardAnchor/CardScaler/MarginContainer" unique_id=2063201343]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+texture = ExtResource("15_ttips")
+
+[node name="AmountOwned" type="Label" parent="CardAnchor/CardScaler/MarginContainer/TextureRect" unique_id=1745977777 node_paths=PackedStringArray("scene_root")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -79.5
+offset_right = 24.5
+offset_bottom = 79.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_bb8u2")
+theme_override_font_sizes/font_size = 89
+text = "5"
+horizontal_alignment = 1
+script = ExtResource("16_4rgl6")
+scene_root = NodePath("../../../../..")
 
 [node name="CardAnimation" type="AnimationPlayer" parent="." unique_id=717851961]
 libraries/ = SubResource("AnimationLibrary_bb8u2")

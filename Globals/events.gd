@@ -14,7 +14,9 @@ signal card_cost_changed(card : Card)
 signal effect_display(effect: StatusEffect, anchor: Node2D, source_position: Vector2)
 signal calling_arrange_hand
 signal card_exhausted(card: Card)
-
+signal turn_cards_drawn
+signal add_card_to_deck_request(card: Card)
+signal remove_card_from_deck_request(card: Card)
 #Phase Signals
 signal PlayerStandbyStart(current_phase: PhaseManager.Phases)
 signal PlayerStandbyEnd(current_phase: PhaseManager.Phases)

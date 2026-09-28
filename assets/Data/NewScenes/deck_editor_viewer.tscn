@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cul4hcol7nbxx"]
+
+[ext_resource type="Script" uid="uid://cmcafay35ipb7" path="res://assets/Data/NewScenes/deck_editor_viewer.gd" id="1_8b50g"]
+[ext_resource type="Texture2D" uid="uid://v0tydlfyg7mn" path="res://assets/KennyUI/Panel/panel-008.png" id="1_725re"]
+[ext_resource type="Script" uid="uid://bn4jenqtdrjpe" path="res://scripts/DeckViewerFunctionality.gd" id="3_knot5"]
+[ext_resource type="PackedScene" uid="uid://nody171fluag" path="res://assets/Data/NewScenes/Cards/card.tscn" id="4_8b50g"]
+[ext_resource type="Resource" uid="uid://dnux8rwh6xw2l" path="res://assets/Data/Classes/BloodMagus.tres" id="5_td5vt"]
+
+[node name="DeckEditorViewer" type="MarginContainer" unique_id=962833877]
+custom_minimum_size = Vector2(506.667, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -773.333
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8b50g")
+
+[node name="DeckViewerBackground" type="NinePatchRect" parent="." unique_id=46952338]
+self_modulate = Color(1, 1, 1, 0.5647059)
+layout_mode = 2
+texture = ExtResource("1_725re")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="DeckViewerBackground" unique_id=1261748636]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DeckViewerBackground/MarginContainer" unique_id=1333400493]
+layout_mode = 2
+
+[node name="DeckView" type="GridContainer" parent="DeckViewerBackground/MarginContainer/ScrollContainer" unique_id=2051208855]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+columns = 3
+
+[node name="Functionality" type="Node" parent="." unique_id=1020685287]
+script = ExtResource("3_knot5")
+card_scene = ExtResource("4_8b50g")
+character_stats = ExtResource("5_td5vt")

@@ -225,8 +225,11 @@ func PhaseUI_active(phase : PhaseManager.Phases) -> void:
 		PhaseManager.Phases.PlayerStandbyEnd:
 			phase_manager.call_deferred('advance_to_next_phase')
 		PhaseManager.Phases.PlayerBattleStart:
+			end_turn.disabled = true
+			if hand.is_hand_hidden:
+				await hand.show_hand()
+			hand.start_turn()
 			splash_in(end_turn, Vector2.LEFT, 300, 0.5)
-			end_turn.disabled = false
 			for view in enemy_manager.get_enemy_views():
 				view.enemy_view.disabled = false
 			transition_to(hand, standby_menu)
@@ -235,9 +238,8 @@ func PhaseUI_active(phase : PhaseManager.Phases) -> void:
 			splash_in(deck_pile, Vector2.RIGHT, 300, 0.5)
 			splash_in(discard_pile, Vector2.RIGHT, 300, 0.5)
 			await node_visible
-			if hand.is_hand_hidden:
-				await hand.show_hand()
-			hand.start_turn() 
+			await Events.turn_cards_drawn
+			end_turn.disabled = false
 		PhaseManager.Phases.PlayerBattleEnd:
 			end_turn.disabled = true
 			splash_out(end_turn, Vector2.RIGHT, 300, 0.5)

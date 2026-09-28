@@ -1,0 +1,396 @@
+[gd_scene format=3 uid="uid://borv7bx230xl"]
+
+[ext_resource type="Texture2D" uid="uid://v0tydlfyg7mn" path="res://assets/KennyUI/Panel/panel-008.png" id="1_cbrrn"]
+[ext_resource type="Script" uid="uid://bbiw1u40yai75" path="res://assets/Data/NewScenes/card_viewer_container.gd" id="1_hoq1k"]
+[ext_resource type="Texture2D" uid="uid://bb7lxj71qsf05" path="res://assets/PNG/Button15.png" id="2_7x8bd"]
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="3_m6q3i"]
+[ext_resource type="Texture2D" uid="uid://d1w2f2i34owp" path="res://assets/GUI/bloodmage_Icon_no_b.png" id="4_qb25s"]
+[ext_resource type="Texture2D" uid="uid://cf65ba4oj2g0t" path="res://assets/GUI/Card_Game_border_blood.png" id="5_7x8bd"]
+[ext_resource type="Texture2D" uid="uid://36omtd2w1tk3" path="res://assets/GUI/orb.png" id="6_1ibcy"]
+[ext_resource type="Texture2D" uid="uid://kjxrlc0qrqoc" path="res://assets/KennyUI/Transparent border/panel-transparent-border-005.png" id="6_bj6fc"]
+[ext_resource type="Texture2D" uid="uid://dkr62mk01xwek" path="res://assets/KennyUI/Border/panel-border-005.png" id="6_m6q3i"]
+[ext_resource type="Texture2D" uid="uid://b8qcjheona08j" path="res://assets/GUI/Mana Gem.png" id="7_f0tpn"]
+[ext_resource type="Texture2D" uid="uid://doangfmqwcwof" path="res://assets/KennyUI/Transparent center/panel-transparent-center-000.png" id="7_ijac5"]
+[ext_resource type="Texture2D" uid="uid://d4cy4q802gepi" path="res://assets/Wenrexa/PNG/Button16.png" id="8_bj6fc"]
+[ext_resource type="Texture2D" uid="uid://dre6lbkxlx7ew" path="res://assets/Wenrexa/PNG/Button18.png" id="9_1sx6n"]
+[ext_resource type="Script" uid="uid://nfl3mpul3rny" path="res://scripts/CardViewerFunctionality.gd" id="13_f0tpn"]
+[ext_resource type="Resource" uid="uid://b0ecilk1kd45j" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Exultation.tres" id="14_4lmy3"]
+[ext_resource type="Resource" uid="uid://dnux8rwh6xw2l" path="res://assets/Data/Classes/BloodMagus.tres" id="15_hoq1k"]
+[ext_resource type="Script" uid="uid://bfadsw6e1r6hb" path="res://assets/Data/Scripts/add_remove_functionality.gd" id="17_o1rif"]
+
+[node name="CardViewerContainer" type="MarginContainer" unique_id=1198060287]
+anchors_preset = -1
+anchor_right = 0.31770858
+anchor_bottom = 0.7222222
+offset_right = -56.666992
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hoq1k")
+metadata/_edit_use_anchors_ = true
+
+[node name="MainVBox" type="VBoxContainer" parent="." unique_id=642803192]
+layout_mode = 2
+
+[node name="CardViewerBackground" type="NinePatchRect" parent="MainVBox" unique_id=1642972193]
+self_modulate = Color(1, 1, 1, 0.5647059)
+custom_maximum_size = Vector2(-1, 520)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_cbrrn")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="MainVBox/CardViewerBackground" unique_id=2053062253]
+custom_maximum_size = Vector2(-1, 520)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainVBox/CardViewerBackground/MarginContainer" unique_id=609593827]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CardTitleContainer" type="MarginContainer" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer" unique_id=177317515]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 8
+
+[node name="CardTitleBackground" type="TextureRect" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardTitleContainer" unique_id=1269285202]
+self_modulate = Color(0.9609375, 0.18017578, 0.18017578, 1)
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture = ExtResource("2_7x8bd")
+
+[node name="CardTitleInnerContainer" type="MarginContainer" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardTitleContainer/CardTitleBackground" unique_id=708128582]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardTitleContainer/CardTitleBackground/CardTitleInnerContainer" unique_id=844651262]
+layout_mode = 2
+theme_override_constants/separation = 66
+
+[node name="CardTitleLabel" type="Label" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardTitleContainer/CardTitleBackground/CardTitleInnerContainer/HBoxContainer" unique_id=1376601976]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme = ExtResource("3_m6q3i")
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 20
+text = "BLOOD CLAW"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardTitleContainer/CardTitleBackground/CardTitleInnerContainer/HBoxContainer" unique_id=406813757]
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="CardAttributeLabel" type="Label" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardTitleContainer/CardTitleBackground/CardTitleInnerContainer/HBoxContainer/HBoxContainer" unique_id=1387377953]
+layout_mode = 2
+theme = ExtResource("3_m6q3i")
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 15
+text = "HEMOMANCY"
+horizontal_alignment = 1
+
+[node name="AttributeIcon" type="TextureRect" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardTitleContainer/CardTitleBackground/CardTitleInnerContainer/HBoxContainer/HBoxContainer" unique_id=721281845]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("4_qb25s")
+expand_mode = 1
+
+[node name="CardViewContainer" type="MarginContainer" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer" unique_id=181243672]
+custom_maximum_size = Vector2(-1, 220)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_right = 13
+
+[node name="CardPlaceHolder" type="TextureRect" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardViewContainer" unique_id=1616577521]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_7x8bd")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardViewContainer" unique_id=1429379435]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = -61
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardViewContainer/VBoxContainer2" unique_id=1214932407]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardViewContainer/VBoxContainer2/MarginContainer2" unique_id=193843127]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_1ibcy")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="APCostLabel" type="Label" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardViewContainer/VBoxContainer2/MarginContainer2/TextureRect" unique_id=1826193929]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -9.5
+offset_right = 25.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_m6q3i")
+theme_override_colors/font_color = Color(0.7109375, 0.7109375, 0.7109375, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 16
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardViewContainer/VBoxContainer2" unique_id=1621830351]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardViewContainer/VBoxContainer2/MarginContainer3" unique_id=1656021026]
+custom_minimum_size = Vector2(50, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_f0tpn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MPCostLabel" type="Label" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardViewContainer/VBoxContainer2/MarginContainer3/TextureRect" unique_id=397759348]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -15.0
+offset_right = 3.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_m6q3i")
+theme_override_colors/font_color = Color(0.7109375, 0.7109375, 0.7109375, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 16
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardViewContainer" unique_id=1184833337]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardViewContainer/VBoxContainer" unique_id=1316660308]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardViewContainer/VBoxContainer/MarginContainer" unique_id=9127776]
+layout_mode = 2
+texture = ExtResource("6_bj6fc")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardViewContainer/VBoxContainer/MarginContainer/NinePatchRect" unique_id=2064058933]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -6
+alignment = 1
+
+[node name="Ownedlabel" type="Label" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardViewContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer" unique_id=1797025693]
+layout_mode = 2
+theme = ExtResource("3_m6q3i")
+theme_override_colors/font_color = Color(0.7109375, 0.7109375, 0.7109375, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 10
+text = "Owned:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AmountOwnedLabel" type="Label" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardViewContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer" unique_id=1133789722]
+layout_mode = 2
+theme = ExtResource("3_m6q3i")
+theme_override_colors/font_color = Color(0.7109375, 0.7109375, 0.7109375, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardTypeContainer" type="MarginContainer" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer" unique_id=1872659047]
+custom_maximum_size = Vector2(-1, 60)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CardTypeTargetLabel" type="Label" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardTypeContainer" unique_id=1251826526]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_m6q3i")
+theme_override_constants/outline_size = 1
+text = " BUFF|SELF "
+horizontal_alignment = 1
+
+[node name="Frame" type="NinePatchRect" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardTypeContainer/CardTypeTargetLabel" unique_id=672760718]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_m6q3i")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="CardEffectContainer" type="MarginContainer" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer" unique_id=1018641816]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 11
+
+[node name="CardEffectRichLabel" type="RichTextLabel" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardEffectContainer" unique_id=27905794]
+layout_mode = 2
+theme = ExtResource("3_m6q3i")
+theme_override_constants/line_separation = -14
+text = "Deal 8 Blood Damage. Deal 8 Blood Damage.
+Deal 8 Blood Damage.Deal 8 Blood Damage.Deal 8 Blood Damage."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Frame" type="NinePatchRect" parent="MainVBox/CardViewerBackground/MarginContainer/VBoxContainer/CardEffectContainer" unique_id=1733865116]
+layout_mode = 2
+texture = ExtResource("6_m6q3i")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="AddRemoveMargin" type="MarginContainer" parent="MainVBox" unique_id=1658631454]
+custom_minimum_size = Vector2(0, 100)
+custom_maximum_size = Vector2(-1, 100)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MainVBox/AddRemoveMargin" unique_id=1879959866]
+layout_mode = 2
+texture = ExtResource("7_ijac5")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="MainVBox/AddRemoveMargin/NinePatchRect" unique_id=195491030]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainVBox/AddRemoveMargin/NinePatchRect/MarginContainer" unique_id=319919368]
+layout_mode = 2
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="RemoveButtonMargin" type="MarginContainer" parent="MainVBox/AddRemoveMargin/NinePatchRect/MarginContainer/HBoxContainer" unique_id=1244296632]
+custom_minimum_size = Vector2(180, 80)
+custom_maximum_size = Vector2(-1, 80)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="RemoveButton" type="TextureButton" parent="MainVBox/AddRemoveMargin/NinePatchRect/MarginContainer/HBoxContainer/RemoveButtonMargin" unique_id=1580793129]
+layout_mode = 2
+texture_normal = ExtResource("8_bj6fc")
+ignore_texture_size = true
+stretch_mode = 0
+flip_h = true
+
+[node name="Label" type="Label" parent="MainVBox/AddRemoveMargin/NinePatchRect/MarginContainer/HBoxContainer/RemoveButtonMargin/RemoveButton" unique_id=1259936244]
+layout_mode = 0
+anchor_left = 0.21111111
+anchor_top = 0.35
+anchor_right = 0.78333336
+anchor_bottom = 0.6375
+size_flags_horizontal = 4
+theme = ExtResource("3_m6q3i")
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 16
+text = "Remove Card"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AddButtonMargin" type="MarginContainer" parent="MainVBox/AddRemoveMargin/NinePatchRect/MarginContainer/HBoxContainer" unique_id=516708587]
+custom_minimum_size = Vector2(180, 80)
+custom_maximum_size = Vector2(-1, 80)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="AddButton" type="TextureButton" parent="MainVBox/AddRemoveMargin/NinePatchRect/MarginContainer/HBoxContainer/AddButtonMargin" unique_id=1348082104]
+layout_mode = 2
+texture_normal = ExtResource("9_1sx6n")
+ignore_texture_size = true
+stretch_mode = 0
+flip_h = true
+
+[node name="Label" type="Label" parent="MainVBox/AddRemoveMargin/NinePatchRect/MarginContainer/HBoxContainer/AddButtonMargin/AddButton" unique_id=580191801]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21111111
+anchor_top = 0.35
+anchor_right = 0.78333336
+anchor_bottom = 0.6375
+size_flags_horizontal = 4
+theme = ExtResource("3_m6q3i")
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 16
+text = "Add Card"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Functionality" type="Node" parent="." unique_id=336625533]
+script = ExtResource("13_f0tpn")
+card_displayed = ExtResource("14_4lmy3")
+player_stats = ExtResource("15_hoq1k")
+
+[node name="AddRemoveFunctionality" type="Node" parent="Functionality" unique_id=1018242585]
+script = ExtResource("17_o1rif")

@@ -15,3 +15,4 @@ ap_cost = 1
 is_card_nullable = true
 Description = "Sacrifice 20 HP. Gain 1 Ascendant Ritual."
 LogMessage = "\"An ancient ritual fills you with supernatural powers!\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

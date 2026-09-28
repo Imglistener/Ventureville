@@ -16,3 +16,4 @@ mp_cost = 2
 ap_cost = 1
 Description = "Sacrifice 8 HP. Deal {scaled} Blood Damage, then addtional Blood Damage equal to the Target's Blood Syphon."
 LogMessage = "\"Your Crimson Spear drinks in your Enemy's Blood!\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

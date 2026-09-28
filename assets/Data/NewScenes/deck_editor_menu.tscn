@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://d2dkqhbcx60sv"]
+
+[ext_resource type="Script" uid="uid://d2ul37wh17aim" path="res://assets/Data/Scripts/deck_editor_menu.gd" id="1_0ehgw"]
+[ext_resource type="Shader" uid="uid://ds0oi5spicmse" path="res://assets/Data/NewScenes/Scroll.gdshader" id="1_s4r4b"]
+[ext_resource type="Resource" uid="uid://dnux8rwh6xw2l" path="res://assets/Data/Classes/BloodMagus.tres" id="2_4bfk8"]
+[ext_resource type="Texture2D" uid="uid://dlkas3ttipe3e" path="res://assets/KennyUI/Transparent border/panel-transparent-border-015.png" id="3_4bfk8"]
+[ext_resource type="Texture2D" uid="uid://csgwkwwy343rx" path="res://background.png" id="3_s4r4b"]
+[ext_resource type="PackedScene" uid="uid://b4q17krleilfc" path="res://assets/Data/NewScenes/deck_editor.tscn" id="4_nusi2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyk10"]
+shader = ExtResource("1_s4r4b")
+shader_parameter/intensity = 0.1690000080275
+shader_parameter/softness = 0.6050000287375
+shader_parameter/scroll_speed = 0.05000009737499988
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[node name="DeckEditorMenu" type="Control" unique_id=1166922864]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ehgw")
+character_data = ExtResource("2_4bfk8")
+
+[node name="MainMargin" type="MarginContainer" parent="." unique_id=1566107154]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TopVboxContainer" type="VBoxContainer" parent="MainMargin" unique_id=802824252]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="ToolbarContainer" type="MarginContainer" parent="MainMargin/TopVboxContainer" unique_id=1366224045]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="ToolbarBackground" type="NinePatchRect" parent="MainMargin/TopVboxContainer/ToolbarContainer" unique_id=423616]
+self_modulate = Color(0.10040283, 0, 0.13671875, 1)
+layout_mode = 2
+texture = ExtResource("3_4bfk8")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="BackgroundTexture" type="TextureRect" parent="MainMargin/TopVboxContainer" unique_id=1803727701]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_cyk10")
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_s4r4b")
+expand_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMargin/TopVboxContainer/BackgroundTexture" unique_id=920854710]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="DeckEditorContainer" parent="MainMargin/TopVboxContainer/BackgroundTexture/MarginContainer" unique_id=904396566 instance=ExtResource("4_nusi2")]
+layout_mode = 2
+size_flags_horizontal = 4
+player_stats = null

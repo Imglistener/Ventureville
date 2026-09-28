@@ -4,3 +4,9 @@ class_name Toolbar extends MarginContainer
 @onready var help: TextureButton = $toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Help
 @onready var show_deck: TextureButton = $"toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Show Deck"
 @onready var pause: TextureButton = $toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Pause
+
+enum Toolbar_Modes{Combat, NonCombat}
+var toolbar_mode: Toolbar_Modes = Toolbar_Modes.Combat
+func _ready() -> void:
+	if toolbar_mode == Toolbar_Modes.NonCombat:
+		show_deck.hide()
