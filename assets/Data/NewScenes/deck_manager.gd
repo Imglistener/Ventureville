@@ -31,7 +31,7 @@ func ready_card_drawn() -> CardUI:
 
 	CardScene.Discard_position = discard_pile.position
 	CardScene.deck_position = deck_pile.position
-	CardScene.global_position = start_pos
+	CardScene.spawn_global_pos = start_pos
 	CardScene.parent = targeting_area
 	CardScene.player_stats = player_stat_manager.Player
 	CardScene.card_data = CardData

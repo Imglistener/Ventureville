@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://dqbnpvvarw7du"]
+
+[ext_resource type="Script" uid="uid://6pgw4jmbl21j" path="res://assets/Data/NewScenes/card_inventory_viewer.gd" id="1_2patx"]
+[ext_resource type="Texture2D" uid="uid://v0tydlfyg7mn" path="res://assets/KennyUI/Panel/panel-008.png" id="1_dxwa1"]
+[ext_resource type="Texture2D" uid="uid://bb7lxj71qsf05" path="res://assets/PNG/Button15.png" id="2_dxwa1"]
+[ext_resource type="Texture2D" uid="uid://btcvrvgwq04hg" path="res://assets/Wenrexa/PNG/Icon04.png" id="3_fmua2"]
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="4_6775t"]
+[ext_resource type="Script" uid="uid://c2cpj0averukx" path="res://assets/Data/NewScenes/CardInventoryFunctionality.gd" id="6_fmua2"]
+[ext_resource type="PackedScene" uid="uid://nody171fluag" path="res://assets/Data/NewScenes/Cards/card.tscn" id="7_2patx"]
+[ext_resource type="Resource" uid="uid://dnux8rwh6xw2l" path="res://assets/Data/Classes/BloodMagus.tres" id="8_s0cp3"]
+[ext_resource type="Script" uid="uid://b7b85pfm6enlw" path="res://assets/Data/Scripts/search_functionality.gd" id="9_2patx"]
+[ext_resource type="Script" uid="uid://844yju5toi75" path="res://assets/Data/Scripts/amount_owned_functionality.gd" id="10_s0cp3"]
+
+[node name="CardInventoryViewer" type="MarginContainer" unique_id=1260716519]
+custom_minimum_size = Vector2(406.667, 0)
+custom_maximum_size = Vector2(406.667, -1)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 32.0
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_2patx")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1246570258]
+self_modulate = Color(0.65882355, 0.65882355, 0.65882355, 0.5647059)
+layout_mode = 2
+texture = ExtResource("1_dxwa1")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect" unique_id=193686248]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer" unique_id=74281328]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=163974856]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/MarginContainer/VBoxContainer/MarginContainer" unique_id=684560059]
+self_modulate = Color(0.23828125, 0.03164673, 0.03164673, 1)
+layout_mode = 2
+texture = ExtResource("2_dxwa1")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=1721719104]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/TextureRect/MarginContainer" unique_id=2076178679]
+layout_mode = 2
+
+[node name="FilterButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/TextureRect/MarginContainer/HBoxContainer" unique_id=1185092359]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_fmua2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="SearchBar" type="LineEdit" parent="NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/TextureRect/MarginContainer/HBoxContainer" unique_id=1919741182]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(-1, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("4_6775t")
+theme_override_font_sizes/font_size = 22
+placeholder_text = "Input a keyword to search"
+alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=36182098]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/MarginContainer2" unique_id=23416638]
+layout_mode = 2
+
+[node name="DeckView" type="GridContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer" unique_id=631120735]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+columns = 2
+
+[node name="Functionality" type="Node" parent="." unique_id=959956329]
+script = ExtResource("6_fmua2")
+card_scene = ExtResource("7_2patx")
+character_stats = ExtResource("8_s0cp3")
+
+[node name="SearchFunctionality" type="Node" parent="Functionality" unique_id=255676783 node_paths=PackedStringArray("searchbar")]
+script = ExtResource("9_2patx")
+searchbar = NodePath("../../NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/TextureRect/MarginContainer/HBoxContainer/SearchBar")
+
+[node name="AmountOwnedFunctionality" type="Node" parent="Functionality" unique_id=145976720]
+script = ExtResource("10_s0cp3")
+
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/TextureRect/MarginContainer/HBoxContainer/FilterButton" to="Functionality/SearchFunctionality" method="_clear_searchbar"]
+[connection signal="text_changed" from="NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/TextureRect/MarginContainer/HBoxContainer/SearchBar" to="Functionality/SearchFunctionality" method="_update_search_results"]

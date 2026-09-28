@@ -13,6 +13,7 @@ var is_card_highlighted: bool
 var is_arranging: bool = false
 var is_hand_hidden = false
 var focused_card: CardUI
+var _entrance_counter := 0
 # Lets overlapping arrange_hand() calls agree on who clears is_arranging.
 var _arrange_serial := 0
 
@@ -56,17 +57,20 @@ func start_turn() -> void:
 		await player_stat_manager.ready
 	if not deck_manager.is_node_ready():
 		await deck_manager.ready
-	draw_card(player_stat_manager.Entity.draw_power)
-	arrange_hand()
+	_entrance_counter = 0
+	await draw_card(player_stat_manager.Entity.draw_power)
+
 
 func draw_card(amount: int) -> void:
 	for i in range(amount):
 		var CardScene = deck_manager.ready_card_drawn()
 		add_child(CardScene)
+		CardScene.global_position = CardScene.spawn_global_pos
 		if not CardScene.is_node_ready():
 			await CardScene.ready
 		Events.card_drawn.emit(CardScene.card_data)
 		await arrange_hand()
+		
 	define_playable()
 
 # A card being carried (clicked / dragging / targeting) or already released owns
@@ -81,11 +85,12 @@ func arrange_hand():
 	var serial := _arrange_serial
 	var max_offset: int = 550
 	var offset: float = max_offset * (float(get_child_count()) / 6)
-	var curve_height: int = 60  # tweak to taste
+	var curve_height: int = 60
 
 	var final_pos: Vector2
 	var final_rot: float
-	var longest := 0.0
+	var running_tweens: Array[Tween] = []
+
 	for i in get_children():
 		var hand_ratio: float = 0.5
 		if get_child_count() > 1:
@@ -97,7 +102,6 @@ func arrange_hand():
 			final_rot = 0
 			final_pos = Vector2(50, 0)
 		if i is CardUI:
-			# Always record the slot so the card returns to the right place later.
 			i.hand_position = final_pos
 			i.hand_rotation = final_rot
 			i.hand_position_set = true
@@ -105,20 +109,34 @@ func arrange_hand():
 				continue
 			if i.hand_tween and i.hand_tween.is_valid():
 				i.hand_tween.kill()
-			var pos_time: float = 0.03 + (i.get_index() * 0.075)
-			var rot_time: float = 0.2 + (i.get_index() * 0.075)
+
+			var pos_time: float
+			var rot_time: float
+			if not i.has_entered_hand:
+				_entrance_counter += 1
+				pos_time = 0.03 + (_entrance_counter * 0.075)
+				rot_time = 0.2 + (_entrance_counter * 0.075)
+				i.has_entered_hand = true
+			else:
+				pos_time = 0.03
+				rot_time = 0.2
+
 			var tween = i.create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel(true)
 			tween.tween_property(i, "position", final_pos, pos_time)
 			tween.tween_property(i, "rotation", final_rot, rot_time)
 			i.hand_tween = tween
-			longest = maxf(longest, maxf(pos_time, rot_time))
-			
+			running_tweens.append(tween)
 
-	# A timer instead of `await last_tween.finished`: a killed tween or a freed
-	# card never emits `finished`, which used to leave is_arranging stuck on true.
-	await get_tree().create_timer(longest).timeout
+	# Wait on the tweens themselves, not a parallel timer that only
+	# approximates their length — a Tween and a SceneTreeTimer are
+	# independently clocked and can drift a frame or two apart.
+	for t in running_tweens:
+		if t.is_valid() and t.is_running():
+			await t.finished
+
 	if serial == _arrange_serial:
 		is_arranging = false
+
 func define_playable() -> void:
 	for i in get_children():
 		# Stack cards left-to-right so rightmost is on top
@@ -134,6 +152,7 @@ func define_playable() -> void:
 			i.is_playable.visible = false
 			i.is_playable.z_as_relative = true
 			i.is_playable.z_index = i.get_index() - 1
+	Events.turn_cards_drawn.emit()
 
 func hide_hand() -> void: 
 	var hiding_tween = create_tween()
