@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://lgag4d5rcy0l"]
 
-[ext_resource type="Texture2D" uid="uid://cxx74f6bbtye4" path="res://assets/GUI/BlockEffect.png" id="1_4gjef"]
 [ext_resource type="Script" uid="uid://bmbmvm7ro8bmh" path="res://assets/Data/NewScenes/block_visual_effect.gd" id="1_tbf3a"]
+[ext_resource type="Texture2D" uid="uid://c470hyovkotdn" path="res://assets/GUI/shield_.png" id="2_tbf3a"]
 [ext_resource type="AudioStream" uid="uid://chvtdplc4wluk" path="res://assets/SFX/BlockGained.wav" id="3_tbf3a"]
 
 [sub_resource type="Animation" id="Animation_h4835"]
@@ -139,16 +139,17 @@ _data = {
 
 [node name="BlockVisualEffect" type="Node2D" unique_id=1495464867]
 modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.25, 0.25)
 script = ExtResource("1_tbf3a")
 
 [node name="Sprite2DBackground" type="Sprite2D" parent="." unique_id=874578305]
 self_modulate = Color(0.265625, 0.265625, 0.265625, 0.27058825)
 scale = Vector2(0.405, 0.405)
-texture = ExtResource("1_4gjef")
+texture = ExtResource("2_tbf3a")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1033902663]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_4gjef")
+texture = ExtResource("2_tbf3a")
 
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=652547084]
 libraries/ = SubResource("AnimationLibrary_tbf3a")

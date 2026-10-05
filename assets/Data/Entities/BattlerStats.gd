@@ -3,6 +3,7 @@ signal Stats_Changed
 
 enum BATTLER_TYPES {PLAYER , ENEMY}
 signal damage_taken(amount: int, entity_name: String)
+signal hp_sacrificed(amount: int)   # NEW: only fired by true_take_damage (blood tax), not by enemy hits
 signal sanity_damage_taken(amount: int, entity_name: String)
 signal health_restored(amount: int, entity_name: String)
 signal sanity_restored(amount: int, entity_name: String)
@@ -42,10 +43,12 @@ func modify_buff_modifier(amount: float) -> void:
 func get_attack_bonus() -> float: 
 	return buff_damage_modifier
 
+## Unblockable HP loss from sacrificing (Card._pay_blood_tax is the only caller).
 func true_take_damage(amount: int) -> void:
 	current_health -= amount
 	Stats_Changed.emit()
 	damage_taken.emit(amount, entity_name)
+	hp_sacrificed.emit(amount)
 	if current_health == 0:
 		entity_died.emit(entity_name)
 
@@ -71,10 +74,10 @@ func set_sanity(value: int) -> void:
 	current_sanity = clampi(value, 0, 9999)
 	Stats_Changed.emit()
 func set_san_block(value: int) -> void:
-	current_san_block = clampi(value, 0, 99999999)
+	current_san_block = clampi(value, 0, 9999)
 	Stats_Changed.emit()
 func set_block(value: int) -> void:
-	current_block = clampi(value, 0, 99999999)
+	current_block = clampi(value, 0, 9999)
 	Stats_Changed.emit()
 	
 func heal(amount: int) -> void:

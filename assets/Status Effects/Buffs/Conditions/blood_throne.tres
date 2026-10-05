@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BloodThroneCondition" format=3 uid="uid://bgvnec4khmycm"]
+
+[ext_resource type="Texture2D" uid="uid://cal2sra4c7law" path="res://assets/GUI/Fire_tik_Icon.png" id="1_dlxke"]
+[ext_resource type="Script" uid="uid://cpmgi5kx25tc7" path="res://assets/Status Effects/Buffs/Conditions/blood_throne.gd" id="2_akfqp"]
+
+[resource]
+script = ExtResource("2_akfqp")
+condition_name = "Blood Throne"
+condition_icon = ExtResource("1_dlxke")
+condition_texture = ExtResource("1_dlxke")
+condition_description = "Whenever you Sacrifice, Gain 1 MP."
+metadata/_custom_type_script = "uid://cpmgi5kx25tc7"

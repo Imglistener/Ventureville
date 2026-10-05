@@ -1,0 +1,18 @@
+[gd_resource type="Resource" format=3 uid="uid://ctd6ri7r8abvg"]
+
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="1_vt3hx"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="2_8gk5d"]
+[ext_resource type="Script" uid="uid://dlqkcos2eq86h" path="res://assets/Data/Player/PlayerActions/CardEffects/Blood Scythe.gd" id="3_tpu2l"]
+
+[resource]
+script = ExtResource("3_tpu2l")
+StatsScaled = ExtResource("1_vt3hx")
+damage_type = ExtResource("2_8gk5d")
+name = "Blood Scythe"
+rarity = 1
+target = 1
+mp_cost = 2
+ap_cost = 1
+Description = "Deal {scaled} Blood Damage to a target. If you sacrificed this turn, hits twice."
+LogMessage = "\"Your conjure a scythe of blood and behead!\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"
