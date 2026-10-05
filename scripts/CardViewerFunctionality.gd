@@ -26,6 +26,8 @@ func set_card_displayed(card : CardUI) -> void:
 	
 
 func display_card() -> void:
+	if not card_displayed:
+		return
 	card_title_label.text = card_displayed.name
 	ap_cost_label.text = str(card_displayed.ap_cost)
 	mp_cost_label.text = str(card_displayed.mp_cost)
@@ -33,6 +35,7 @@ func display_card() -> void:
 	card_effect_rich_label.text = get_updated_card_description()
 	card_attribute_label.text = get_card_attribute()
 	amount_owned_label.text = get_card_amount_owned()
+	_update_button_states()
 
 func setup_card_type_target() -> String:
 	var value: String = " "
@@ -66,6 +69,13 @@ func get_updated_card_description() -> String:
 func get_card_attribute() -> String:
 	return str(Card.CardAttribute.find_key(card_displayed.attribute))
 
+func _update_button_states() -> void:
+	var can_add := player_deck.can_add_to_deck(card_displayed)
+	var can_remove := player_deck.can_remove_from_deck(card_displayed)
+	add_button.disabled = not can_add
+	remove_button.disabled = not can_remove
+	add_button.modulate = Color.WHITE if can_add else Color(0.5, 0.5, 0.5, 1.0)
+	remove_button.modulate = Color.WHITE if can_remove else Color(0.5, 0.5, 0.5, 1.0)
 func get_card_amount_owned() -> String:
 	player_deck = player_stats.starting_deck
-	return str(player_deck.Obtained_Cards[card_displayed])
+	return str(player_deck.get_owned(card_displayed))

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cwbewlnk208ar"]
+
+[ext_resource type="Script" uid="uid://cd56g2dgkvov2" path="res://assets/Data/Scripts/card_display_screen.gd" id="1_pngk8"]
+[ext_resource type="Resource" uid="uid://b0ecilk1kd45j" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Exultation.tres" id="2_8xe2d"]
+[ext_resource type="Texture2D" uid="uid://conye545creii" path="res://assets/Edinnu_UI_asset_pack/Menu_buttons/Menu_button (15).png" id="3_6sxfm"]
+[ext_resource type="Resource" uid="uid://dnux8rwh6xw2l" path="res://assets/Data/Classes/BloodMagus.tres" id="4_3yqxb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghndp"]
+bg_color = Color(0, 0, 0, 0.62600005)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="CardDisplayScreen" type="Control" unique_id=1896939184]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pngk8")
+card_displayed = ExtResource("2_8xe2d")
+player_data = ExtResource("4_3yqxb")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1792610514]
+custom_maximum_size = Vector2(1120, 640)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Panel" parent="MarginContainer" unique_id=751018698]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ghndp")
+
+[node name="MainMargin" type="MarginContainer" parent="MarginContainer/Background" unique_id=1371016686]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/Background/MainMargin" unique_id=1005693492]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("3_6sxfm")
+stretch_mode = 0
+
+[connection signal="pressed" from="MarginContainer/Background/MainMargin/TextureButton" to="." method="erase_self"]

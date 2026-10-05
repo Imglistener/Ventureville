@@ -1,15 +1,11 @@
-extends Card
+extends BuffCard
 
-func apply_effect(targets : Array[Node]) -> void:
+@export var draw_amount: int = 3
+@export var ap_gained: int = 2
+
+func _execute(player: Stat_Manager, targets: Array[Node]) -> void:
 	if not targets[0] is Stat_Manager:
 		return
-	var Player = targets[0].Player as CharacterInstance
-	Player.current_health = Player.current_health/2
-	var draw = DrawEffect.new()
-	draw.amount = 3
-	draw.activate(targets)
-	var gain = GainAPEffect.new()
-	gain.amount = 2
-	gain.activate(targets)
-	
-	
+	player.Player.current_health = player.Player.current_health / 2
+	_draw_cards(targets, draw_amount)
+	_gain_ap(targets, ap_gained)

@@ -1,13 +1,7 @@
-extends Card
+extends BuffCard
 
-@export var blood_tax: int
-@export var condition : BattleCondition
+@export var condition: BattleCondition
 
-func apply_effect(targets: Array[Node]) -> void:
-	if targets.is_empty() or not targets[0]:
-		return
-	var player := targets[0] as Stat_Manager
-	if not player:
-		return
-	player.Player.true_take_damage(blood_tax)
-	condition.activate(targets)
+func _execute(player: Stat_Manager, targets: Array[Node]) -> void:
+	_pay_blood_tax(player)
+	_activate_condition(condition, targets)

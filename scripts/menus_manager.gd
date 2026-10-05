@@ -29,7 +29,7 @@ signal input_received(event)
 func transition_to(node_shown: Node, hide_node: Node = null) -> void:
 	if hide_node:
 		await fade_node(hide_node, true)
-	show_node(node_shown)
+	await show_node(node_shown)
 
 func _ready() -> void:
 	if not player_stat_manager.is_node_ready():
@@ -121,7 +121,7 @@ func show_node(to_show : Node) -> void:
 	t2.tween_property(to_show, "modulate:a", 1.0, 0.3)
 	t2.parallel().tween_property(to_show, "scale", keep_scale, 0.3)
 	await t2.finished
-	
+
 	emit_signal("node_visible")
 	
 func splash_out(node: Node, direction: Vector2, distance: float, duration: float = 0.3) -> void:
@@ -228,16 +228,17 @@ func PhaseUI_active(phase : PhaseManager.Phases) -> void:
 			end_turn.disabled = true
 			if hand.is_hand_hidden:
 				await hand.show_hand()
-			hand.start_turn()
+				await fade_node(standby_menu, false)
+			else:
+				await transition_to(hand, standby_menu)
 			splash_in(end_turn, Vector2.LEFT, 300, 0.5)
 			for view in enemy_manager.get_enemy_views():
 				view.enemy_view.disabled = false
-			transition_to(hand, standby_menu)
 			splash_in(AP, Vector2.LEFT, 400, 0.5)
 			splash_in(mana_ui, Vector2.RIGHT, 300, 0.5)
 			splash_in(deck_pile, Vector2.RIGHT, 300, 0.5)
 			splash_in(discard_pile, Vector2.RIGHT, 300, 0.5)
-			await node_visible
+			hand.start_turn()
 			await Events.turn_cards_drawn
 			end_turn.disabled = false
 		PhaseManager.Phases.PlayerBattleEnd:

@@ -1,42 +1,47 @@
 class_name CardInventoryViewer
 extends Node
 
-var deck : Deck 
+const CARD_SIZE := Vector2(150.0, 236.0)
+const EMPTY_TINT := Color(0.41, 0.41, 0.41, 1.0)
+
+var deck : Deck
 @export var card_scene : PackedScene
 @export var character_stats: CharacterInstance
 @onready var search_bar: LineEdit = $"../NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/TextureRect/MarginContainer/HBoxContainer/SearchBar"
 @onready var filter_button: TextureButton = $"../NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/TextureRect/MarginContainer/HBoxContainer/FilterButton"
 @onready var card_inventory_viewer: CardInventoryContainer = $".."
-@onready var amount_owned_functionality: AmountOwnedManager = $AmountOwnedFunctionality
-
 @onready var cards_view: GridContainer = $"../NinePatchRect/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/DeckView"
 
 func _ready() -> void:
 	deck = character_stats.starting_deck
 
-	
-	
 func initialize_cards_view() -> void:
+	deck = character_stats.starting_deck if character_stats else null
+	if not deck or not card_scene or not character_stats:
+		return
+	for child in cards_view.get_children():
+		cards_view.remove_child(child)
+		child.queue_free()
+	for card in deck.Obtained_Cards.keys():
+		var ui := card_scene.instantiate() as CardUI
+		ui.Mode = CardUI.CardMode.DISPLAYING
+		ui.card_data = card
+		ui.player_stats = character_stats
+		cards_view.add_child(ui)
+		ui.set_display_size(CARD_SIZE)
+		ui.amount_owned_container.show()
+		ui.CardClicked.connect(card_clicked_propagate)
+	refresh_amounts()
+
+## Available = owned - already in deck. Call after any add/remove.
+func refresh_amounts() -> void:
 	if not deck:
 		return
-	if not card_scene:
-		return
-	if not character_stats:
-		return
-	var card_inventory = deck.Obtained_Cards
-	for card in card_inventory.keys():
-		var card_scene_instance = card_scene.instantiate() as CardUI
-		card_scene_instance.Mode = CardUI.CardMode.DISPLAYING
-		card_scene_instance.card_data = card
-		cards_view.add_child(card_scene_instance)
-		card_scene_instance.set_display_size(Vector2(150.0, 236.0))
-		card_scene_instance.player_stats = character_stats
-		card_scene_instance.update_description()
-		card_scene_instance.amount_owned_container.show()
-		card_scene_instance.amount_owned.text = str(card_inventory[card] - deck.Card_Amount_In_Deck[card])
-		card_scene_instance.CardClicked.connect(card_clicked_propagate)
-	amount_owned_functionality.update_amount_owned_labels()
-	amount_owned_functionality.modulate_cards_empty()
+	for ui in cards_view.get_children():
+		if ui is CardUI:
+			var available := deck.get_available(ui.card_data)
+			ui.amount_owned.text = str(available)
+			ui.modulate = Color.WHITE if available > 0 else EMPTY_TINT
 
 func card_clicked_propagate(card: CardUI) -> void:
 	card_inventory_viewer.set_selected_card(card)

@@ -1,79 +1,16 @@
-extends Card
-@export var base_damage: int
-@export var blood_tax : int
-@export var StatsScaled: StatInstance
-@export var AppliedEffect: StatusEffect      # BloodSyphon.tres
-@export var RegenEffect: StatusEffect        # Regeneration.tres
-@export var damage_type: DamageType
+extends AttackCard
 
-func apply_effect(targets: Array[Node]) -> void:
-	if targets.is_empty():
-		return
-	var enemy := targets[0] as EnemyView
-	if not enemy:
-		return
+@export var AppliedEffect: StatusEffect   # BloodSyphon.tres
+@export var RegenEffect: StatusEffect     # Regeneration.tres
 
-	var tree = targets[0].get_tree()
-	var player := tree.get_first_node_in_group('player') as Stat_Manager
-	if not player:
+func _execute(player: Stat_Manager, targets: Array[Node]) -> void:
+	if not targets[0] is EnemyView:
 		return
-
 	var total := _calculate_total(player.Player)
+	_pay_blood_tax(player)
+	_deal_damage(targets, total)
 
-	var deal_damage := AttackEffect.new()
-	deal_damage.damage_type = damage_type
-	deal_damage.amount = total
-	player.Player.true_take_damage(blood_tax)
-	deal_damage.activate(targets)
-
-	var applied_duration := 3
 	var apply_count := randi_range(1, 3)
-	for i in range(apply_count):
-		if AppliedEffect.is_applicable(targets):
-			AppliedEffect.current_duration = applied_duration
-			AppliedEffect.on_apply(targets)
-
-	if apply_count > 0 and RegenEffect:
-		var self_target: Array[Node] = [player]
-		RegenEffect.on_apply(self_target, apply_count)
-
-func _calculate_total(character: CharacterInstance) -> int:
-	if character:
-		var index := character.stats.find(StatsScaled)
-		var bonus := 0
-		if index != -1:
-			bonus = character.stats[index].stat_scaling_value
-		return base_damage + bonus + character.get_attack_bonus()
-	else:
-		return 0
-
-func get_description(character: CharacterInstance) -> String:
-	var total := _calculate_total(character)
-	return Description.replace("{scaled}", str(total))
-
-func get_live_description(character: CharacterInstance, live_targets: Array[Node]) -> String:
-	var total := _calculate_total(character)
-	var enemies := _resolve_enemies(live_targets)
-	if enemies.is_empty():
-		return get_description(character)
-
-	var entity := enemies[0]
-	Events.reveal_enemy_resistances.emit(damage_type, enemies)
-	var shown := entity.calculate_type_adjusted_damage(total, damage_type)
-	return Description.replace("{scaled}", str(shown))
-
-func _resolve_enemies(live_targets: Array[Node]) -> Array[EnemyBattlerStats]:
-	var enemies: Array[EnemyBattlerStats] = []
-	for t in live_targets:
-		var entity := _resolve_enemy_entity(t)
-		if entity:
-			enemies.append(entity)
-	return enemies
-
-func _resolve_enemy_entity(node: Node) -> EnemyBattlerStats:
-	var current := node
-	while current:
-		if current is EnemyView:
-			return current.Enemy.Entity as EnemyBattlerStats
-		current = current.get_parent()
-	return null
+	for i in apply_count:
+		_apply_status(AppliedEffect, targets, 1, true)   # skipped while the target has block
+	_apply_to_self(RegenEffect, player, apply_count)

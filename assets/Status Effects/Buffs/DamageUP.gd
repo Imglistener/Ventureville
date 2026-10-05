@@ -1,6 +1,6 @@
 class_name DamageUP extends StatusEffect
 var applied_to: BaseBattlerStats
-var amount: int
+var amount: float
 
 func _init() -> void:
 	status_icon = preload("res://assets/GUI/Attack_UP_icon.png")
@@ -55,7 +55,7 @@ func on_apply(targets: Array[Node], duration : int = 1) -> void:
 					Events.effect_display.emit(self, anchor, anchor.global_position)
 
 func on_activate() -> void:
-	applied_to.modify_buff_modifier(amount)
+	applied_to.modify_buff_modifier(minf(amount, 1.5))
 
 func  on_tick(target: BaseBattlerStats) -> void:
 	current_duration -= 1
@@ -67,7 +67,7 @@ func on_remove(target: BaseBattlerStats) -> void:
 	if target.buff_damage_modifier >= amount:
 		target.modify_buff_modifier(target.buff_damage_modifier - amount)
 	else :
-		target.modify_buff_modifier(0)
+		target.modify_buff_modifier(1)
 	if existing:
 		target.ActiveEffects.erase(existing)
 

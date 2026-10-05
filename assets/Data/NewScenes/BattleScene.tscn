@@ -16,16 +16,14 @@
 [ext_resource type="PackedScene" uid="uid://bxhnejwbij1n3" path="res://assets/Data/NewScenes/deck_viewer_2d.tscn" id="10_jiv1t"]
 [ext_resource type="Script" uid="uid://rpgcyv34bk5l" path="res://scripts/stat_manager.gd" id="10_rgo70"]
 [ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="11_68fdq"]
+[ext_resource type="PackedScene" uid="uid://3fe4k1oq3ij5" path="res://assets/Data/NewScenes/buttons/end_turn.tscn" id="13_7ub3u"]
 [ext_resource type="Script" uid="uid://cg3oixktuv3ya" path="res://scripts/resource_ui_manager.gd" id="13_w7muy"]
 [ext_resource type="Script" uid="uid://bg1g50w6darod" path="res://scripts/resource_manager.gd" id="14_a3qp2"]
 [ext_resource type="Script" uid="uid://v5hiskpdh4ir" path="res://assets/Data/Scripts/log.gd" id="14_lnaa1"]
-[ext_resource type="Texture2D" uid="uid://dn8488rt62bcb" path="res://assets/GUI/End_Turn_Button.png" id="15_2kban"]
 [ext_resource type="PackedScene" uid="uid://ct644v6mvtf2d" path="res://assets/Data/NewScenes/CardInspector.tscn" id="15_t77tx"]
-[ext_resource type="Texture2D" uid="uid://bowe3ynon3drv" path="res://assets/GUI/End_Turn_Button_pressed.png" id="16_0ccq8"]
 [ext_resource type="Script" uid="uid://cumib5hreuqhc" path="res://assets/Data/Scripts/menusoundsystem.gd" id="16_1g5n4"]
 [ext_resource type="PackedScene" uid="uid://bry8jp3ptxan4" path="res://settings_menu.tscn" id="16_f33sq"]
 [ext_resource type="Script" uid="uid://tncndavrm16u" path="res://assets/Data/NewScenes/pause_menu.gd" id="16_v76ad"]
-[ext_resource type="Texture2D" uid="uid://dw1a4xsrs7bka" path="res://assets/GUI/End_Turn_Button_highlight.png" id="17_0ccq8"]
 [ext_resource type="Script" uid="uid://c1bi4eai8etya" path="res://scripts/menus_manager.gd" id="17_8fh2q"]
 [ext_resource type="AudioStream" uid="uid://dthpwusghe2wg" path="res://assets/hover.wav" id="17_lvhkn"]
 [ext_resource type="PackedScene" uid="uid://coybng6mqo20d" path="res://items.tscn" id="18_2kban"]
@@ -48,9 +46,9 @@
 [ext_resource type="Script" uid="uid://by1n1serxe8is" path="res://assets/Data/NewScenes/sfxPlayer.gd" id="38_pkylx"]
 [ext_resource type="Script" uid="uid://bs3r5fddsx6y5" path="res://scripts/enemy_turn_order_manager.gd" id="45_sotth"]
 [ext_resource type="Script" uid="uid://cy7yn1fq5hrgv" path="res://scripts/enemy_manager.gd" id="46_qkuvq"]
+[ext_resource type="Resource" uid="uid://v8t1nllhkb3" path="res://assets/Enemies/Data/battle data/battle_1.tres" id="49_7ub3u"]
 [ext_resource type="PackedScene" uid="uid://b8k3ee0s1c4ei" path="res://assets/Data/NewScenes/status_tooltip_base.tscn" id="49_h2n7a"]
 [ext_resource type="PackedScene" uid="uid://jktwbefoh0gv" path="res://assets/Data/NewScenes/battlecondition_tooltip_base.tscn" id="50_1iiwq"]
-[ext_resource type="Resource" uid="uid://6gutx58gp1xw" path="res://assets/Enemies/Data/battle data/battle_3.tres" id="51_jiv1t"]
 [ext_resource type="Script" uid="uid://bespv1ko6kvui" path="res://scripts/turn_tracking_manager.gd" id="51_li6wq"]
 [ext_resource type="Script" uid="uid://bjge3i4gnlaou" path="res://scripts/battle_builder.gd" id="52_jiv1t"]
 [ext_resource type="AudioStream" uid="uid://rlbhoeeuv874" path="res://assets/SFX/Alice.wav" id="53_h2n7a"]
@@ -139,18 +137,24 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Background" parent="Control_Layer/Control_Base/Base_Margin/StandbyContainer" unique_id=578769339 instance=ExtResource("2_htbe8")]
+[node name="Background" parent="Control_Layer/Control_Base/Base_Margin/StandbyContainer" unique_id=578769339 node_paths=PackedStringArray("buttons_descriptions") instance=ExtResource("2_htbe8")]
 process_mode = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 testdamage = ExtResource("7_451j8")
+buttons_descriptions = {
+NodePath("Margin/ButtonContainer/Talk"): "Attempt to Reason with your opponents.",
+NodePath("Margin/ButtonContainer/Escape"): "Turn around and try to run.",
+NodePath("Margin/ButtonContainer/Items"): "Open your inventory and browse your items.",
+NodePath("Margin/ButtonContainer/Battle"): "Start your Battle Phase."
+}
 
 [node name="HandLayer" type="CanvasLayer" parent="Control_Layer/Control_Base/Base_Margin/StandbyContainer" unique_id=1986576652]
 layer = 2
 
 [node name="Hand" parent="Control_Layer/Control_Base/Base_Margin/StandbyContainer/HandLayer" unique_id=418394277 groups=["hand"] instance=ExtResource("5_xwocj")]
-position = Vector2(112.187004, 309.22998)
+position = Vector2(40, 309.23)
 scale = Vector2(0.8, 0.8)
 
 [node name="MarginContainer" type="MarginContainer" parent="Control_Layer/Control_Base/Base_Margin" unique_id=514336235]
@@ -189,18 +193,13 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.42, 0.42)
 
-[node name="End Turn" type="TextureButton" parent="Control_Layer/Control_Base" unique_id=369487781]
+[node name="End Turn" parent="Control_Layer/Control_Base" unique_id=880032685 instance=ExtResource("13_7ub3u")]
 visible = false
 layout_mode = 0
-offset_left = 989.685
-offset_top = 611.775
-offset_right = 1369.6858
-offset_bottom = 745.775
-scale = Vector2(0.695, 0.695)
-theme = ExtResource("11_68fdq")
-texture_normal = ExtResource("15_2kban")
-texture_pressed = ExtResource("16_0ccq8")
-texture_hover = ExtResource("17_0ccq8")
+offset_left = 988.0
+offset_top = 613.0
+offset_right = 1368.001
+offset_bottom = 747.0
 
 [node name="ColorRect" type="ColorRect" parent="Control_Layer/Control_Base" unique_id=434177308]
 layout_mode = 0
@@ -268,7 +267,7 @@ texture_hover = ExtResource("22_c1pur")
 z_index = 10
 position = Vector2(1104.4111, 249.56091)
 
-[node name="Pause Layer" type="CanvasLayer" parent="Control_Layer" unique_id=206101572]
+[node name="Pause Layer" type="CanvasLayer" parent="Control_Layer" unique_id=206101572 groups=["ControlBase"]]
 layer = 5
 
 [node name="Pause Blur" type="ColorRect" parent="Control_Layer/Pause Layer" unique_id=507999492]
@@ -333,6 +332,9 @@ offset_bottom = 704.0
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 69
 theme_override_constants/margin_right = 0
+
+[node name="MarginContainer" parent="Control_Layer/Pause Layer/DeckViewer2D/ScrollContainer" parent_id_path=PackedInt32Array(1412893859, 2036952227) index="0" unique_id=1861475631]
+mouse_filter = 2
 
 [node name="Pause Menu" type="PanelContainer" parent="Control_Layer/Pause Layer" unique_id=1540107876]
 process_mode = 3
@@ -552,7 +554,7 @@ script = ExtResource("52_jiv1t")
 enemy_view_container = NodePath("../../Control_Layer/EnemyViewContainer")
 enemy_manager = NodePath("../EnemyManager")
 bgm = NodePath("../../BGM")
-battle_info = ExtResource("51_jiv1t")
+battle_info = ExtResource("49_7ub3u")
 SM = ExtResource("35_jiv1t")
 
 [node name="SFX" type="AudioStreamPlayer" parent="." unique_id=1786813656 groups=["SFXBus"]]
@@ -573,8 +575,10 @@ playback_type = 1
 
 [connection signal="pressed" from="Control_Layer/Control_Base/toolbar_container/toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Show Deck" to="Functionality/MenusManager" method="_toggle_deck_view"]
 [connection signal="pressed" from="Control_Layer/Control_Base/End Turn" to="Functionality/PhaseManager" method="emit_specific_phase" binds= [&"PlayerBattleEnd"]]
+[connection signal="pressed" from="Control_Layer/Pause Layer/Pause Menu/Pause Buttons/Save and Quit" to="Control_Layer/Pause Layer/Pause Menu" method="exit"]
 
 [editable path="Control_Layer/Control_Base/toolbar_container"]
 [editable path="Control_Layer/Control_Base/Base_Margin/StandbyContainer/Background"]
 [editable path="Control_Layer/Control_Base/Base_Margin/MarginContainer/PlayerView"]
 [editable path="Control_Layer/Control_Base/AP_Background"]
+[editable path="Control_Layer/Pause Layer/DeckViewer2D"]

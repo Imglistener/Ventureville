@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://dolcfbwx0h72n" path="res://assets/PNG/Grid.png" id="19_3go67"]
 [ext_resource type="Script" uid="uid://bnhx61xmu13i1" path="res://scripts/CardUI/CardState/CardStateDisplaying.gd" id="20_3go67"]
 [ext_resource type="Script" uid="uid://co60oxiudsive" path="res://scripts/CardUI/CardState/CardStateSelected.gd" id="21_afvpp"]
+[ext_resource type="Script" uid="uid://41hu5gtxrh0q" path="res://assets/Data/Scripts/card_display_functionality.gd" id="25_gkflj"]
+[ext_resource type="PackedScene" uid="uid://cwbewlnk208ar" path="res://CardDisplayScreen.tscn" id="26_mgg81"]
 
 [sub_resource type="Shader" id="Shader_80gmr"]
 code = "shader_type canvas_item;
@@ -462,6 +464,10 @@ state = 7
 
 [node name="SFX" type="AudioStreamPlayer" parent="." unique_id=745794655]
 bus = &"SFX"
+
+[node name="CardDisplayFunctionality" type="Node" parent="." unique_id=1160170245]
+script = ExtResource("25_gkflj")
+card_display = ExtResource("26_mgg81")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -4,10 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bo8cmn5oe17m4" path="res://assets/KennyUI/Border/panel-border-015.png" id="1_s2172"]
 [ext_resource type="Texture2D" uid="uid://bby71buwvwo53" path="res://assets/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_44.png" id="2_42ohh"]
 [ext_resource type="Texture2D" uid="uid://dkr62mk01xwek" path="res://assets/KennyUI/Border/panel-border-005.png" id="4_euu2n"]
-[ext_resource type="Texture2D" uid="uid://bbnqgjgdplat1" path="res://assets/GUI/Whats_up_info_icon.png" id="5_42ohh"]
-[ext_resource type="Texture2D" uid="uid://b5yocb3d8pe4t" path="res://assets/GUI/Whats_up_info_icon_press.png" id="6_8n8w1"]
+[ext_resource type="PackedScene" uid="uid://dmjhai8a7i2sw" path="res://assets/Data/NewScenes/buttons/help_button.tscn" id="5_kypne"]
 [ext_resource type="Texture2D" uid="uid://cdvcvnc4s31l6" path="res://assets/GUI/View_Deck_button.png" id="7_732sv"]
-[ext_resource type="Texture2D" uid="uid://dwxowh5dhkw5p" path="res://assets/GUI/Whats_up_info_icon_highlighted.png" id="7_euu2n"]
 [ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="7_regow"]
 [ext_resource type="Texture2D" uid="uid://bo4fc51800s21" path="res://assets/GUI/View_Deck_button_press.png" id="9_euu2n"]
 [ext_resource type="Texture2D" uid="uid://6uvu5inxhr5t" path="res://assets/GUI/pause_button.png" id="10_regow"]
@@ -98,32 +96,20 @@ mouse_filter = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Help" type="TextureButton" parent="toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons" unique_id=1965760346]
-custom_minimum_size = Vector2(40, 40)
+[node name="Help" parent="toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons" unique_id=677091307 instance=ExtResource("5_kypne")]
 layout_mode = 2
-texture_normal = ExtResource("5_42ohh")
-texture_pressed = ExtResource("6_8n8w1")
-texture_hover = ExtResource("7_euu2n")
-ignore_texture_size = true
-stretch_mode = 0
 
-[node name="Show Deck" type="TextureButton" parent="toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons" unique_id=1277710609]
-custom_minimum_size = Vector2(40, 40)
+[node name="Show Deck" parent="toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons" unique_id=1421264056 instance=ExtResource("5_kypne")]
 layout_mode = 2
 texture_normal = ExtResource("7_732sv")
 texture_pressed = ExtResource("9_euu2n")
 texture_hover = ExtResource("10_sl5rt")
-ignore_texture_size = true
-stretch_mode = 0
 
-[node name="Pause" type="TextureButton" parent="toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons" unique_id=13308016]
-custom_minimum_size = Vector2(40, 30)
+[node name="Pause" parent="toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons" unique_id=1266624599 instance=ExtResource("5_kypne")]
 layout_mode = 2
 texture_normal = ExtResource("10_regow")
 texture_pressed = ExtResource("11_sl5rt")
 texture_hover = ExtResource("12_27oji")
-ignore_texture_size = true
-stretch_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="toolbar/MarginContainer" unique_id=1495240362]
 layout_mode = 2
@@ -152,5 +138,3 @@ label_settings = SubResource("LabelSettings_nxbgt")
 layout_mode = 2
 text = "Level"
 label_settings = SubResource("LabelSettings_nxbgt")
-
-[connection signal="pressed" from="toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Pause" to="." method="on_button_press"]

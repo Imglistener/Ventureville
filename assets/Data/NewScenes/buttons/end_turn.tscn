@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://3fe4k1oq3ij5"]
+
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="1_5tdjl"]
+[ext_resource type="Texture2D" uid="uid://dn8488rt62bcb" path="res://assets/GUI/End_Turn_Button.png" id="2_q17gq"]
+[ext_resource type="Texture2D" uid="uid://bowe3ynon3drv" path="res://assets/GUI/End_Turn_Button_pressed.png" id="3_f88vc"]
+[ext_resource type="Texture2D" uid="uid://dw1a4xsrs7bka" path="res://assets/GUI/End_Turn_Button_highlight.png" id="4_kan8a"]
+[ext_resource type="Script" uid="uid://cxfeyrqkkloi8" path="res://assets/Data/NewScenes/buttons/end_turn_button.gd" id="5_f88vc"]
+[ext_resource type="Texture2D" uid="uid://dlkas3ttipe3e" path="res://assets/KennyUI/Transparent border/panel-transparent-border-015.png" id="5_q17gq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5tdjl"]
+texture = ExtResource("5_q17gq")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0, 0, 0, 0.63529414)
+
+[node name="End Turn" type="TextureButton" unique_id=880032685]
+custom_minimum_size = Vector2(380.001, 0)
+offset_left = 989.685
+offset_top = 611.775
+offset_right = 1369.6858
+offset_bottom = 745.775
+scale = Vector2(0.695, 0.695)
+theme = ExtResource("1_5tdjl")
+texture_normal = ExtResource("2_q17gq")
+texture_pressed = ExtResource("3_f88vc")
+texture_hover = ExtResource("4_kan8a")
+script = ExtResource("5_f88vc")
+
+[node name="Control" type="Control" parent="." unique_id=158535776]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=39485810]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = -233
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 135
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer" unique_id=697827141]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5tdjl")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/MarginContainer/PanelContainer" unique_id=1807346358]
+layout_mode = 2
+theme = ExtResource("1_5tdjl")
+theme_override_constants/line_separation = -22
+theme_override_constants/paragraph_separation = -8
+theme_override_constants/outline_size = 1
+bbcode_enabled = true
+text = "End your turn.
+[hr]
+When you end your turn, your conditions and effects tick, then your opponent(s) play their turn in sequence, their conditions and effects tick, then your turn begins again."
+fit_content = true
+tab_size = 0
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="show_tooltip"]
+[connection signal="mouse_exited" from="." to="." method="hide_tooltip"]

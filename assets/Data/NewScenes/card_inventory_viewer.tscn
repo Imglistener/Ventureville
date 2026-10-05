@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://nody171fluag" path="res://assets/Data/NewScenes/Cards/card.tscn" id="7_2patx"]
 [ext_resource type="Resource" uid="uid://dnux8rwh6xw2l" path="res://assets/Data/Classes/BloodMagus.tres" id="8_s0cp3"]
 [ext_resource type="Script" uid="uid://b7b85pfm6enlw" path="res://assets/Data/Scripts/search_functionality.gd" id="9_2patx"]
-[ext_resource type="Script" uid="uid://844yju5toi75" path="res://assets/Data/Scripts/amount_owned_functionality.gd" id="10_s0cp3"]
 
 [node name="CardInventoryViewer" type="MarginContainer" unique_id=1260716519]
 custom_minimum_size = Vector2(406.667, 0)
@@ -118,9 +117,6 @@ character_stats = ExtResource("8_s0cp3")
 [node name="SearchFunctionality" type="Node" parent="Functionality" unique_id=255676783 node_paths=PackedStringArray("searchbar")]
 script = ExtResource("9_2patx")
 searchbar = NodePath("../../NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/TextureRect/MarginContainer/HBoxContainer/SearchBar")
-
-[node name="AmountOwnedFunctionality" type="Node" parent="Functionality" unique_id=145976720]
-script = ExtResource("10_s0cp3")
 
 [connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/TextureRect/MarginContainer/HBoxContainer/FilterButton" to="Functionality/SearchFunctionality" method="_clear_searchbar"]
 [connection signal="text_changed" from="NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/TextureRect/MarginContainer/HBoxContainer/SearchBar" to="Functionality/SearchFunctionality" method="_update_search_results"]
