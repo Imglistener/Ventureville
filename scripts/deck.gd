@@ -1,5 +1,8 @@
 class_name Deck extends Resource
+
+## TOTAL copies owned per card.
 @export var Obtained_Cards: Dictionary[Card, int]
+## Copies currently placed in the deck (always <= owned).
 @export var Card_Amount_In_Deck: Dictionary[Card, int]
 
 var Battle_Deck : Array[Card] = []
@@ -10,11 +13,65 @@ signal DiscardSize_Changed(discards_left)
 signal card_added_to_deck
 signal card_removed_from_deck
 
+# ---------- collection queries ----------
+func get_owned(card: Card) -> int:
+	return Obtained_Cards.get(card, 0)
+
+func get_in_deck(card: Card) -> int:
+	return Card_Amount_In_Deck.get(card, 0)
+
+func get_available(card: Card) -> int:
+	return maxi(get_owned(card) - get_in_deck(card), 0)
+
+func can_add_to_deck(card: Card) -> bool:
+	return card != null and get_available(card) > 0
+
+func can_remove_from_deck(card: Card) -> bool:
+	return card != null and get_in_deck(card) > 0
+
+# ---------- deck editing ----------
+func add_card_to_deck(card: Card) -> void:
+	if not can_add_to_deck(card):
+		return
+	Card_Amount_In_Deck[card] = get_in_deck(card) + 1
+	card_added_to_deck.emit()
+
+func remove_card_from_deck(card: Card) -> void:
+	if not can_remove_from_deck(card):
+		return
+	Card_Amount_In_Deck[card] = get_in_deck(card) - 1
+	card_removed_from_deck.emit()
+func clear_deck_to_collection() -> void:
+	if Card_Amount_In_Deck.is_empty():
+		return
+	Card_Amount_In_Deck.clear()
+	card_removed_from_deck.emit()
+	
+func reconcile_in_deck(counts: Dictionary) -> void:
+	Card_Amount_In_Deck.clear()
+	for card in counts.keys():
+		if counts[card] > 0:
+			Card_Amount_In_Deck[card] = counts[card]
+func save_to_disk() -> Error:
+	if resource_path.is_empty():
+		push_warning("Deck.save_to_disk: no resource_path set.")
+		return ERR_FILE_NOT_FOUND
+	return ResourceSaver.save(self, resource_path)
+## For rewards / shops: adds to the collection, NOT to the deck.
+func add_card_to_collection(card: Card, amount: int = 1) -> void:
+	if not card or amount <= 0:
+		return
+	Obtained_Cards[card] = get_owned(card) + amount
+
+# ---------- battle ----------
 func intialize_deck_contents() -> void:
-	for Obtained_Card in Obtained_Cards.keys():
-		if Obtained_Card in Card_Amount_In_Deck.keys():
-			for copy in range(Card_Amount_In_Deck[Obtained_Card]):
-				Battle_Deck.append(Obtained_Card)
+	Battle_Deck.clear()
+	Discard_Pile.clear()
+	TheHand.clear()
+	for card in Card_Amount_In_Deck.keys():
+		var copies := mini(get_in_deck(card), get_owned(card))
+		for i in range(copies):
+			Battle_Deck.append(card)
 
 func empty() -> bool:
 	return Battle_Deck.is_empty()
@@ -23,7 +80,7 @@ func draw_card() -> Card:
 	if Battle_Deck.is_empty():
 		Battle_Deck += Discard_Pile
 		Discard_Pile.clear()
-		shuffle_deck() 
+		shuffle_deck()
 		DeckSize_Changed.emit(Battle_Deck.size())
 		DiscardSize_Changed.emit(Discard_Pile.size())
 	var card_drawn = Battle_Deck.pop_front()
@@ -57,25 +114,5 @@ func discard_hand() -> void:
 func _to_string() -> String:
 	var _card_string: PackedStringArray = []
 	for i in range(Battle_Deck.size()):
-		_card_string.append("%s: %s" %[i+1, Battle_Deck[i].id])
+		_card_string.append("%s: %s" % [i + 1, Battle_Deck[i].name])
 	return "\n".join(_card_string)
-
-func add_card_to_deck(card: Card) -> void:
-	if Obtained_Cards[card]:
-		if Obtained_Cards[card] > 0:
-			if Card_Amount_In_Deck[card]:
-				Card_Amount_In_Deck[card] += 1
-			else:
-				Card_Amount_In_Deck[card] = 1
-			Obtained_Cards[card] -= 1
-	card_added_to_deck.emit()
-
-func remove_card_from_deck(card: Card) -> void:
-	if Card_Amount_In_Deck[card]:
-		if Card_Amount_In_Deck[card] > 0:
-			if Obtained_Cards[card]:
-				Obtained_Cards[card] += 1
-			else:
-				Obtained_Cards[card] = 1
-			Card_Amount_In_Deck[card] -= 1
-	card_removed_from_deck.emit()

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dmjhai8a7i2sw"]
+
+[ext_resource type="Texture2D" uid="uid://bbnqgjgdplat1" path="res://assets/GUI/Whats_up_info_icon.png" id="1_bparj"]
+[ext_resource type="Texture2D" uid="uid://b5yocb3d8pe4t" path="res://assets/GUI/Whats_up_info_icon_press.png" id="2_yfb2w"]
+[ext_resource type="Texture2D" uid="uid://dwxowh5dhkw5p" path="res://assets/GUI/Whats_up_info_icon_highlighted.png" id="3_nbydy"]
+[ext_resource type="Script" uid="uid://bbgmdsnhqdqwq" path="res://assets/Data/NewScenes/buttons/toolbar_button.gd" id="4_nbydy"]
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="4_yfb2w"]
+
+[node name="Help" type="TextureButton" unique_id=677091307]
+custom_minimum_size = Vector2(40, 40)
+texture_normal = ExtResource("1_bparj")
+texture_pressed = ExtResource("2_yfb2w")
+texture_hover = ExtResource("3_nbydy")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("4_nbydy")
+
+[node name="TooltipBase" type="Control" parent="." unique_id=1511927529]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TooltipBase" unique_id=1225231703]
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 0
+offset_top = 40.0
+offset_right = 40.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="TooltipBase/PanelContainer" unique_id=1863789227]
+layout_mode = 2
+theme = ExtResource("4_yfb2w")
+theme_override_font_sizes/font_size = 16
+text = "HELP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_hover_show"]
+[connection signal="mouse_exited" from="." to="." method="_on_hover_hide"]

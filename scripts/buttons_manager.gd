@@ -25,8 +25,8 @@ func _connect_signals() -> void:
 					btn.pressed.connect(_show_confirmation_menu)
 
 	settings_menu.animated_out.connect(toggle_separator)
-	var messgae_box = confirmation_menu.get_child(1) as Messagebox
-	messgae_box.animated_out.connect(toggle_separator)
+	var message_box = confirmation_menu
+	message_box.animated_out.connect(toggle_separator)
 	var back_btn : Button = main_game_container.menu.get_child(3)
 	back_btn.pressed.connect(_retract_menu_tree)
 
@@ -59,7 +59,7 @@ func _show_options_menu() -> void:
 func _show_confirmation_menu() -> void:
 	toggle_separator()
 	confirmation_menu.visible = true
-	var message_box = confirmation_menu.get_child(1) as Messagebox
+	var message_box = confirmation_menu as QuitConfirmation
 	message_box.animate_in()
 
 func toggle_separator() -> void:

@@ -4,8 +4,13 @@
 [ext_resource type="Shader" uid="uid://ds0oi5spicmse" path="res://assets/Data/NewScenes/Scroll.gdshader" id="1_s4r4b"]
 [ext_resource type="Resource" uid="uid://dnux8rwh6xw2l" path="res://assets/Data/Classes/BloodMagus.tres" id="2_4bfk8"]
 [ext_resource type="Texture2D" uid="uid://dlkas3ttipe3e" path="res://assets/KennyUI/Transparent border/panel-transparent-border-015.png" id="3_4bfk8"]
+[ext_resource type="PackedScene" uid="uid://bbclaht28of8q" path="res://assets/Data/NewScenes/confirmation_menu_base.tscn" id="3_glvkm"]
 [ext_resource type="Texture2D" uid="uid://csgwkwwy343rx" path="res://background.png" id="3_s4r4b"]
+[ext_resource type="Texture2D" uid="uid://cjka26ocsbg56" path="res://assets/GUI/play_button.png" id="4_26wh2"]
 [ext_resource type="PackedScene" uid="uid://b4q17krleilfc" path="res://assets/Data/NewScenes/deck_editor.tscn" id="4_nusi2"]
+[ext_resource type="Texture2D" uid="uid://conye545creii" path="res://assets/Edinnu_UI_asset_pack/Menu_buttons/Menu_button (15).png" id="5_glvkm"]
+[ext_resource type="Texture2D" uid="uid://bpo80el7h7aep" path="res://assets/Edinnu_UI_asset_pack/Menu_buttons/Menu_button (29).png" id="6_7ljr0"]
+[ext_resource type="Script" uid="uid://by1n1serxe8is" path="res://assets/Data/NewScenes/sfxPlayer.gd" id="11_7ljr0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cyk10"]
 shader = ExtResource("1_s4r4b")
@@ -23,6 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0ehgw")
 character_data = ExtResource("2_4bfk8")
+confirmation_menu_scene = ExtResource("3_glvkm")
 
 [node name="MainMargin" type="MarginContainer" parent="." unique_id=1566107154]
 layout_mode = 1
@@ -51,6 +57,42 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
+[node name="MarginContainer" type="MarginContainer" parent="MainMargin/TopVboxContainer/ToolbarContainer/ToolbarBackground" unique_id=1260375452]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMargin/TopVboxContainer/ToolbarContainer/ToolbarBackground/MarginContainer" unique_id=1692061429]
+custom_minimum_size = Vector2(300, 50)
+custom_maximum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ConfirmButton" type="TextureButton" parent="MainMargin/TopVboxContainer/ToolbarContainer/ToolbarBackground/MarginContainer/HBoxContainer" unique_id=1732052552]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_26wh2")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="CancelButton" type="TextureButton" parent="MainMargin/TopVboxContainer/ToolbarContainer/ToolbarBackground/MarginContainer/HBoxContainer" unique_id=1446414115]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("5_glvkm")
+stretch_mode = 5
+
+[node name="EmptyDeckButton" type="TextureButton" parent="MainMargin/TopVboxContainer/ToolbarContainer/ToolbarBackground/MarginContainer/HBoxContainer" unique_id=1330950288]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("6_7ljr0")
+stretch_mode = 5
+
 [node name="BackgroundTexture" type="TextureRect" parent="MainMargin/TopVboxContainer" unique_id=1803727701]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_cyk10")
@@ -75,3 +117,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_horizontal = 4
 player_stats = null
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1159144701 groups=["SFXBus"]]
+script = ExtResource("11_7ljr0")
+
+[connection signal="pressed" from="MainMargin/TopVboxContainer/ToolbarContainer/ToolbarBackground/MarginContainer/HBoxContainer/ConfirmButton" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="MainMargin/TopVboxContainer/ToolbarContainer/ToolbarBackground/MarginContainer/HBoxContainer/EmptyDeckButton" to="." method="_show_confirmation_menu"]

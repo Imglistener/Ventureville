@@ -25,3 +25,6 @@ func _ready() -> void:
 func set_selected_card(card: CardUI) -> void:
 	selected_card = card
 	card_viewer_container.functionality.set_card_displayed(selected_card)
+
+func _on_empty_deck_pressed() -> void:
+	Events.clear_deck_request.emit()

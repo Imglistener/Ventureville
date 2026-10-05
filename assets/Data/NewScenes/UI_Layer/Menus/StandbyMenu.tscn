@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bpiepls5q8x1a" path="res://assets/GUI/GUI-1.png" id="1_wyrha"]
 [ext_resource type="Script" uid="uid://dobrsw1rn2i71" path="res://assets/Data/Scripts/standby_menu.gd" id="2_akeyu"]
-[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="2_hj5of"]
+[ext_resource type="PackedScene" uid="uid://bvkc6cj4faavc" path="res://assets/Data/NewScenes/buttons/standbymenubutton.tscn" id="3_akeyu"]
 [ext_resource type="Script" uid="uid://cumib5hreuqhc" path="res://assets/Data/Scripts/menusoundsystem.gd" id="3_fxqob"]
 [ext_resource type="AudioStream" uid="uid://dthpwusghe2wg" path="res://assets/hover.wav" id="4_7o46m"]
 [ext_resource type="AudioStream" uid="uid://diyc8a23kpu7b" path="res://assets/click.wav" id="5_akeyu"]
@@ -44,41 +44,20 @@ layout_mode = 2
 theme_override_constants/separation = 95
 alignment = 1
 
-[node name="Talk" type="Button" parent="Margin/ButtonContainer" unique_id=1170609248]
-custom_minimum_size = Vector2(110, 0)
+[node name="Talk" parent="Margin/ButtonContainer" unique_id=727100468 instance=ExtResource("3_akeyu")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("2_hj5of")
-text = "TALK"
-clip_text = true
 
-[node name="Escape" type="Button" parent="Margin/ButtonContainer" unique_id=1317983348]
-custom_minimum_size = Vector2(120, 0)
+[node name="Escape" parent="Margin/ButtonContainer" unique_id=939240015 instance=ExtResource("3_akeyu")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("2_hj5of")
 text = "ESCAPE"
-clip_text = true
 
-[node name="Items" type="Button" parent="Margin/ButtonContainer" unique_id=902707879]
-custom_minimum_size = Vector2(110, 0)
+[node name="Items" parent="Margin/ButtonContainer" unique_id=604250716 instance=ExtResource("3_akeyu")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("2_hj5of")
 text = "ITEMS"
-clip_text = true
 
-[node name="Battle" type="Button" parent="Margin/ButtonContainer" unique_id=1697515136]
-custom_minimum_size = Vector2(120, 0)
+[node name="Battle" parent="Margin/ButtonContainer" unique_id=807773451 instance=ExtResource("3_akeyu")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("2_hj5of")
 text = "BATTLE"
-clip_text = true
 
 [node name="SoundSystem" type="Node" parent="Margin/ButtonContainer" unique_id=1208334229]
 script = ExtResource("3_fxqob")

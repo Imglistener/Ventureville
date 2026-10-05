@@ -17,6 +17,7 @@ signal CardClicked(card: CardUI)
 @onready var card_scaler: Control = $CardAnchor/CardScaler
 @onready var amount_owned: Label = $CardAnchor/CardScaler/MarginContainer/TextureRect/AmountOwned
 @onready var amount_owned_container: MarginContainer = $CardAnchor/CardScaler/MarginContainer
+@onready var card_display_functionality: CardDisplayFunctionality = $CardDisplayFunctionality
 
 
 @onready var card_name: Label = $CardAnchor/CardScaler/Frame/VBoxContainer2/VBoxContainer/CardNameMargin/CardName
@@ -82,6 +83,7 @@ func _ready() -> void:
 	if not keyword_tooltips_container.is_node_ready():
 		await keyword_tooltips_container.ready
 	ready_keyword_tooltips()
+	card_display_functionality.player_stats = player_stats
 
 func _process(delta: float) -> void:
 	card_state_manager.process(delta)
@@ -211,6 +213,11 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT and Mode == CardMode.PLAYABLE:
 			CardClicked.emit(self)
+		elif event.pressed and event.button_index == MOUSE_BUTTON_RIGHT and not is_displaying:
+			if card_state_manager.current_state.state == CardState.State.SELECTED or card_state_manager.current_state.state == CardState.State.DISPLAYING:
+				card_display_functionality.display_card(card_data)
+			
+			
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

@@ -16,3 +16,6 @@ func _ready() -> void:
 func _show_settings_menu() -> void:
 		settings_menu.animate_in()
 		
+
+func exit() -> void:
+	get_tree().quit()

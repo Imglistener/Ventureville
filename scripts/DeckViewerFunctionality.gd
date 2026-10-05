@@ -1,67 +1,87 @@
 class_name DeckViewer
 extends Node
 
+const CARD_SIZE := Vector2(150.0, 236.0)
+
 @onready var deck_view: GridContainer = $"../DeckViewerBackground/MarginContainer/ScrollContainer/DeckView"
-var deck : Deck 
+@onready var deck_editor_viewer: DeckEditorContainer = $".."
 @export var card_scene : PackedScene
 @export var character_stats: CharacterInstance
-@onready var deck_editor_viewer: DeckEditorContainer = $".."
+var deck : Deck
 
 
 func _ready() -> void:
-	deck = character_stats.starting_deck
+	_refresh_deck_reference()
 
-	
+func _refresh_deck_reference() -> void:
+	deck = character_stats.starting_deck if character_stats else null
+
 func initialize_deckview() -> void:
-	if not deck:
+	_refresh_deck_reference()
+	if not deck or not card_scene or not character_stats:
 		return
-	if not card_scene:
-		return
-	if not character_stats:
-		return
-	var amount_in_deck : int = deck.Card_Amount_In_Deck.keys().size()
-	for card in range(amount_in_deck):
-		var card_instance : CardUI = card_scene.instantiate()
-		card_instance.Mode = CardUI.CardMode.DISPLAYING
-		card_instance.card_data = deck.Card_Amount_In_Deck.keys()[card]
-		for copy in range(deck.Card_Amount_In_Deck[card_instance.card_data]):
-			var card_instance_dupe = card_instance.duplicate()
-			deck_view.add_child(card_instance_dupe)
-			card_instance_dupe.player_stats = character_stats
-			card_instance_dupe.update_description()
-			card_instance_dupe.set_display_size(Vector2(150.0, 236.0))
-			card_instance_dupe.CardClicked.connect(card_clicked_propagate)
+	for child in deck_view.get_children():
+		deck_view.remove_child(child)
+		child.queue_free()
+	for card in deck.Card_Amount_In_Deck.keys():
+		for i in range(deck.get_in_deck(card)):
+			_add_card_ui(card)
+
+func _add_card_ui(card: Card) -> CardUI:
+	var ui := card_scene.instantiate() as CardUI
+	ui.Mode = CardUI.CardMode.DISPLAYING
+	ui.card_data = card
+	ui.player_stats = character_stats 
+	deck_view.add_child(ui)
+	ui.set_display_size(CARD_SIZE)
+	ui.CardClicked.connect(card_clicked_propagate)
+	return ui
 
 func card_clicked_propagate(card: CardUI) -> void:
 	deck_editor_viewer.set_selected_card(card)
 
+## Diffs the grid against the deck: frees extras, adds missing copies.
 func update_deckview() -> void:
-	var cards_displayed : Array[CardUI] = []
-	for card in deck_view.get_children():
-		if card is CardUI:
-			cards_displayed.append(card)
+	if not deck:
+		return
+	var shown_by_card: Dictionary = {}   # Card -> Array of CardUI
+	for child in deck_view.get_children():
+		if child is CardUI and not child.is_queued_for_deletion():
+			if not shown_by_card.has(child.card_data):
+				shown_by_card[child.card_data] = []
+			shown_by_card[child.card_data].append(child)
+
 	for card in deck.Card_Amount_In_Deck.keys():
-		var card_count: int = 0
-		var carduis_found: Array[CardUI] = []
-		for cardui in cards_displayed:
-			if cardui.card_data == cardui:
-				card_count += 1
-				carduis_found.append(cardui)
-		if card_count == deck.Card_Amount_In_Deck[card]:
+		var wanted = deck.get_in_deck(card)
+		var shown: Array = shown_by_card.get(card, [])
+		while shown.size() > wanted:
+			_remove_card_ui(shown.pop_back())
+		while shown.size() < wanted:
+			shown.append(_add_card_ui(card))
+
+	# cards whose key vanished from the dictionary entirely
+	for card in shown_by_card.keys():
+		if not deck.Card_Amount_In_Deck.has(card):
+			for ui in shown_by_card[card]:
+				_remove_card_ui(ui)
+				
+
+func _remove_card_ui(ui: CardUI) -> void:
+	deck_view.remove_child(ui)   # leave the grid immediately, free at end of frame
+	ui.queue_free()
+
+func _clear_deck() -> void:
+	for child in deck_view.get_children():
+		if not child:
 			continue
-		elif card_count > deck.Card_Amount_In_Deck[card]:
-			var difference :=  card_count - deck.Card_Amount_In_Deck[card]
-			for i in range(difference):
-				if carduis_found[0]:
-					carduis_found[0].queue_free()
-		elif card_count < deck.Card_Amount_In_Deck[card]:
-			var difference = deck.Card_Amount_In_Deck[card] - card_count
-			for i in range(difference):
-				var new_cardui : CardUI = card_scene.instantiate()
-				new_cardui.Mode = CardUI.CardMode.DISPLAYING
-				new_cardui.card_data = card
-				deck_view.add_child(new_cardui)
-				new_cardui.set_display_size(Vector2(150.0, 236.0))
-				new_cardui.CardClicked.connect(card_clicked_propagate)
-				new_cardui.player_stats = character_stats
-				new_cardui.update_description()
+		if child is CardUI:
+			deck.Card_Amount_In_Deck[child.card_data] = 0
+	
+	update_deckview()
+	
+func get_displayed_counts() -> Dictionary:
+	var counts: Dictionary = {}
+	for child in deck_view.get_children():
+		if child is CardUI and not child.is_queued_for_deletion():
+			counts[child.card_data] = counts.get(child.card_data, 0) + 1
+	return counts

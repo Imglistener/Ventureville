@@ -32,13 +32,14 @@ var current_block	: int : set = set_block
 var current_san_block: int: set = set_san_block
 var damage_numbers: Vector2
 var damage_number_anchor: Node2D  # NEW: the Node2D floating labels should be parented under for this entity
-var buff_damage_modifier: int
+var buff_damage_modifier: float = 1.0
 
-func modify_buff_modifier(amount: int) -> void:
-	buff_damage_modifier = amount
+func modify_buff_modifier(amount: float) -> void:
+	buff_damage_modifier = clampf(amount, 1.0, 1.5)
+	print("Buff Damage Modifer Changed : " , amount)
 	Stats_Changed.emit()
 
-func get_attack_bonus() -> int: 
+func get_attack_bonus() -> float: 
 	return buff_damage_modifier
 
 func true_take_damage(amount: int) -> void:
@@ -82,7 +83,7 @@ func san_heal(amount: int) -> void:
 	self.current_sanity = clampi(self.current_sanity + amount, 0, self.Max_SAN)
 	
 func take_damage(amount: int, damagetype: DamageType) -> void:
-	self.current_health -= amount + buff_damage_modifier
+	self.current_health -= amount 
 func take_san_damage(amount: int) -> void:
 	self.current_sanity -= amount
 	

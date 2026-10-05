@@ -1,23 +1,12 @@
-extends Card
+extends DefendCard
 
-@export var BaseShield: int = 8
-@export var VFX : PackedScene
-@export var retain_effect : RetainHand
+@export var retain_effect: RetainHand
 
-func apply_effect(targets : Array[Node]) -> void:
-	var block_effect := BlockEffect.new()
-	block_effect.amount = BaseShield
-	var Visual = VFX.instantiate()
-	if targets[0] is Stat_Manager:
-		var effect = retain_effect.duplicate()
-		effect.on_apply(targets, 1)
-		targets[0].player_view.add_child(Visual)
-		Visual.global_position += Vector2(130, 180)
-	Visual.animation_player.play("BloodBarrier")
-	var ended = func():
-		Visual.queue_free()
-	Visual.animation_player.animation_finished.connect(
-		ended.unbind(1)
-	)
-	block_effect.activate(targets)
-	
+func _init() -> void:
+	super()
+	BaseShield = 8   # script default before; not stored in the .tres
+
+func _execute(player: Stat_Manager, targets: Array[Node]) -> void:
+	_apply_to_self(retain_effect, player, 1)
+	_play_vfx(player)
+	_gain_block(targets)

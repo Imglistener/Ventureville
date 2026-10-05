@@ -26,6 +26,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_pg12u")
+script = ExtResource("6_w0roi")
 
 [node name="ConfirmationMargin" type="MarginContainer" parent="." unique_id=99481467]
 layout_mode = 2
@@ -82,7 +83,3 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme = ExtResource("1_aer8f")
 text = "Yes"
-
-[node name="MessageboxFunctionality" type="Node" parent="." unique_id=614075686]
-script = ExtResource("6_w0roi")
-OFFSET = Vector2(0, 500)

@@ -225,7 +225,6 @@ hover_sfx = ExtResource("6_ev6ap")
 click_sfx = ExtResource("7_cema7")
 
 [node name="ConfirmationMenu" parent="SeparatorLayer" unique_id=1762095933 instance=ExtResource("12_d8q3p")]
-visible = false
 offset_top = 350.0
 offset_bottom = 650.0
 

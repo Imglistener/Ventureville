@@ -8,16 +8,16 @@
 
 [resource]
 script = ExtResource("3_ohh5m")
-base_damage = 10
-blood_tax = 10
-StatsScaled = ExtResource("2_nha04")
 AppliedEffect = ExtResource("1_ohh5m")
 RegenEffect = ExtResource("2_ohh5m")
+base_damage = 15
+StatsScaled = ExtResource("2_nha04")
 damage_type = ExtResource("3_nha04")
 name = "Blood Blade"
 target = 1
 mp_cost = 1
 ap_cost = 1
+blood_tax = 10
 Description = "Sacrifice 10 HP. Deal {scaled} Blood Damage to a Target. 
 Chance to apply up to 3 Blood Syphon and Gain that much Regeneration."
 LogMessage = "\"Channeling Blood as a blade, you slice at your foe!\""
