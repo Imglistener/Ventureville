@@ -1,3 +1,4 @@
+class_name AscendantRitualCondition
 extends BattleCondition
 
 @export var blood_effect : StatusEffect

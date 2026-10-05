@@ -14,7 +14,7 @@ func _execute(player: Stat_Manager, targets: Array[Node]) -> void:
 func _hit_damage(character: CharacterInstance, entity: EnemyBattlerStats) -> int:
 	var syphon := _find_status(entity.ActiveEffects, BloodSyphon) as BloodSyphon
 	var base := syphon.current_duration if syphon else 0
-	return base + character.get_attack_bonus()
+	return base * character.get_attack_bonus()
 
 func get_live_description(character: CharacterInstance, live_targets: Array[Node]) -> String:
 	var enemies := _resolve_enemies(live_targets)

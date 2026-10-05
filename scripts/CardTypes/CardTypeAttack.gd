@@ -8,15 +8,7 @@ class_name AttackCard extends Card
 
 func _init() -> void:
 	type = Type.ATTACK
-	match attribute:
-		CardAttribute.Hemomancy:
-			StatsScaled = preload("uid://bqgopm3elq147")
-		CardAttribute.Entromancy:
-			StatsScaled = preload("uid://ceoqilwthbnl5")
-		CardAttribute.Phonomancy:
-			StatsScaled = preload("uid://claek5dwbffxw")
-		CardAttribute.Somatomancy:
-			StatsScaled = preload("uid://cr5xuv3tmjx6m")
+
 
 # ------------------------------------------------------------------ damage
 
@@ -27,8 +19,6 @@ func _calculate_total(character: CharacterInstance) -> int:
 	var index := character.stats.find(StatsScaled)
 	if index != -1:
 		bonus = character.stats[index].stat_scaling_value
-		print(name, " | Base Damage: " , base_damage, " Scaled stat Damage: ", bonus, " Damage Multiplier: ", str(character.get_attack_bonus()))
-	
 	return int((base_damage + bonus) * character.get_attack_bonus())
 
 func _deal_damage(targets: Array[Node], amount: int) -> void:
@@ -43,6 +33,7 @@ func _deal_damage(targets: Array[Node], amount: int) -> void:
 func get_description(character: CharacterInstance) -> String:
 	return Description.replace("{scaled}", str(_calculate_total(character)))
 
+## Override in cards whose preview differs (e.g. Crimson Spear adds Syphon damage).
 ## apply_resistance == true -> return the number after the enemy's resist/vuln modifier.
 func _preview_value(character: CharacterInstance, enemy: EnemyBattlerStats, apply_resistance: bool) -> int:
 	var total := _calculate_total(character)
@@ -53,18 +44,24 @@ func get_live_description(character: CharacterInstance, live_targets: Array[Node
 	if enemies.is_empty():
 		return get_description(character)
 
+	var all_neutral := true
 	var all_resistant := true
 	var all_vulnerable := true
 	for e in enemies:
 		var state := e.get_resistance_state(damage_type)
+		all_neutral = all_neutral and state == EnemyBattlerStats.RESISTANCE_STATE.NEUTRAL
 		all_resistant = all_resistant and state == EnemyBattlerStats.RESISTANCE_STATE.RESISTANT
 		all_vulnerable = all_vulnerable and state == EnemyBattlerStats.RESISTANCE_STATE.VULNERABLE
 
-	# Every target reacts the same way, so one adjusted number is accurate.
-	if all_resistant or all_vulnerable:
+	# Nothing to show: no icons, and the base number is already correct.
+	if all_neutral:
 		Events.hide_enemy_resistances.emit()
-		return Description.replace("{scaled}", str(_preview_value(character, enemies[0], true)))
+		return Description.replace("{scaled}", str(_preview_value(character, enemies[0], false)))
 
-	# Mixed targets: show the base number and let the resist icons explain the difference.
+	# Any resist/weakness in play: show the icons (EnemyView hides them on neutral enemies).
 	Events.reveal_enemy_resistances.emit(damage_type, enemies)
-	return Description.replace("{scaled}", str(_preview_value(character, enemies[0], false)))
+
+	# Every target reacts the same way, so one adjusted number is accurate.
+	# Mixed targets: show the base number and let the icons explain the difference.
+	var uniform := all_resistant or all_vulnerable
+	return Description.replace("{scaled}", str(_preview_value(character, enemies[0], uniform)))
