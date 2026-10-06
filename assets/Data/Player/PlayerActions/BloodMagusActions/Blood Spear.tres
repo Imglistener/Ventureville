@@ -1,0 +1,20 @@
+[gd_resource type="Resource" format=3 uid="uid://cn7xypl6lls1m"]
+
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="1_r0mns"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="2_oliir"]
+[ext_resource type="Script" uid="uid://d325lpth34xbm" path="res://assets/Data/Player/PlayerActions/CardEffects/BloodSpear.gd" id="3_4ugxv"]
+
+[resource]
+script = ExtResource("3_4ugxv")
+StatsScaled = ExtResource("1_r0mns")
+damage_type = ExtResource("2_oliir")
+name = "Blood Spear"
+rarity = 1
+target = 1
+mp_cost = 2
+ap_cost = 1
+blood_tax = 8
+tags = Array[StringName]([&"BloodWeapon"])
+Description = "Sacrifice 8 HP. Deal {scaled} Blood Damage, then addtional Blood Damage equal to the Target's Blood Syphon."
+LogMessage = "\"Your Blood Spear drinks in your Enemy's life force!\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

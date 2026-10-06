@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://dvtdims4nmeqf"]
+
+[ext_resource type="Script" uid="uid://wrcdts8tqx6d" path="res://assets/Data/Player/PlayerActions/CardEffects/BloodForge.gd" id="1_c0tgh"]
+[ext_resource type="Resource" uid="uid://fvuqwgygsonv" path="res://assets/Status Effects/Buffs/Conditions/blood_forge.tres" id="1_pdlbo"]
+
+[resource]
+script = ExtResource("1_c0tgh")
+condition = ExtResource("1_pdlbo")
+name = "Blood Forge"
+rarity = 2
+mp_cost = 3
+ap_cost = 1
+is_card_nullable = true
+blood_tax = 20
+Description = "Sacrifice 20. Gain 1 Blood Forge."
+LogMessage = "\"Your blood flows like molten steel, letting you forge it into countless shapes!\""
+metadata/_custom_type_script = "uid://bm8khcsvx8q2c"

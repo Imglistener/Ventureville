@@ -9,7 +9,10 @@ const KeywordList : Dictionary = {
 	"Regeneration": Color(0.166, 0.965, 0.0, 1.0),
 	"Blood Syphon": Color(0.598, 0.0, 0.0, 1.0),
 	"Congealed Blood" : Color(1.0, 0.477, 0.477, 1.0),
-	"Retain" : Color.GOLD
+	"Retain" : Color.GOLD,
+	"Blood Throne": Color.CRIMSON,
+	"Blood Forge": Color.CRIMSON,
+	"Ascendant Ritual": Color.CRIMSON
 	}
 
 const KeywordDescriptions : Dictionary = {
@@ -17,7 +20,10 @@ const KeywordDescriptions : Dictionary = {
 	"Regeneration": "Affected Entity Heals twice the remaining Duration each Standby.",
 	"Blood Syphon": "Affected Entity Takes Double the remaining Duration as Blood Damage if they are not Blocking.",
 	"Congealed Blood" : "Gain Block equal to the Duration at the end of your turn.",
-	"Retain" : "You do not discard your hand at the end of the turn."
+	"Retain" : "You do not discard your hand at the end of the turn.",
+	"Blood Throne": "Whenever you Sacrifice, Gain 1 MP.",
+	"Blood Forge" : 'Whenever you draw a "Blood Weapon" card; Heal 5. If "Ascendant Ritual" is active, Heal 10 instead.',
+	"Ascendant Ritual": "At the end of your turn, apply 2 Blood Syphon to all Enemies."
 }
 
 

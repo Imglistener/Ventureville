@@ -5,14 +5,13 @@
 
 [resource]
 script = ExtResource("2_6tuvk")
-blood_tax = 20
 condition = ExtResource("1_iipfx")
 name = "Ascendant State"
 rarity = 2
-type = 1
 mp_cost = 2
 ap_cost = 1
 is_card_nullable = true
-Description = "Sacrifice 20 HP. Gain 1 Ascendant Ritual."
+blood_tax = 20
+Description = "Sacrifice 20. Gain 1 Ascendant Ritual."
 LogMessage = "\"An ancient ritual fills you with supernatural powers!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

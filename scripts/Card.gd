@@ -5,6 +5,8 @@ enum Target{SELF, ONEENEMY, ALLENEMIES, ALL}
 enum Rarities{Common, Rare, Legendary}
 enum CardAttribute{Hemomancy, Entromancy, Phonomancy, Somatomancy}
 
+const TAG_BLOOD_WEAPON := &"BloodWeapon"
+
 @export_group("Card Details")
 @export var name: String
 @export var rarity: Rarities
@@ -14,6 +16,8 @@ enum CardAttribute{Hemomancy, Entromancy, Phonomancy, Somatomancy}
 @export var ap_cost: int
 @export var is_card_nullable: bool = false
 @export var blood_tax: int = 0   # HP sacrificed on play (unblockable). Used via _pay_blood_tax().
+## Free-form labels other systems can look for (e.g. Blood Forge heals on drawing TAG_BLOOD_WEAPON cards).
+@export var tags: Array[StringName] = []
 @export_multiline var Description: String
 @export_multiline var LogMessage: String
 
@@ -125,3 +129,32 @@ func _apply_to_enemies(effect: StatusEffect, targets: Array[Node], duration: int
 	if enemies.is_empty():
 		return
 	_apply_status(effect, enemies, duration, check_applicable)
+
+
+# ------------------------------------------------------------------ entities, Blood Syphon, turn tracking
+
+## The battle entity behind a target node (null if it isn't a battler).
+func _entity_of(node: Node) -> BaseBattlerStats:
+	if node is EnemyView:
+		return node.Enemy.Entity if node.Enemy else null
+	if node is Stat_Manager:
+		return node.Player
+	return null
+
+## Ticks an entity's Blood Syphon once, exactly like the end-of-turn tick:
+## damage = 2 x remaining duration (0 if blocking), then duration drops by 1.
+func _trigger_blood_syphon(entity: BaseBattlerStats) -> void:
+	var syphon := _find_status(entity.ActiveEffects, BloodSyphon) as BloodSyphon
+	if not syphon:
+		return
+	syphon.on_tick(entity)
+	if syphon.current_duration <= 0:
+		syphon.on_remove(entity)
+	Events.effect_applied.emit()   # refreshes status icons / turn counters
+
+func _get_turn_tracker(player: Stat_Manager) -> TurnTrackingManager:
+	return player.get_tree().get_first_node_in_group("TurnTracker") as TurnTrackingManager
+
+func _sacrificed_this_turn(player: Stat_Manager) -> bool:
+	var tracker := _get_turn_tracker(player)
+	return tracker != null and tracker.sacrificed_this_turn(player)

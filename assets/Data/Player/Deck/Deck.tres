@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://8da6aj1a756u"]
+[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://dgcx6nw4myihs"]
 
 [ext_resource type="Script" uid="uid://cpy8tjlulsna2" path="res://scripts/Card.gd" id="1_7abai"]
 [ext_resource type="Script" uid="uid://pqq147nh02w3" path="res://scripts/deck.gd" id="1_dyacs"]
 [ext_resource type="Resource" uid="uid://ddquxo4p134kp" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Claw.tres" id="2_lxatl"]
 [ext_resource type="Resource" uid="uid://da7agmvhlfw1p" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Syphon Essence.tres" id="4_ao31u"]
-[ext_resource type="Resource" uid="uid://cn7xypl6lls1m" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Crimson Spear.tres" id="5_3v31f"]
 [ext_resource type="Resource" uid="uid://d4auimgetdkq6" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/BloodBlade.tres" id="5_8wy8p"]
 [ext_resource type="Resource" uid="uid://cegj65gylisf8" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Malady.tres" id="6_0354w"]
 [ext_resource type="Resource" uid="uid://de6m6tryd6i87" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Impale.tres" id="7_5af0u"]
@@ -19,27 +18,32 @@
 [ext_resource type="Resource" uid="uid://bqtf5udkjk5ck" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Revelry.tres" id="16_7nbrc"]
 [ext_resource type="Resource" uid="uid://cv8hd0iwirxt3" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Throne.tres" id="17_xqmlc"]
 [ext_resource type="Resource" uid="uid://ctd6ri7r8abvg" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Scythe.tres" id="18_j2xm7"]
+[ext_resource type="Resource" uid="uid://cn7xypl6lls1m" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Spear.tres" id="18_pag3l"]
+[ext_resource type="Resource" uid="uid://ifkjoiu84h6v" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Contact.tres" id="19_j2xm7"]
+[ext_resource type="Resource" uid="uid://dvtdims4nmeqf" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Forge.tres" id="20_4dliv"]
 
 [resource]
 script = ExtResource("1_dyacs")
 Obtained_Cards = Dictionary[ExtResource("1_7abai"), int]({
-ExtResource("18_j2xm7"): 2,
-ExtResource("17_xqmlc"): 1,
-ExtResource("16_7nbrc"): 3,
-ExtResource("15_py15j"): 2,
-ExtResource("14_25ebe"): 2,
-ExtResource("13_uii6r"): 1,
-ExtResource("12_5af0u"): 1,
-ExtResource("11_0354w"): 3,
-ExtResource("8_uii6r"): 2,
-ExtResource("9_25ebe"): 4,
-ExtResource("6_0354w"): 2,
-ExtResource("7_5af0u"): 2,
-ExtResource("10_py15j"): 1,
-ExtResource("5_3v31f"): 2,
-ExtResource("4_ao31u"): 4,
+ExtResource("20_4dliv"): 1,
+ExtResource("19_j2xm7"): 2,
+ExtResource("2_lxatl"): 4,
 ExtResource("5_8wy8p"): 2,
-ExtResource("2_lxatl"): 4
+ExtResource("4_ao31u"): 4,
+ExtResource("18_pag3l"): 2,
+ExtResource("10_py15j"): 1,
+ExtResource("7_5af0u"): 2,
+ExtResource("6_0354w"): 2,
+ExtResource("9_25ebe"): 4,
+ExtResource("8_uii6r"): 2,
+ExtResource("11_0354w"): 3,
+ExtResource("12_5af0u"): 1,
+ExtResource("13_uii6r"): 1,
+ExtResource("14_25ebe"): 2,
+ExtResource("15_py15j"): 2,
+ExtResource("16_7nbrc"): 3,
+ExtResource("17_xqmlc"): 1,
+ExtResource("18_j2xm7"): 2
 })
 Card_Amount_In_Deck = Dictionary[ExtResource("1_7abai"), int]({
 ExtResource("8_uii6r"): 1,
@@ -53,5 +57,7 @@ ExtResource("4_ao31u"): 4,
 ExtResource("5_8wy8p"): 2,
 ExtResource("6_0354w"): 2,
 ExtResource("17_xqmlc"): 1,
-ExtResource("18_j2xm7"): 2
+ExtResource("18_j2xm7"): 2,
+ExtResource("19_j2xm7"): 2,
+ExtResource("20_4dliv"): 1
 })
