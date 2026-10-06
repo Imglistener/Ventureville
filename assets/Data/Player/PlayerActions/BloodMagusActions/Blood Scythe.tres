@@ -13,6 +13,7 @@ rarity = 1
 target = 1
 mp_cost = 2
 ap_cost = 1
+tags = Array[StringName]([&"BloodWeapon"])
 Description = "Deal {scaled} Blood Damage to a target. If you sacrificed this turn, hits twice."
 LogMessage = "\"Your conjure a scythe of blood and behead!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

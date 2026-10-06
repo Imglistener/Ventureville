@@ -18,6 +18,7 @@ target = 1
 mp_cost = 1
 ap_cost = 1
 blood_tax = 10
+tags = Array[StringName]([&"BloodWeapon"])
 Description = "Sacrifice 10 HP. Deal {scaled} Blood Damage to a Target. 
 Chance to apply up to 3 Blood Syphon and Gain that much Regeneration."
 LogMessage = "\"Channeling Blood as a blade, you slice at your foe!\""

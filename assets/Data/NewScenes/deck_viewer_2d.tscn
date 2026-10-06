@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://nody171fluag" path="res://assets/Data/NewScenes/Cards/card.tscn" id="1_cdjdt"]
 [ext_resource type="Script" uid="uid://c5i56bby75bvu" path="res://scripts/deck_viewer_2d.gd" id="1_w4jkm"]
-[ext_resource type="Resource" uid="uid://b5hkm5hwk5cuc" path="res://assets/Data/Player/Deck/Deck.tres" id="2_s54pg"]
 
 [node name="DeckViewer2D" type="MarginContainer" unique_id=1412893859 node_paths=PackedStringArray("grid_container")]
 anchors_preset = 15
@@ -18,7 +17,6 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 22
 theme_override_constants/margin_bottom = 10
 script = ExtResource("1_w4jkm")
-card_deck = ExtResource("2_s54pg")
 grid_container = NodePath("ScrollContainer/MarginContainer/GridContainer")
 card_scene = ExtResource("1_cdjdt")
 

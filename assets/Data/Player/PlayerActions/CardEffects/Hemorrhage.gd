@@ -10,18 +10,7 @@ func _execute(player: Stat_Manager, targets: Array[Node]) -> void:
 
 	var target := targets[0] as EnemyView
 	if target and target.Enemy and target.Enemy.Entity:
-		_trigger_syphon(target.Enemy.Entity)
-
-## Ticks the target's Blood Syphon once, exactly like the end-of-turn tick:
-## damage = 2 x remaining duration (0 if the target is blocking), then duration drops by 1.
-func _trigger_syphon(entity: EnemyBattlerStats) -> void:
-	var syphon := _find_status(entity.ActiveEffects, BloodSyphon) as BloodSyphon
-	if not syphon:
-		return
-	syphon.on_tick(entity)
-	if syphon.current_duration <= 0:
-		syphon.on_remove(entity)
-	Events.effect_applied.emit()   # refreshes the status icon / turn counter
+		_trigger_blood_syphon(target.Enemy.Entity)
 
 func _projected_damage(entity: EnemyBattlerStats) -> int:
 	if entity.current_block > 0:

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" format=3 uid="uid://ifkjoiu84h6v"]
+
+[ext_resource type="Script" uid="uid://dm44ey7ridoao" path="res://assets/Data/Player/PlayerActions/CardEffects/Blood Contact.gd" id="1_obodu"]
+
+[resource]
+script = ExtResource("1_obodu")
+name = "Blood Contact"
+rarity = 1
+target = 3
+mp_cost = 1
+ap_cost = 2
+Description = "Set your HP to 20. Trigger All Active Blood Syphon twice. (including on you)."
+LogMessage = "\"Your essence spreads through your enemies!\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

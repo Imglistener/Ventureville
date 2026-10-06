@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BloodForgeCondition" format=3 uid="uid://fvuqwgygsonv"]
+
+[ext_resource type="Texture2D" uid="uid://s6pycgmgx2e" path="res://assets/GUI/horrified.png" id="1_jeej6"]
+[ext_resource type="Script" uid="uid://t2tc2mlmj6ku" path="res://assets/Status Effects/Buffs/Conditions/blood_forge.gd" id="1_ntq2i"]
+
+[resource]
+script = ExtResource("1_ntq2i")
+condition_name = "Blood Forge"
+condition_icon = ExtResource("1_jeej6")
+condition_texture = ExtResource("1_jeej6")
+condition_description = "Whenever you draw a \"Blood Weapon\" card; Heal 5. If \"Ascendant Ritual\" is active, Heal 10 instead."
+metadata/_custom_type_script = "uid://t2tc2mlmj6ku"

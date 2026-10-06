@@ -1,4 +1,4 @@
-[gd_resource type="Resource" format=3 uid="uid://4q4xspdp2y3s"]
+[gd_resource type="Resource" script_class="AscendantRitualCondition" format=3 uid="uid://4q4xspdp2y3s"]
 
 [ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="1_l1wbw"]
 [ext_resource type="Texture2D" uid="uid://c72b0da6vf1tq" path="res://assets/GUI/ascendant_Icon.png" id="2_swdlh"]
