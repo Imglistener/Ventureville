@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://whp7ieua3goc"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_c0qbo"]
+
+[resource]
+script = ExtResource("1_c0qbo")
+display_name = "Debuff"
+category = 4
+color = Color(0.90588236, 0.29803923, 0.23529412, 1)
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

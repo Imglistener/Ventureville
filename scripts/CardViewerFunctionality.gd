@@ -64,7 +64,7 @@ func setup_card_type_target() -> String:
 	return value
 
 func get_updated_card_description() -> String:
-	return card_displayed.get_description(player_stats)
+	return KeywordsScene.format(card_displayed.get_description(player_stats))
 	
 func get_card_attribute() -> String:
 	return str(Card.CardAttribute.find_key(card_displayed.attribute))

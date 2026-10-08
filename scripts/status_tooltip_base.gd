@@ -11,33 +11,6 @@ func show_tooltip() -> void:
 	if not displayed_status:
 		return
 	status_icon.texture = displayed_status.status_icon
-	var status_name_text : String 
-	match displayed_status.status_name:
-		0:
-			status_name_text = "Burning"
-		1:
-			status_name_text = "Frostbite"
-		2:
-			status_name_text = "Blood Syphon"
-		3:
-			status_name_text = "Horrified"
-		4:
-			status_name_text = "Concussed"
-		5:
-			status_name_text = "Stunned"
-		6:
-			status_name_text = "Withering"
-		7:
-			status_name_text = "Damage Up"
-		8:
-			status_name_text = "Regeneration"
-		9:
-			status_name_text = "Congealed Blood"
-		10:
-			status_name_text = "Retain"
-		11:
-			status_name_text = "Poison"
-		_:
-			status_name_text = "Unknown"
-	status_name.text =  status_name_text
-	status_description.text = displayed_status.status_description
+	status_name.text =  KeywordsScene.name_for_status(displayed_status.status_name)
+	status_name.add_theme_color_override('font_color', KeywordsScene.color_of(status_name.text))
+	status_description.text = KeywordsScene.description_for_status(displayed_status.status_name)

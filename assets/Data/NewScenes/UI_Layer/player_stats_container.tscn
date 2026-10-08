@@ -292,3 +292,22 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 mouse_filter = 0
 expand_mode = 2
+
+[node name="perma_buff_counter" type="Label" parent="VBoxContainer3/perma_buff_icon" unique_id=264104257]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -14.5
+offset_right = 5.5
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://cu8ofpuqlrlh6"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_2h2kh"]
+
+[resource]
+script = ExtResource("1_2h2kh")
+display_name = "Sanguine Shell"
+category = 0
+color = Color(1, 0.47843137, 0.47843137, 1)
+show_tooltip = true
+description = "Affected Entity takes 25% less damage from Blood Syphoned enemies."
+has_status_link = true
+status_link = 12
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

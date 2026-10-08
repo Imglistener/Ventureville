@@ -11,6 +11,6 @@ target = 1
 mp_cost = 2
 ap_cost = 1
 blood_tax = 5
-Description = "Sacrifice 5 HP. Apply 5 Blood Syphon, trigger All Blood Syphon on the target."
+Description = "Sacrifice 5. Apply 5 Blood Syphon, trigger All Blood Syphon on the target."
 LogMessage = "\"You bleed your enemy brutally, causing intense agony!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

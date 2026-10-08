@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://b2omaqqut2s3q"]
+
+[ext_resource type="Resource" uid="uid://colxenne7fpke" path="res://assets/Status Effects/Debuffs/DamageDown.tres" id="1_sdfd0"]
+[ext_resource type="Script" uid="uid://b655kxfsskhvs" path="res://assets/Data/Player/PlayerActions/CardEffects/SanguineManifestation.gd" id="2_08ohh"]
+
+[resource]
+script = ExtResource("2_08ohh")
+damage_down_effect = ExtResource("1_sdfd0")
+damage_down_duration = 2
+name = "Sanguine Pulse"
+rarity = 1
+target = 2
+mp_cost = 2
+ap_cost = 1
+Description = "Draw 1 card for each Enemy affected by Blood Syphon.  Their damage is lowered by 5% for each Blood Syphon on them (Max 50%)."
+LogMessage = "\"Your enemies' essence betrays their intents!\""
+metadata/_custom_type_script = "uid://dxw4b7jhgkbv4"

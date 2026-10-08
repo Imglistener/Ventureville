@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://decucjioexi6x"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_t65p7"]
+
+[resource]
+script = ExtResource("1_t65p7")
+display_name = "Damage Up"
+aliases = [null]
+category = 0
+color = Color(1, 0.54901963, 0.101960786, 1)
+show_tooltip = true
+description = "Affected Entity's Attack damage is increased by a percentage."
+has_status_link = true
+status_link = 7
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

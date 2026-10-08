@@ -7,7 +7,7 @@ class_name CardHand extends Node2D
 @onready var targeting_area: Node2D = $"../../../../../../Node2D_Layer/TargetingArea"
 @onready var player_stat_manager: Stat_Manager =$"../../../../../../Functionality/PlayerStatManager"
 @onready var deck_manager: DeckManager = $"../../../../../../Functionality/DeckManager"
-
+var is_card_playing = false
 var is_retaining_hand = false
 var is_card_highlighted: bool
 var is_arranging: bool = false
@@ -16,6 +16,10 @@ var focused_card: CardUI
 var _entrance_counter := 0
 # Lets overlapping arrange_hand() calls agree on who clears is_arranging.
 var _arrange_serial := 0
+signal done_arranging
+signal hand_discarded
+
+const DISCARD_STAGGER := 0.04
 
 func _ready() -> void:
 	if not Events.calling_arrange_hand.is_connected(arrange_hand):
@@ -90,7 +94,7 @@ func arrange_hand() -> void:
 		await _arrange_pass()
 	is_arranging = false
 	_arrange_running = false
-
+	done_arranging.emit()
 
 func _arrange_pass() -> void:
 	var max_offset: int = 550
@@ -168,10 +172,19 @@ func show_hand() -> void:
 	is_hand_hidden = false
 	await showing_tween.finished
 	
-func clear_hand() -> void:
+func discard_hand() -> void:
+	var cards: Array[CardUI] = []
 	for child in get_children():
-		if child is CardUI:
-			if not child:
-				continue
-			child.animate_out()
-	await get_tree().create_timer(0.2).timeout
+		if child is CardUI and not child.is_queued_for_deletion():
+			cards.append(child)
+
+	for i in cards.size():
+		cards[i].discard(i * DISCARD_STAGGER)
+
+	for card in cards:
+		# Cards that already finished (and were freed) while we waited on an earlier one are skipped.
+		if is_instance_valid(card) and card.is_inside_tree():
+			await card.tree_exited
+
+	focused_card = null
+	hand_discarded.emit()

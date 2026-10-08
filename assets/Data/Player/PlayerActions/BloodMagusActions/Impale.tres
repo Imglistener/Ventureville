@@ -7,18 +7,18 @@
 
 [resource]
 script = ExtResource("4_tpjb2")
+AppliedEffect = ExtResource("1_jfa3l")
 base_damage = 15
-blood_tax = 20
 StatsScaled = ExtResource("2_gi8d2")
 damage_type = ExtResource("3_f0h6h")
-AppliedEffect = ExtResource("1_jfa3l")
 name = "Impale"
 rarity = 2
 target = 1
 mp_cost = 2
 ap_cost = 1
 is_card_nullable = true
-Description = "Sacrifice 20 HP. Deal {scaled} Blood Damage.
+blood_tax = 20
+Description = "Sacrifice 20. Deal {scaled} Blood Damage.
 Apply 2 Blood Syphon.
 If Lethal, recover the sacrificed HP."
 LogMessage = "\"Your Blood a stake, you impale from below!\""

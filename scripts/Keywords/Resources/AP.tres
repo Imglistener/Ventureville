@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://c1ph1n1cfdpep"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_caqas"]
+
+[resource]
+script = ExtResource("1_caqas")
+display_name = "MP"
+aliases = ["Mana Point(s)", "Mana"]
+category = 2
+color = Color(0.2901961, 0.5764706, 0.9411765, 1)
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

@@ -1,5 +1,6 @@
 class_name BloodThroneCondition
 extends BattleCondition
+## Passive, event-driven: listens for the owner's hp_sacrificed signal for the rest of combat.
 
 @export var mana_per_sacrifice: int = 1
 
@@ -16,6 +17,10 @@ func activate(targets: Array[Node]) -> void:
 	player.Player.BattleConditions.append(instance)
 	Events.BattleConditionActivated.emit(instance, player.Player)
 	Events.effect_display.emit(self, player.Player.damage_number_anchor, player.Player.damage_number_anchor.global_position)
+
+
+func get_display_text() -> String:
+	return str(mana_per_sacrifice)
 
 
 func _on_hp_sacrificed(_amount: int) -> void:

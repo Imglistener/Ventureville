@@ -20,7 +20,8 @@ func use_action() -> void:
 	var damage_effect = AttackEffect.new()
 	damage_effect.damage_type = damagetype
 	var target_array: Array[Node] = [target]
-	damage_effect.amount = (Damage * (Enemy.Enemy.Entity.DamageBonus)) / 4
+	damage_effect.source = Enemy.Enemy.Entity
+	damage_effect.amount = int(Damage * Enemy.Enemy.Entity.DamageBonus / 3 * Enemy.Enemy.Entity.get_attack_bonus())	
 	SFXBus.play_sfx(SoundEffect)
 	tween.tween_property(Enemy.enemy_view, "scale", enlarged_scale, 0.2)
 	tween.tween_callback(damage_effect.activate.bind(target_array))

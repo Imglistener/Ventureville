@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://d4d2wflkns4wg"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_p1wbs"]
+
+[resource]
+script = ExtResource("1_p1wbs")
+display_name = "Frost"
+category = 1
+color = Color(0.49803922, 0.8392157, 1, 1)
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://cdoybvhb48vvn"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_nrgsi"]
+
+[resource]
+script = ExtResource("1_nrgsi")
+display_name = "Buff"
+category = 4
+color = Color(0.18039216, 0.8, 0.44313726, 1)
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://c52odjb61bpjb"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_ea83k"]
+
+[resource]
+script = ExtResource("1_ea83k")
+display_name = "Psychic"
+category = 1
+color = Color(0.9019608, 0.65882355, 1, 1)
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

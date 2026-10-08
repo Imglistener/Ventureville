@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://dt4745al8isaa"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_2tsje"]
+
+[resource]
+script = ExtResource("1_2tsje")
+display_name = "Frostbite"
+category = 0
+color = Color(0, 0.7490196, 0.9098039, 1)
+text_effect = 1
+description = "placeholder"
+has_status_link = true
+status_link = 1
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

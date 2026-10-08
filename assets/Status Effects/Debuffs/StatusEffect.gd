@@ -1,6 +1,6 @@
 class_name StatusEffect extends Resource
 
-enum StatusEffects{Burning, Frostbite, BloodSyphon, Horrified, Concussed, Stunned, Withering, DamageUp, Regeneration, DefensePerTurn, RetainHand, Poison}
+enum StatusEffects{Burning, Frostbite, BloodSyphon, Horrified, Concussed, Stunned, Withering, DamageUp, Regeneration, DefensePerTurn, RetainHand, Poison, SanguineShell, DamageDown, BloodDebt}
 var current_duration : int = 0
 
 @export var status_name : StatusEffects
@@ -10,6 +10,18 @@ var current_duration : int = 0
 @export_multiline var status_description: String
 
 
+func _get_entity(target: Node) -> BaseBattlerStats:
+	if target is EnemyView:
+		return target.Enemy.Entity
+	if target is Stat_Manager:
+		return target.Player
+	return null
+func _get_anchor(target: Node) -> Node2D:
+	if target is EnemyView:
+		return target.effect_vfx_marker
+	if target is Stat_Manager:
+		return target.player_view.effect_guide
+	return null
 func on_apply(_targets: Array[Node], duration : int = 1) -> void:
 	pass
 

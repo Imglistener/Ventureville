@@ -6,10 +6,9 @@
 
 [resource]
 script = ExtResource("1_gtouj")
-VFX = ExtResource("1_gjxh7")
 retain_effect = ExtResource("2_0dkjp")
+VFX = ExtResource("1_gjxh7")
 name = "Blood Barrier"
-type = 3
 mp_cost = 1
 ap_cost = 1
 Description = "Gain 8 Shield.

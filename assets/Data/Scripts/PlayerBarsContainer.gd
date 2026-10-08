@@ -12,6 +12,8 @@ class_name PlayerBarsContainer extends MarginContainer
 @onready var statuseffecticon: TextureRect = $VBoxContainer3/Statuseffecticon
 @onready var turns_remaining: Label = $VBoxContainer3/Statuseffecticon/turns_remaining
 @onready var perma_buff_icon: TextureRect = $VBoxContainer3/perma_buff_icon
+@onready var perma_buff_label: Label = $VBoxContainer3/perma_buff_icon/perma_buff_counter
+
 @onready var player_shield_label: Label = $shields_vbox/player_shield/player_shield_label
 @onready var player_san_shield_label: Label = $shields_vbox/player_san_shield/player_san_shield_label
 

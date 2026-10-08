@@ -395,7 +395,7 @@ size_flags_vertical = 8
 mouse_filter = 0
 expand_mode = 2
 
-[node name="turns_remaining" type="Label" parent="VBoxContainer/EnemyBarsContainer/MarginContainer/perma_buff_icon" unique_id=705721485]
+[node name="perma_buff_label" type="Label" parent="VBoxContainer/EnemyBarsContainer/MarginContainer/perma_buff_icon" unique_id=705721485]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://c6sow5yf5brhy"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_neos1"]
+
+[resource]
+script = ExtResource("1_neos1")
+display_name = "Lethal"
+color = Color(1, 0.18039216, 0.3882353, 1)
+show_tooltip = true
+description = "Triggers if the attack reduces the target's HP to 0."
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

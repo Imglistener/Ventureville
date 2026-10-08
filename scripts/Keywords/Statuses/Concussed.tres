@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://c0j8lh8d21u1d"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_d8hen"]
+
+[resource]
+script = ExtResource("1_d8hen")
+display_name = "Concussed"
+category = 0
+color = Color(1, 0.7490196, 0, 1)
+text_effect = 2
+show_tooltip = true
+description = "Affected Entity cannot use Attacks."
+has_status_link = true
+status_link = 4
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

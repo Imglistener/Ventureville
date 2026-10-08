@@ -6,11 +6,11 @@
 [resource]
 script = ExtResource("1_exepk")
 damage_type = ExtResource("1_xdkkb")
-blood_tax = 5
 name = "Blood Malady"
 target = 1
 mp_cost = 1
 ap_cost = 1
-Description = "Sacrifice 5 HP. Deal Blood Damage equal to an Enemy's Blood Syphon twice."
+blood_tax = 5
+Description = "Sacrifice 5. Deal Blood Damage equal to an Enemy's Blood Syphon twice."
 LogMessage = "\"Your Enemy's Blood festers under your influence!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

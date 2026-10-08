@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://bllpi53th5qsv"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_6l2ji"]
+
+[resource]
+script = ExtResource("1_6l2ji")
+display_name = "Horrified"
+category = 0
+color = Color(0.627451, 0.36078432, 0.8392157, 1)
+text_effect = 2
+description = "placeholder"
+has_status_link = true
+status_link = 3
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

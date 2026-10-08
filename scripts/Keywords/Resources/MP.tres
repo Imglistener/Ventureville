@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://b55p3l0dyt8q6"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_ton3n"]
+
+[resource]
+script = ExtResource("1_ton3n")
+display_name = "AP"
+aliases = ["Action Point(s)"]
+category = 2
+color = Color(0.43683314, 0.12646484, 0.875, 1)
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

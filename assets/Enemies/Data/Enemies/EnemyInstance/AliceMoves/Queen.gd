@@ -20,8 +20,10 @@ func use_action() -> void:
 	var Hemmorphage := BloodSyphon.new()
 	var damage_effect = AttackEffect.new()
 	damage_effect.damage_type = damagetype
+	damage_effect.source = Enemy.Enemy.Entity
+	damage_effect.amount = int((Damage * Enemy.Enemy.Entity.DamageBonus) / 3 * Enemy.Enemy.Entity.get_attack_bonus())
+
 	var target_array: Array[Node] = [target]
-	damage_effect.amount = Damage * Enemy.Enemy.Entity.DamageBonus/3
 	if Hemmorphage.is_applicable(target_array):
 		Hemmorphage.on_apply(target_array, 3)
 	SFXBus.play_sfx(SoundEffect)

@@ -11,4 +11,5 @@ func show_tooltip() -> void:
 		return
 	status_icon.texture = displayed_condition.condition_icon
 	status_name.text = displayed_condition.condition_name
-	status_description.text = displayed_condition.condition_description
+	status_name.add_theme_color_override('font_color', KeywordsScene.color_of(status_name.text))
+	status_description.text = KeywordsScene.format(displayed_condition.condition_description)

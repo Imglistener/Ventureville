@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://pvx73n1avg3u"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_mcbmo"]
+
+[resource]
+script = ExtResource("1_mcbmo")
+display_name = "Blood Debt"
+category = 0
+color = Color(0.98046875, 0.22979736, 0.22979736, 1)
+text_effect = 1
+show_tooltip = true
+description = "Affected Entity takes the Debt as Unblockable Damage at the end of each of their turns. Reduced by Healing."
+has_status_link = true
+status_link = 14
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

@@ -247,14 +247,15 @@ func PhaseUI_active(phase : PhaseManager.Phases) -> void:
 			for view in enemy_manager.get_enemy_views():
 				view.enemy_view.disabled = false
 			if not hand.is_hand_hidden and hand.is_retaining_hand:
-				hand.hide_hand()
+				await hand.hide_hand()
 			else:
-				hand.clear_hand()
+				await hand.discard_hand()
 			splash_out(AP, Vector2.RIGHT, 400, 0.5)
 			splash_out(mana_ui, Vector2.LEFT, 300, 0.5)
 			splash_out(deck_pile, Vector2.LEFT, 300, 0.5)
 			splash_out(discard_pile, Vector2.LEFT, 300, 0.5)
 			splash_out(standby_menu, Vector2.DOWN, 300, 0.5)
+			phase_manager.advance_to_next_phase()
 		PhaseManager.Phases.EnemyStandbyStart:
 			_update_turn_label(phase)
 		PhaseManager.Phases.EnemyStandbyEnd:

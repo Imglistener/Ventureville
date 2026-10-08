@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://fntvxw1bcaad"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_t2rf4"]
+
+[resource]
+script = ExtResource("1_t2rf4")
+display_name = "Draw"
+aliases = ["Draws", "Drawn", "Drew"]
+color = Color(0.60784316, 0.90588236, 0.76862746, 1)
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://cwpg1b60khgmk"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_spfvm"]
+
+[resource]
+script = ExtResource("1_spfvm")
+display_name = "SAN Shield"
+aliases = ["SAN Block"]
+category = 2
+color = Color(0.20784314, 1, 1, 1)
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

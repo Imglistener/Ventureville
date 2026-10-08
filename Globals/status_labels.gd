@@ -8,6 +8,8 @@ const COLORS := {
 	"Regeneration": Color(0.313, 1.0, 0.0, 1.0),
 	"Concussed": Color.REBECCA_PURPLE,
 	"Condition": Color.WHITE,
+	"SanguineShell": Color(0.85, 0.1, 0.2),
+	"DamageDown": Color(0.6, 0.5, 0.9),
 }
 
 const FONT_SIZE := 30
@@ -32,6 +34,12 @@ func display_effect(status: Resource, anchor: Node2D, source_position: Vector2, 
 	elif status is Concussed:
 		text = "Concussed"
 		color = COLORS["Concussed"]
+	elif status is SanguineShell:
+		text = "Sanguine Shell"
+		color = COLORS["SanguineShell"]
+	elif status is DamageDown:
+		text = "Damage Down"
+		color = COLORS["DamageDown"]
 	elif status is BattleCondition:
 		text = status.condition_name.to_upper()
 		color = COLORS["Condition"]

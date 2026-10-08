@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dmunqbcxjcijn"]
+
+[ext_resource type="Texture2D" uid="uid://28c6af17kw7j" path="res://assets/PNG/Button04.png" id="1_upvb2"]
+[ext_resource type="Script" uid="uid://cljm6wn0anrqh" path="res://assets/Data/Scripts/debug scripts/turns_remainingdebug.gd" id="2_54631"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ghndp"]
+content_margin_top = 3.0
+texture = ExtResource("1_upvb2")
+
+[node name="Statuseffecticon" type="TextureRect" unique_id=189661671]
+custom_minimum_size = Vector2(55, 55)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 0
+expand_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2061069521]
+custom_maximum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ghndp")
+
+[node name="turns_remaining" type="Label" parent="PanelContainer" unique_id=1904520688]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 11
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 3
+script = ExtResource("2_54631")
+
+[connection signal="visibility_changed" from="PanelContainer/turns_remaining" to="PanelContainer/turns_remaining" method="_on_visibilty_changed"]

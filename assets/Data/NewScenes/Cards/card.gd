@@ -64,7 +64,7 @@ func _ready() -> void:
 	drop_point_detector.monitoring = false
 	card_name.text = str(card_data.name)
 	card_type.text = str(card_data.Type.keys()[card_data.type]).left(1) + str(card_data.Type.keys()[card_data.type]).right(-1).to_lower()
-	card_effect.text = card_data.get_description(player_stats)
+	card_effect.text = KeywordsScene.format(card_data.get_description(player_stats))
 	cost.text = str(card_data.ap_cost)
 	mp_cost.text = str(card_data.mp_cost)
 	card_state_manager.init(self)
@@ -138,26 +138,36 @@ func play() -> void:
 		nulled()
 
 func update_description() -> void:
-	card_effect.text = card_data.get_description(player_stats)
+	card_effect.text = KeywordsScene.format(card_data.get_description(player_stats))
 
-func animate_out() -> void:
-	is_playable.hide()
-	if not deck_position or not Discard_position:
+func discard(delay: float = 0.0) -> void:
+	if card_disabled and is_queued_for_deletion():
 		return
-	if tween and tween.is_running():
+	# Freeze everything that could fight the discard tween.
+	card_disabled = true
+	set_process(false)          # stops card_state_manager.process() -> no surprise IDLING transition
+	set_process_input(false)
+	is_playable.hide()
+	hide_keyword_tooltips()
+
+	if tween and tween.is_valid():
 		tween.kill()
+	if hand_tween and hand_tween.is_valid():
+		hand_tween.kill()
+
 	tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
-	tween.parallel().tween_property(self, "scale", Vector2(0.1, 0.1), 0.2)
-	tween.parallel().tween_property(self, "global_position", Discard_position, 0.4)
-	tween.parallel().tween_property(self, 'modulate', Color(0.0, 0.0, 0.0, 0.0), 0.4)
-	tween.finished.connect(
-		func():
-			queue_free()
-	)
-	
+	if delay > 0.0:
+		tween.tween_interval(delay)
+	tween.tween_property(self, "modulate", Color(0, 0, 0, 0), 0.4)
+	if Discard_position:
+		tween.parallel().tween_property(self, "scale", Vector2(0.1, 0.1), 0.2)
+		tween.parallel().tween_property(self, "global_position", Discard_position, 0.4)
+	tween.tween_callback(queue_free)   # always reached, even if positions were never set
+func animate_out() -> void:
+	discard()
 
 func animate_to_hand() -> void:
-	if not hand_position_set:
+	if card_disabled or not hand_position_set:
 		return
 	if tween and tween.is_running():
 		tween.kill()
@@ -239,12 +249,12 @@ func _update_live_preview() -> void:
 		reset_live_preview()
 		return
 	var live_targets := targets if card_data.is_SingleTarget() else card_data._get_targets(targets)
-	card_effect.text = card_data.get_live_description(player_stats, live_targets)
+	card_effect.text = KeywordsScene.format(card_data.get_live_description(player_stats, live_targets))
 
 func reset_live_preview() -> void:
 	if not card_data:
 		return
-	card_effect.text = card_data.get_description(player_stats)
+	card_effect.text = KeywordsScene.format(card_data.get_description(player_stats))
 	Events.hide_enemy_resistances.emit()
 
 func set_display_size(size: Vector2) -> void:
@@ -263,11 +273,11 @@ func nulled() -> void:
 				Events.card_exhausted.emit(self.card_data)
 
 func ready_keyword_tooltips() -> void:
-	var keywords: Array[String] = []
-	for keyword in KeywordTooltip.KeywordList.keys():
-		if card_data.Description.contains(keyword):
-			keywords.append(keyword)
-
+	var keywords: Array[KeywordData] = []
+	for keyword in KeywordsScene.keywords:
+		if KeywordsScene.find_in(card_data.Description, true):
+			keywords = KeywordsScene.find_in(card_data.Description, true)
+			
 	if keywords.is_empty() or keywords.size() > MAX_KEYWORD_TOOLTIPS:
 		return
 	if not _keyword_tooltips.is_empty():

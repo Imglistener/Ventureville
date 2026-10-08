@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+KeywordsScene="*uid://bqb0fink8xjut"
 Events="*uid://be6xsbwafouf8"
 DamageNumbers="*uid://djnpb46xsrym5"
 StatusLabels="*uid://btavavp46re4c"

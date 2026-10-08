@@ -8,5 +8,5 @@ script = ExtResource("1_ytiar")
 status_name = 7
 status_icon = ExtResource("1_cjjgt")
 effect_texture = ExtResource("1_cjjgt")
-status_description = "Your attack damage gains a percentage based increase."
+status_description = "Affected Entity's attack damage gains a percentage based increase."
 metadata/_custom_type_script = "uid://kwha4y88aerj"
