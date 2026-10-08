@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BloodDebt" format=3 uid="uid://d0vgs8rq60qe5"]
+
+[ext_resource type="Texture2D" uid="uid://q80m4qw3yfii" path="res://assets/GUI/effect_blood_syphon.png" id="1_jossx"]
+[ext_resource type="Script" uid="uid://pdh2vdcjp5ht" path="res://assets/Status Effects/Debuffs/blood_debt.gd" id="1_wbu5o"]
+[ext_resource type="Texture2D" uid="uid://vds0hvbyq1qd" path="res://assets/GUI/Bleeding_Icon.png" id="3_b2hfu"]
+
+[resource]
+script = ExtResource("1_wbu5o")
+status_name = 14
+default_duration = 1
+status_icon = ExtResource("3_b2hfu")
+effect_texture = ExtResource("1_jossx")
+status_description = "Affected Entity takes the Debt as Unblockable Damage at the end of each of their turns. Reduced by Healing."
+metadata/_custom_type_script = "uid://pdh2vdcjp5ht"

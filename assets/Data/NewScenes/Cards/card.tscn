@@ -6,9 +6,9 @@
 [ext_resource type="AudioStream" uid="uid://cnuxlqejtckb5" path="res://assets/SFX/card_hover.wav" id="4_80gmr"]
 [ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="5_bb8u2"]
 [ext_resource type="AudioStream" uid="uid://p68vnmwk5kiw" path="res://assets/SFX/card_click.wav" id="5_x53gr"]
-[ext_resource type="Texture2D" uid="uid://cf65ba4oj2g0t" path="res://assets/GUI/Card_Game_border_blood.png" id="6_3go67"]
 [ext_resource type="AudioStream" uid="uid://cs43hedoluabf" path="res://assets/SFX/711353__rising_moon__magic_loop.mp3" id="6_80gmr"]
 [ext_resource type="PackedScene" uid="uid://bkip6tvhofvrd" path="res://assets/Data/NewScenes/keyword_tooltip.tscn" id="6_jtxne"]
+[ext_resource type="Texture2D" uid="uid://ctv8facpfe0c8" path="res://assets/GUI/bloodmage_border.png" id="7_mgg81"]
 [ext_resource type="Script" uid="uid://dbqo6v48is40i" path="res://scripts/CardUI/CardState/CardStateManager.gd" id="8_ktvkk"]
 [ext_resource type="Script" uid="uid://um2yjt6eq6j1" path="res://scripts/CardUI/CardState/StateCardDragging.gd" id="9_5cyc0"]
 [ext_resource type="Texture2D" uid="uid://cx76h8fp6cixc" path="res://assets/venture.png" id="9_x53gr"]
@@ -188,7 +188,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_right = 694.0
 offset_bottom = 1013.0
-texture = ExtResource("6_3go67")
+texture = ExtResource("7_mgg81")
 expand_mode = 1
 
 [node name="IsPlayable" type="ColorRect" parent="CardAnchor/CardScaler/CardFrame" unique_id=1133534713]
@@ -357,13 +357,21 @@ custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("5_bb8u2")
+theme_override_colors/font_outline_color = Color(0.13671875, 0.13671875, 0.13671875, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.32941177)
 theme_override_constants/line_separation = -15
+theme_override_constants/shadow_outline_size = 16
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 9
 theme_override_font_sizes/normal_font_size = 39
+bbcode_enabled = true
 text = "Inflict X BLOOD Damage.
 Chance to apply Bleeding for 3 Turns."
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
+vertical_alignment = 1
 justification_flags = 129
 metadata/_edit_use_anchors_ = true
 

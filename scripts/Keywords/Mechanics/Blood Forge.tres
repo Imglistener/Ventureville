@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://c3hevfhqitqh4"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_3rbbv"]
+
+[resource]
+script = ExtResource("1_3rbbv")
+display_name = "Blood Forge"
+color = Color(0.7607843, 0.09411765, 0.35686275, 1)
+show_tooltip = true
+description = "Whenever you draw a \"Blood Weapon\" card; Heal 5. If \"Ascendant Ritual\" is active, Heal 10 instead."
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

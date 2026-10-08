@@ -1,0 +1,20 @@
+[gd_resource type="Resource" format=3 uid="uid://hvqvdyosqg5w"]
+
+[ext_resource type="PackedScene" uid="uid://lgag4d5rcy0l" path="res://assets/Data/NewScenes/block_visual_effect.tscn" id="1_jdcxx"]
+[ext_resource type="Script" uid="uid://bgbb7p2d2tvu" path="res://assets/Data/Player/PlayerActions/CardEffects/Sanguine Protection.gd" id="2_m4gg2"]
+[ext_resource type="Resource" uid="uid://30myew7m8eb5" path="res://assets/Status Effects/Buffs/Sanguine Shell.tres" id="3_0onfd"]
+
+[resource]
+script = ExtResource("2_m4gg2")
+shell_effect = ExtResource("3_0onfd")
+shell_duration = 2
+BaseShield = 20
+VFX = ExtResource("1_jdcxx")
+name = "Sanguine Protection"
+rarity = 1
+mp_cost = 3
+ap_cost = 2
+blood_tax = 10
+Description = "Sacrifice 10. Gain 20 Shield and take 25% less damage from enemies affected by Blood Syphon this turn."
+LogMessage = "\"Condensed Blood shields you from harm!\""
+metadata/_custom_type_script = "uid://dx57of0yiebdh"

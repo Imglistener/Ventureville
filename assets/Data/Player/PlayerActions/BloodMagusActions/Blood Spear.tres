@@ -15,6 +15,6 @@ mp_cost = 2
 ap_cost = 1
 blood_tax = 8
 tags = Array[StringName]([&"BloodWeapon"])
-Description = "Sacrifice 8 HP. Deal {scaled} Blood Damage, then addtional Blood Damage equal to the Target's Blood Syphon."
+Description = "Sacrifice 8. Deal {scaled} Blood Damage, then addtional Blood Damage equal to the Target's Blood Syphon."
 LogMessage = "\"Your Blood Spear drinks in your Enemy's life force!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

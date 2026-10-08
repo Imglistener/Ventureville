@@ -6,6 +6,7 @@ var heavy_damage: AudioStream = load("uid://dpv3gx2wsr4h3")
  
 var amount = 0
 var damage_type: DamageType
+var source: BaseBattlerStats
 
 func activate(targets : Array[Node]) -> void:
 	var sfx_player = targets[0].get_tree().get_first_node_in_group('SFXBus') as AudioStreamPlayer
@@ -15,9 +16,10 @@ func activate(targets : Array[Node]) -> void:
 			if not target:
 				continue
 			if target is EnemyView:
-				target.Enemy.Entity.take_damage(amount, damage_type)
+				target.Enemy.Entity.take_damage(_mitigated(amount, target.Enemy.Entity), damage_type)
 			elif target is Stat_Manager:
-				target.Player.take_damage(amount, damage_type)
+				target.Player.take_damage(_mitigated(amount, target.Player), damage_type)
+
 		if amount > 0 and amount <= 10:
 			sfx_player.play_sfx(light_damage)
 
@@ -26,3 +28,10 @@ func activate(targets : Array[Node]) -> void:
 		else:
 			sfx_player.play_sfx(heavy_damage)
 			
+func _mitigated(base: int, defender: BaseBattlerStats) -> int:
+	if not source or not defender:
+		return base
+	for effect in defender.ActiveEffects:
+		if effect is SanguineShell:
+			return effect.reduce_damage(base, source)
+	return base

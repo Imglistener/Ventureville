@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c226gfx63p6mf" path="res://assets/Data/NewScenes/battlecondition_tooltip_base.gd" id="1_0bh25"]
 [ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="3_a04le"]
+[ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="3_ovbvq"]
 
 [node name="BattleConditionTooltipBase" type="Control" unique_id=2080764858]
 layout_mode = 3
@@ -43,8 +44,9 @@ mouse_filter = 2
 
 [node name="Status_Name" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1865073035]
 layout_mode = 2
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_a04le")
-theme_override_font_sizes/font_size = 19
+theme_override_font_sizes/font_size = 22
 text = "Blood Syphon"
 horizontal_alignment = 2
 
@@ -52,3 +54,9 @@ horizontal_alignment = 2
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
+theme = ExtResource("3_ovbvq")
+theme_override_constants/line_separation = -10
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Whenever you draw a \"Blood Weapon\" card; Heal 5. If \"Ascendant Ritual\" is active, Heal 10 instead."
+scroll_active = false

@@ -574,7 +574,7 @@ playback_type = 1
 [node name="Extra" type="AudioStreamPlayer" parent="." unique_id=375572522 groups=["SFXBus"]]
 
 [connection signal="pressed" from="Control_Layer/Control_Base/toolbar_container/toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Show Deck" to="Functionality/MenusManager" method="_toggle_deck_view"]
-[connection signal="pressed" from="Control_Layer/Control_Base/End Turn" to="Functionality/PhaseManager" method="emit_specific_phase" binds= [&"PlayerBattleEnd"]]
+[connection signal="pressed" from="Control_Layer/Control_Base/End Turn" to="Functionality/PhaseManager" method="player_end_turn_functionality"]
 [connection signal="pressed" from="Control_Layer/Pause Layer/Pause Menu/Pause Buttons/Save and Quit" to="Control_Layer/Pause Layer/Pause Menu" method="exit"]
 
 [editable path="Control_Layer/Control_Base/toolbar_container"]

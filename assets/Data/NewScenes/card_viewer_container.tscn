@@ -288,6 +288,7 @@ theme_override_constants/margin_bottom = 11
 layout_mode = 2
 theme = ExtResource("3_m6q3i")
 theme_override_constants/line_separation = -14
+bbcode_enabled = true
 text = "Deal 8 Blood Damage. Deal 8 Blood Damage.
 Deal 8 Blood Damage.Deal 8 Blood Damage.Deal 8 Blood Damage."
 horizontal_alignment = 1

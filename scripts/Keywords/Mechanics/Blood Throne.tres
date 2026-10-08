@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://ont4jwbxg56j"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_gnrqt"]
+
+[resource]
+script = ExtResource("1_gnrqt")
+display_name = "Blood Throne"
+color = Color(0.7607843, 0.09411765, 0.35686275, 1)
+show_tooltip = true
+description = "Whenever you Sacrifice, Gain 1 MP."
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

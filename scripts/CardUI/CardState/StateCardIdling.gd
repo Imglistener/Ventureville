@@ -3,6 +3,7 @@ extends CardState
 func enter() -> void:
 	card_UI.drop_point_detector.monitoring = false
 	card_UI.targets.clear()
+	card_UI.get_parent().is_card_playing = false
 	if not card_UI.is_inside_tree():
 		await card_UI.ready
 	if card_UI.tween and card_UI.tween.is_running():

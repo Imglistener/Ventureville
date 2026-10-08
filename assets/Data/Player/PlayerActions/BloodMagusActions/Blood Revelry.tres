@@ -1,10 +1,12 @@
 [gd_resource type="Resource" format=3 uid="uid://bqtf5udkjk5ck"]
 
+[ext_resource type="Resource" uid="uid://cykpqknfmbckv" path="res://assets/Status Effects/Buffs/DamageUp.tres" id="1_gib8x"]
 [ext_resource type="Script" uid="uid://bqke2kfn75vda" path="res://assets/Data/Player/PlayerActions/CardEffects/BloodRevelry.gd" id="1_uaevp"]
 
 [resource]
 script = ExtResource("1_uaevp")
 DamageUpDuration = 2
+damage_up_effect = ExtResource("1_gib8x")
 name = "Blood Revelry"
 rarity = 1
 target = 1

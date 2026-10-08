@@ -26,10 +26,10 @@ func enter() -> void:
 	# deletion at this point, so its nodes are still valid.
 	card_UI.drop_point_detector.monitoring = false
 	await card_UI.tree_exited
-	print("StateCardReleased post-play cleanup for ", card_UI.card_data.name, " @ ", Time.get_ticks_msec(), " hand.is_arranging=", (card_UI.get_parent() as CardHand).is_arranging if is_instance_valid(card_UI.get_parent()) else "n/a")
 	if is_instance_valid(hand):
 		hand.arrange_hand()
 		hand.define_playable()
+		hand.is_card_playing = false
 
 
 func process(_delta: float) -> void:

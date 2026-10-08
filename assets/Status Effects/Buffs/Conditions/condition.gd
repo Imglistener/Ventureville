@@ -16,6 +16,12 @@ func is_condition_passive() -> bool:
 func is_condition_active() -> bool:
 	return condition_type == CONDITION_TYPES.Active
 
+# Text for the small label next to the condition icon (NOT a duration).
+# Return whatever number matters for this condition; "" hides the label.
+# Called on the ACTIVE instance, so it can read per-instance state.
+func get_display_text() -> String:
+	return ""
+
 # Active conditions: checked every tick, returns whether the payload should fire
 func on_conditions_met(_targets: Array[Node]) -> bool:
 	return false
@@ -50,4 +56,3 @@ func find_same_effect(effects: Array) -> BattleCondition:
 		if effect.get_script() == self.get_script():
 			return effect
 	return null
-	

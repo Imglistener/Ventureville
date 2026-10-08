@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://dyyq7s7jx0tqa"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_k1fw6"]
+
+[resource]
+script = ExtResource("1_k1fw6")
+display_name = "Entropy"
+category = 1
+color = Color(0.22265625, 0, 0.4453125, 1)
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

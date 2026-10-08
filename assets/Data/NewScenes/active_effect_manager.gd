@@ -14,13 +14,15 @@ const ENEMY_TICK_DELAY: float = 0.3
 class ConditionDisplayEntry:
 	var stat_manager: Stat_Manager
 	var icon: TextureRect
+	var label: Label                       # NEW: shows BattleCondition.get_display_text()
 	var get_conditions: Callable
 	var index: int = 0
 	var hovered: bool = false
 	var current_condition: BattleCondition
-	func _init(sm: Stat_Manager, icon_: TextureRect, get_conditions_: Callable) -> void:
+	func _init(sm: Stat_Manager, icon_: TextureRect, label_: Label, get_conditions_: Callable) -> void:
 		stat_manager = sm
 		icon = icon_
+		label = label_
 		get_conditions = get_conditions_
 
 var _condition_entries: Dictionary = {}       # Stat_Manager -> ConditionDisplayEntry
@@ -214,6 +216,7 @@ func _register_player_conditions() -> void:
 	var entry := ConditionDisplayEntry.new(
 		player_stat_manager,
 		player_view.player_bars_container.perma_buff_icon,
+		player_view.player_bars_container.perma_buff_label,   # NEW
 		func(): return player_stat_manager.Player.BattleConditions
 	)
 	_add_condition_entry(player_stat_manager, entry)
@@ -265,12 +268,28 @@ func clear_condition_tooltips(stat_manager: Stat_Manager) -> void:
 				child.queue_free()
 
 
+func _set_condition_label(label: Label, condition: BattleCondition) -> void:
+	if not label:
+		return
+	var text := condition.get_display_text() if condition else ""
+	label.text = text
+	label.visible = text != ""
+
+
+## Re-reads the label for whatever condition each entry is currently showing.
+func _refresh_condition_labels() -> void:
+	for stat_manager in _condition_entry_order:
+		var entry: ConditionDisplayEntry = _condition_entries[stat_manager]
+		_set_condition_label(entry.label, entry.current_condition)
+
+
 func _advance_condition_entry(entry: ConditionDisplayEntry) -> void:
 	var conditions: Array = entry.get_conditions.call().filter(func(c): return c != null)
 
 	if conditions.is_empty():
 		entry.icon.texture = null
 		entry.icon.visible = false
+		_set_condition_label(entry.label, null)
 		entry.current_condition = null
 		return
 
@@ -280,17 +299,19 @@ func _advance_condition_entry(entry: ConditionDisplayEntry) -> void:
 	entry.current_condition = condition
 	if conditions.size() == 1:
 		entry.icon.texture = condition.condition_icon
+		_set_condition_label(entry.label, condition)
 	else:
-		_tween_condition_icon_swap(entry.icon, condition)
+		_tween_condition_icon_swap(entry.icon, entry.label, condition)
 
 	entry.index = (entry.index + 1) % conditions.size()
 
 
-func _tween_condition_icon_swap(icon: TextureRect, condition: BattleCondition) -> void:
+func _tween_condition_icon_swap(icon: TextureRect, label: Label, condition: BattleCondition) -> void:
 	var tween := create_tween()
 	tween.tween_property(icon, "modulate:a", 0.0, 0.15)
 	tween.tween_callback(func():
 		icon.texture = condition.condition_icon
+		_set_condition_label(label, condition)
 	)
 	tween.tween_property(icon, "modulate:a", 1.0, 0.15)
 
@@ -326,6 +347,8 @@ func tick_conditions(stat_manager: Stat_Manager) -> void:
 				if condition.trigger_once:
 					condition.on_expired(targets)
 
+	_refresh_condition_labels()   # values like Ascendant Ritual's amount change on tick
+
 
 ############################### SHARED REGISTRATION / TIMER ###############################
 
@@ -343,6 +366,7 @@ func _on_enemy_registered(view: EnemyView, stat_manager: Stat_Manager) -> void:
 		var condition_entry := ConditionDisplayEntry.new(
 			stat_manager,
 			view.enemy_bars_container.perma_buff_icon,
+			view.enemy_bars_container.perma_buff_label,   # NEW
 			func(): return stat_manager.Entity.BattleConditions
 		)
 		_add_condition_entry(stat_manager, condition_entry)
@@ -367,7 +391,7 @@ func _on_effect_cycle_tick() -> void:
 func _on_player_battle_end() -> void:
 	tick_effects(player_stat_manager)
 	tick_conditions(player_stat_manager)
-	phase_manager.advance_to_next_phase()
+
 
 
 func _on_enemy_battle_end() -> void:

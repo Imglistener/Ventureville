@@ -40,8 +40,13 @@ func modify_buff_modifier(amount: float) -> void:
 	print("Buff Damage Modifer Changed : " , amount)
 	Stats_Changed.emit()
 
-func get_attack_bonus() -> float: 
-	return buff_damage_modifier
+func get_attack_bonus() -> float:
+	var reduction := 0.0
+	for effect in ActiveEffects:
+		if effect is DamageDown:
+			reduction += effect.amount
+	# Reduction is capped at 75% total.
+	return buff_damage_modifier * clampf(1.0 - reduction, 0.25, 1.0)
 
 ## Unblockable HP loss from sacrificing (Card._pay_blood_tax is the only caller).
 func true_take_damage(amount: int) -> void:
@@ -82,6 +87,12 @@ func set_block(value: int) -> void:
 	
 func heal(amount: int) -> void:
 	self.current_health += amount
+	if amount > 0:
+		for effect in ActiveEffects:
+			if effect is BloodDebt:
+				effect.on_heal(self)
+				break   
+
 func san_heal(amount: int) -> void:
 	self.current_sanity = clampi(self.current_sanity + amount, 0, self.Max_SAN)
 	

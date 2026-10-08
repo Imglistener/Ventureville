@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://dmkwbch3qfws4"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_iwt8r"]
+
+[resource]
+script = ExtResource("1_iwt8r")
+display_name = "Attack"
+aliases = ["Attacks"]
+category = 4
+color = Color(1, 0.41960785, 0.41960785, 1)
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

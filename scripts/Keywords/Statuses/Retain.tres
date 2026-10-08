@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://c2qukh8cww7k8"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_hnt2x"]
+
+[resource]
+script = ExtResource("1_hnt2x")
+display_name = "Retain"
+aliases = ["Retains"]
+category = 0
+color = Color(0.37254903, 0.81960785, 0.6901961, 1)
+show_tooltip = true
+description = "You do not discard your hand at the end of the turn."
+has_status_link = true
+status_link = 10
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

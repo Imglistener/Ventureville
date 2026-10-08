@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DamageDown" format=3 uid="uid://colxenne7fpke"]
+
+[ext_resource type="Texture2D" uid="uid://b66vql2o7rtwv" path="res://assets/GUI/AttackDebuff_nobg.png" id="1_nwatr"]
+[ext_resource type="Script" uid="uid://dfkkxraqbien4" path="res://assets/Status Effects/Debuffs/DamageDown.gd" id="1_peyld"]
+[ext_resource type="Texture2D" uid="uid://olt3a5otvd0s" path="res://assets/GUI/Attack_debuff_icon.png" id="3_ldhiu"]
+
+[resource]
+script = ExtResource("1_peyld")
+status_name = 13
+default_duration = 2
+status_icon = ExtResource("3_ldhiu")
+effect_texture = ExtResource("1_nwatr")
+status_description = "Affected Entity's attack damage is reduced by a percentage-based amount."
+metadata/_custom_type_script = "uid://dfkkxraqbien4"

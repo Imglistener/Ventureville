@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://dwbjvexdfqiwh"]
+
+[ext_resource type="Resource" uid="uid://d0vgs8rq60qe5" path="res://assets/Status Effects/Debuffs/Blood Debt.tres" id="1_lqetp"]
+[ext_resource type="Script" uid="uid://ccjjqbsea12a7" path="res://assets/Data/Player/PlayerActions/CardEffects/Vampirism.gd" id="2_ltsx7"]
+
+[resource]
+script = ExtResource("2_ltsx7")
+healing_amount = 5
+blood_debt = ExtResource("1_lqetp")
+name = "Vampirism"
+rarity = 1
+target = 3
+mp_cost = 3
+ap_cost = 2
+Description = "Heal 5 for each Blood Syphon every Enemy. Gain 10 Blood Debt for each Enemy."
+LogMessage = "\"The art of Blood Vampirisim fills you with vigour!\""
+metadata/_custom_type_script = "uid://bm8khcsvx8q2c"

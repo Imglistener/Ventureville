@@ -21,6 +21,10 @@ func activate(targets: Array[Node]) -> void:
 	Events.effect_display.emit(self, player.Player.damage_number_anchor, player.Player.damage_number_anchor.global_position)
 
 
+func get_display_text() -> String:
+	return str(_current_heal() if _owner else heal_amount)
+
+
 func _on_card_drawn(card: Card) -> void:
 	# Events is an autoload and outlives the battle: stop listening once we're no longer active.
 	if not _owner or not _owner.BattleConditions.has(self):

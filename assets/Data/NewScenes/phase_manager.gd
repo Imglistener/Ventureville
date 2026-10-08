@@ -58,3 +58,10 @@ func emit_specific_phase(Phase: StringName) -> void:
 	if Events.has_signal(Phase):
 		Events.emit_signal(Phase, current_phase)
 			
+func player_end_turn_functionality() -> void:
+	var hand : CardHand = get_tree().get_first_node_in_group('hand')
+	if not hand:
+		return
+	if hand.is_card_playing:
+		return
+	emit_specific_phase('PlayerBattleEnd')

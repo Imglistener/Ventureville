@@ -6,7 +6,6 @@
 script = ExtResource("1_rlt6t")
 name = "Blood Sacrifice"
 rarity = 2
-type = 1
 mp_cost = 2
 Description = "Sacrifice half your current health. Draw 3 and gain 2 AP."
 LogMessage = "\"Your sacrifice was accepted... You feel unstoppable.\""

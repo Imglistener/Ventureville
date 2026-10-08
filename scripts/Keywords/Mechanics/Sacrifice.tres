@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://bqrbfsli5kwis"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_l0ukp"]
+
+[resource]
+script = ExtResource("1_l0ukp")
+display_name = "Sacrifice"
+aliases = ["Sacrificed"]
+color = Color(0.9607843, 0.6392157, 0.08235294, 1)
+show_tooltip = true
+description = "Lose health equal to the amount Sacrificed. Unblockable."
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"
