@@ -6,8 +6,8 @@ class_name MenusManager extends Node
 @onready var phase_manager: PhaseManager = $"../PhaseManager"
 @onready var AP: TextureRect = $"../../Control_Layer/Control_Base/AP_Background"
 @onready var mana_ui: Mana_UI = $"../../Control_Layer/Control_Base/Mana_UI"
-@onready var deck_pile: TextureButton = $"../../Node2D_Layer/DeckPile"
-@onready var discard_pile: TextureButton = $"../../Node2D_Layer/DiscardPile"
+@onready var deck_pile: TextureButton = $"../../Control_Layer/Control_Base/DeckPile"
+@onready var discard_pile: TextureButton = $"../../Control_Layer/Control_Base/DiscardPile"
 @onready var end_turn: TextureButton = $"../../Control_Layer/Control_Base/End Turn"
 @onready var toolbar_container: Toolbar = $"../../Control_Layer/Control_Base/toolbar_container"
 @onready var pause_menu: PauseMenu = $"../../Control_Layer/Pause Layer/Pause Menu"
@@ -65,7 +65,8 @@ func _ready() -> void:
 
 func handle_blur(paused: bool) -> void:
 	var t = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	t.tween_property(pause_blur.material, "shader_parameter/blur_amount", 0.0 if paused else 2.0, 0.4)
+	t.tween_property(pause_blur, "color", Color(0.0, 0.0, 0.0, 0.0) if paused else Color(0.0, 0.0, 0.0, 0.663), 0.4)
+	toolbar_container.retract_extend_toolbar(false if paused else true)
 	await t.finished
 func _resume_game()-> void:
 	get_tree().paused = false

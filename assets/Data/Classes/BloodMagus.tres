@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://clhppi5kqrsky" path="res://assets/Data/Classes/BloodMagus/BloodMagus.png" id="1_1a232"]
 [ext_resource type="Resource" uid="uid://dh3lhtl6ux4uu" path="res://assets/Data/Player/Inventory/Inventory.tres" id="1_iri2l"]
 [ext_resource type="Script" uid="uid://cs2ejlgorfek8" path="res://assets/Data/Player/CharacterInstance.gd" id="1_sn4ww"]
-[ext_resource type="Resource" path="res://assets/Data/Player/Deck/Deck.tres" id="2_kg42h"]
+[ext_resource type="Resource" uid="uid://cweq7n85crff3" path="res://assets/Data/Player/Deck/Deck.tres" id="2_kg42h"]
 [ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="3_v3aom"]
 [ext_resource type="Resource" uid="uid://bf04hmv3nnbgw" path="res://assets/Data/Stats/Revised Stats/Health.tres" id="4_87oeh"]
 [ext_resource type="Resource" uid="uid://bxetxvy80ay0c" path="res://assets/Data/Stats/Revised Stats/Sanity.tres" id="5_1a232"]

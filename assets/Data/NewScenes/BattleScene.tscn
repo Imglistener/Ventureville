@@ -31,8 +31,8 @@
 [ext_resource type="Script" uid="uid://o4qohiqhl68k" path="res://assets/Data/NewScenes/phase_manager.gd" id="18_wsofm"]
 [ext_resource type="PackedScene" uid="uid://casic1yg7e26l" path="res://assets/Data/Player/Inventory/Items/quantity_label.tscn" id="19_0ccq8"]
 [ext_resource type="Texture2D" uid="uid://cjka26ocsbg56" path="res://assets/GUI/play_button.png" id="20_cs5ql"]
-[ext_resource type="Shader" uid="uid://b3isi0mn6v52j" path="res://assets/Data/NewScenes/blur.gdshader" id="20_w5vtb"]
 [ext_resource type="Texture2D" uid="uid://c0wkk5cp2x0w3" path="res://assets/GUI/play_button_press.png" id="21_c1pur"]
+[ext_resource type="PackedScene" uid="uid://d17slcud8gn16" path="res://assets/Data/NewScenes/card_pile_displayer.tscn" id="22_7ub3u"]
 [ext_resource type="Texture2D" uid="uid://d4f6186k6kfet" path="res://assets/GUI/play_button_highlighted.png" id="22_c1pur"]
 [ext_resource type="Script" uid="uid://ct4mhcqyvkyd8" path="res://assets/Data/NewScenes/deck_manager.gd" id="22_qogb6"]
 [ext_resource type="Script" uid="uid://du5ckfar1fpqk" path="res://assets/Data/NewScenes/turn_counter_label.gd" id="22_unjj4"]
@@ -46,16 +46,12 @@
 [ext_resource type="Script" uid="uid://by1n1serxe8is" path="res://assets/Data/NewScenes/sfxPlayer.gd" id="38_pkylx"]
 [ext_resource type="Script" uid="uid://bs3r5fddsx6y5" path="res://scripts/enemy_turn_order_manager.gd" id="45_sotth"]
 [ext_resource type="Script" uid="uid://cy7yn1fq5hrgv" path="res://scripts/enemy_manager.gd" id="46_qkuvq"]
-[ext_resource type="Resource" uid="uid://6gutx58gp1xw" path="res://assets/Enemies/Data/battle data/battle_3.tres" id="49_7ub3u"]
+[ext_resource type="Resource" uid="uid://cvfghruynwwns" path="res://assets/Enemies/Data/battle data/battle_2.tres" id="49_7ub3u"]
 [ext_resource type="PackedScene" uid="uid://b8k3ee0s1c4ei" path="res://assets/Data/NewScenes/status_tooltip_base.tscn" id="49_h2n7a"]
 [ext_resource type="PackedScene" uid="uid://jktwbefoh0gv" path="res://assets/Data/NewScenes/battlecondition_tooltip_base.tscn" id="50_1iiwq"]
 [ext_resource type="Script" uid="uid://bespv1ko6kvui" path="res://scripts/turn_tracking_manager.gd" id="51_li6wq"]
 [ext_resource type="Script" uid="uid://bjge3i4gnlaou" path="res://scripts/battle_builder.gd" id="52_jiv1t"]
 [ext_resource type="AudioStream" uid="uid://rlbhoeeuv874" path="res://assets/SFX/Alice.wav" id="53_h2n7a"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f33sq"]
-shader = ExtResource("20_w5vtb")
-shader_parameter/blur_amount = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gyek"]
 size = Vector2(1246.9777, 360.58)
@@ -83,19 +79,6 @@ metadata/_edit_use_anchors_ = true
 [node name="Control_Layer" type="CanvasLayer" parent="." unique_id=1717132867]
 layer = 2
 
-[node name="EnemyViewContainer" type="Node2D" parent="Control_Layer" unique_id=2071511609]
-script = ExtResource("2_li6wq")
-enemy_view_scene = ExtResource("8_3esf3")
-
-[node name="Enemy_1" type="Marker2D" parent="Control_Layer/EnemyViewContainer" unique_id=136331498]
-position = Vector2(529, 335)
-
-[node name="Enemy_2" type="Marker2D" parent="Control_Layer/EnemyViewContainer" unique_id=1777279399]
-position = Vector2(777, 335)
-
-[node name="Enemy_3" type="Marker2D" parent="Control_Layer/EnemyViewContainer" unique_id=757763809]
-position = Vector2(329, 334)
-
 [node name="Control_Base" type="Control" parent="Control_Layer" unique_id=2000512818]
 layout_mode = 3
 anchors_preset = 15
@@ -109,8 +92,86 @@ mouse_filter = 2
 script = ExtResource("2_4a4b7")
 
 [node name="toolbar_container" parent="Control_Layer/Control_Base" unique_id=82390871 instance=ExtResource("3_omkm2")]
+process_mode = 3
 layout_mode = 1
+offset_bottom = 70.0
 mouse_filter = 0
+
+[node name="DiscardPile" type="TextureButton" parent="Control_Layer/Control_Base" unique_id=769567952]
+visible = false
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.90625
+anchor_top = 0.21111113
+anchor_right = 1.0625
+anchor_bottom = 0.4888889
+offset_left = -1127.395
+offset_top = 50.98999
+offset_right = -1127.395
+offset_bottom = 50.98999
+scale = Vector2(0.575, 0.575)
+texture_normal = ExtResource("26_b1rdx")
+ignore_texture_size = true
+stretch_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Control_Layer/Control_Base/DiscardPile" unique_id=521799269]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.5
+offset_top = -71.5
+offset_right = 22.5
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_68fdq")
+theme_override_colors/font_outline_color = Color(0.011948443, 0.009013251, 0.0049981317, 1)
+theme_override_constants/outline_size = 33
+theme_override_font_sizes/font_size = 80
+text = "0"
+script = ExtResource("25_gt0no")
+
+[node name="DeckPile" type="TextureButton" parent="Control_Layer/Control_Base" unique_id=1840839208]
+visible = false
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021449186
+anchor_top = 0.47743466
+anchor_right = 0.17769918
+anchor_bottom = 0.75521255
+offset_top = -3.0517578e-05
+offset_bottom = -3.0517578e-05
+scale = Vector2(0.575, 0.575)
+texture_normal = ExtResource("28_b1rdx")
+ignore_texture_size = true
+stretch_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Control_Layer/Control_Base/DeckPile" unique_id=802018055]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.761734
+offset_top = -71.5
+offset_right = 33.238266
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_68fdq")
+theme_override_colors/font_outline_color = Color(0.011948443, 0.009013251, 0.0049981317, 1)
+theme_override_constants/outline_size = 33
+theme_override_font_sizes/font_size = 80
+text = "0"
+script = ExtResource("25_gt0no")
 
 [node name="Base_Margin" type="MarginContainer" parent="Control_Layer/Control_Base" unique_id=1410913608]
 layout_mode = 1
@@ -241,6 +302,7 @@ visible = false
 layout_mode = 0
 offset_top = 175.0
 offset_bottom = 215.0
+mouse_filter = 1
 
 [node name="ItemsMenu" parent="Control_Layer/Control_Base" unique_id=1042447593 instance=ExtResource("18_2kban")]
 visible = false
@@ -270,16 +332,45 @@ position = Vector2(1104.4111, 249.56091)
 [node name="Pause Layer" type="CanvasLayer" parent="Control_Layer" unique_id=206101572 groups=["ControlBase"]]
 layer = 5
 
+[node name="DeckViewer2D" parent="Control_Layer/Pause Layer" unique_id=1412893859 instance=ExtResource("10_jiv1t")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1255.0
+offset_bottom = 704.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 69
+theme_override_constants/margin_right = 0
+
+[node name="MarginContainer" parent="Control_Layer/Pause Layer/DeckViewer2D/ScrollContainer" parent_id_path=PackedInt32Array(1412893859, 2036952227) index="0" unique_id=1861475631]
+mouse_filter = 2
+
+[node name="DeckDisplayer" parent="Control_Layer/Pause Layer" unique_id=726212858 instance=ExtResource("22_7ub3u")]
+visible = false
+z_index = -1
+offset_top = 69.0
+offset_bottom = 3.0
+mouse_filter = 2
+
+[node name="DiscardDisplayer" parent="Control_Layer/Pause Layer" unique_id=1556788580 instance=ExtResource("22_7ub3u")]
+visible = false
+z_index = -1
+offset_top = 69.0
+offset_bottom = 1.0
+mouse_filter = 2
+display_mode = 1
+sort_alphabetically = false
+
 [node name="Pause Blur" type="ColorRect" parent="Control_Layer/Pause Layer" unique_id=507999492]
 process_mode = 3
-material = SubResource("ShaderMaterial_f33sq")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.57032317, 0.57032317, 0.57032317, 0.28300002)
+color = Color(0, 0, 0, 0)
 metadata/_edit_lock_ = true
 
 [node name="Defeat" type="Label" parent="Control_Layer/Pause Layer/Pause Blur" unique_id=529388028]
@@ -322,19 +413,16 @@ theme_override_constants/outline_size = 31
 theme_override_font_sizes/font_size = 110
 text = "VICTORY!"
 
-[node name="DeckViewer2D" parent="Control_Layer/Pause Layer" unique_id=1412893859 instance=ExtResource("10_jiv1t")]
+[node name="SettingsMenu" parent="Control_Layer/Pause Layer" unique_id=1148530878 instance=ExtResource("16_f33sq")]
+process_mode = 3
 visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 1255.0
-offset_bottom = 704.0
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 69
-theme_override_constants/margin_right = 0
-
-[node name="MarginContainer" parent="Control_Layer/Pause Layer/DeckViewer2D/ScrollContainer" parent_id_path=PackedInt32Array(1412893859, 2036952227) index="0" unique_id=1861475631]
-mouse_filter = 2
+z_index = 1
+offset_left = -432.0
+offset_top = -250.0
+offset_right = 432.0
+offset_bottom = 250.0
+hover_sfx = ExtResource("17_lvhkn")
+click_sfx = ExtResource("18_v76ad")
 
 [node name="Pause Menu" type="PanelContainer" parent="Control_Layer/Pause Layer" unique_id=1540107876]
 process_mode = 3
@@ -383,16 +471,6 @@ script = ExtResource("16_1g5n4")
 hoversfx = ExtResource("17_lvhkn")
 clickSfx = ExtResource("18_v76ad")
 
-[node name="SettingsMenu" parent="Control_Layer/Pause Layer" unique_id=1148530878 instance=ExtResource("16_f33sq")]
-process_mode = 3
-visible = false
-offset_left = -432.0
-offset_top = -250.0
-offset_right = 432.0
-offset_bottom = 250.0
-hover_sfx = ExtResource("17_lvhkn")
-click_sfx = ExtResource("18_v76ad")
-
 [node name="TurnCounter" type="Label" parent="Control_Layer" unique_id=1115237485]
 custom_minimum_size = Vector2(700, 300)
 anchors_preset = 8
@@ -415,6 +493,20 @@ script = ExtResource("22_unjj4")
 
 [node name="Node2D_Layer" type="CanvasLayer" parent="." unique_id=271104960]
 
+[node name="EnemyViewContainer" type="Node2D" parent="Node2D_Layer" unique_id=2071511609]
+position = Vector2(0, -1.5258789e-05)
+script = ExtResource("2_li6wq")
+enemy_view_scene = ExtResource("8_3esf3")
+
+[node name="Enemy_1" type="Marker2D" parent="Node2D_Layer/EnemyViewContainer" unique_id=136331498]
+position = Vector2(529, 335)
+
+[node name="Enemy_2" type="Marker2D" parent="Node2D_Layer/EnemyViewContainer" unique_id=1777279399]
+position = Vector2(777, 335)
+
+[node name="Enemy_3" type="Marker2D" parent="Node2D_Layer/EnemyViewContainer" unique_id=757763809]
+position = Vector2(329, 334)
+
 [node name="CardTargetSelector" parent="Node2D_Layer" unique_id=1721769176 instance=ExtResource("10_a03hs")]
 z_as_relative = false
 
@@ -433,80 +525,6 @@ debug_color = Color(1, 1, 1, 0)
 
 [node name="TargetingArea" type="Node2D" parent="Node2D_Layer" unique_id=643819608]
 position = Vector2(487, 548)
-
-[node name="DiscardPile" type="TextureButton" parent="Node2D_Layer" unique_id=769567952]
-visible = false
-anchors_preset = -1
-anchor_left = 0.94375
-anchor_top = 0.2777778
-anchor_right = 0.94375
-anchor_bottom = 0.2777778
-offset_left = -1127.395
-offset_top = 50.98999
-offset_right = -1127.395
-offset_bottom = 50.98999
-scale = Vector2(0.575, 0.575)
-texture_normal = ExtResource("26_b1rdx")
-ignore_texture_size = true
-stretch_mode = 3
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="Node2D_Layer/DiscardPile" unique_id=521799269]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -22.5
-offset_top = -71.5
-offset_right = 22.5
-offset_bottom = 71.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("11_68fdq")
-theme_override_colors/font_outline_color = Color(0.011948443, 0.009013251, 0.0049981317, 1)
-theme_override_constants/outline_size = 33
-theme_override_font_sizes/font_size = 80
-text = "0"
-script = ExtResource("25_gt0no")
-
-[node name="DeckPile" type="TextureButton" parent="Node2D_Layer" unique_id=1840839208]
-visible = false
-anchors_preset = -1
-anchor_left = 0.94375
-anchor_top = 0.2777778
-anchor_right = 0.94375
-anchor_bottom = 0.2777778
-offset_left = -1132.545
-offset_top = 199.753
-offset_right = -1132.545
-offset_bottom = 199.753
-scale = Vector2(0.575, 0.575)
-texture_normal = ExtResource("28_b1rdx")
-ignore_texture_size = true
-stretch_mode = 3
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="Node2D_Layer/DeckPile" unique_id=802018055]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -11.761734
-offset_top = -71.5
-offset_right = 33.238266
-offset_bottom = 71.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("11_68fdq")
-theme_override_colors/font_outline_color = Color(0.011948443, 0.009013251, 0.0049981317, 1)
-theme_override_constants/outline_size = 33
-theme_override_font_sizes/font_size = 80
-text = "0"
-script = ExtResource("25_gt0no")
 
 [node name="Functionality" type="Node" parent="." unique_id=401213274]
 
@@ -551,7 +569,7 @@ script = ExtResource("51_li6wq")
 
 [node name="BattleBuilder" type="Node" parent="Functionality" unique_id=321217465 node_paths=PackedStringArray("enemy_view_container", "enemy_manager", "bgm")]
 script = ExtResource("52_jiv1t")
-enemy_view_container = NodePath("../../Control_Layer/EnemyViewContainer")
+enemy_view_container = NodePath("../../Node2D_Layer/EnemyViewContainer")
 enemy_manager = NodePath("../EnemyManager")
 bgm = NodePath("../../BGM")
 battle_info = ExtResource("49_7ub3u")
@@ -574,6 +592,9 @@ playback_type = 1
 [node name="Extra" type="AudioStreamPlayer" parent="." unique_id=375572522 groups=["SFXBus"]]
 
 [connection signal="pressed" from="Control_Layer/Control_Base/toolbar_container/toolbar/MarginContainer/NavMenu/MarginContainer/PauseMenuIcons/Show Deck" to="Functionality/MenusManager" method="_toggle_deck_view"]
+[connection signal="pressed" from="Control_Layer/Control_Base/DiscardPile" to="Control_Layer/Control_Base" method="handle_discard_press"]
+[connection signal="mouse_entered" from="Control_Layer/Control_Base/DeckPile" to="Control_Layer/Control_Base" method="check_mouse_issue"]
+[connection signal="pressed" from="Control_Layer/Control_Base/DeckPile" to="Control_Layer/Control_Base" method="handle_deck_press"]
 [connection signal="pressed" from="Control_Layer/Control_Base/End Turn" to="Functionality/PhaseManager" method="player_end_turn_functionality"]
 [connection signal="pressed" from="Control_Layer/Pause Layer/Pause Menu/Pause Buttons/Save and Quit" to="Control_Layer/Pause Layer/Pause Menu" method="exit"]
 

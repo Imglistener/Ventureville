@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b1m83vq7og5gx"]
+
+[ext_resource type="Script" uid="uid://dr606fr21c1by" path="res://assets/Data/NewScenes/VFX/triple_bite_vfx.gd" id="1_uhj4d"]
+[ext_resource type="PackedScene" uid="uid://8ek71qeriejb" path="res://assets/Data/NewScenes/fire_bite_vfx.tscn" id="2_uhj4d"]
+
+[node name="TripleBiteVFX" type="Node2D" unique_id=1185585985]
+script = ExtResource("1_uhj4d")
+
+[node name="FireBiteVFX" parent="." unique_id=1429559941 instance=ExtResource("2_uhj4d")]
+visible = false
+position = Vector2(-112, 112)
+scale = Vector2(1.21, 1.21)
+
+[node name="FireBiteVFX2" parent="." unique_id=879665774 instance=ExtResource("2_uhj4d")]
+visible = false
+position = Vector2(327, 118)
+scale = Vector2(1.505, 1.505)
+
+[node name="FireBiteVFX3" parent="." unique_id=822617615 instance=ExtResource("2_uhj4d")]
+visible = false
+position = Vector2(136, 128)
+scale = Vector2(1.335, 1.335)

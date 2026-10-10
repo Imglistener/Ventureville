@@ -270,6 +270,7 @@ func nulled() -> void:
 		if card is Card:
 			if card == self.card_data:
 				Deck_Manager.CardDeck.Discard_Pile.erase(card)
+				Deck_Manager.CardDeck.DiscardSize_Changed.emit(Deck_Manager.CardDeck.Discard_Pile.size())
 				Events.card_exhausted.emit(self.card_data)
 
 func ready_keyword_tooltips() -> void:

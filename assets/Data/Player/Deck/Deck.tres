@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://cweq7n85crff3"]
+[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://d33qn5h8au3pa"]
 
 [ext_resource type="Script" uid="uid://cpy8tjlulsna2" path="res://scripts/Card.gd" id="1_7abai"]
 [ext_resource type="Script" uid="uid://pqq147nh02w3" path="res://scripts/deck.gd" id="1_dyacs"]
@@ -52,18 +52,15 @@ ExtResource("21_am3ye"): 2,
 ExtResource("22_euasc"): 3
 })
 Card_Amount_In_Deck = Dictionary[ExtResource("1_7abai"), int]({
-ExtResource("8_uii6r"): 1,
-ExtResource("10_py15j"): 1,
-ExtResource("11_0354w"): 1,
-ExtResource("13_uii6r"): 1,
-ExtResource("16_7nbrc"): 1,
-ExtResource("4_ao31u"): 4,
-ExtResource("5_8wy8p"): 2,
-ExtResource("6_0354w"): 2,
-ExtResource("17_xqmlc"): 1,
-ExtResource("18_j2xm7"): 2,
+ExtResource("23_euasc"): 2,
 ExtResource("20_4dliv"): 1,
-ExtResource("22_euasc"): 2,
-ExtResource("21_am3ye"): 2,
-ExtResource("23_euasc"): 2
+ExtResource("2_lxatl"): 4,
+ExtResource("4_ao31u"): 2,
+ExtResource("5_8wy8p"): 2,
+ExtResource("10_py15j"): 1,
+ExtResource("18_pag3l"): 2,
+ExtResource("9_25ebe"): 3,
+ExtResource("12_5af0u"): 1,
+ExtResource("14_25ebe"): 2,
+ExtResource("18_j2xm7"): 2
 })

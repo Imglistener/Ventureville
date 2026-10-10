@@ -1,6 +1,6 @@
 class_name StatusEffect extends Resource
 
-enum StatusEffects{Burning, Frostbite, BloodSyphon, Horrified, Concussed, Stunned, Withering, DamageUp, Regeneration, DefensePerTurn, RetainHand, Poison, SanguineShell, DamageDown, BloodDebt}
+enum StatusEffects{Burning, Frostbite, BloodSyphon, Horrified, Concussed, Stunned, Withering, DamageUp, Regeneration, DefensePerTurn, RetainHand, Poison, SanguineShell, DamageDown, BloodDebt, Stalking}
 var current_duration : int = 0
 
 @export var status_name : StatusEffects

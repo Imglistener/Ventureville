@@ -14,6 +14,8 @@ var _is_dead: bool = false
 @onready var deck_manager: DeckManager = $"../DeckManager"
 @onready var items_menu: ItemsMenu = $"../../Control_Layer/Control_Base/ItemsMenu"
 @export var enemy_manager: EnemyManager
+@onready var deck_displayer: CardPileDisplayer = $"../../Control_Layer/Pause Layer/DeckDisplayer"
+@onready var discard_displayer: CardPileDisplayer = $"../../Control_Layer/Pause Layer/DiscardDisplayer"
 
 @export var enemy_ai: PackedScene 
 var Player: CharacterInstance
@@ -96,6 +98,7 @@ func _initialize_entity(entity_type: Variant) -> void:
 		enemy.enemy_shield.value = Entity.current_block
 		enemy.enemy_san_shield.max_value	= Entity.current_san_block	+ 1
 		enemy.enemy_san_shield.value	= Entity.current_san_block
+		enemy.enemy_name_label.text = Entity.entity_name
 		
 	if entity_type == Entity.BATTLER_TYPES.PLAYER:
 		if not player_view.is_node_ready():
@@ -120,8 +123,9 @@ func _initialize_entity(entity_type: Variant) -> void:
 		player_view.player_bars_container.player_san_shield.max_value = Player.current_san_block+1
 		player_view.player_bars_container.player_san_shield.value = Player.current_san_block
 		player_view.player_portrait.texture = Player.player_portrait
-	
-
+		deck_displayer.player_stats = Player
+		deck_displayer.setup(Player)
+		discard_displayer.setup(Player)
 func phase_transition() -> void:
 	var phase_music: AudioStream
 	if not EnemyThoughts:

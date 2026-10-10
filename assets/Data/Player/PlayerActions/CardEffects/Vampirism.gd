@@ -1,6 +1,5 @@
 extends BuffCard
 
-@export var condition: BattleCondition
 @export var healing_amount: int
 @export var blood_debt : BloodDebt
 func _execute(player: Stat_Manager, targets: Array[Node]) -> void:
@@ -9,7 +8,7 @@ func _execute(player: Stat_Manager, targets: Array[Node]) -> void:
 		if target is EnemyView:
 			for effect in target.Enemy.Entity.ActiveEffects:
 				if effect is BloodSyphon:
-					healing_amount = effect.current_duration * 5
+					healing_amount = mini(effect.current_duration * 5, 50)
 					player.Player.heal(healing_amount)
 					blood_syphon_count += 1
 	

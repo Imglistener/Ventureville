@@ -1,10 +1,10 @@
 class_name DeckManager extends Node
 @onready var player_stat_manager: Stat_Manager = $"../PlayerStatManager"
 @onready var targeting_area: Node2D = $"../../Node2D_Layer/TargetingArea"
-@onready var label_0: AnimatedCountLabel = $"../../Node2D_Layer/DiscardPile/Label"
-@onready var label_1: AnimatedCountLabel = $"../../Node2D_Layer/DeckPile/Label"
-@onready var discard_pile: TextureButton = $"../../Node2D_Layer/DiscardPile"
-@onready var deck_pile: TextureButton = $"../../Node2D_Layer/DeckPile"
+@onready var label_0: AnimatedCountLabel = $"../../Control_Layer/Control_Base/DiscardPile/Label"
+@onready var label_1: AnimatedCountLabel = $"../../Control_Layer/Control_Base/DeckPile/Label"
+@onready var discard_pile: TextureButton = $"../../Control_Layer/Control_Base/DiscardPile"
+@onready var deck_pile: TextureButton = $"../../Control_Layer/Control_Base/DeckPile"
 @onready var control_base: Control = $"../../Control_Layer/Control_Base"
 var CardDeck : Deck
 var CardsDiscarded : int : set = set_cards_discarded
@@ -19,7 +19,6 @@ func _ready() -> void:
 		player_stat_manager.Player.starting_deck.DiscardSize_Changed.connect(set_cards_discarded) # NEW
 
 	CardDeck = player_stat_manager.Player.starting_deck
-
 func on_Player_battle_start(_turn: Variant = null) -> void: 
 	CardDeck.shuffle_deck()
 	update_tracked_cards()
