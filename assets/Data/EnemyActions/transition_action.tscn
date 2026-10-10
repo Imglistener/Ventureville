@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bhbw4tsmsry4u"]
+
+[ext_resource type="Script" uid="uid://d0xbcgvtogon7" path="res://assets/Data/EnemyActions/TransitionAction.gd" id="1_exyjc"]
+
+[node name="TransitionAction" type="Node" unique_id=1390229564]
+script = ExtResource("1_exyjc")

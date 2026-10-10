@@ -12,6 +12,6 @@ rarity = 1
 target = 3
 mp_cost = 3
 ap_cost = 2
-Description = "Heal 5 for each Blood Syphon every Enemy. Gain 10 Blood Debt for each Enemy."
+Description = "Heal 5 for each Blood Syphon every Enemy (Max 50). Gain 10 Blood Debt for each Enemy."
 LogMessage = "\"The art of Blood Vampirisim fills you with vigour!\""
 metadata/_custom_type_script = "uid://bm8khcsvx8q2c"

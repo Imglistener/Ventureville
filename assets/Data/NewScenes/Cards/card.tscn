@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://nody171fluag"]
 
 [ext_resource type="Script" uid="uid://cyen3w4wa8tip" path="res://assets/Data/NewScenes/Cards/card.gd" id="2_8hmw1"]
-[ext_resource type="FontFile" uid="uid://bg605wy427uv8" path="res://assets/Eczar-VariableFont_wght.ttf" id="3_8hmw1"]
 [ext_resource type="Resource" uid="uid://be12tcnli2021" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Barrier.tres" id="3_80gmr"]
 [ext_resource type="AudioStream" uid="uid://cnuxlqejtckb5" path="res://assets/SFX/card_hover.wav" id="4_80gmr"]
 [ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="5_bb8u2"]
@@ -69,13 +68,6 @@ shader_parameter/pulse_speed = 3.334000158365
 shader_parameter/pulse_amount = 0.41200001957
 shader_parameter/fade_strength = 0.3050000144875
 shader_parameter/fade_bias = 0.7170000340575
-
-[sub_resource type="LabelSettings" id="LabelSettings_m4iia"]
-font = ExtResource("3_8hmw1")
-font_size = 34
-shadow_size = 0
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qfg1p"]
 shader = ExtResource("18_odcj6")
@@ -334,12 +326,20 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/margin_top = -6
 
 [node name="CardType" type="Label" parent="CardAnchor/CardScaler/Frame/VBoxContainer2/VBoxContainer/CardTypeMargin" unique_id=1643071682]
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("5_bb8u2")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 7
+theme_override_font_sizes/font_size = 40
 text = "TYPE"
-label_settings = SubResource("LabelSettings_m4iia")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 

@@ -20,12 +20,14 @@ metadata/_custom_type_script = "uid://djvjp04eqmhrw"
 
 [resource]
 script = ExtResource("1_gjxuh")
+Base_HP = 250
+Base_SAN = 300
 Is_Vul_to = 1
 Difficulty = 1
 Battler_Art_Normal = ExtResource("2_tp11d")
 Battler_Art_Hovered = ExtResource("1_75vxh")
-DamageBonus = 5.0
+DamageBonus = 10.0
 Enemy_AI = ExtResource("4_tp11d")
 Dialogue = Array[ExtResource("3_75vxh")]([SubResource("Resource_75vxh"), SubResource("Resource_tp11d")])
-entity_name = "Gladius"
+entity_name = "Gladius, Beast of Night"
 Battler_Type = 1

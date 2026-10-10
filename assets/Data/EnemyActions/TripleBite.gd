@@ -2,7 +2,8 @@ extends EnemyAction
 
 @export var Damage : int = 10
 @export var damagetype: DamageType
-
+@export var vfx : PackedScene
+@export var burn : StatusEffect
 
 var SFXBus : AudioStreamPlayer
 
@@ -16,17 +17,21 @@ func use_action() -> void:
 	var tween := create_tween().set_trans(Tween.TRANS_QUINT)
 	var original_scale = Enemy.scale
 	var enlarged_scale = original_scale * 1.5
-
-	var damage_effect = AttackEffect.new()
-	damage_effect.damage_type = damagetype
-	damage_effect.source = Enemy.Enemy.Entity
-	damage_effect.amount = int((Damage * Enemy.Enemy.Entity.DamageBonus) / 2 * Enemy.Enemy.Entity.get_attack_bonus())
-	var target_array: Array[Node] = [target]
-	SFXBus.play_sfx(SoundEffect)
-	tween.tween_property(Enemy.enemy_view, "scale", enlarged_scale, 0.4)
-	tween.tween_callback(damage_effect.activate.bind(target_array))
-	tween.tween_interval(0.25)
-	tween.tween_property(Enemy.enemy_view, "scale", original_scale, 0.4)
+	for i in range(3):
+		var damage_effect = AttackEffect.new()
+		damage_effect.damage_type = damagetype
+		damage_effect.source = Enemy.Enemy.Entity
+		damage_effect.amount = int(((Damage * Enemy.Enemy.Entity.DamageBonus) / 2) * Enemy.Enemy.Entity.get_attack_bonus())/3
+		var target_array: Array[Node] = [target]
+		SFXBus.play_sfx(SoundEffect)
+		var VFX = vfx.instantiate() as TripleBiteVFX
+		Enemy.add_child(VFX)
+		VFX.global_position += Vector2(-130, -80)
+		VFX.play_bites()
+		tween.tween_property(Enemy.enemy_view, "scale", enlarged_scale, 0.2)
+		tween.tween_callback(damage_effect.activate.bind(target_array))
+		tween.tween_interval(0.25)
+		tween.tween_property(Enemy.enemy_view, "scale", original_scale, 0.2)
 
 	tween.finished.connect(
 		func():

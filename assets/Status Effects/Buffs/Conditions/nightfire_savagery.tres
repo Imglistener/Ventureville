@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NightfireSavageryCondition" format=3 uid="uid://b57ktnpmakw4q"]
+
+[ext_resource type="Script" uid="uid://cbqvjef244e34" path="res://assets/Status Effects/Buffs/Conditions/nightfire_savagery.gd" id="1_7efo0"]
+[ext_resource type="Texture2D" uid="uid://de05e1vhrrdcp" path="res://assets/GUI/nightfire savagery icon AI.png" id="1_bj444"]
+
+[resource]
+script = ExtResource("1_7efo0")
+condition_name = "Nightfire Savagery"
+condition_icon = ExtResource("1_bj444")
+condition_texture = ExtResource("1_bj444")
+condition_description = "If Gladius attacks a Burning Entity, it deals double damage."
+metadata/_custom_type_script = "uid://cbqvjef244e34"

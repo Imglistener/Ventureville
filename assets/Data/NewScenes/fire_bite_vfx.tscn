@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://8ek71qeriejb"]
+
+[ext_resource type="Texture2D" uid="uid://hq4r4ru6wyyn" path="res://FireFang.png" id="1_0vyy4"]
+[ext_resource type="Script" uid="uid://b763tcenua58u" path="res://assets/Data/NewScenes/fire_bite_vfx.gd" id="2_y5uqw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53qu8"]
+atlas = ExtResource("1_0vyy4")
+region = Rect2(0, 0, 249, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thnnt"]
+atlas = ExtResource("1_0vyy4")
+region = Rect2(249, 0, 249, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icvdb"]
+atlas = ExtResource("1_0vyy4")
+region = Rect2(498, 0, 249, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2hty"]
+atlas = ExtResource("1_0vyy4")
+region = Rect2(747, 0, 249, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvc04"]
+atlas = ExtResource("1_0vyy4")
+region = Rect2(996, 0, 249, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xoew"]
+atlas = ExtResource("1_0vyy4")
+region = Rect2(1245, 0, 249, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du6vm"]
+atlas = ExtResource("1_0vyy4")
+region = Rect2(1494, 0, 249, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5h1t"]
+atlas = ExtResource("1_0vyy4")
+region = Rect2(1743, 0, 249, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24krf"]
+atlas = ExtResource("1_0vyy4")
+region = Rect2(1992, 0, 249, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dv7q"]
+atlas = ExtResource("1_0vyy4")
+region = Rect2(2241, 0, 249, 177)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ghndp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53qu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thnnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icvdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2hty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvc04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xoew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_du6vm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5h1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24krf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dv7q")
+}],
+"loop": 0,
+"name": &"firefang",
+"speed": 25.0
+}]
+
+[node name="FireBiteVFX" type="AnimatedSprite2D" unique_id=1429559941]
+sprite_frames = SubResource("SpriteFrames_ghndp")
+animation = &"firefang"
+frame = 9
+frame_progress = 1.0
+script = ExtResource("2_y5uqw")

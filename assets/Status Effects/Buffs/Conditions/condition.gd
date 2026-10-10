@@ -56,3 +56,6 @@ func find_same_effect(effects: Array) -> BattleCondition:
 		if effect.get_script() == self.get_script():
 			return effect
 	return null
+	
+func modify_outgoing_damage(amount: int, _defender: BaseBattlerStats) -> int:
+	return amount

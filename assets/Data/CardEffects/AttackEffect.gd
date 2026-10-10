@@ -31,7 +31,10 @@ func activate(targets : Array[Node]) -> void:
 func _mitigated(base: int, defender: BaseBattlerStats) -> int:
 	if not source or not defender:
 		return base
+	var value := base
+	for condition in source.BattleConditions:
+		value = condition.modify_outgoing_damage(value, defender)
 	for effect in defender.ActiveEffects:
 		if effect is SanguineShell:
-			return effect.reduce_damage(base, source)
-	return base
+			return effect.reduce_damage(value, source)
+	return value

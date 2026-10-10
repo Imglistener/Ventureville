@@ -1,0 +1,342 @@
+[gd_scene format=3 uid="uid://qbwbjfr0m78r"]
+
+[ext_resource type="Script" uid="uid://cx2oritgmwyns" path="res://assets/Data/NewScenes/VFX/fire_transition_vfx.gd" id="1_3ayvq"]
+[ext_resource type="Texture2D" uid="uid://cjay12k63c3sg" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_000.png" id="2_2kyqj"]
+[ext_resource type="Texture2D" uid="uid://c8liperie4y8n" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_001.png" id="3_ldklr"]
+[ext_resource type="Texture2D" uid="uid://bshao82p5k37" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_002.png" id="4_6kvrf"]
+[ext_resource type="Texture2D" uid="uid://bg1bdiefj3o7r" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_003.png" id="5_ccuav"]
+[ext_resource type="Texture2D" uid="uid://hk02m0ssiylf" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_004.png" id="6_rmimd"]
+[ext_resource type="Texture2D" uid="uid://7xquifa1vpkk" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_005.png" id="7_ca3dw"]
+[ext_resource type="Texture2D" uid="uid://dua4u7d2wc63l" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_006.png" id="8_vp4p0"]
+[ext_resource type="Texture2D" uid="uid://cbkhpxh3ergwv" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_007.png" id="9_q1kf4"]
+[ext_resource type="Texture2D" uid="uid://drangxn1ser8f" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_008.png" id="10_v6e1d"]
+[ext_resource type="Texture2D" uid="uid://dtecry7ikfxj7" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_009.png" id="11_ipwli"]
+[ext_resource type="Texture2D" uid="uid://cv4io8upvugfb" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_010.png" id="12_7edxi"]
+[ext_resource type="Texture2D" uid="uid://drd1m754anxwl" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_011.png" id="13_lajcy"]
+[ext_resource type="Texture2D" uid="uid://bona6oe3kgkl5" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_012.png" id="14_00q4y"]
+[ext_resource type="Texture2D" uid="uid://u62kvynequoj" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_013.png" id="15_3jbaa"]
+[ext_resource type="Texture2D" uid="uid://bs6aii4o35h56" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_014.png" id="16_mhncd"]
+[ext_resource type="Texture2D" uid="uid://1cleiujdci5b" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_015.png" id="17_67uy3"]
+[ext_resource type="Texture2D" uid="uid://jd55ir60mwb0" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_016.png" id="18_0duuu"]
+[ext_resource type="Texture2D" uid="uid://cs846fl8grp6n" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_017.png" id="19_jncsa"]
+[ext_resource type="Texture2D" uid="uid://dkyoi2bbxm21e" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_018.png" id="20_4hxo0"]
+[ext_resource type="Texture2D" uid="uid://dw6qt63mbwbyu" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_019.png" id="21_wmyok"]
+[ext_resource type="Texture2D" uid="uid://c25ilqptu8nmb" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_020.png" id="22_xtujp"]
+[ext_resource type="Texture2D" uid="uid://ckgs1gkr4r1wg" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_021.png" id="23_wnkap"]
+[ext_resource type="Texture2D" uid="uid://w8m1dorilxj0" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_022.png" id="24_6umfv"]
+[ext_resource type="Texture2D" uid="uid://1f77si8ayww0" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_023.png" id="25_nepit"]
+[ext_resource type="Texture2D" uid="uid://d0saihu1nctb2" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_024.png" id="26_lbhrt"]
+[ext_resource type="Texture2D" uid="uid://bw37y4tjkojq7" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_025.png" id="27_7e24y"]
+[ext_resource type="Texture2D" uid="uid://boda2qujx30eq" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_026.png" id="28_ukams"]
+[ext_resource type="Texture2D" uid="uid://b77qhudj7gb0y" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_027.png" id="29_3ltwc"]
+[ext_resource type="Texture2D" uid="uid://bq3a38j3ulbfe" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_028.png" id="30_f53eu"]
+[ext_resource type="Texture2D" uid="uid://10dwv6bh4pyq" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_029.png" id="31_k2t8h"]
+[ext_resource type="Texture2D" uid="uid://bqbdt2w58nj8" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_030.png" id="32_rn12u"]
+[ext_resource type="Texture2D" uid="uid://26rotnlokemg" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_031.png" id="33_0rc52"]
+[ext_resource type="Texture2D" uid="uid://bjaeuu0eufuf7" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_032.png" id="34_hebir"]
+[ext_resource type="Texture2D" uid="uid://c2724hjjtq7t4" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_033.png" id="35_pmt3r"]
+[ext_resource type="Texture2D" uid="uid://c0pgvjg7mhh8w" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_034.png" id="36_k272s"]
+[ext_resource type="Texture2D" uid="uid://y7wbn0cpoeus" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_035.png" id="37_ptote"]
+[ext_resource type="Texture2D" uid="uid://d53y3bfecfty" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_036.png" id="38_snouy"]
+[ext_resource type="Texture2D" uid="uid://tfx30ovkkkvs" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_037.png" id="39_aqovw"]
+[ext_resource type="Texture2D" uid="uid://b6p8r717rvp5k" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_038.png" id="40_cpelu"]
+[ext_resource type="Texture2D" uid="uid://du4i43ob627mc" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_039.png" id="41_q0fhy"]
+[ext_resource type="Texture2D" uid="uid://dxq7i627octl7" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_040.png" id="42_wubvd"]
+[ext_resource type="Texture2D" uid="uid://cv7vrt0lctx7i" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_041.png" id="43_15qr1"]
+[ext_resource type="Texture2D" uid="uid://37ac8u27u88s" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_042.png" id="44_umu8f"]
+[ext_resource type="Texture2D" uid="uid://oae34fav4h1q" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_043.png" id="45_pdw3w"]
+[ext_resource type="Texture2D" uid="uid://cpu5lsryyfhsh" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_044.png" id="46_dc8fa"]
+[ext_resource type="Texture2D" uid="uid://d23bjuylidc2j" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_045.png" id="47_bdkii"]
+[ext_resource type="Texture2D" uid="uid://ic7h534wwun7" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_046.png" id="48_yicg7"]
+[ext_resource type="Texture2D" uid="uid://d2ltfxwadr62k" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_047.png" id="49_2ykjx"]
+[ext_resource type="Texture2D" uid="uid://bnwbjmjcmx1hu" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_048.png" id="50_16mxv"]
+[ext_resource type="Texture2D" uid="uid://crwjgvego0bp0" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_049.png" id="51_02bfa"]
+[ext_resource type="Texture2D" uid="uid://6s6o5fj0xw08" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_050.png" id="52_h3ccf"]
+[ext_resource type="Texture2D" uid="uid://dfquctyn1tsf" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_051.png" id="53_jvfk3"]
+[ext_resource type="Texture2D" uid="uid://b1ltgc0we23if" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_052.png" id="54_vc1nn"]
+[ext_resource type="Texture2D" uid="uid://bwo1lspk3lqqd" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_053.png" id="55_mhlrl"]
+[ext_resource type="Texture2D" uid="uid://d1wsw814bedrk" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_054.png" id="56_2yxhp"]
+[ext_resource type="Texture2D" uid="uid://ccce3lna7kwdh" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_055.png" id="57_v1owj"]
+[ext_resource type="Texture2D" uid="uid://dc0fhaqnrlfxb" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_056.png" id="58_vg0nv"]
+[ext_resource type="Texture2D" uid="uid://q0fxhhca50ey" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_057.png" id="59_x8ele"]
+[ext_resource type="Texture2D" uid="uid://cu3sxdybtfsnc" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_058.png" id="60_l5t2q"]
+[ext_resource type="Texture2D" uid="uid://im7o4cybas7q" path="res://assets/VFX Free Pack/Effect_DitheredFire/60fps/Frames/Effect_DitheredFire_1/Effect_DitheredFire_1_059.png" id="61_lgsge"]
+
+[sub_resource type="Gradient" id="Gradient_87xc1"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.51657456, 0.84254146)
+colors = PackedColorArray(0.55, 0.55, 0.55, 1, 0.55, 0.55, 0.55, 0.7411765, 0.55, 0.55, 0.55, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ghndp"]
+gradient = SubResource("Gradient_87xc1")
+fill = 1
+fill_from = Vector2(0.51282054, 0.7393162)
+fill_to = Vector2(0.47435898, 0)
+repeat = 2
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ghndp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2kyqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ldklr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6kvrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ccuav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rmimd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ca3dw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vp4p0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_q1kf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_v6e1d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ipwli")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7edxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_lajcy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_00q4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3jbaa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_mhncd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_67uy3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_0duuu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_jncsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_4hxo0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_wmyok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_xtujp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_wnkap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_6umfv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_nepit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_lbhrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_7e24y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_ukams")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_3ltwc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_f53eu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_k2t8h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_rn12u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_0rc52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_hebir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_pmt3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_k272s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_ptote")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_snouy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_aqovw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_cpelu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_q0fhy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_wubvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_15qr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_umu8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_pdw3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_dc8fa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_bdkii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_yicg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_2ykjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_16mxv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_02bfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_h3ccf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_jvfk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_vc1nn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_mhlrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_2yxhp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_v1owj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_vg0nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_x8ele")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_l5t2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_lgsge")
+}],
+"loop": 1,
+"name": &"inflame",
+"speed": 60.0
+}]
+
+[sub_resource type="Animation" id="Animation_7xl1p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.22, -4.005)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3ayvq"]
+resource_name = "firewall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.76666665, 1),
+"transitions": PackedFloat32Array(1.8025012, 1.2311444, 2.5491211, 1),
+"update": 0,
+"values": [Vector2(0, 100), Vector2(0, -15), Vector2(0, -15), Vector2(0, -100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.76666665, 1),
+"transitions": PackedFloat32Array(1, 2.462289, 1),
+"update": 0,
+"values": [Vector2(15, 0), Vector2(-15, 0), Vector2(0, 200)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2kyqj"]
+_data = {
+&"RESET": SubResource("Animation_7xl1p"),
+&"firewall": SubResource("Animation_3ayvq")
+}
+
+[node name="FireTransitionVFX" type="Node2D" unique_id=1678144270]
+script = ExtResource("1_3ayvq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=166504253]
+clip_children = 1
+texture = SubResource("GradientTexture2D_ghndp")
+offset = Vector2(-0.22, -4.005)
+
+[node name="FireTransitionVFX" type="AnimatedSprite2D" parent="Sprite2D" unique_id=842291906]
+self_modulate = Color(0.96484375, 0.8341093, 0.12814331, 1)
+position = Vector2(0.32214934, 0.25668746)
+scale = Vector2(0.12332217, 0.26203212)
+sprite_frames = SubResource("SpriteFrames_ghndp")
+animation = &"inflame"
+frame_progress = 0.78809464
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D/FireTransitionVFX" unique_id=1293674866]
+libraries/ = SubResource("AnimationLibrary_2kyqj")

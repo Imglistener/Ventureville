@@ -30,7 +30,7 @@ func _on_entity_died(view: EnemyView, stat_manager: Stat_Manager) -> void:
 
 func handle_blur(paused: bool) -> void:
 	var t = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	t.tween_property(pause_blur.material, "shader_parameter/blur_amount", 0.0 if paused else 2.0, 0.4)
+	t.tween_property(pause_blur, "color", Color(0.098, 0.102, 0.122, 0.569) if paused else Color(0.0, 0.0, 0.0, 0.0), 0.4)
 	await t.finished
 	pause_blur.mouse_filter = Control.MOUSE_FILTER_STOP
 

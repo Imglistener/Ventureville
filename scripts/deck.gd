@@ -110,6 +110,7 @@ func discard_hand() -> void:
 	Discard_Pile += TheHand
 	TheHand.clear()
 	DeckSize_Changed.emit(Battle_Deck.size())
+	DiscardSize_Changed.emit(Discard_Pile.size())
 
 func _to_string() -> String:
 	var _card_string: PackedStringArray = []

@@ -4,8 +4,10 @@ extends EnemyAction
 @export var Phase_2_Hover: Texture
 @export var threshold := 0
 
+
 var exhausted := false
 var SoundBus: AudioStreamPlayer
+var used := false
 
 func _ready() -> void:
 	SoundBus = get_tree().get_first_node_in_group("SFXBus")
@@ -27,23 +29,26 @@ func use_action() -> void:
 	var entity := Enemy.Enemy.Entity
 	var original_scale := Enemy.scale
 	SoundBus.play_sfx(SoundEffect)
-	tween.tween_property(Enemy, "scale", original_scale * Vector2(0.6, 1.4), 0.2)
-	tween.tween_property(Enemy, "scale", original_scale * Vector2(1.8, 0.5), 0.15) \
+	tween.tween_property(Enemy.enemy_view, "scale", original_scale * Vector2(0.6, 1.4), 0.2)
+	tween.tween_property(Enemy.enemy_view, "scale", original_scale * Vector2(1.8, 0.5), 0.15) \
 		.set_trans(Tween.TRANS_EXPO)
-	tween.tween_property(Enemy, "modulate", Color.WHITE * 4.0, 0.05)
+	tween.tween_property(Enemy.enemy_view, "modulate", Color.WHITE * 4.0, 0.05)
 	tween.tween_callback(func():
 		entity.Battler_Art_Normal = Phase_2_Normal
 		entity.Battler_Art_Hovered = Phase_2_Hover
 		entity.DamageBonus += DamageBonus
 		Enemy.update_enemy_view(Phase_2_Normal,Phase_2_Hover)
 		target.phase_transition()
-		entity.heal(entity.Max_HP)
+		entity.heal(entity.Max_HP - entity.current_health)
+		used = true
+
 		
 	)
-	tween.tween_property(Enemy, "modulate", Color.WHITE, 0.3)
-	tween.tween_property(Enemy, "scale", original_scale * 1.15, 0.25) \
+	tween.tween_property(Enemy.enemy_view, "modulate", Color.WHITE, 0.3)
+	tween.tween_property(Enemy.enemy_view, "scale", original_scale * 1.15, 0.25) \
 		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tween.tween_property(Enemy, "scale", original_scale, 0.2)
+	tween.tween_property(Enemy.enemy_view, "scale", original_scale, 0.2)
 	tween.finished.connect(func():
 		Events.EnemyActionCompleted.emit(self)
+		
 	)

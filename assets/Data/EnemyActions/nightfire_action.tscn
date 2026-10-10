@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://3b1atesudf3m"]
+
+[ext_resource type="Script" uid="uid://cfknq0apluaje" path="res://assets/Data/EnemyActions/nightfire_action.gd" id="1_sy8qj"]
+[ext_resource type="Resource" uid="uid://b57ktnpmakw4q" path="res://assets/Status Effects/Buffs/Conditions/nightfire_savagery.tres" id="2_80t18"]
+[ext_resource type="AudioStream" uid="uid://rt0qk3air83p" path="res://assets/SFX/humordome-magic-burst-452852.mp3" id="3_dr60t"]
+
+[node name="NightfireAction" type="Node" unique_id=2062416777]
+script = ExtResource("1_sy8qj")
+condition = ExtResource("2_80t18")
+ActionEffect = 2
+SoundEffect = ExtResource("3_dr60t")
+Description = "\"The Great beast ignites with scorching flames!\""

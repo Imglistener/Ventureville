@@ -6,6 +6,7 @@ var Audio: AudioStreamPlaybackPolyphonic
 
 func _ready() -> void:
 	SFXBus = get_tree().get_first_node_in_group("SFXBus")
+
 func use_action() -> void:
 	if not Enemy or not target:
 		return
@@ -16,7 +17,8 @@ func use_action() -> void:
 
 	get_tree().create_timer(2.8, false).timeout.connect(
 		func():
-			block_effect.activate([Enemy])
+			var self_targets: Array[Node] = [Enemy]
+			block_effect.activate(self_targets)
+			StalkingEffect.new().on_apply(self_targets, 1)
 			Events.EnemyActionCompleted.emit(self)
-			
 	)

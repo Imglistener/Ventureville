@@ -16,3 +16,8 @@ func _ready() -> void:
 			if not button.is_node_ready():
 				await button.ready
 			button.set_label_text(str(button.name))
+
+func retract_extend_toolbar(retract : bool = true) -> void:
+	var t : Tween = create_tween()
+	t.tween_property(self, "global_position", Vector2(0, -70) if retract else Vector2.ZERO, 0.2).set_ease(Tween.EASE_IN)
+	await t.finished

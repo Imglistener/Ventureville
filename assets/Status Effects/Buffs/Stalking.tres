@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StalkingEffect" format=3 uid="uid://dvtoxnng7kch"]
+
+[ext_resource type="Script" uid="uid://bayr6uk7a70hm" path="res://assets/Status Effects/Buffs/Stalking.gd" id="1_57ga3"]
+
+[resource]
+script = ExtResource("1_57ga3")
+stacking = true
+status_name = 15
+default_duration = 2
+status_description = "If Gladius is attacked while Stalking and takes damage, it gains 20% more damage to its next attack. This stacks."
+metadata/_custom_type_script = "uid://cgy5kmno2u1aw"

@@ -5,6 +5,8 @@ extends Control
 @onready var mana_ui: TextureRect = $Mana_UI
 
 @onready var panel = $PanelContainer
+@onready var card_pile_displayer: CardPileDisplayer = $"../Pause Layer/DeckDisplayer"
+@onready var discard_displayer: CardPileDisplayer = $"../Pause Layer/DiscardDisplayer"
 
 
 
@@ -45,3 +47,9 @@ func _input(event: InputEvent) -> void:
 		if event.pressed:
 			if not panel.get_global_rect().has_point(event.global_position):
 				panel.hide()
+
+func handle_deck_press() -> void:
+	card_pile_displayer.toggle()
+
+func handle_discard_press() -> void:
+	discard_displayer.toggle()

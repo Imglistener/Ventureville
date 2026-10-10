@@ -10,6 +10,7 @@ const COLORS := {
 	"Condition": Color.WHITE,
 	"SanguineShell": Color(0.85, 0.1, 0.2),
 	"DamageDown": Color(0.6, 0.5, 0.9),
+	"Stalking": Color(1.0, 0.55, 0.1),
 }
 
 const FONT_SIZE := 30
@@ -43,6 +44,9 @@ func display_effect(status: Resource, anchor: Node2D, source_position: Vector2, 
 	elif status is BattleCondition:
 		text = status.condition_name.to_upper()
 		color = COLORS["Condition"]
+	elif status is StalkingEffect:
+		text = "Stalking"
+		color = COLORS["Stalking"]
 	else:
 		return
 
