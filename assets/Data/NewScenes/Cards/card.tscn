@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cx76h8fp6cixc" path="res://assets/venture.png" id="9_x53gr"]
 [ext_resource type="Script" uid="uid://ba8tlvahvwcu3" path="res://scripts/CardUI/CardState/StateCardIdling.gd" id="10_igbv7"]
 [ext_resource type="Script" uid="uid://y5w4mn6hr4iu" path="res://scripts/CardUI/CardState/StateCardClicked.gd" id="11_80gmr"]
+[ext_resource type="Script" uid="uid://blcmno1bdokb7" path="res://assets/Data/Scripts/AutofitRichTextLabel.gd" id="12_mgg81"]
 [ext_resource type="Script" uid="uid://btv4edn2vhq6g" path="res://scripts/CardUI/CardState/StateCardHovering.gd" id="12_x53gr"]
 [ext_resource type="Script" uid="uid://4cta7ix0hl1f" path="res://scripts/CardUI/CardState/StateCardReleased.gd" id="13_jv0el"]
 [ext_resource type="Texture2D" uid="uid://28c6af17kw7j" path="res://assets/PNG/Button04.png" id="15_ttips"]
@@ -174,6 +175,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.98806065
 anchor_right = 0.98806065
+theme_override_constants/separation = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="CardFrame" type="TextureRect" parent="CardAnchor/CardScaler" unique_id=465053708]
@@ -373,6 +375,8 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 129
+script = ExtResource("12_mgg81")
+max_font_size = 39
 metadata/_edit_use_anchors_ = true
 
 [node name="disabled_mask" type="TextureRect" parent="CardAnchor/CardScaler" unique_id=333984200]

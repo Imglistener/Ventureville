@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://uwc0wl4if0no"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_cicku"]
+
+[resource]
+script = ExtResource("1_cicku")
+display_name = "Ascendant Form"
+color = Color(1, 0.9859009, 0.09765625, 1)
+show_tooltip = true
+description = "Affected Entity deals double damage to Blood Syphoned targets, Heals half of any Blood Damage it deals, and applies 2 Blood Syphon at the end of each turn to all enemies."
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

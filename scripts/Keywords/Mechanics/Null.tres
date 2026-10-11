@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://cg5yy6xg6elnm"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_alwuk"]
+
+[resource]
+script = ExtResource("1_alwuk")
+display_name = "Null"
+aliases = ["nulled", "nulling"]
+color = Color(0.59, 0.59, 0.59, 1)
+text_effect = 2
+show_tooltip = true
+description = "Remove this card from play for the rest of combat."
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

@@ -50,6 +50,8 @@ func on_expired(targets: Array[Node]) -> void:
 		player.Player.BattleConditions.erase(existing)
 		Events.BattleConditionExpired.emit(existing, player.Player)
 
+func on_damage_dealt(_dealt: int, _damage_type: DamageType, _source: BaseBattlerStats, _defender: BaseBattlerStats) -> void:
+	pass
 
 func find_same_effect(effects: Array) -> BattleCondition:
 	for effect in effects:

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" format=3 uid="uid://b2nv2om53v2uw"]
+
+[ext_resource type="PackedScene" uid="uid://xrhwnbgpj1x1" path="res://assets/Data/NewScenes/blood_barrier.tscn" id="1_5fq4p"]
+[ext_resource type="Script" uid="uid://d1mxtw3f6fh04" path="res://assets/Data/Player/PlayerActions/CardEffects/ThirdRite.gd" id="1_l0w0b"]
+[ext_resource type="Resource" uid="uid://c6nwgvalj7155" path="res://assets/Status Effects/Buffs/Conditions/ascendant_form.tres" id="2_kx1jw"]
+
+[resource]
+script = ExtResource("1_l0w0b")
+ascendant_form = ExtResource("2_kx1jw")
+VFX = ExtResource("1_5fq4p")
+name = "Third Rite"
+rarity = 2
+mp_cost = 3
+ap_cost = 3
+is_card_nullable = true
+Description = "Gain Shield and San Shield equal to twice your enemies' Blood Syphon. 
+If Ascendant Ritual is Active, and both First and Second Rite have been used, lose Ascendant Ritual and gain Ascendant Form. 
+Null this card."
+LogMessage = "\"What is done cannot be undone.\""
+metadata/_custom_type_script = "uid://dx57of0yiebdh"

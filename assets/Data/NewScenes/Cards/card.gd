@@ -1,7 +1,7 @@
 class_name CardUI
 extends MarginContainer
 enum CardMode{ PLAYABLE , DISPLAYING }
-const MAX_KEYWORD_TOOLTIPS := 3
+const MAX_KEYWORD_TOOLTIPS := 5
 @export var card_data : Card
 @export var start_with_show_card := true
 @export var HoverSFX	: AudioStream
@@ -64,7 +64,7 @@ func _ready() -> void:
 	drop_point_detector.monitoring = false
 	card_name.text = str(card_data.name)
 	card_type.text = str(card_data.Type.keys()[card_data.type]).left(1) + str(card_data.Type.keys()[card_data.type]).right(-1).to_lower()
-	card_effect.text = KeywordsScene.format(card_data.get_description(player_stats))
+	card_effect.set_fitted_text(KeywordsScene.format(card_data.get_description(player_stats)))
 	cost.text = str(card_data.ap_cost)
 	mp_cost.text = str(card_data.mp_cost)
 	card_state_manager.init(self)
@@ -138,7 +138,7 @@ func play() -> void:
 		nulled()
 
 func update_description() -> void:
-	card_effect.text = KeywordsScene.format(card_data.get_description(player_stats))
+	card_effect.set_fitted_text(KeywordsScene.format(card_data.get_description(player_stats)))
 
 func discard(delay: float = 0.0) -> void:
 	if card_disabled and is_queued_for_deletion():
@@ -252,12 +252,12 @@ func _update_live_preview() -> void:
 		reset_live_preview()
 		return
 	var live_targets := targets if card_data.is_SingleTarget() else card_data._get_targets(targets)
-	card_effect.text = KeywordsScene.format(card_data.get_live_description(player_stats, live_targets))
+	card_effect.set_fitted_text(KeywordsScene.format(card_data.get_live_description(player_stats, live_targets)))
 
 func reset_live_preview() -> void:
 	if not card_data:
 		return
-	card_effect.text = KeywordsScene.format(card_data.get_description(player_stats))
+	card_effect.set_fitted_text(KeywordsScene.format(card_data.get_description(player_stats)))
 	Events.hide_enemy_resistances.emit()
 
 func set_display_size(size: Vector2) -> void:

@@ -18,6 +18,7 @@ class TurnFlags:
 	var cards_played_last_turn: Array[Card] = []
 
 var _entries: Dictionary = {}  # Stat_Manager -> TurnFlags
+var _battle_tags: Dictionary = {}
 
 func _ready() -> void:
 	add_to_group("TurnTracker")   # lets cards find us without a scene path
@@ -62,10 +63,14 @@ func _on_block_gained(_amount: int, _name: String, sm: Stat_Manager) -> void:
 
 func _on_card_played(card: Card) -> void:
 	_entries[player_stat_manager].cards_played_this_turn.append(card)
-
+	for tag in card.tags:
+		_battle_tags[tag] = true
+		
 func _on_player_turn_start() -> void:
 	_shift(_entries[player_stat_manager])
-
+	
+func played_tag_this_battle(tag: StringName) -> bool:
+	return _battle_tags.has(tag)
 func _on_enemy_turn_start() -> void:
 	for sm in _entries:
 		if sm != player_stat_manager:

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://dnu7qk7b4a4fu"]
+[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://bd2ph42u6d4qp"]
 
 [ext_resource type="Script" uid="uid://cpy8tjlulsna2" path="res://scripts/Card.gd" id="1_7abai"]
 [ext_resource type="Script" uid="uid://pqq147nh02w3" path="res://scripts/deck.gd" id="1_dyacs"]
@@ -24,10 +24,20 @@
 [ext_resource type="Resource" uid="uid://hvqvdyosqg5w" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Protection.tres" id="21_am3ye"]
 [ext_resource type="Resource" uid="uid://b2omaqqut2s3q" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Manifestation.tres" id="22_euasc"]
 [ext_resource type="Resource" uid="uid://dwbjvexdfqiwh" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Vampirisim.tres" id="23_euasc"]
+[ext_resource type="Resource" uid="uid://cqd2wqxlj615k" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Greatmace.tres" id="24_7h61r"]
+[ext_resource type="Resource" uid="uid://cexscfdywkwfl" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/First Rite.tres" id="25_ej18l"]
+[ext_resource type="Resource" uid="uid://dobror7ns1gy7" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Purge.tres" id="26_ykmvh"]
+[ext_resource type="Resource" uid="uid://c7bbpnn6qcfe7" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Second Rite.tres" id="27_1etpb"]
+[ext_resource type="Resource" uid="uid://b2nv2om53v2uw" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Third Rite.tres" id="28_a2ocr"]
 
 [resource]
 script = ExtResource("1_dyacs")
 Obtained_Cards = Dictionary[ExtResource("1_7abai"), int]({
+ExtResource("28_a2ocr"): 1,
+ExtResource("27_1etpb"): 1,
+ExtResource("26_ykmvh"): 2,
+ExtResource("25_ej18l"): 1,
+ExtResource("24_7h61r"): 2,
 ExtResource("23_euasc"): 2,
 ExtResource("20_4dliv"): 1,
 ExtResource("19_j2xm7"): 2,
@@ -52,16 +62,19 @@ ExtResource("21_am3ye"): 2,
 ExtResource("22_euasc"): 3
 })
 Card_Amount_In_Deck = Dictionary[ExtResource("1_7abai"), int]({
+ExtResource("25_ej18l"): 1,
+ExtResource("27_1etpb"): 1,
+ExtResource("28_a2ocr"): 1,
+ExtResource("26_ykmvh"): 2,
+ExtResource("24_7h61r"): 2,
+ExtResource("23_euasc"): 2,
+ExtResource("20_4dliv"): 1,
+ExtResource("5_8wy8p"): 2,
+ExtResource("10_py15j"): 1,
 ExtResource("13_uii6r"): 1,
 ExtResource("17_xqmlc"): 1,
-ExtResource("22_euasc"): 2,
 ExtResource("21_am3ye"): 2,
-ExtResource("18_j2xm7"): 2,
+ExtResource("22_euasc"): 2,
 ExtResource("14_25ebe"): 2,
-ExtResource("11_0354w"): 1,
-ExtResource("10_py15j"): 1,
-ExtResource("18_pag3l"): 2,
-ExtResource("4_ao31u"): 2,
-ExtResource("5_8wy8p"): 2,
-ExtResource("23_euasc"): 2
+ExtResource("12_5af0u"): 1
 })

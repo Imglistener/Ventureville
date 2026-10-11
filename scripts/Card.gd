@@ -6,6 +6,8 @@ enum Rarities{Common, Rare, Legendary}
 enum CardAttribute{Hemomancy, Entromancy, Phonomancy, Somatomancy}
 
 const TAG_BLOOD_WEAPON := &"BloodWeapon"
+const TAG_FIRST_RITE := &"FirstRite"
+const TAG_SECOND_RITE := &"SecondRite"
 
 @export_group("Card Details")
 @export var name: String
@@ -59,7 +61,12 @@ func _get_targets(targets: Array[Node]) -> Array[Node]:
 		_:
 			return []
 
-
+## Finds an ACTIVE battle condition on the player by script, e.g. _find_condition(player, AscendantRitualCondition)
+func _find_condition(player: Stat_Manager, condition_script: Script) -> BattleCondition:
+	for condition in player.Player.BattleConditions:
+		if condition and condition.get_script() == condition_script:
+			return condition
+	return null
 # ------------------------------------------------------------------ template method
 # Cards that still override apply_effect() directly keep working, so you can migrate one at a time.
 
