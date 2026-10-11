@@ -1,0 +1,20 @@
+[gd_resource type="Resource" format=3 uid="uid://c7bbpnn6qcfe7"]
+
+[ext_resource type="Resource" uid="uid://d0vgs8rq60qe5" path="res://assets/Status Effects/Debuffs/Blood Debt.tres" id="1_4lejd"]
+[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="2_nckn3"]
+[ext_resource type="Script" uid="uid://b2040xih83204" path="res://assets/Data/Player/PlayerActions/CardEffects/SecondRite.gd" id="3_dken8"]
+
+[resource]
+script = ExtResource("3_dken8")
+blood_syphon = ExtResource("2_nckn3")
+blood_debt = ExtResource("1_4lejd")
+name = "Second Rite"
+rarity = 2
+target = 3
+mp_cost = 2
+ap_cost = 2
+is_card_nullable = true
+tags = Array[StringName]([&"SecondRite"])
+Description = "Apply Blood Syphon to all enemies equal to your Regeneration. Gain 30 Blood Debt, or if Ascendant Ritual is active, reset its count instead. Null this card. "
+LogMessage = "\"Manipulating your Blood is like breathing to you. Your authority grows... You feel your ascension draw near...\""
+metadata/_custom_type_script = "uid://dxw4b7jhgkbv4"

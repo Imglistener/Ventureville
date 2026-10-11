@@ -16,9 +16,9 @@ func activate(targets : Array[Node]) -> void:
 			if not target:
 				continue
 			if target is EnemyView:
-				target.Enemy.Entity.take_damage(_mitigated(amount, target.Enemy.Entity), damage_type)
+				_hit(target.Enemy.Entity)
 			elif target is Stat_Manager:
-				target.Player.take_damage(_mitigated(amount, target.Player), damage_type)
+				_hit(target.Player)
 
 		if amount > 0 and amount <= 10:
 			sfx_player.play_sfx(light_damage)
@@ -38,3 +38,14 @@ func _mitigated(base: int, defender: BaseBattlerStats) -> int:
 		if effect is SanguineShell:
 			return effect.reduce_damage(value, source)
 	return value
+
+func _hit(defender: BaseBattlerStats) -> void:
+	var before := defender.current_health
+	defender.take_damage(_mitigated(amount, defender), damage_type)
+	_notify_damage_dealt(before - defender.current_health, defender)
+
+func _notify_damage_dealt(dealt: int, defender: BaseBattlerStats) -> void:
+	if not source or dealt <= 0:
+		return
+	for condition in source.BattleConditions.duplicate():
+		condition.on_damage_dealt(dealt, damage_type, source, defender)

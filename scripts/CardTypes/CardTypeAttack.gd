@@ -25,6 +25,9 @@ func _deal_damage(targets: Array[Node], amount: int) -> void:
 	var effect := AttackEffect.new()
 	effect.damage_type = damage_type
 	effect.amount = amount
+	var player := _get_player(targets)
+	if player:
+		effect.source = player.Player
 	effect.activate(targets)
 
 

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" format=3 uid="uid://dobror7ns1gy7"]
+
+[ext_resource type="Resource" uid="uid://d0vgs8rq60qe5" path="res://assets/Status Effects/Debuffs/Blood Debt.tres" id="1_wx77n"]
+[ext_resource type="Script" uid="uid://cgy5kmno2u1aw" path="res://assets/Status Effects/Debuffs/StatusEffect.gd" id="2_qqcxg"]
+[ext_resource type="Resource" uid="uid://3oxt0hvbwkqq" path="res://assets/Status Effects/Debuffs/Burning.tres" id="3_pl3mv"]
+[ext_resource type="Resource" uid="uid://bsdqh2bx5brhw" path="res://assets/Status Effects/Debuffs/Concussed.tres" id="4_msro8"]
+[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="5_3omro"]
+[ext_resource type="Resource" uid="uid://colxenne7fpke" path="res://assets/Status Effects/Debuffs/DamageDown.tres" id="6_ua3gc"]
+[ext_resource type="Script" uid="uid://doaqb8pqds0le" path="res://assets/Data/Player/PlayerActions/CardEffects/Sanguinepurge.gd" id="7_faccx"]
+
+[resource]
+script = ExtResource("7_faccx")
+purgeable_statuses = Array[ExtResource("2_qqcxg")]([ExtResource("3_pl3mv"), ExtResource("4_msro8"), ExtResource("5_3omro"), ExtResource("6_ua3gc"), ExtResource("1_wx77n")])
+blood_debt = ExtResource("1_wx77n")
+name = "Sanguine Purge"
+rarity = 1
+mp_cost = 1
+ap_cost = 2
+blood_tax = 10
+Description = "Sacrifice 10. Clear all your Status Debuffs and Gain 10 Blood Debt for each Status Removed."
+LogMessage = "\"Expelling blood, you break the hold of whatever ails you!\""
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" format=3 uid="uid://cqd2wqxlj615k"]
+
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="1_em6fc"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="2_l2pig"]
+[ext_resource type="Script" uid="uid://clnso517o1avl" path="res://assets/Data/Player/PlayerActions/CardEffects/Blood Greatmace.gd" id="3_5d78m"]
+
+[resource]
+script = ExtResource("3_5d78m")
+StatsScaled = ExtResource("1_em6fc")
+damage_type = ExtResource("2_l2pig")
+name = "Blood Greatmace"
+rarity = 1
+target = 1
+mp_cost = 3
+ap_cost = 3
+blood_tax = 15
+tags = Array[StringName]([&"BloodWeapon"])
+Description = "Sacrifice 15, Deal Blood Damage equal to the difference between your current HP and your Max HP."
+LogMessage = "\"Molding your Blood into a heavy Greatmace, you bludgeon your enemy with incredible force!\" "
+metadata/_custom_type_script = "uid://lq1cxv84kjey"
