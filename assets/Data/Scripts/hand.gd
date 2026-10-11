@@ -24,6 +24,8 @@ const DISCARD_STAGGER := 0.04
 func _ready() -> void:
 	if not Events.calling_arrange_hand.is_connected(arrange_hand):
 		Events.calling_arrange_hand.connect(arrange_hand)
+	Events.effect_applied.connect(refresh_playable)
+	Events.StatusWoreOff.connect(refresh_playable.unbind(2))
 
 
 func set_focus(card: CardUI) -> void:
@@ -144,21 +146,26 @@ func _arrange_pass() -> void:
 	for t in running_tweens:
 		if t.is_valid() and t.is_running():
 			await t.finished
+
 func define_playable() -> void:
 	for i in get_children():
 		i.z_index = i.get_index()
-		i.is_playable.z_as_relative = true
-		i.is_playable.z_index = i.get_index()-1
-	
-		if i.card_data.mp_cost <= player_stat_manager.Player.mana and i.card_data.ap_cost <= player_stat_manager.Player.AP:
-			i.is_playable.visible = true
-			i.is_playable.z_as_relative = false
-			i.is_playable.z_index = i.get_index()  
-		else:
-			i.is_playable.visible = false
-			i.is_playable.z_as_relative = true
-			i.is_playable.z_index = i.get_index() - 1
+	refresh_playable()
 	Events.turn_cards_drawn.emit()
+
+func refresh_playable() -> void:
+	var player: CharacterInstance = player_stat_manager.Player if player_stat_manager else null
+	if not player:
+		return
+	for card in get_children():
+		if not card is CardUI:
+			continue
+		var idx := card.get_index()
+		var playable := player.card_IsPlayable(card.card_data)
+		card.is_playable.visible = playable
+		card.is_playable.z_as_relative = not playable
+		card.is_playable.z_index = idx if playable else idx - 1
+		card.set_locked(player.is_card_locked(card.card_data))
 
 func hide_hand() -> void: 
 	var hiding_tween = create_tween()

@@ -28,7 +28,8 @@ func player_increment_mana() -> void:
 	player_stat_manager.Player.max_mana += 1
 	player_stat_manager.Player.mana = player_stat_manager.Player.max_mana
 	player_stat_manager.Player.AP = 3
-
+	if player_stat_manager.Player.is_stunned():
+		player_stat_manager.Player.AP = 0
 
 
 

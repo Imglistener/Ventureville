@@ -184,7 +184,10 @@ func _on_mouse_exited()-> void:
 		hide_keyword_tooltips()
 	Events.card_unselected.emit(self)
 
-
+func set_locked(value: bool) -> void:
+	disabled_mask.visible = value
+	if value:
+		is_playable.hide()
 
 
 func move_card(card: CardUI, start_pos:Vector2, target_pos: Vector2, duration: float) -> void:

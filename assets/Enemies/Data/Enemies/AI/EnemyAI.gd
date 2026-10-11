@@ -13,6 +13,11 @@ func _ready() -> void:
 		action.target = target
 		action.log = get_tree().get_first_node_in_group('Log')
 
+func can_use(action: EnemyAction) -> bool:
+	if action.ActionEffect == EnemyAction.ActionEffects.Attack \
+			and enemy and enemy.Enemy and enemy.Enemy.Entity.is_concussed():
+		return false
+	return true
 func get_action() -> EnemyAction:
 	var action : EnemyAction = get_conditional_action()
 	if action:
@@ -28,23 +33,31 @@ func get_conditional_action() -> EnemyAction:
 		action = child as EnemyAction
 		if not action or action.ActionType != EnemyAction.ActionTypes.Conditional:
 			continue
+		if not can_use(action):
+			continue
 		if action.is_usable():
 			return action
 	return null
 
 func get_chance_action() -> EnemyAction:
-	
-	var action: EnemyAction
-	var roll := randf_range(0.0, TotalChance)
-	
+	var pool: Array[EnemyAction] = []
+	var total := 0.0
 	for child in get_children():
-		action = child as EnemyAction
+		var action := child as EnemyAction
 		if not action or action.ActionType != EnemyAction.ActionTypes.ChanceBased:
 			continue
-		if action.TotalChance > roll:
+		if action.ActionChance <= 0.0 or not can_use(action):
+			continue
+		pool.append(action)
+		total += action.ActionChance
+	if pool.is_empty():
+		return null
+	var roll := randf_range(0.0, total)
+	for action in pool:
+		roll -= action.ActionChance
+		if roll <= 0.0:
 			return action
-		
-	return null
+	return pool.back()
 
 
 func setup_action_chances() -> void:
@@ -66,18 +79,3 @@ func _set_enemy(value: EnemyView) -> void:
 func _set_target(value: Stat_Manager) -> void:
 	target = value
 	
-func disable_attacks() -> void:
-	for move in get_children():
-		if not move or move.ActionType != EnemyAction.ActionTypes.ChanceBased or move.ActionEffect != EnemyAction.ActionEffects.Attack:
-			continue
-		else:
-			move.ActionChance = 0
-	setup_action_chances()
-
-func enable_attacks() -> void:
-	for move in get_children():
-		if not move or move.ActionType != EnemyAction.ActionTypes.ChanceBased or move.ActionEffect != EnemyAction.ActionEffects.Attack:
-			continue
-		if move is EnemyAction:
-			move.ActionChance = move.Enemy_Data.ActionChance
-	setup_action_chances()

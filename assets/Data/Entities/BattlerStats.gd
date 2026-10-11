@@ -106,3 +106,23 @@ func _get_max_hp() -> int:
 	
 func _get_max_san() -> int:
 	return _max_san
+	
+func get_status(status_script: Script) -> StatusEffect:
+	for effect in ActiveEffects:
+		if effect and effect.get_script() == status_script:
+			return effect
+	return null
+
+func is_stunned() -> bool:
+	return get_status(Stunned) != null
+
+func is_concussed() -> bool:
+	for effect in ActiveEffects:
+		if effect is Concussed:
+			return true
+	return false
+func cleanse_status(statuses: Array[StatusEffect]) -> void:
+	for debuff in ActiveEffects:
+		var found = debuff.find_same_effect(ActiveEffects)
+		if found:
+			found.on_remove(self)

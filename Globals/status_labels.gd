@@ -11,6 +11,9 @@ const COLORS := {
 	"SanguineShell": Color(0.85, 0.1, 0.2),
 	"DamageDown": Color(0.6, 0.5, 0.9),
 	"Stalking": Color(1.0, 0.55, 0.1),
+	"Charging": Color(1.0, 0.4, 0.1),
+	"Stunned": Color(0.94, 0.9, 0.55),
+	
 }
 
 const FONT_SIZE := 30
@@ -47,6 +50,15 @@ func display_effect(status: Resource, anchor: Node2D, source_position: Vector2, 
 	elif status is StalkingEffect:
 		text = "Stalking"
 		color = COLORS["Stalking"]
+	elif status is Burning:
+		text = "Burning"
+		color = COLORS["Burning"]
+	elif status is Charging:
+		text = "Charging!"
+		color = COLORS["Charging"]
+	elif status is Stunned:
+		text = "Stunned"
+		color = COLORS["Stunned"]
 	else:
 		return
 

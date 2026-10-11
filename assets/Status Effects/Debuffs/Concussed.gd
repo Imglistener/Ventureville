@@ -22,7 +22,6 @@ func on_apply(targets: Array[Node], duration: int = 1) -> void:
 				instance.tree = tree
 				instance.current_duration = duration
 				effects.append(instance)
-				target.Enemy.EnemyThoughts.disable_attacks()
 				if anchor:
 					Events.effect_display.emit(self, anchor, anchor.global_position)
 
@@ -48,9 +47,9 @@ func on_apply(targets: Array[Node], duration: int = 1) -> void:
 func is_applicable(targets: Array[Node]) -> bool:
 	var target = targets[0]
 	if target is Stat_Manager:
-		return target.Player.current_health <= target.Player.Max_HP/2
+		return target.Player.current_block == 0
 	elif target is EnemyView:
-		return target.Enemy.Entity.current_health <= target.Enemy.Entity.Max_HP/2
+		return target.Enemy.Entity.current_block == 0
 	else:
 		return false
 

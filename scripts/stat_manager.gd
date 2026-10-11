@@ -59,18 +59,7 @@ func setup_ai() -> void:
 	EnemyThoughts.target = self
 
 	
-func update_action() -> void:
-	if _is_dead: return
-	if Entity is not EnemyBattlerStats: return
-	if not EnemyThoughts:
-		return
-	if not CurrentAction:
-		CurrentAction = EnemyThoughts.get_action()
-	var conditional_action_active := EnemyThoughts.get_conditional_action()
-	if conditional_action_active and CurrentAction != conditional_action_active:
-		CurrentAction = conditional_action_active
-	if CurrentAction:
-		Events.EnemyActionReady.emit()
+
 
 
 func _initialize_entity(entity_type: Variant) -> void:
@@ -140,13 +129,41 @@ func phase_transition() -> void:
 	bgm.stream = phase_music
 	bgm.play()
 
+func update_action() -> void:
+	if _is_dead: return
+	if Entity is not EnemyBattlerStats: return
+	if not EnemyThoughts:
+		return
+	if Entity.is_stunned():
+		CurrentAction = null
+		Events.EnemyActionReady.emit()   # the turn manager still waits for every enemy
+		return
+	if CurrentAction and not EnemyThoughts.can_use(CurrentAction):
+		CurrentAction = null
+	if not CurrentAction:
+		CurrentAction = EnemyThoughts.get_action()
+	var conditional_action_active := EnemyThoughts.get_conditional_action()
+	if conditional_action_active and CurrentAction != conditional_action_active:
+		CurrentAction = conditional_action_active
+	Events.EnemyActionReady.emit()
+
 func play_turn() -> void:
 	if _is_dead: return
 	if Entity is not EnemyBattlerStats: return
+
+	# Stunned, or nothing queued: skip the turn, but still tell the turn manager
+	# this enemy is done, otherwise enemy_turn_order() awaits forever.
+	if Entity.is_stunned() or not CurrentAction:
+		if Entity.is_stunned():
+			log.text += "[br]%s is stunned and loses its turn!" % Entity.entity_name
+		CurrentAction = null
+		# Deferred: enemy_turn_order() calls play_turn() BEFORE it awaits the signal.
+		Events.EnemyActionCompleted.emit.call_deferred(null)
+		return
+
 	if enemy.enemy_view.has_node("Idle"):
 		enemy.enemy_view.get_node("Idle").stop()
-	if not CurrentAction:
-		return
+
 	CurrentAction.use_action()
 	CurrentAction = null
 	var end = func():
@@ -155,7 +172,6 @@ func play_turn() -> void:
 	Events.EnemyActionCompleted.connect(
 		end.unbind(1), CONNECT_ONE_SHOT
 	)
-
 func _on_entity_stats_changed() -> void:
 	EntityStatsChanged.emit(enemy, self)
 	if not _is_dead and Entity is EnemyBattlerStats and Entity.current_health <= 0:

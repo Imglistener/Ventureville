@@ -413,6 +413,7 @@ theme_override_constants/margin_top = -23
 theme_override_constants/margin_bottom = -58
 
 [node name="Resists" type="TextureRect" parent="EnemyBarsContainer/MarginContainer/DamageRes" unique_id=575211709]
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(150, 138.425)
 layout_mode = 2
 size_flags_horizontal = 4
