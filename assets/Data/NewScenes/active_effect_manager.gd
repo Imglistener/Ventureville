@@ -59,7 +59,6 @@ func _ready() -> void:
 	Events.EnemyBattleEnd.connect(_on_enemy_battle_end.unbind(1))
 	Events.effect_applied.connect(display_active_effects)
 	Events.effect_display.connect(StatusLabels.display_effect)
-	Events.StatusWoreOff.connect(_track_removal_effects)
 	Events.BattleConditionActivated.connect(_on_condition_changed.unbind(2))
 	Events.BattleConditionExpired.connect(_on_condition_changed.unbind(2))
 
@@ -156,7 +155,8 @@ func _advance_entry(entry: EffectDisplayEntry) -> void:
 	entry.current_effect = effect
 	if effects.size() == 1:
 		entry.icon.texture = effect.status_icon
-		entry.label.text = str(effect.current_duration)
+		entry.label.text = effect.get_display_text()
+
 	else:
 		_tween_icon_swap(entry.icon, entry.label, effect)
 
@@ -168,7 +168,7 @@ func _tween_icon_swap(icon: TextureRect, label: Label, effect: Resource) -> void
 	tween.tween_property(icon, "modulate:a", 0.0, 0.15)
 	tween.tween_callback(func():
 		icon.texture = effect.status_icon
-		label.text = str(effect.current_duration)
+		label.text = effect.get_display_text()
 	)
 	tween.tween_property(icon, "modulate:a", 1.0, 0.15)
 
@@ -202,12 +202,7 @@ func tick_effects(stat_manager: Stat_Manager) -> void:
 	display_active_effects()
 
 
-func _track_removal_effects(effect: StatusEffect, Entity: BaseBattlerStats) -> void:
-	for stat_manager in enemy_manager._view_to_stat_manager.values():
-		if stat_manager is Stat_Manager:
-			if stat_manager.Entity == Entity and effect not in stat_manager.Entity.ActiveEffects:
-				if effect is Concussed:
-					stat_manager.EnemyThoughts.enable_attacks()
+
 
 
 ############################### BATTLE CONDITIONS ###############################

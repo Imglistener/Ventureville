@@ -20,7 +20,7 @@ metadata/_custom_type_script = "uid://djvjp04eqmhrw"
 
 [resource]
 script = ExtResource("1_gjxuh")
-Base_HP = 250
+Base_HP = 600
 Base_SAN = 300
 Is_Vul_to = 1
 Difficulty = 1

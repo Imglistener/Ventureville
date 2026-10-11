@@ -10,14 +10,18 @@
 [ext_resource type="AudioStream" uid="uid://blr6kihmmbqi7" path="res://assets/SFX/stalk.wav" id="6_kcfkb"]
 [ext_resource type="Script" uid="uid://b57o0qhyeejnf" path="res://assets/Data/EnemyActions/Inflame.gd" id="7_0nvfi"]
 [ext_resource type="Texture2D" uid="uid://cj4fwwuajvkw8" path="res://assets/Neo Gladius Phase2.png" id="8_fxaxo"]
+[ext_resource type="Script" uid="uid://d0ttvnoht6cal" path="res://assets/Data/EnemyActions/savage_lunge.gd" id="9_i657h"]
 [ext_resource type="Texture2D" uid="uid://drxlvx02kbsua" path="res://assets/Neo Gladius Phase2 Highlighted.png" id="9_qeo0w"]
+[ext_resource type="Resource" uid="uid://bsdqh2bx5brhw" path="res://assets/Status Effects/Debuffs/Concussed.tres" id="10_nc2qi"]
 [ext_resource type="AudioStream" uid="uid://cdpg4x53v00cu" path="res://assets/SFX/Gladius.wav" id="10_vrytb"]
 [ext_resource type="PackedScene" uid="uid://3b1atesudf3m" path="res://assets/Data/EnemyActions/nightfire_action.tscn" id="12_cqiq4"]
+[ext_resource type="Script" uid="uid://cx6l2pvk44i5i" path="res://assets/Data/EnemyActions/nightfire_breath.gd" id="14_0a2ss"]
+[ext_resource type="Script" uid="uid://c31wi2rlvfpym" path="res://assets/Data/EnemyActions/nightfire_supernova.gd" id="17_nc2qi"]
+[ext_resource type="AudioStream" uid="uid://bbvqa2xxno57n" path="res://assets/SFX/Gladius nuke.wav" id="18_v6f6h"]
+[ext_resource type="Script" uid="uid://cnb0wv8grkt71" path="res://assets/Data/EnemyActions/nighfire_charge.gd" id="19_a5ipe"]
 
 [node name="EnemyAI" type="Node" unique_id=1564454232]
 script = ExtResource("1_ehces")
-
-[node name="NightfireAction" parent="." unique_id=2062416777 instance=ExtResource("12_cqiq4")]
 
 [node name="TripleBite" type="Node" parent="." unique_id=165351316]
 script = ExtResource("2_fxaxo")
@@ -27,8 +31,8 @@ vfx = ExtResource("4_7bq8s")
 burn = ExtResource("5_oj8m4")
 ActionType = 1
 SoundEffect = ExtResource("4_q3unc")
-ActionChance = 10.0
-Description = "\"The great beast attacks with a triple gnawing!\""
+ActionChance = 5.0
+Description = "\"The Great Beast attacks with each of its heads!\""
 
 [node name="Stalking" type="Node" parent="." unique_id=1949219695]
 script = ExtResource("5_feyab")
@@ -37,7 +41,15 @@ ActionType = 1
 ActionEffect = 1
 SoundEffect = ExtResource("6_kcfkb")
 ActionChance = 3.0
-Description = "\"Gladius is stalking...\""
+Description = "\"Gladius is Stalking...\""
+
+[node name="SavageLunge" type="Node" parent="." unique_id=1101694465]
+script = ExtResource("9_i657h")
+damagetype = ExtResource("3_qeo0w")
+concussed = ExtResource("10_nc2qi")
+ActionType = 1
+ActionChance = 3.0
+Description = "\"Gladius pounces with savage fury!\""
 
 [node name="Phase2Transition" type="Node" parent="." unique_id=1508084932]
 script = ExtResource("7_0nvfi")
@@ -46,4 +58,25 @@ Phase_2_Normal = ExtResource("8_fxaxo")
 Phase_2_Hover = ExtResource("9_qeo0w")
 ActionEffect = 4
 SoundEffect = ExtResource("10_vrytb")
-Description = "\"The beast gathers heat! It is scorching hot!\""
+Description = "\"The Beast gathers heat! It is scorching hot!\""
+
+[node name="NightfireBuff" parent="." unique_id=2062416777 instance=ExtResource("12_cqiq4")]
+Description = "\"The Great Beast ignites with scorching flames!\""
+
+[node name="NightfireSupernova" type="Node" parent="." unique_id=1153170418]
+script = ExtResource("17_nc2qi")
+damagetype = ExtResource("3_qeo0w")
+burn = ExtResource("5_oj8m4")
+SoundEffect = ExtResource("18_v6f6h")
+Description = "\"The Great Beast swings its blade high and gathers heat!\""
+
+[node name="NighfireCharge" type="Node" parent="." unique_id=1097228269]
+script = ExtResource("19_a5ipe")
+ActionEffect = 2
+
+[node name="NightfireBreath" type="Node" parent="." unique_id=95006363]
+script = ExtResource("14_0a2ss")
+burn = ExtResource("5_oj8m4")
+cooldown_turns = 3
+ActionEffect = 3
+Description = "\"Gladius breathes a gout of flames!\""

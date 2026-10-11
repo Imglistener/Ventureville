@@ -23,6 +23,9 @@ func on_apply(targets: Array[Node], duration: int = 1) -> void:
 				var instance = self.duplicate()
 				instance.current_duration = duration
 				effects.append(instance)
+		var anchor := _get_anchor(target)
+		if anchor:
+			Events.effect_display.emit(self, anchor, anchor.global_position)
 
 func on_tick(target: BaseBattlerStats) -> void:
 	var effect = find_same_effect(target.ActiveEffects)

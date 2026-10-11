@@ -69,7 +69,15 @@ func heal(amount: int) -> void:
 	health_restored.emit(amount, entity_name)
 	Stats_Changed.emit()
 
+
+func is_card_locked(card: Card) -> bool:
+	return card.type == Card.Type.ATTACK and is_concussed()
+
 func card_IsPlayable(card: Card) -> bool:
+	if is_card_locked(card):
+		return false
+	if is_stunned():
+		return false
 	return self.mana >= card.mp_cost and self.AP >= card.ap_cost
 
 #in case of new game:

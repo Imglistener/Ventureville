@@ -1,6 +1,6 @@
 class_name StatusEffect extends Resource
 
-enum StatusEffects{Burning, Frostbite, BloodSyphon, Horrified, Concussed, Stunned, Withering, DamageUp, Regeneration, DefensePerTurn, RetainHand, Poison, SanguineShell, DamageDown, BloodDebt, Stalking}
+enum StatusEffects{Burning, Frostbite, BloodSyphon, Horrified, Concussed, Stunned, Withering, DamageUp, Regeneration, DefensePerTurn, RetainHand, Poison, SanguineShell, DamageDown, BloodDebt, Stalking, Charging}
 var current_duration : int = 0
 
 @export var status_name : StatusEffects
@@ -36,7 +36,10 @@ func on_remove(_target: BaseBattlerStats) -> void:
 	if existing:
 		_target.ActiveEffects.erase(existing)
 		Events.StatusWoreOff.emit(self, _target)
-		
+
+func get_display_text() -> String:
+	return str(current_duration)
+			
 func is_applicable(targets: Array[Node]) -> bool:
 	return false
 
