@@ -1,6 +1,22 @@
 # Godot 4+ specific ignores
 .godot/
-/android/
-Effects/
+
+# Ignore Android build artifacts (safer than ignoring the whole root folder)
+android/build/
+*.apk
+*.aab
+
+# Assets & Archives
 *.zip
 *.rar
+Effects/
+
+# Godot Export presets (Can contain private keystore passwords/credentials)
+export.cfg
+export_presets.cfg
+export_credentials.cfg
+
+
+# System / OS specific junk
+.DS_Store
+Thumbs.db
