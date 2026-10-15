@@ -40,6 +40,7 @@ signal EnemyActionReady
 signal item_used(item: Item)
 
 #StatusSignals
+signal status_applied(status: StatusEffect, entity : BaseBattlerStats)
 signal StatusWoreOff(status: StatusEffect, entity: BaseBattlerStats)
 signal BattleConditionActivated(battle_condition: BattleCondition, entity: BaseBattlerStats)
 signal BattleConditionExpired(battle_condition: BattleCondition, entity: BaseBattlerStats)  # NEW

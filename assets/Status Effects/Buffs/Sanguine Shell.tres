@@ -7,7 +7,6 @@
 [resource]
 script = ExtResource("1_wicrw")
 status_name = 12
-default_duration = 1
 status_icon = ExtResource("3_ti5hj")
 effect_texture = ExtResource("1_eihsw")
 status_description = "Affected Entity takes 25% less damage from all enemies affected with Blood Syphon."

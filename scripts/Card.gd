@@ -165,3 +165,8 @@ func _get_turn_tracker(player: Stat_Manager) -> TurnTrackingManager:
 func _sacrificed_this_turn(player: Stat_Manager) -> bool:
 	var tracker := _get_turn_tracker(player)
 	return tracker != null and tracker.sacrificed_this_turn(player)
+
+func _draw_cards(targets: Array[Node], amount: int) -> void:
+	var effect := DrawEffect.new()
+	effect.amount = amount
+	effect.activate(targets)

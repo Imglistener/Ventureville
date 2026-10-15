@@ -155,7 +155,7 @@ func play_turn() -> void:
 	# this enemy is done, otherwise enemy_turn_order() awaits forever.
 	if Entity.is_stunned() or not CurrentAction:
 		if Entity.is_stunned():
-			log.text += "[br]%s is stunned and loses its turn!" % Entity.entity_name
+			log._log("%s is stunned and loses its turn!" % Entity.entity_name)
 		CurrentAction = null
 		# Deferred: enemy_turn_order() calls play_turn() BEFORE it awaits the signal.
 		Events.EnemyActionCompleted.emit.call_deferred(null)

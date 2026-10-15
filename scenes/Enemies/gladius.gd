@@ -73,5 +73,4 @@ func reveal(Hide : bool) -> void:
 			t.kill()
 	t = create_tween().set_parallel(true)
 	t.tween_property(resist_display, 'modulate', Color(1.0, 1.0, 1.0, 1.0) if not Hide else Color(1.0, 1.0, 1.0, 0.0), 0.2).set_ease(Tween.EASE_IN_OUT)
-	print("Reveal did run.")
 	await t.finished

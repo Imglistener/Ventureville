@@ -48,7 +48,7 @@ script = ExtResource("9_i657h")
 damagetype = ExtResource("3_qeo0w")
 concussed = ExtResource("10_nc2qi")
 ActionType = 1
-ActionChance = 3.0
+ActionChance = 2.0
 Description = "\"Gladius pounces with savage fury!\""
 
 [node name="Phase2Transition" type="Node" parent="." unique_id=1508084932]

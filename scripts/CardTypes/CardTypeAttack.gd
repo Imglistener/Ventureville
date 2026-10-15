@@ -4,7 +4,7 @@ class_name AttackCard extends Card
 @export var base_damage: int
 @export var StatsScaled: StatInstance
 @export var damage_type: DamageType
-
+@export var slash_vfx : PackedScene
 
 func _init() -> void:
 	type = Type.ATTACK

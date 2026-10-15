@@ -29,6 +29,20 @@ func get_description(_character: CharacterInstance) -> String:
 	return Description.replace("{statuses}", _status_list()).replace("{debt}", str(debt_per_status))
 
 
+## How many of the purgeable statuses the player currently has.
+func _count_active(character: BaseBattlerStats) -> int:
+	var count := 0
+	for status in purgeable_statuses:
+		if status and _find_status(character.ActiveEffects, status.get_script()):
+			count += 1
+	return count
+
+
+func get_live_description(character: CharacterInstance, _live_targets: Array[Node]) -> String:
+	var count := _count_active(character)
+	return get_description(character) + "\n(Clears %d, gain %d Blood Debt)" % [count, count * debt_per_status]
+
+
 func _status_list() -> String:
 	var names := PackedStringArray()
 	for status in purgeable_statuses:

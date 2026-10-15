@@ -22,8 +22,7 @@ func is_usable() -> bool:
 
 func use_action() -> void:
 	if self.log:
-		self.log.text += "[br]"
-		self.log.text += (Description)
+		self.log._log(Description)
 
 func setup_from_data() -> void:
 	if not Enemy_Data:

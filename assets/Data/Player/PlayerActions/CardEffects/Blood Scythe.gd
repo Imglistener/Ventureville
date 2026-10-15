@@ -15,7 +15,16 @@ func _execute(player: Stat_Manager, targets: Array[Node]) -> void:
 	for i in hits:
 		if i > 0:
 			await player.get_tree().create_timer(hit_delay).timeout
-		# Don't hit a corpse (would re-fire the death log / signals).
+			
+				# Don't hit a corpse (would re-fire the death log / signals).
 		if not target or not target.Enemy or target.Enemy.Entity.current_health <= 0:
 			break
+		if slash_vfx:
+				var enemy_view = targets[0].enemy_view as TextureButton
+				var OFFSET = enemy_view.size/2 + Vector2(0, +120)
+				var vfx = slash_vfx.instantiate() as Slash_VFX
+				enemy_view.add_child(vfx)
+				vfx.scale *= 5
+				vfx.position = enemy_view.position + OFFSET
+				vfx.play_vfx(false)
 		_deal_damage(hit_targets, total)

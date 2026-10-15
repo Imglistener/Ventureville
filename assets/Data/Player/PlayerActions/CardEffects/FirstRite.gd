@@ -26,3 +26,17 @@ func _execute(player: Stat_Manager, _targets: Array[Node]) -> void:
 	var effect := damage_up.duplicate() as DamageUP
 	effect.amount = 1.0 + percent
 	_apply_to_self(effect, player, turns)
+
+
+func _ritual_active(character: BaseBattlerStats) -> bool:
+	for condition in character.BattleConditions:
+		if condition is AscendantRitualCondition:
+			return true
+	return false
+
+
+## Shows which version of the card you are about to get.
+func get_live_description(character: CharacterInstance, _live_targets: Array[Node]) -> String:
+	if _ritual_active(character):
+		return Description + "\n(Ascendant Ritual active: reset it, gain %d%% Damage Up for %d turns)" % [roundi(empowered_percent * 100.0), empowered_duration]
+	return Description + "\n(Gain %d%% Damage Up for %d turns)" % [roundi(damage_up_percent * 100.0), base_duration]

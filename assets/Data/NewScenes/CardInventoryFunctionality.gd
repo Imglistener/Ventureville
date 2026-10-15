@@ -22,7 +22,9 @@ func initialize_cards_view() -> void:
 	for child in cards_view.get_children():
 		cards_view.remove_child(child)
 		child.queue_free()
-	for card in deck.Obtained_Cards.keys():
+	var cards_inventory = deck.Obtained_Cards.keys()
+	cards_inventory.sort_custom((func(a: Card, b: Card) -> bool: return a.name < b.name))
+	for card in cards_inventory:
 		var ui := card_scene.instantiate() as CardUI
 		ui.Mode = CardUI.CardMode.DISPLAYING
 		ui.card_data = card

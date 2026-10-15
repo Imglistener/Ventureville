@@ -2,7 +2,7 @@ class_name StatusEffect extends Resource
 
 enum StatusEffects{Burning, Frostbite, BloodSyphon, Horrified, Concussed, Stunned, Withering, DamageUp, Regeneration, DefensePerTurn, RetainHand, Poison, SanguineShell, DamageDown, BloodDebt, Stalking, Charging}
 var current_duration : int = 0
-
+var tick_order: int = 0
 @export var status_name : StatusEffects
 @export var default_duration : int
 @export var status_icon : Texture

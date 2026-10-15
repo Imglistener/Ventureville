@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RitualisticGleeCondition" format=3 uid="uid://bn5qawsvb8t81"]
+
+[ext_resource type="Texture2D" uid="uid://b08ei2b6pklo8" path="res://assets/GUI/Gladiaus_Devour.png" id="1_hfuc1"]
+[ext_resource type="Resource" uid="uid://c3rlpuyyf0q7e" path="res://assets/Status Effects/Buffs/Regeneration.tres" id="2_jkwcu"]
+[ext_resource type="Script" uid="uid://bx2d8jdceo2d3" path="res://assets/Status Effects/Buffs/Conditions/ritualistic_glee.gd" id="3_5pnk0"]
+
+[resource]
+script = ExtResource("3_5pnk0")
+regeneration = ExtResource("2_jkwcu")
+condition_name = "Ritualistic Glee"
+condition_icon = ExtResource("1_hfuc1")
+condition_texture = ExtResource("1_hfuc1")
+condition_description = "Whenever you play a Buff card; Gain 1 AP. If that card Nulls itself, gain 2 Regeneration."

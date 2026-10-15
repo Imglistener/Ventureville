@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://bd2ph42u6d4qp"]
+[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://bbsomicgcyfs2"]
 
 [ext_resource type="Script" uid="uid://cpy8tjlulsna2" path="res://scripts/Card.gd" id="1_7abai"]
 [ext_resource type="Script" uid="uid://pqq147nh02w3" path="res://scripts/deck.gd" id="1_dyacs"]
@@ -29,10 +29,16 @@
 [ext_resource type="Resource" uid="uid://dobror7ns1gy7" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Purge.tres" id="26_ykmvh"]
 [ext_resource type="Resource" uid="uid://c7bbpnn6qcfe7" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Second Rite.tres" id="27_1etpb"]
 [ext_resource type="Resource" uid="uid://b2nv2om53v2uw" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Third Rite.tres" id="28_a2ocr"]
+[ext_resource type="Resource" uid="uid://c8jtf4thfdu0b" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Hunger.tres" id="29_ej18l"]
+[ext_resource type="Resource" uid="uid://dj1dqelhfwjfs" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Draw Blood.tres" id="30_1etpb"]
+[ext_resource type="Resource" uid="uid://contqp1o54tvf" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Ecstasy.tres" id="31_a2ocr"]
+[ext_resource type="Resource" uid="uid://c1ct6idn43w3n" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/The Old Blood.tres" id="32_a2ocr"]
 
 [resource]
 script = ExtResource("1_dyacs")
 Obtained_Cards = Dictionary[ExtResource("1_7abai"), int]({
+ExtResource("32_a2ocr"): 1,
+ExtResource("29_ej18l"): 1,
 ExtResource("28_a2ocr"): 1,
 ExtResource("27_1etpb"): 1,
 ExtResource("26_ykmvh"): 2,
@@ -59,22 +65,29 @@ ExtResource("16_7nbrc"): 3,
 ExtResource("17_xqmlc"): 1,
 ExtResource("18_j2xm7"): 2,
 ExtResource("21_am3ye"): 2,
-ExtResource("22_euasc"): 3
+ExtResource("22_euasc"): 3,
+ExtResource("30_1etpb"): 3,
+ExtResource("31_a2ocr"): 1
 })
 Card_Amount_In_Deck = Dictionary[ExtResource("1_7abai"), int]({
-ExtResource("25_ej18l"): 1,
-ExtResource("27_1etpb"): 1,
-ExtResource("28_a2ocr"): 1,
-ExtResource("26_ykmvh"): 2,
-ExtResource("24_7h61r"): 2,
-ExtResource("23_euasc"): 2,
-ExtResource("20_4dliv"): 1,
-ExtResource("5_8wy8p"): 2,
-ExtResource("10_py15j"): 1,
-ExtResource("13_uii6r"): 1,
-ExtResource("17_xqmlc"): 1,
-ExtResource("21_am3ye"): 2,
-ExtResource("22_euasc"): 2,
+ExtResource("30_1etpb"): 3,
+ExtResource("11_0354w"): 1,
+ExtResource("29_ej18l"): 1,
+ExtResource("18_j2xm7"): 2,
+ExtResource("12_5af0u"): 1,
 ExtResource("14_25ebe"): 2,
-ExtResource("12_5af0u"): 1
+ExtResource("22_euasc"): 2,
+ExtResource("21_am3ye"): 2,
+ExtResource("13_uii6r"): 1,
+ExtResource("10_py15j"): 1,
+ExtResource("5_8wy8p"): 2,
+ExtResource("20_4dliv"): 1,
+ExtResource("23_euasc"): 2,
+ExtResource("24_7h61r"): 2,
+ExtResource("26_ykmvh"): 2,
+ExtResource("28_a2ocr"): 1,
+ExtResource("27_1etpb"): 1,
+ExtResource("25_ej18l"): 1,
+ExtResource("31_a2ocr"): 1,
+ExtResource("32_a2ocr"): 1
 })
