@@ -10,6 +10,7 @@ android/build/
 *.zip
 *.rar
 assets/Effects/
+assets/tex packed.rar
 
 # Godot Export presets (Can contain private keystore passwords/credentials)
 export.cfg
