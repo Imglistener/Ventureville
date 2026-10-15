@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://di5a6fk07bgpm"]
+
+[ext_resource type="Script" uid="uid://b2yig30a8hkv3" path="res://assets/Data/NewScenes/VFX/slash_vfx.gd" id="1_do6ke"]
+[ext_resource type="Texture2D" uid="uid://cpgtm3pwrbigw" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 2/color2/Frames/Slash2_color2_frame1.png" id="1_h7y3s"]
+[ext_resource type="Texture2D" uid="uid://bublouca7maiq" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 2/color2/Frames/Slash2_color2_frame2.png" id="2_do6ke"]
+[ext_resource type="Texture2D" uid="uid://naqitwr2wtg7" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 2/color2/Frames/Slash2_color2_frame3.png" id="3_qpumh"]
+[ext_resource type="Texture2D" uid="uid://obl6c3rlbhyl" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 2/color2/Frames/Slash2_color2_frame4.png" id="4_u574u"]
+[ext_resource type="Texture2D" uid="uid://j8xf4youo7ga" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 2/color2/Frames/Slash2_color2_frame5.png" id="5_7ptyv"]
+[ext_resource type="Texture2D" uid="uid://b8lftk8ed8i1k" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 2/color2/Frames/Slash2_color2_frame6.png" id="6_l41et"]
+[ext_resource type="Texture2D" uid="uid://c1q63a8dpo0rm" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 2/color2/Frames/Slash2_color2_frame7.png" id="7_5us7v"]
+[ext_resource type="Texture2D" uid="uid://bjjrvdf7jtkbj" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color2/frames/Slash3_color2_frame1.png" id="9_ilq0r"]
+[ext_resource type="Texture2D" uid="uid://cxopvcu2qo7rb" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color2/frames/Slash3_color2_frame2.png" id="10_38rt1"]
+[ext_resource type="Texture2D" uid="uid://2sero0ungt03" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color2/frames/Slash3_color2_frame3.png" id="11_ay5tu"]
+[ext_resource type="Texture2D" uid="uid://d3p0h22tod3fs" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color2/frames/Slash3_color2_frame4.png" id="12_0umg6"]
+[ext_resource type="Texture2D" uid="uid://dutefxj0x31jb" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color2/frames/Slash3_color2_frame5.png" id="13_jgqkm"]
+[ext_resource type="Texture2D" uid="uid://s5mgr84nrt4u" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color2/frames/Slash3_color2_frame6.png" id="14_33vet"]
+[ext_resource type="Texture2D" uid="uid://c1hao8abquogt" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color2/frames/Slash3_color2_frame7.png" id="15_on6cd"]
+[ext_resource type="Texture2D" uid="uid://dvwk26glb5sdq" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color2/frames/Slash3_color2_frame8.png" id="16_5tlro"]
+[ext_resource type="Texture2D" uid="uid://20mdajstoato" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color2/frames/Slash3_color2_frame9.png" id="17_rg32u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ghndp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h7y3s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_do6ke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qpumh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u574u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7ptyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l41et")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5us7v")
+}],
+"loop": 1,
+"name": &"slash",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ilq0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_38rt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ay5tu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0umg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jgqkm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_33vet")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_on6cd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5tlro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_rg32u")
+}],
+"loop": 0,
+"name": &"slash_2",
+"speed": 20.0
+}]
+
+[sub_resource type="Animation" id="Animation_h7y3s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slash_1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_do6ke"]
+resource_name = "slash"
+length = 0.4
+step = 0.06666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slash_1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.4),
+"transitions": PackedFloat32Array(0.2332583, 1, 0.6155722),
+"update": 0,
+"values": [Vector2(-40, 50), Vector2(0, 0), Vector2(-30, -30)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("slash_1")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"slash"],
+"method": &"play"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ytuk3"]
+resource_name = "slash_2"
+length = 0.4
+step = 0.06666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slash_1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.4),
+"transitions": PackedFloat32Array(0.2332583, 0.5547847, 0.6155722),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(10, -30), Vector2(-50, -30)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("slash_1")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"slash_2"],
+"method": &"play"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qpumh"]
+_data = {
+&"RESET": SubResource("Animation_h7y3s"),
+&"slash": SubResource("Animation_do6ke"),
+&"slash_2": SubResource("Animation_ytuk3")
+}
+
+[node name="Slash_VFX" type="Node2D" unique_id=2125590685]
+script = ExtResource("1_do6ke")
+
+[node name="slash_1" type="AnimatedSprite2D" parent="." unique_id=1710913458]
+sprite_frames = SubResource("SpriteFrames_ghndp")
+animation = &"slash_2"
+frame = 8
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1729484129]
+libraries/ = SubResource("AnimationLibrary_qpumh")

@@ -7,7 +7,7 @@ const DEBT_STEP := 10
 
 func _init() -> void:
 	status_icon = preload("res://assets/GUI/Bleeding_Icon.png")
-
+	tick_order = -100
 func on_apply(targets: Array[Node], duration: int = DEBT_STEP) -> void:
 	var amount := _snap_up(duration)
 	if amount <= 0:

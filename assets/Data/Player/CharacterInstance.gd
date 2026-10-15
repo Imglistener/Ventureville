@@ -66,6 +66,11 @@ func take_san_damage(amount: int) -> void:
 func heal(amount: int) -> void:
 	DamageNumbers.display_healing_number(amount, damage_number_anchor, damage_numbers)
 	self.current_health += amount
+	if amount > 0:
+		for effect in ActiveEffects:
+			if effect is BloodDebt:
+				effect.on_heal(self)
+				break
 	health_restored.emit(amount, entity_name)
 	Stats_Changed.emit()
 

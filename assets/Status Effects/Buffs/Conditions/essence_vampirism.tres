@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EssenceVampirismCondition" format=3 uid="uid://bxlcufuqa8imc"]
+
+[ext_resource type="Texture2D" uid="uid://cjhrxfekpb1yl" path="res://assets/GUI/Blood_Throne.png" id="1_6oe4n"]
+[ext_resource type="Script" uid="uid://cuw68b3sc0myt" path="res://assets/Status Effects/Buffs/Conditions/EssenceVampirism.gd" id="1_inna4"]
+[ext_resource type="Resource" uid="uid://c3rlpuyyf0q7e" path="res://assets/Status Effects/Buffs/Regeneration.tres" id="2_3xbiv"]
+
+[resource]
+script = ExtResource("1_inna4")
+regeneration = ExtResource("2_3xbiv")
+base_icon = ExtResource("1_6oe4n")
+ritual_icon = ExtResource("1_6oe4n")
+form_icon = ExtResource("1_6oe4n")
+condition_name = "Essence Vampirisim"
+condition_icon = ExtResource("1_6oe4n")
+condition_texture = ExtResource("1_6oe4n")
+condition_description = "Whenever any Blood Syphon is applied, gain 1 Regeneration."
+metadata/_custom_type_script = "uid://cuw68b3sc0myt"

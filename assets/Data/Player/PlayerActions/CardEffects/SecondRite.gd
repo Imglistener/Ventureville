@@ -13,6 +13,13 @@ func _regen_stacks(character: BaseBattlerStats) -> int:
 	return regen.current_duration if regen else 0
 
 
+func _ritual_active(character: BaseBattlerStats) -> bool:
+	for condition in character.BattleConditions:
+		if condition is AscendantRitualCondition:
+			return true
+	return false
+
+
 func _execute(player: Stat_Manager, targets: Array[Node]) -> void:
 	var amount := _regen_stacks(player.Player)
 	if amount > 0:
@@ -26,5 +33,9 @@ func _execute(player: Stat_Manager, targets: Array[Node]) -> void:
 		_apply_to_self(blood_debt, player, debt_amount)
 
 
+## Shows the Syphon you will apply AND which branch (Debt vs Ritual reset) will happen.
 func get_live_description(character: CharacterInstance, _live_targets: Array[Node]) -> String:
-	return Description + "\n(Apply %d Blood Syphon to each enemy)" % _regen_stacks(character)
+	var text := Description + "\n(Apply %d Blood Syphon to each enemy)" % _regen_stacks(character)
+	if _ritual_active(character):
+		return text + "\n(Reset Ascendant Ritual's count)"
+	return text + "\n(Gain %d Blood Debt)" % debt_amount

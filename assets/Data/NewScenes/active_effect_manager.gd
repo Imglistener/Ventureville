@@ -9,6 +9,7 @@ class_name ActiveEffectManager extends Node
 
 const EFFECT_DISPLAY_DURATION: float = 2.0
 const ENEMY_TICK_DELAY: float = 0.3
+var _display_queued := false
 
 
 class ConditionDisplayEntry:
@@ -174,10 +175,16 @@ func _tween_icon_swap(icon: TextureRect, label: Label, effect: Resource) -> void
 
 
 func display_active_effects() -> void:
+	if _display_queued:
+		return
+	_display_queued = true
+	_run_display.call_deferred()
+
+func _run_display() -> void:
+	_display_queued = false
 	for stat_manager in _entry_order:
 		_entries[stat_manager].index = 0
 	_on_effect_cycle_tick()
-
 
 func tick_effects(stat_manager: Stat_Manager) -> void:
 	var target_stats
@@ -192,9 +199,25 @@ func tick_effects(stat_manager: Stat_Manager) -> void:
 	else:
 		return
 
-	for i in range(target_array.size() - 1, -1, -1):
-		var effect = target_array[i]
-		if effect is StatusEffect:
+	# Work on a snapshot: on_tick()/on_remove() of one effect can remove others from the real array
+	# (Regeneration heals -> Blood Debt.on_heal -> on_remove), which broke index-based iteration.
+	var snapshot: Array = target_array.duplicate()
+	snapshot.reverse()   # same order as before: most recently applied first
+
+	# Group by tick_order (lowest first); the sort key is per bucket so ties keep the reversed order above.
+	var orders: Array[int] = []
+	for effect in snapshot:
+		if effect is StatusEffect and not orders.has(effect.tick_order):
+			orders.append(effect.tick_order)
+	orders.sort()
+
+	for order in orders:
+		for effect in snapshot:
+			if not effect is StatusEffect or effect.tick_order != order:
+				continue
+			# Already removed earlier in this pass (by another effect): skip it.
+			if not target_array.has(effect):
+				continue
 			effect.on_tick(target_stats)
 			if effect.current_duration <= 0 and target_array.has(effect):
 				effect.on_remove(target_stats)
@@ -332,8 +355,9 @@ func tick_conditions(stat_manager: Stat_Manager) -> void:
 	var targets = enemy_targets + player_target
 
 	# Iterate backwards: trigger_once conditions may erase themselves mid-loop
-	for i in range(battle_conditions.size() - 1, -1, -1):
-		var condition: BattleCondition = battle_conditions[i]
+	for condition in battle_conditions.duplicate():
+		if not battle_conditions.has(condition):
+			continue
 		if condition.is_condition_passive():
 			condition.on_tick(targets)
 		elif condition.is_condition_active():

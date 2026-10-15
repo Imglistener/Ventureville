@@ -1,0 +1,23 @@
+[gd_resource type="Resource" format=3 uid="uid://dj1dqelhfwjfs"]
+
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="1_aq1pw"]
+[ext_resource type="Resource" uid="uid://d0vgs8rq60qe5" path="res://assets/Status Effects/Debuffs/Blood Debt.tres" id="2_qrff6"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="3_qqt8y"]
+[ext_resource type="Script" uid="uid://dqx1g5csjuogj" path="res://assets/Data/Player/PlayerActions/CardEffects/Draw Blood.gd" id="4_82op7"]
+[ext_resource type="PackedScene" uid="uid://di5a6fk07bgpm" path="res://assets/Data/NewScenes/VFX/slash_vfx.tscn" id="5_pjom4"]
+
+[resource]
+script = ExtResource("4_82op7")
+blood_debt = ExtResource("2_qrff6")
+StatsScaled = ExtResource("1_aq1pw")
+damage_type = ExtResource("3_qqt8y")
+slash_vfx = ExtResource("5_pjom4")
+name = "Draw Blood"
+rarity = 1
+target = 1
+mp_cost = 2
+Description = "Deal {scaled} Blood Damage.
+Draw 2 Cards.
+Gain 10 Blood Debt."
+LogMessage = "\"Your blood solidifies to slash your enemy!\""
+metadata/_custom_type_script = "uid://lq1cxv84kjey"

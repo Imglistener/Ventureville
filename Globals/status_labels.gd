@@ -1,5 +1,6 @@
 extends Node
 
+var _shown: Dictionary = {}
 
 const COLORS := {
 	"Burning": Color.ORANGE,
@@ -23,6 +24,13 @@ const LABEL_OFFSET := Vector2.ZERO  # applied to source_position
 func display_effect(status: Resource, anchor: Node2D, source_position: Vector2, wore_off: bool = false) -> void:
 	if not anchor:
 		return
+	var _shown: Dictionary = {}
+   # inside display_effect, after the null check:
+	var key := "%s_%d" % [status.get_script().resource_path, anchor.get_instance_id()]
+	var frame := Engine.get_process_frames()
+	if _shown.get(key, -1) == frame:
+		return
+	_shown[key] = frame
 	var text: String
 	var color: Color
 

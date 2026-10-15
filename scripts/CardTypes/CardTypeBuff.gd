@@ -10,10 +10,7 @@ func _activate_condition(condition: BattleCondition, targets: Array[Node]) -> vo
 	if condition:
 		condition.activate(targets)
 
-func _draw_cards(targets: Array[Node], amount: int) -> void:
-	var effect := DrawEffect.new()
-	effect.amount = amount
-	effect.activate(targets)
+
 
 func _gain_ap(targets: Array[Node], amount: int) -> void:
 	var effect := GainAPEffect.new()

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" format=3 uid="uid://c1ct6idn43w3n"]
+
+[ext_resource type="PackedScene" uid="uid://xrhwnbgpj1x1" path="res://assets/Data/NewScenes/blood_barrier.tscn" id="1_dvvya"]
+[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="2_q211n"]
+[ext_resource type="Script" uid="uid://2k1ipa56lc7x" path="res://assets/Data/Player/PlayerActions/CardEffects/The Old Blood.gd" id="3_e5aod"]
+
+[resource]
+script = ExtResource("3_e5aod")
+blood_syphon = ExtResource("2_q211n")
+VFX = ExtResource("1_dvvya")
+name = "The Old Blood"
+rarity = 1
+mp_cost = 3
+ap_cost = 1
+is_card_nullable = true
+Description = "Lose all your Blood Debt. Gain that much Shield and Blood Syphon to yourself. Null this Card"
+LogMessage = "\"The Blood of the ancestors fill you with ancient power!\""
+metadata/_custom_type_script = "uid://bm8khcsvx8q2c"

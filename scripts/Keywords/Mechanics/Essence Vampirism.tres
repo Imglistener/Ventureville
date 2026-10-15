@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://vfxauv3h16a5"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_6eg45"]
+
+[resource]
+script = ExtResource("1_6eg45")
+display_name = "Essence Vampirism"
+color = Color(0.8046875, 0.25146484, 0.25146484, 1)
+text_effect = 1
+show_tooltip = true
+description = "Once per turn, If Blood Syphon is applied, gain 1 Regeneration. This effect gets stronger as Ascendance Ritual progresses."
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

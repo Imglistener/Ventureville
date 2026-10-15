@@ -27,9 +27,7 @@ func _execute(_player: Stat_Manager, targets: Array[Node]) -> void:
 		_apply_status(effect, single, damage_down_duration)
 
 	if syphoned_enemies > 0:
-		var draw := DrawEffect.new()
-		draw.amount = syphoned_enemies * draw_per_enemy
-		draw.activate(targets)
+		_draw_cards(targets, syphoned_enemies)
 
 func get_live_description(_character: CharacterInstance, live_targets: Array[Node]) -> String:
 	var count := 0

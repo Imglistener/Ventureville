@@ -7,7 +7,6 @@
 [resource]
 script = ExtResource("2_m4gg2")
 shell_effect = ExtResource("3_0onfd")
-shell_duration = 2
 BaseShield = 20
 VFX = ExtResource("1_jdcxx")
 name = "Sanguine Protection"

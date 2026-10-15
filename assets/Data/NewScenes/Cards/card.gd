@@ -31,6 +31,8 @@ signal CardClicked(card: CardUI)
 @onready var mp_cost: Label = $CardAnchor/CardScaler/CardVisual/MPTexture/MarginContainer/MPCost
 @onready var disabled_mask: TextureRect = $CardAnchor/CardScaler/disabled_mask
 
+var _desc_queued := false
+
 var player_stats: CharacterInstance
 var drag_offset: Vector2
 var parent : Node2D
@@ -129,7 +131,7 @@ func update_costs() -> void:
 func play() -> void:
 	if not card_data:
 		return
-	log.text += '[br]' + card_data.LogMessage
+	log._log(card_data.LogMessage)
 	reset_live_preview()
 	is_playable.visible = false
 	card_data.activate_card(targets, player_stats)
@@ -138,8 +140,17 @@ func play() -> void:
 		nulled()
 
 func update_description() -> void:
-	card_effect.set_fitted_text(KeywordsScene.format(card_data.get_description(player_stats)))
+	if _desc_queued:
+		return
+	_desc_queued = true
+	_apply_description.call_deferred()
 
+func _apply_description() -> void:
+	_desc_queued = false
+	var new_text = KeywordsScene.format(card_data.get_description(player_stats))
+	if card_effect.text != new_text:
+		card_effect.text = new_text
+	
 func discard(delay: float = 0.0) -> void:
 	if card_disabled and is_queued_for_deletion():
 		return

@@ -1,8 +1,8 @@
 class_name AttackEffect extends CardEffect
 
-var light_damage: AudioStream = load("res://assets/SFX/77611__joelaudio__sfx_attack_sword_001.wav")
-var medium_damage: AudioStream = load("res://assets/SFX/547038__cogfirestudios__hit-swing-sword.wav")
-var heavy_damage: AudioStream = load("uid://dpv3gx2wsr4h3")
+const light_damage: AudioStream = preload("res://assets/SFX/77611__joelaudio__sfx_attack_sword_001.wav")
+const medium_damage: AudioStream = preload("res://assets/SFX/547038__cogfirestudios__hit-swing-sword.wav")
+const heavy_damage: AudioStream = preload("uid://dpv3gx2wsr4h3")
  
 var amount = 0
 var damage_type: DamageType

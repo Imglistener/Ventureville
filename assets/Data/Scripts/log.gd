@@ -29,7 +29,7 @@ func disconnect_from_entity(entity: BaseBattlerStats) -> void:
 	entity.san_block_gained.disconnect(_on_san_block_gained)
 	entity.entity_died.disconnect(_on_entity_died)
 func _log(message: String) -> void:
-	text += (message + "[br]")
+	append_text(message + "[br]")
 	parse_bbcode(text)
 
 func _on_new_turn(turn_number: int) -> void:

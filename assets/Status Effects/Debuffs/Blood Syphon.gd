@@ -21,6 +21,7 @@ func on_apply(targets: Array[Node], duration: int = 1) -> void:
 				effects.append(instance)
 			if anchor:
 				Events.effect_display.emit(self, anchor, anchor.global_position)
+			Events.status_applied.emit(self, target.Enemy.Entity)
 
 		elif target is Stat_Manager:
 			var effects = target.Player.ActiveEffects
@@ -34,9 +35,10 @@ func on_apply(targets: Array[Node], duration: int = 1) -> void:
 				effects.append(instance)
 			if anchor:
 				Events.effect_display.emit(self, anchor, anchor.global_position)
-
+			Events.status_applied.emit(self, target.Player)
+		
 	Events.effect_applied.emit()
-
+	
 
 func on_tick(target: BaseBattlerStats) -> void:
 	var effect = find_same_effect(target.ActiveEffects)

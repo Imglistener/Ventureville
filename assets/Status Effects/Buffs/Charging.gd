@@ -14,7 +14,7 @@ var _skip_next_tick := true
 func _init() -> void:
 	status_name = StatusEffects.Charging
 	default_duration = 1
-	status_icon = preload("res://assets/GUI/Fire_tik_Icon.png")   # placeholder art
+	status_icon = preload("res://assets/GUI/Gladius_charge.png")
 	effect_texture = status_icon
 	status_description = "The Affected Entity is charging a powerful attack. Deal the displayed damage to Stun it."
 

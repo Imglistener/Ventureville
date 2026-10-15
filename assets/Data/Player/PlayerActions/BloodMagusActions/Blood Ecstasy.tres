@@ -1,0 +1,20 @@
+[gd_resource type="Resource" format=3 uid="uid://contqp1o54tvf"]
+
+[ext_resource type="Script" uid="uid://b2h305ktt8bkp" path="res://assets/Data/Player/PlayerActions/CardEffects/Blood Ecstasy.gd" id="1_biggy"]
+[ext_resource type="Resource" uid="uid://d0vgs8rq60qe5" path="res://assets/Status Effects/Debuffs/Blood Debt.tres" id="1_ddvwu"]
+[ext_resource type="Resource" uid="uid://bn5qawsvb8t81" path="res://assets/Status Effects/Buffs/Conditions/ritualist_glee.tres" id="2_uqwoi"]
+
+[resource]
+script = ExtResource("1_biggy")
+condition = ExtResource("2_uqwoi")
+blood_debt = ExtResource("1_ddvwu")
+name = "Blood Ecstasy"
+rarity = 1
+mp_cost = 3
+ap_cost = 3
+is_card_nullable = true
+Description = "Gain 1 Ritualistic Glee.
+Gain 20 Blood Debt.
+Null this card."
+LogMessage = "\"Euphoria fills you as you continue your rituals to Ascend!\""
+metadata/_custom_type_script = "uid://bm8khcsvx8q2c"

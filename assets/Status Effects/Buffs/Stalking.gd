@@ -16,8 +16,8 @@ var _bonus_added: float = 0.0
 func _init() -> void:
 	status_name = StatusEffects.Stalking
 	default_duration = 1
-	status_icon = preload("res://assets/GUI/Attack_UP_icon.png")
-	effect_texture = preload("res://assets/GUI/Attack_UP_icon.png")
+	status_icon = preload("res://assets/GUI/Gladiaus_Wrath.png")
+	effect_texture = preload("res://assets/GUI/Gladiaus_Wrath.png")
 	status_description = "Whenever the Affected Entity takes damage, its next Attack deals 20% more damage."
 
 
