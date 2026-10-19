@@ -1,0 +1,21 @@
+[gd_resource type="Resource" format=3 uid="uid://bi2gopjnqxru0"]
+
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="1_i8qpm"]
+[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="2_26eu8"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="3_fy2hc"]
+[ext_resource type="Script" uid="uid://bmul2pqvvhg1r" path="res://assets/Data/Player/PlayerActions/CardEffects/Blood Whip.gd" id="4_rwlac"]
+[ext_resource type="PackedScene" uid="uid://di5a6fk07bgpm" path="res://assets/Data/NewScenes/VFX/slash_vfx.tscn" id="5_fa80h"]
+
+[resource]
+script = ExtResource("4_rwlac")
+blood_syphon = ExtResource("2_26eu8")
+StatsScaled = ExtResource("1_i8qpm")
+damage_type = ExtResource("3_fy2hc")
+slash_vfx = ExtResource("5_fa80h")
+name = "Blood Whip"
+target = 2
+mp_cost = 1
+ap_cost = 1
+tags = Array[StringName]([&"BloodWeapon"])
+Description = "All enemies take {scaled} Blood damage and apply 2 Blood Syphon to each."
+metadata/_custom_type_script = "uid://lq1cxv84kjey"

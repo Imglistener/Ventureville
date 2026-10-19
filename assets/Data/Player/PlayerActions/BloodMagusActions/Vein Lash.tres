@@ -1,0 +1,14 @@
+[gd_resource type="Resource" format=3 uid="uid://bk32047jtrrku"]
+
+[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="1_nrfrk"]
+[ext_resource type="Script" uid="uid://bwdli3akmwyo8" path="res://assets/Data/Player/PlayerActions/CardEffects/Vein Lash.gd" id="2_ub4rc"]
+
+[resource]
+script = ExtResource("2_ub4rc")
+blood_syphon = ExtResource("1_nrfrk")
+name = "Vein Lash"
+target = 1
+mp_cost = 1
+ap_cost = 1
+Description = "Apply 3 Blood Syphon. If Ascendant Ritual is active, apply 5 instead."
+metadata/_custom_type_script = "uid://dxw4b7jhgkbv4"

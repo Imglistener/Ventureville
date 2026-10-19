@@ -1,0 +1,20 @@
+[gd_resource type="Resource" format=3 uid="uid://ce3kgfv2rbe2n"]
+
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="1_8vgui"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="2_ufisk"]
+[ext_resource type="Script" uid="uid://dxoto72fpeid1" path="res://assets/Data/Player/PlayerActions/CardEffects/Blood Dagger.gd" id="3_sgpdm"]
+[ext_resource type="PackedScene" uid="uid://di5a6fk07bgpm" path="res://assets/Data/NewScenes/VFX/slash_vfx.tscn" id="4_l3jki"]
+
+[resource]
+script = ExtResource("3_sgpdm")
+StatsScaled = ExtResource("1_8vgui")
+damage_type = ExtResource("2_ufisk")
+slash_vfx = ExtResource("4_l3jki")
+name = "Blood Dagger"
+target = 1
+mp_cost = 1
+blood_tax = 3
+tags = Array[StringName]([&"BloodWeapon"])
+Description = "Sacrifice 3. 
+Deal {scaled} damage."
+metadata/_custom_type_script = "uid://lq1cxv84kjey"

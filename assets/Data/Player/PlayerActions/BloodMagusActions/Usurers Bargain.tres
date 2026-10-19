@@ -1,0 +1,14 @@
+[gd_resource type="Resource" format=3 uid="uid://cfoblak5nbi8x"]
+
+[ext_resource type="Resource" uid="uid://d0vgs8rq60qe5" path="res://assets/Status Effects/Debuffs/Blood Debt.tres" id="1_56c5d"]
+[ext_resource type="Script" uid="uid://bllma2ouwyppg" path="res://assets/Data/Player/PlayerActions/CardEffects/Usurers Bargain.gd" id="2_fgm3e"]
+
+[resource]
+script = ExtResource("2_fgm3e")
+blood_debt = ExtResource("1_56c5d")
+name = "Usurer's Bargain"
+rarity = 2
+mp_cost = 1
+ap_cost = 1
+Description = "Draw 2 and gain 3 MP, then gain 30 Blood Debt."
+metadata/_custom_type_script = "uid://bm8khcsvx8q2c"

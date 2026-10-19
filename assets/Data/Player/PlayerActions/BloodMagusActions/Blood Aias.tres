@@ -11,6 +11,8 @@ rarity = 1
 mp_cost = 3
 ap_cost = 2
 blood_tax = 10
-Description = "Sacrifice 10. Gain 12 Shield and 12 SAN Shield.  Reduce the AP and MP Costs of Every \"{Blood_Aias}\" in your Deck by 1."
+Description = "Sacrifice 10. 
+Gain 12 Shield and 12 SAN Shield.
+Reduce the AP and MP Costs of Every \"{Blood_Aias}\" in your Deck by 1."
 LogMessage = "\"Blood Petals rush to protect you from harm!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

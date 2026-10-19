@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://cdivs16ftli1n" path="res://scripts/bars/animated_bar.gd" id="9_6hsbo"]
 [ext_resource type="LabelSettings" uid="uid://bphqm6e8i4apn" path="res://Stylebox/shields_labels.tres" id="10_myw8k"]
 [ext_resource type="LabelSettings" uid="uid://cwvkv70rf748a" path="res://assets/Label_Settings.tres" id="10_xox7x"]
+[ext_resource type="Script" uid="uid://bu5r02006rarx" path="res://assets/Data/NewScenes/UI_Layer/effect_chain.gd" id="12_lfoxi"]
 [ext_resource type="Theme" uid="uid://caumj61ybgktb" path="res://assets/MemaoCharacterFantasySpritePack/basic.tres" id="16_65cbk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjvsk"]
@@ -366,20 +367,28 @@ expand_mode = 2
 
 [node name="turns_remaining" type="Label" parent="EnemyBarsContainer/MarginContainer/Statuseffecticon" unique_id=1123481830]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -14.5
-offset_right = 5.5
-offset_bottom = 20.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
+
+[node name="EffectChain" type="VBoxContainer" parent="EnemyBarsContainer/MarginContainer/Statuseffecticon" unique_id=2024243936]
+top_level = true
+layout_mode = 1
+offset_left = 171.0
+offset_top = -176.0
+offset_right = 171.0
+offset_bottom = -176.0
+script = ExtResource("12_lfoxi")
 
 [node name="perma_buff_icon" type="TextureRect" parent="EnemyBarsContainer/MarginContainer" unique_id=1430330221]
 custom_minimum_size = Vector2(55, 55)
@@ -391,20 +400,29 @@ expand_mode = 2
 
 [node name="perma_buff_label" type="Label" parent="EnemyBarsContainer/MarginContainer/perma_buff_icon" unique_id=705721485]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -14.5
-offset_right = 5.5
-offset_bottom = 20.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
+
+[node name="EffectChain" type="VBoxContainer" parent="EnemyBarsContainer/MarginContainer/perma_buff_icon" unique_id=977771060]
+top_level = true
+layout_mode = 0
+offset_left = -224.0
+offset_top = -176.0
+offset_right = -224.0
+offset_bottom = -176.0
+script = ExtResource("12_lfoxi")
+tooltip_side = 1
 
 [node name="DamageRes" type="MarginContainer" parent="EnemyBarsContainer/MarginContainer" unique_id=466232217]
 layout_mode = 2
@@ -432,6 +450,7 @@ offset_bottom = 195.0
 scale = Vector2(0.815, 0.815)
 pivot_offset = Vector2(250, 165)
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="EnemyView" type="TextureButton" parent="Control" unique_id=1975251106]
 custom_maximum_size = Vector2(400, 300)

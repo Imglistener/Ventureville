@@ -14,6 +14,7 @@ rarity = 2
 target = 2
 mp_cost = 3
 ap_cost = 3
-Description = "Deal {scaled} Blood Damage to All Enemies. Heal twice as much."
+Description = "Deal {scaled} Blood Damage to All Enemies. 
+Heal twice as much."
 LogMessage = "\"You feel the delicious essence of your foe rejuvenate you!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

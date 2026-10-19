@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="NotYetCondition" format=3 uid="uid://iqawscsylwv2"]
+
+[ext_resource type="Texture2D" uid="uid://dv7x5fte32cbp" path="res://assets/GUI/Vulnerable_Icon.png" id="1_afvlt"]
+[ext_resource type="Script" uid="uid://bmxxotvoiqs5h" path="res://assets/Status Effects/Buffs/Conditions/Not Yet.gd" id="2_5hlxi"]
+
+[resource]
+script = ExtResource("2_5hlxi")
+condition_name = "Not Yet"
+condition_type = 1
+condition_icon = ExtResource("1_afvlt")
+condition_texture = ExtResource("1_afvlt")
+condition_description = "If your HP would reach 0, it stays at 1 instead.
+
+"
+trigger_once = true
+metadata/_custom_type_script = "uid://b7s7qtq57mtfq"

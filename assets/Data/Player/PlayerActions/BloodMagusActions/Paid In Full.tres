@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://cp5jdokjnjun4"]
+
+[ext_resource type="PackedScene" uid="uid://xrhwnbgpj1x1" path="res://assets/Data/NewScenes/blood_barrier.tscn" id="1_3l0s4"]
+[ext_resource type="Script" uid="uid://ba4ms0fp0hq4f" path="res://assets/Data/Player/PlayerActions/CardEffects/Paid in Full.gd" id="2_p0cnr"]
+
+[resource]
+script = ExtResource("2_p0cnr")
+VFX = ExtResource("1_3l0s4")
+name = "Paid In Full"
+rarity = 1
+mp_cost = 2
+ap_cost = 1
+is_card_nullable = true
+Description = "Lose all your Blood Debt. 
+Gain that much Shield. 
+Null this card."
+metadata/_custom_type_script = "uid://dx57of0yiebdh"

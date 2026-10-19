@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://drgpoljsbp8iv"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_wik45"]
+
+[resource]
+script = ExtResource("1_wik45")
+display_name = "Not Yet"
+color = Color(0.9589844, 1, 0.25, 1)
+text_effect = 2
+show_tooltip = true
+description = "If your HP would reach 0, it stays at 1 instead."
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

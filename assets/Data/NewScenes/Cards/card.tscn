@@ -170,11 +170,22 @@ offset_right = 694.0
 offset_bottom = 1013.0
 mouse_filter = 2
 
-[node name="KeywordTooltipContainer" type="VBoxContainer" parent="CardAnchor/CardScaler" unique_id=1035114297]
+[node name="ScrollContainer" type="ScrollContainer" parent="CardAnchor/CardScaler" unique_id=987170039]
+custom_maximum_size = Vector2(500, -1)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.98806065
-anchor_right = 0.98806065
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 675.7854
+offset_right = 481.7854
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="KeywordTooltipContainer" type="VBoxContainer" parent="CardAnchor/CardScaler/ScrollContainer" unique_id=1035114297]
+custom_maximum_size = Vector2(500, -1)
+layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 metadata/_edit_use_anchors_ = true
 
@@ -182,6 +193,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_right = 694.0
 offset_bottom = 1013.0
+mouse_filter = 2
 texture = ExtResource("7_mgg81")
 expand_mode = 1
 
@@ -206,6 +218,7 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = 0
 offset_right = 694.0
 offset_bottom = 1013.0
+mouse_filter = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="CardAnchor/CardScaler/CardVisual" unique_id=957915910]
 layout_mode = 1
@@ -214,6 +227,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 120
 theme_override_constants/margin_bottom = 358
 
@@ -233,6 +247,7 @@ offset_top = -16.85714
 offset_right = 59.857147
 offset_bottom = 63.14286
 pivot_offset = Vector2(20, 20)
+mouse_filter = 2
 texture = ExtResource("16_x53gr")
 expand_mode = 1
 
@@ -243,6 +258,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="APCost" type="Label" parent="CardAnchor/CardScaler/CardVisual/APTexture/MarginContainer" unique_id=2146630464]
 layout_mode = 2
@@ -266,6 +282,7 @@ offset_right = -577.1427
 offset_bottom = 34.28575
 pivot_offset = Vector2(20, 20)
 size_flags_horizontal = 0
+mouse_filter = 2
 texture = ExtResource("17_jv0el")
 expand_mode = 1
 
@@ -282,6 +299,7 @@ offset_right = 12.5
 offset_bottom = 44.50972
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MPCost" type="Label" parent="CardAnchor/CardScaler/CardVisual/MPTexture/MarginContainer" unique_id=387431464]
 layout_mode = 2
@@ -296,22 +314,26 @@ horizontal_alignment = 1
 layout_mode = 0
 offset_right = 694.0
 offset_bottom = 1013.0
+mouse_filter = 2
 theme_override_constants/margin_top = 9
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CardAnchor/CardScaler/Frame" unique_id=1869460091]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 theme_override_constants/separation = 23
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CardAnchor/CardScaler/Frame/VBoxContainer2" unique_id=361603248]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 theme_override_constants/separation = 388
 
 [node name="CardNameMargin" type="MarginContainer" parent="CardAnchor/CardScaler/Frame/VBoxContainer2/VBoxContainer" unique_id=1033055533]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/margin_left = -3
 theme_override_constants/margin_top = 27
 
@@ -328,6 +350,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/margin_top = -6
 
 [node name="CardType" type="Label" parent="CardAnchor/CardScaler/Frame/VBoxContainer2/VBoxContainer/CardTypeMargin" unique_id=1643071682]
@@ -349,6 +372,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_constants/margin_left = 41
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 64
@@ -386,6 +410,7 @@ material = SubResource("ShaderMaterial_qfg1p")
 layout_mode = 0
 offset_right = 694.0
 offset_bottom = 1013.0
+mouse_filter = 2
 texture = ExtResource("19_3go67")
 expand_mode = 1
 
@@ -404,6 +429,7 @@ offset_right = -17.1427
 offset_bottom = -11.428467
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="CardAnchor/CardScaler/MarginContainer" unique_id=2063201343]
 custom_minimum_size = Vector2(120, 120)

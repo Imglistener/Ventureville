@@ -9,7 +9,7 @@ const MAX_KEYWORD_TOOLTIPS := 5
 @export var aimingSFX	: AudioStream
 @export var Mode : CardMode
 @export var keyword_tooltip_scene : PackedScene
-@onready var keyword_tooltips_container: VBoxContainer = $CardAnchor/CardScaler/KeywordTooltipContainer
+@onready var keyword_tooltips_container: VBoxContainer = $CardAnchor/CardScaler/ScrollContainer/KeywordTooltipContainer
 signal ReparentRequest(card: CardUI)
 signal CardClicked(card: CardUI)
 
@@ -115,7 +115,7 @@ func manage_card_rarity() -> void:
 		Card.Rarities.Common:
 			card_name.add_theme_color_override("font_color", Color.WHITE)
 		Card.Rarities.Rare:
-			card_name.add_theme_color_override("font_color", Color.AQUA)
+			card_name.add_theme_color_override("font_color", Color.LIGHT_GREEN)
 		Card.Rarities.Legendary:
 			card_name.add_theme_color_override("font_color", Color.GOLD)
 
@@ -216,10 +216,11 @@ func animate_to_position(new_position: Vector2, duration: float) -> void:
 func _on_mouse_entered() -> void:
 	if card_dragging or card_targeting:
 		return
+	var local := get_local_mouse_position()
+	if not Rect2(Vector2.ZERO, size).has_point(local):
+		return
 	if is_displaying:
 		show_keyword_tooltips()
-		
-				
 	Events.card_selected.emit(self)
 
 func _input(event: InputEvent) -> void:
@@ -309,7 +310,7 @@ func ready_keyword_tooltips() -> void:
 
 func show_keyword_tooltips() -> void:
 	_set_keyword_tooltips_visible(true)
-
+	
 
 func hide_keyword_tooltips() -> void:
 	_set_keyword_tooltips_visible(false)
@@ -317,3 +318,6 @@ func hide_keyword_tooltips() -> void:
 func _set_keyword_tooltips_visible(value: bool) -> void:
 	for tooltip in _keyword_tooltips:
 		tooltip.visible = value
+	var scroll := keyword_tooltips_container.get_parent() as ScrollContainer
+	if scroll:
+		scroll.mouse_filter = Control.MOUSE_FILTER_PASS if value else Control.MOUSE_FILTER_IGNORE

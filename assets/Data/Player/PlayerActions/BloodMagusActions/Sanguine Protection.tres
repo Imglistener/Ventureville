@@ -14,6 +14,7 @@ rarity = 1
 mp_cost = 3
 ap_cost = 2
 blood_tax = 10
-Description = "Sacrifice 10. Gain 20 Shield and take 25% less damage from enemies affected by Blood Syphon this turn."
+Description = "Sacrifice 10.
+Gain 20 Shield and take 25% less damage from enemies affected by Blood Syphon this turn."
 LogMessage = "\"Condensed Blood shields you from harm!\""
 metadata/_custom_type_script = "uid://dx57of0yiebdh"

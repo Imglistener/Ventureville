@@ -7,5 +7,5 @@ script = ExtResource("1_ton3n")
 display_name = "AP"
 aliases = ["Action Point(s)"]
 category = 2
-color = Color(0.43683314, 0.12646484, 0.875, 1)
+color = Color(0.43529412, 0.1254902, 0.8745098, 1)
 metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

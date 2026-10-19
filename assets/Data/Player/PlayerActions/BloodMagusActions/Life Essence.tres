@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3 uid="uid://vymif73gxass"]
+
+[ext_resource type="Resource" uid="uid://c3rlpuyyf0q7e" path="res://assets/Status Effects/Buffs/Regeneration.tres" id="1_hm6w3"]
+[ext_resource type="Script" uid="uid://c4cib8t4iabfh" path="res://assets/Data/Player/PlayerActions/CardEffects/Life Essence.gd" id="2_olyuk"]
+
+[resource]
+script = ExtResource("2_olyuk")
+regeneration = ExtResource("1_hm6w3")
+name = "Life Essence"
+mp_cost = 1
+ap_cost = 1
+Description = "Gain 3 Regeneration. If you sacrificed this turn, gain 5 instead."
+metadata/_custom_type_script = "uid://bm8khcsvx8q2c"

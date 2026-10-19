@@ -37,7 +37,8 @@ func on_trigger(_targets: Array[Node]) -> void:
 # Attaches the condition to an entity
 func activate(_targets: Array[Node]) -> void:
 	pass
-
+func prevent_death(_entity: BaseBattlerStats) -> bool:
+	return false
 # Removes the condition from whatever pool it's attached to
 func on_expired(targets: Array[Node]) -> void:
 	if targets.is_empty() or not targets[0]:

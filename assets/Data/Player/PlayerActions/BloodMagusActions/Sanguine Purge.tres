@@ -17,6 +17,7 @@ rarity = 1
 mp_cost = 1
 ap_cost = 2
 blood_tax = 10
-Description = "Sacrifice 10. Clear all your Status Debuffs and Gain 10 Blood Debt for each Status Removed."
+Description = "Sacrifice 10.
+Clear all your Status Debuffs and Gain 10 Blood Debt for each Status Removed."
 LogMessage = "\"Expelling blood, you break the hold of whatever ails you!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

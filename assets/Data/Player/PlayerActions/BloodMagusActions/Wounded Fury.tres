@@ -1,0 +1,18 @@
+[gd_resource type="Resource" format=3 uid="uid://bfdr6551khh20"]
+
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="1_wgjmm"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="2_1v8eu"]
+[ext_resource type="Script" uid="uid://caq33f2jtffgt" path="res://assets/Data/Player/PlayerActions/CardEffects/Wounded Fury.gd" id="3_b34kh"]
+[ext_resource type="PackedScene" uid="uid://di5a6fk07bgpm" path="res://assets/Data/NewScenes/VFX/slash_vfx.tscn" id="4_i63fo"]
+
+[resource]
+script = ExtResource("3_b34kh")
+StatsScaled = ExtResource("1_wgjmm")
+damage_type = ExtResource("2_1v8eu")
+slash_vfx = ExtResource("4_i63fo")
+name = "Wounded Fury"
+target = 1
+mp_cost = 1
+ap_cost = 1
+Description = "Deal {scaled} Blood damage, or double that if you took damage last turn."
+metadata/_custom_type_script = "uid://lq1cxv84kjey"

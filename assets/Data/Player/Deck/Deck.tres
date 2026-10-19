@@ -1,48 +1,56 @@
-[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://bbsomicgcyfs2"]
+[gd_resource type="Resource" script_class="Deck" format=3]
 
-[ext_resource type="Script" uid="uid://cpy8tjlulsna2" path="res://scripts/Card.gd" id="1_7abai"]
-[ext_resource type="Script" uid="uid://pqq147nh02w3" path="res://scripts/deck.gd" id="1_dyacs"]
-[ext_resource type="Resource" uid="uid://ddquxo4p134kp" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Claw.tres" id="2_lxatl"]
-[ext_resource type="Resource" uid="uid://da7agmvhlfw1p" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Syphon Essence.tres" id="4_ao31u"]
-[ext_resource type="Resource" uid="uid://d4auimgetdkq6" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/BloodBlade.tres" id="5_8wy8p"]
-[ext_resource type="Resource" uid="uid://cegj65gylisf8" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Malady.tres" id="6_0354w"]
-[ext_resource type="Resource" uid="uid://de6m6tryd6i87" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Impale.tres" id="7_5af0u"]
-[ext_resource type="Resource" uid="uid://cfgl5f0160fhq" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Harvest.tres" id="8_uii6r"]
-[ext_resource type="Resource" uid="uid://8lwicdc5w83e" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Aias.tres" id="9_25ebe"]
-[ext_resource type="Resource" uid="uid://dkcdc1ypd22a3" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Ascendant State.tres" id="10_py15j"]
-[ext_resource type="Resource" uid="uid://b0ecilk1kd45j" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Exultation.tres" id="11_0354w"]
-[ext_resource type="Resource" uid="uid://g3nn5n6i6f67" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Rose.tres" id="12_5af0u"]
-[ext_resource type="Resource" uid="uid://ce1s75bc8dcd2" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Sacrifice.tres" id="13_uii6r"]
-[ext_resource type="Resource" uid="uid://civmq0l1gc7r" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Hemorrhage.tres" id="14_25ebe"]
-[ext_resource type="Resource" uid="uid://be12tcnli2021" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Barrier.tres" id="15_py15j"]
-[ext_resource type="Resource" uid="uid://bqtf5udkjk5ck" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Revelry.tres" id="16_7nbrc"]
-[ext_resource type="Resource" uid="uid://cv8hd0iwirxt3" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Throne.tres" id="17_xqmlc"]
-[ext_resource type="Resource" uid="uid://ctd6ri7r8abvg" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Scythe.tres" id="18_j2xm7"]
-[ext_resource type="Resource" uid="uid://cn7xypl6lls1m" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Spear.tres" id="18_pag3l"]
-[ext_resource type="Resource" uid="uid://ifkjoiu84h6v" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Contact.tres" id="19_j2xm7"]
-[ext_resource type="Resource" uid="uid://dvtdims4nmeqf" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Forge.tres" id="20_4dliv"]
-[ext_resource type="Resource" uid="uid://hvqvdyosqg5w" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Protection.tres" id="21_am3ye"]
-[ext_resource type="Resource" uid="uid://b2omaqqut2s3q" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Manifestation.tres" id="22_euasc"]
-[ext_resource type="Resource" uid="uid://dwbjvexdfqiwh" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Vampirisim.tres" id="23_euasc"]
-[ext_resource type="Resource" uid="uid://cqd2wqxlj615k" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Greatmace.tres" id="24_7h61r"]
-[ext_resource type="Resource" uid="uid://cexscfdywkwfl" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/First Rite.tres" id="25_ej18l"]
-[ext_resource type="Resource" uid="uid://dobror7ns1gy7" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Purge.tres" id="26_ykmvh"]
-[ext_resource type="Resource" uid="uid://c7bbpnn6qcfe7" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Second Rite.tres" id="27_1etpb"]
-[ext_resource type="Resource" uid="uid://b2nv2om53v2uw" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Third Rite.tres" id="28_a2ocr"]
-[ext_resource type="Resource" uid="uid://c8jtf4thfdu0b" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Hunger.tres" id="29_ej18l"]
-[ext_resource type="Resource" uid="uid://dj1dqelhfwjfs" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Draw Blood.tres" id="30_1etpb"]
-[ext_resource type="Resource" uid="uid://contqp1o54tvf" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Ecstasy.tres" id="31_a2ocr"]
-[ext_resource type="Resource" uid="uid://c1ct6idn43w3n" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/The Old Blood.tres" id="32_a2ocr"]
+[ext_resource type="Script" path="res://scripts/Card.gd" id="1_7abai"]
+[ext_resource type="Script" path="res://scripts/deck.gd" id="1_dyacs"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Claw.tres" id="2_lxatl"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Syphon Essence.tres" id="4_ao31u"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/BloodBlade.tres" id="5_8wy8p"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Malady.tres" id="6_0354w"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Impale.tres" id="7_5af0u"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Harvest.tres" id="8_uii6r"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Aias.tres" id="9_25ebe"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Ascendant State.tres" id="10_py15j"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Exultation.tres" id="11_0354w"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Rose.tres" id="12_5af0u"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Sacrifice.tres" id="13_uii6r"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Hemorrhage.tres" id="14_25ebe"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Barrier.tres" id="15_py15j"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Revelry.tres" id="16_7nbrc"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Throne.tres" id="17_xqmlc"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Scythe.tres" id="18_j2xm7"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Spear.tres" id="18_pag3l"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Contact.tres" id="19_j2xm7"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Forge.tres" id="20_4dliv"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Protection.tres" id="21_am3ye"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Manifestation.tres" id="22_euasc"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Vampirisim.tres" id="23_euasc"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Greatmace.tres" id="24_7h61r"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/First Rite.tres" id="25_ej18l"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Purge.tres" id="26_ykmvh"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Second Rite.tres" id="27_1etpb"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Third Rite.tres" id="28_a2ocr"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Hunger.tres" id="29_ej18l"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Draw Blood.tres" id="30_1etpb"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Ecstasy.tres" id="31_a2ocr"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/The Old Blood.tres" id="32_a2ocr"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Chakram.tres" id="33_ixwkd"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Whip.tres" id="34_wstiw"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Crimson Ledger.tres" id="35_uhx2q"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Crimson Tide.tres" id="36_hayss"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Paid In Full.tres" id="37_46x6d"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Sanguine Smith.tres" id="38_46t0t"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Usurers Bargain.tres" id="39_hh64k"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Wounded Fury.tres" id="40_0vnid"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Kusarigama.tres" id="41_hayss"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Omen.tres" id="42_46x6d"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Blood Tempering.tres" id="43_46t0t"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Ascendant Tenacity.tres" id="44_46x6d"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Life Essence.tres" id="45_hh64k"]
+[ext_resource type="Resource" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Vein Lash.tres" id="46_0vnid"]
 
 [resource]
 script = ExtResource("1_dyacs")
 Obtained_Cards = Dictionary[ExtResource("1_7abai"), int]({
-ExtResource("32_a2ocr"): 1,
-ExtResource("29_ej18l"): 1,
-ExtResource("28_a2ocr"): 1,
-ExtResource("27_1etpb"): 1,
-ExtResource("26_ykmvh"): 2,
-ExtResource("25_ej18l"): 1,
 ExtResource("24_7h61r"): 2,
 ExtResource("23_euasc"): 2,
 ExtResource("20_4dliv"): 1,
@@ -58,6 +66,9 @@ ExtResource("9_25ebe"): 4,
 ExtResource("8_uii6r"): 2,
 ExtResource("11_0354w"): 3,
 ExtResource("12_5af0u"): 1,
+ExtResource("41_hayss"): 2,
+ExtResource("42_46x6d"): 2,
+ExtResource("43_46t0t"): 2,
 ExtResource("13_uii6r"): 1,
 ExtResource("14_25ebe"): 2,
 ExtResource("15_py15j"): 2,
@@ -67,27 +78,46 @@ ExtResource("18_j2xm7"): 2,
 ExtResource("21_am3ye"): 2,
 ExtResource("22_euasc"): 3,
 ExtResource("30_1etpb"): 3,
-ExtResource("31_a2ocr"): 1
+ExtResource("31_a2ocr"): 1,
+ExtResource("33_ixwkd"): 2,
+ExtResource("34_wstiw"): 2,
+ExtResource("35_uhx2q"): 2,
+ExtResource("36_hayss"): 2,
+ExtResource("37_46x6d"): 3,
+ExtResource("38_46t0t"): 3,
+ExtResource("39_hh64k"): 2,
+ExtResource("40_0vnid"): 3,
+ExtResource("32_a2ocr"): 1,
+ExtResource("29_ej18l"): 1,
+ExtResource("28_a2ocr"): 1,
+ExtResource("44_46x6d"): 1,
+ExtResource("27_1etpb"): 1,
+ExtResource("26_ykmvh"): 2,
+ExtResource("45_hh64k"): 2,
+ExtResource("46_0vnid"): 2,
+ExtResource("25_ej18l"): 1
 })
 Card_Amount_In_Deck = Dictionary[ExtResource("1_7abai"), int]({
-ExtResource("30_1etpb"): 3,
-ExtResource("11_0354w"): 1,
-ExtResource("29_ej18l"): 1,
-ExtResource("18_j2xm7"): 2,
-ExtResource("12_5af0u"): 1,
-ExtResource("14_25ebe"): 2,
-ExtResource("22_euasc"): 2,
-ExtResource("21_am3ye"): 2,
-ExtResource("13_uii6r"): 1,
-ExtResource("10_py15j"): 1,
-ExtResource("5_8wy8p"): 2,
-ExtResource("20_4dliv"): 1,
+ExtResource("45_hh64k"): 2,
+ExtResource("46_0vnid"): 2,
 ExtResource("23_euasc"): 2,
-ExtResource("24_7h61r"): 2,
-ExtResource("26_ykmvh"): 2,
 ExtResource("28_a2ocr"): 1,
+ExtResource("4_ao31u"): 3,
 ExtResource("27_1etpb"): 1,
+ExtResource("12_5af0u"): 1,
+ExtResource("26_ykmvh"): 2,
+ExtResource("22_euasc"): 3,
+ExtResource("29_ej18l"): 1,
+ExtResource("21_am3ye"): 2,
+ExtResource("14_25ebe"): 2,
 ExtResource("25_ej18l"): 1,
+ExtResource("11_0354w"): 2,
+ExtResource("36_hayss"): 2,
+ExtResource("13_uii6r"): 1,
+ExtResource("16_7nbrc"): 2,
+ExtResource("42_46x6d"): 2,
 ExtResource("31_a2ocr"): 1,
-ExtResource("32_a2ocr"): 1
+ExtResource("9_25ebe"): 4,
+ExtResource("44_46x6d"): 1,
+ExtResource("10_py15j"): 1
 })
