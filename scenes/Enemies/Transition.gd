@@ -1,9 +1,9 @@
 extends EnemyAction
 
 @export var Phases: Array[PhaseData] = []
-@onready var Queen: EnemyAction = $"../AttackAction3"
-@onready var King: EnemyAction = $"../AttackAction2"
-@onready var Stare: EnemyAction = $"../AttackAction"
+@onready var Queen: EnemyAction = $"../Queen"
+@onready var King: EnemyAction = $"../King"
+@onready var Stare: EnemyAction = $"../Jack"
 
 var phase_index := 0
 var thresholds: Array[float] = []

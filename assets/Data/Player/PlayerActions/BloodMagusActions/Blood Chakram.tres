@@ -1,0 +1,19 @@
+[gd_resource type="Resource" format=3 uid="uid://v74my3p6in4u"]
+
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="1_mfflb"]
+[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="2_cjrmg"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="3_u2pvk"]
+[ext_resource type="Script" uid="uid://rolwach8saav" path="res://assets/Data/Player/PlayerActions/CardEffects/Blood Chakram.gd" id="4_t82g1"]
+
+[resource]
+script = ExtResource("4_t82g1")
+blood_syphon = ExtResource("2_cjrmg")
+StatsScaled = ExtResource("1_mfflb")
+damage_type = ExtResource("3_u2pvk")
+name = "Blood Chakram"
+target = 2
+mp_cost = 2
+ap_cost = 2
+tags = Array[StringName]([&"BloodWeapon"])
+Description = "Deal {scaled} Blood Damage to a random Enemy 3 times. Apply 2 Blood Syphon on each hit if the target isn't Blocking."
+metadata/_custom_type_script = "uid://lq1cxv84kjey"

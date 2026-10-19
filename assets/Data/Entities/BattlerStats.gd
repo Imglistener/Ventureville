@@ -73,6 +73,11 @@ func reset_block() -> void:
 	current_san_block = 0
 
 func set_health(value: int) -> void:
+	if value <= 0 and current_health > 0:
+		for condition in BattleConditions.duplicate():
+			if condition.prevent_death(self):
+				value = 1
+				break
 	current_health = clampi(value, 0, 9999)
 	Stats_Changed.emit()
 func set_sanity(value: int) -> void:

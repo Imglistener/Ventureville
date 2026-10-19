@@ -230,6 +230,9 @@ theme_override_constants/margin_bottom = 90
 [node name="PlayerView" parent="Control_Layer/Control_Base/Base_Margin/MarginContainer" unique_id=1803275803 instance=ExtResource("3_iuswa")]
 layout_mode = 2
 
+[node name="StatusEffectMarker" parent="Control_Layer/Control_Base/Base_Margin/MarginContainer/PlayerView" index="2" unique_id=706211563]
+position = Vector2(-337, 256)
+
 [node name="AP_Background" parent="Control_Layer/Control_Base" unique_id=1581570366 instance=ExtResource("6_ivt5a")]
 visible = false
 layout_mode = 0

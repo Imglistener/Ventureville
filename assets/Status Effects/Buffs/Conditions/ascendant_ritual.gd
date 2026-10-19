@@ -11,7 +11,7 @@ var _turns_elapsed: int = 0           # per-instance: how many applications have
 
 ## What the NEXT application will apply (also what the label shows).
 func get_next_amount() -> int:
-	return _turns_elapsed * amount_applied 
+	return amount_applied + 2
 func reset_count() -> void:
 	_turns_elapsed = 0
 func get_display_text() -> String:

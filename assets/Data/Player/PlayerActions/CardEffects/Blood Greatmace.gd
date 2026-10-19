@@ -5,7 +5,7 @@ extends AttackCard
 
 func _missing_hp(character: CharacterInstance, hp_lost_first: int = 0) -> int:
 	var hp := maxi(character.current_health - hp_lost_first, 0)
-	return maxi(character.Max_HP - hp, 0)
+	return absi(character.Max_HP - hp) 
 
 
 ## Used by get_description() and the live preview (via _preview_value).

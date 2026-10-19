@@ -13,6 +13,8 @@ ap_cost = 1
 is_card_nullable = true
 blood_tax = 5
 tags = Array[StringName]([&"FirstRite"])
-Description = "Sacrifice 5. Gain 20% Damage UP for 2 turns. If Ascendant Ritual is active, Reset its count, gain 30% Damage Up for 10 turns instead. Null this card."
+Description = "Sacrifice 5.
+Gain 20% Damage UP for 2 turns. If Ascendant Ritual is active; reset its count, gain 30% Damage Up for 10 turns instead.
+Null this card."
 LogMessage = "\"Blood is the essence of life... Its mastery leads you on the first steps towards something greater!\""
 metadata/_custom_type_script = "uid://bm8khcsvx8q2c"

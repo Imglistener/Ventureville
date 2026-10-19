@@ -11,6 +11,7 @@ target = 1
 mp_cost = 1
 ap_cost = 1
 blood_tax = 5
-Description = "Sacrifice 5. Deal Blood Damage equal to an Enemy's Blood Syphon twice."
+Description = "Sacrifice 5.
+Deal Blood Damage equal to an Enemy's Blood Syphon twice."
 LogMessage = "\"Your Enemy's Blood festers under your influence!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

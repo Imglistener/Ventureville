@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TemperingCondition" format=3 uid="uid://cy8yu8epkv56i"]
+
+[ext_resource type="Texture2D" uid="uid://blowjqpa85mah" path="res://assets/GUI/Attack_UP_icon.png" id="1_07cfl"]
+[ext_resource type="Script" uid="uid://co5cj7o7f70qo" path="res://assets/Status Effects/Buffs/Conditions/Tempering.gd" id="2_y7hac"]
+
+[resource]
+script = ExtResource("2_y7hac")
+condition_name = "Tempering"
+condition_icon = ExtResource("1_07cfl")
+condition_texture = ExtResource("1_07cfl")
+condition_description = "Your next Blood Weapon this turn costs 1 less AP and deals 30% more damage."
+trigger_once = true
+metadata/_custom_type_script = "uid://b7s7qtq57mtfq"

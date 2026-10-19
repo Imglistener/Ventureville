@@ -12,6 +12,8 @@ target = 3
 mp_cost = 3
 ap_cost = 2
 is_card_nullable = true
-Description = "Set your current HP to half of your Max HP. Lose all your Regeneration, apply that much Blood Syphon to All Enemies. Null this card."
+Description = "Set your current HP to half of your Max HP. 
+Lose all your Regeneration, apply that much Blood Syphon to All Enemies.
+Null this card."
 LogMessage = "\"Drunk on blood, you feel your ascent draw near!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

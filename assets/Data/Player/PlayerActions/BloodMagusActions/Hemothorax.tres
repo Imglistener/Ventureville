@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://jdivhafotpmo"]
+
+[ext_resource type="PackedScene" uid="uid://xrhwnbgpj1x1" path="res://assets/Data/NewScenes/blood_barrier.tscn" id="1_qgiey"]
+[ext_resource type="Script" uid="uid://rmq3skkfw74s" path="res://assets/Data/Player/PlayerActions/CardEffects/Hemothorax.gd" id="2_0w3a8"]
+
+[resource]
+script = ExtResource("2_0w3a8")
+BaseShield = 16
+VFX = ExtResource("1_qgiey")
+name = "Hemothorax"
+rarity = 1
+target = 1
+mp_cost = 3
+ap_cost = 1
+Description = "Remove all shield from an Enemy.
+Gain 16 Shield, or twice as much if that Enemy has Blood Syphon."
+metadata/_custom_type_script = "uid://dx57of0yiebdh"

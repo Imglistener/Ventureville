@@ -1,16 +1,25 @@
 class_name ActiveEffectManager extends Node
 
+@export_group("Effect Chain: Player")
+@export var player_chain_direction: EffectChain.GrowDirection = EffectChain.GrowDirection.UP
+@export var player_tooltip_side: EffectChain.TooltipSide = EffectChain.TooltipSide.LEFT
+@export_group("Effect Chain: Enemies")
+@export var enemy_chain_direction: EffectChain.GrowDirection = EffectChain.GrowDirection.DOWN
+@export var enemy_tooltip_side: EffectChain.TooltipSide = EffectChain.TooltipSide.RIGHT
+
 @onready var player_stat_manager: Stat_Manager = $"../PlayerStatManager"
 @onready var enemy_manager: EnemyManager = $"../EnemyManager"
 @onready var player_view: PlayerView = $"../../Control_Layer/Control_Base/Base_Margin/MarginContainer/PlayerView"
 @onready var phase_manager: PhaseManager = $"../PhaseManager"
 @export var tooltip : PackedScene
-@export var condition_tooltip: PackedScene
+@export var chain_layer_index: int = 4   # above Control_Layer (2) and HandLayer (2), below Pause Layer (5)
 
+@export var condition_tooltip: PackedScene
+var _chain_layer: CanvasLayer
 const EFFECT_DISPLAY_DURATION: float = 2.0
 const ENEMY_TICK_DELAY: float = 0.3
 var _display_queued := false
-
+var _open_chains: Dictionary = {}   # icon Control -> { "chain": EffectChain, "getter": Callable }
 
 class ConditionDisplayEntry:
 	var stat_manager: Stat_Manager
@@ -50,6 +59,9 @@ var _effect_cycle_timer: Timer
 
 
 func _ready() -> void:
+	_chain_layer = CanvasLayer.new()
+	_chain_layer.layer = chain_layer_index
+	add_child(_chain_layer)
 	_setup_effect_cycle_timer()
 	_register_player()
 	_register_player_conditions()
@@ -89,9 +101,13 @@ func _add_entry(stat_manager: Stat_Manager, entry: EffectDisplayEntry) -> void:
 	_entry_order.append(stat_manager)
 	entry.icon.mouse_entered.connect(_on_icon_hover.bind(stat_manager, true))
 	entry.icon.mouse_exited.connect(_on_icon_hover.bind(stat_manager, false))
+	entry.icon.gui_input.connect(_on_icon_gui_input.bind(entry.icon, entry.get_effects, stat_manager))
+	entry.icon.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
 
 func _on_icon_hover(stat_manager: Stat_Manager, hovered: bool) -> void:
+	if _open_chains.has((_entries[stat_manager] as EffectDisplayEntry).icon):
+		return
 	if _entries.has(stat_manager):
 		var entry := _entries[stat_manager] as EffectDisplayEntry
 		entry.hovered = hovered
@@ -131,6 +147,9 @@ func clear_tooltips(stat_manager: Stat_Manager) -> void:
 
 
 func _check_pause_timer() -> void:
+	if not _open_chains.is_empty():
+		_effect_cycle_timer.paused = true
+		return
 	for entry in _entries.values():
 		if entry.hovered:
 			_effect_cycle_timer.paused = true
@@ -185,6 +204,7 @@ func _run_display() -> void:
 	for stat_manager in _entry_order:
 		_entries[stat_manager].index = 0
 	_on_effect_cycle_tick()
+	_refresh_chains()
 
 func tick_effects(stat_manager: Stat_Manager) -> void:
 	var target_stats
@@ -245,7 +265,8 @@ func _add_condition_entry(stat_manager: Stat_Manager, entry: ConditionDisplayEnt
 	_condition_entry_order.append(stat_manager)
 	entry.icon.mouse_entered.connect(_on_condition_icon_hover.bind(stat_manager, true))
 	entry.icon.mouse_exited.connect(_on_condition_icon_hover.bind(stat_manager, false))
-
+	entry.icon.gui_input.connect(_on_icon_gui_input.bind(entry.icon, entry.get_conditions, stat_manager))
+	entry.icon.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
 func _on_condition_icon_hover(stat_manager: Stat_Manager, hovered: bool) -> void:
 	if not _condition_entries.has(stat_manager):
@@ -299,7 +320,7 @@ func _refresh_condition_labels() -> void:
 	for stat_manager in _condition_entry_order:
 		var entry: ConditionDisplayEntry = _condition_entries[stat_manager]
 		_set_condition_label(entry.label, entry.current_condition)
-
+	_refresh_chains()
 
 func _advance_condition_entry(entry: ConditionDisplayEntry) -> void:
 	var conditions: Array = entry.get_conditions.call().filter(func(c): return c != null)
@@ -338,6 +359,7 @@ func _on_condition_changed() -> void:
 	for stat_manager in _condition_entry_order:
 		_condition_entries[stat_manager].index = 0
 		_advance_condition_entry(_condition_entries[stat_manager])
+	_refresh_chains()
 
 
 func tick_conditions(stat_manager: Stat_Manager) -> void:
@@ -398,6 +420,10 @@ func _on_enemy_unregistered(_view: EnemyView, stat_manager: Stat_Manager) -> voi
 	if stat_manager and _condition_entries.has(stat_manager):
 		_condition_entries.erase(stat_manager)
 		_condition_entry_order.erase(stat_manager)
+	if _entries.has(stat_manager):
+		var icon: Control = _entries[stat_manager].icon
+		if _open_chains.has(icon):
+			_open_chains[icon].chain.close()
 
 
 func _on_effect_cycle_tick() -> void:
@@ -425,3 +451,51 @@ func _tick_enemies_sequentially() -> void:
 		tick_conditions(enemies[i])
 		if i < enemies.size() - 1:
 			await get_tree().create_timer(ENEMY_TICK_DELAY, true, false, false).timeout
+
+func _on_icon_gui_input(event: InputEvent, icon: Control, getter: Callable, stat_manager: Stat_Manager) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		icon.accept_event()
+		_toggle_chain(icon, getter, stat_manager)
+		clear_tooltips(stat_manager)
+		clear_condition_tooltips(stat_manager)
+
+func _toggle_chain(icon: Control, getter: Callable, stat_manager: Stat_Manager) -> void:
+	if _open_chains.has(icon):
+		_open_chains[icon].chain.close()
+		return
+	var items: Array = getter.call().filter(func(i): return i != null)
+	if items.is_empty():
+		return
+	_close_all_chains()
+
+	var is_enemy := stat_manager.Entity is EnemyBattlerStats
+	var chain := EffectChain.new()
+	chain.anchor_icon = icon
+	chain.tooltip_scene = tooltip
+	chain.condition_tooltip_scene = condition_tooltip
+	chain.grow_direction = Control.GROW_DIRECTION_END if is_enemy else Control.GrowDirection.GROW_DIRECTION_BEGIN
+	chain.tooltip_side = enemy_tooltip_side if is_enemy else player_tooltip_side
+	_chain_layer.add_child(chain)
+	chain.closed.connect(_on_chain_closed.bind(icon))
+	_open_chains[icon] = {"chain": chain, "getter": getter}
+	_check_pause_timer()
+	chain.open(items)
+func _on_chain_closed(icon: Control) -> void:
+	_open_chains.erase(icon)
+	_check_pause_timer()
+
+
+func _close_all_chains() -> void:
+	for data in _open_chains.values():
+		if is_instance_valid(data.chain):
+			data.chain.close()
+
+
+## Live-updates open chains (counts change, effects expire, new ones arrive).
+func _refresh_chains() -> void:
+	for icon in _open_chains.keys():
+		if not is_instance_valid(icon):
+			_open_chains.erase(icon)
+			continue
+		var data: Dictionary = _open_chains[icon]
+		data.chain.set_items(data.getter.call())

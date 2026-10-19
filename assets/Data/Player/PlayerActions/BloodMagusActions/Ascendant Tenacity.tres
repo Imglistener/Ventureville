@@ -1,0 +1,18 @@
+[gd_resource type="Resource" format=3 uid="uid://cll3i2ao7dyq3"]
+
+[ext_resource type="Resource" uid="uid://iqawscsylwv2" path="res://assets/Status Effects/Buffs/Conditions/Not Yet.tres" id="1_r02pi"]
+[ext_resource type="Script" uid="uid://dbpdhmsws01as" path="res://assets/Data/Player/PlayerActions/CardEffects/Ascendant Tenacity.gd" id="2_prjaa"]
+
+[resource]
+script = ExtResource("2_prjaa")
+condition = ExtResource("1_r02pi")
+name = "Ascendnat Tenacity"
+rarity = 2
+mp_cost = 6
+ap_cost = 2
+is_card_nullable = true
+Description = "If Ascendant Form or Ascendant Ritual is active;
+Gain 1 Not Yet.
+When it triggers; Reset Ascendant Ritual's count if any.
+Null this card."
+metadata/_custom_type_script = "uid://bm8khcsvx8q2c"

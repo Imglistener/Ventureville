@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://5q4ix03fb80s"]
+
+[ext_resource type="Resource" uid="uid://be5c7aep2us2" path="res://assets/Status Effects/Debuffs/BloodSyphon.tres" id="1_07k55"]
+[ext_resource type="Script" uid="uid://bgwijoq8gse5" path="res://assets/Data/Player/PlayerActions/CardEffects/Crimson Tide.gd" id="2_rtg23"]
+
+[resource]
+script = ExtResource("2_rtg23")
+blood_syphon = ExtResource("1_07k55")
+name = "Crimson Tide"
+rarity = 1
+target = 1
+mp_cost = 3
+ap_cost = 1
+is_card_nullable = true
+Description = "Double the Blood Syphon on an enemy.
+Null this card."
+metadata/_custom_type_script = "uid://dxw4b7jhgkbv4"

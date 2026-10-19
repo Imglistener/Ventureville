@@ -75,7 +75,12 @@ func _on_enemy_turn_start() -> void:
 	for sm in _entries:
 		if sm != player_stat_manager:
 			_shift(_entries[sm])
-
+func count_tag_played_this_turn(tag: StringName) -> int:
+	var count := 0
+	for c in _entries[player_stat_manager].cards_played_this_turn:
+		if c.tags.has(tag):
+			count += 1
+	return count
 func _shift(f: TurnFlags) -> void:
 	f.took_damage_last_turn = f.took_damage_this_turn
 	f.took_damage_this_turn = false

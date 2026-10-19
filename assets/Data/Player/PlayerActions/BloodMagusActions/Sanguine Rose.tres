@@ -13,6 +13,7 @@ mp_cost = 2
 ap_cost = 1
 is_card_nullable = true
 blood_tax = 10
-Description = "Gain Congealed Blood equal to all Blood Syphon on your enemies. Null this card."
+Description = "Gain Congealed Blood equal to all Blood Syphon on your enemies.
+Null this card."
 LogMessage = "\"Your victims' blood hardens to protect you!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

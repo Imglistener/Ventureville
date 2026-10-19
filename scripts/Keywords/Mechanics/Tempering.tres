@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://kjdsttdrs8eu"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_b4pc7"]
+
+[resource]
+script = ExtResource("1_b4pc7")
+display_name = "Tempering"
+color = Color(0.96875, 0.68443394, 0.3519287, 1)
+text_effect = 1
+show_tooltip = true
+description = "Your next Blood Weapon this turn costs 1 less AP and deals +30% damage."
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

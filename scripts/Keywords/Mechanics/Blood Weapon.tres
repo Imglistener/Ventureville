@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://dnwsry1sheml0"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_e3bub"]
+
+[resource]
+script = ExtResource("1_e3bub")
+display_name = "Blood Weapon"
+aliases = ["Blood Weapons", "\"Blood Weapon\""]
+color = Color(1, 0.59375, 0.59375, 1)
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

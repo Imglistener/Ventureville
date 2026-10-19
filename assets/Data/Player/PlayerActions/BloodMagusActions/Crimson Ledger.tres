@@ -1,0 +1,19 @@
+[gd_resource type="Resource" format=3 uid="uid://dtotleq11lm81"]
+
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="1_2mamq"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="2_yj823"]
+[ext_resource type="Script" uid="uid://cmweel4fjexjq" path="res://assets/Data/Player/PlayerActions/CardEffects/Crimson Ledger.gd" id="3_j77um"]
+
+[resource]
+script = ExtResource("3_j77um")
+StatsScaled = ExtResource("1_2mamq")
+damage_type = ExtResource("2_yj823")
+name = "Crimson Ledger"
+rarity = 1
+target = 1
+mp_cost = 2
+ap_cost = 1
+Description = "Deal Blood damage equal to your current Blood Debt. Reduce the debt by 10. 
+"
+LogMessage = "\"Your gushing Blood lashes at your enemy!\""
+metadata/_custom_type_script = "uid://lq1cxv84kjey"

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" format=3 uid="uid://clbrv13vj2cvf"]
+
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="1_kg2au"]
+[ext_resource type="Resource" uid="uid://bxryntsurastc" path="res://assets/Enemies/Data/Damage Types/Blood.tres" id="2_hrnpm"]
+[ext_resource type="Script" uid="uid://bx81tjg8rq176" path="res://assets/Data/Player/PlayerActions/CardEffects/Blood Kusarigama.gd" id="3_uoc4n"]
+[ext_resource type="PackedScene" uid="uid://di5a6fk07bgpm" path="res://assets/Data/NewScenes/VFX/slash_vfx.tscn" id="4_nl1sm"]
+
+[resource]
+script = ExtResource("3_uoc4n")
+StatsScaled = ExtResource("1_kg2au")
+damage_type = ExtResource("2_hrnpm")
+slash_vfx = ExtResource("4_nl1sm")
+name = "Blood Kusarigama"
+rarity = 1
+mp_cost = 2
+ap_cost = 1
+blood_tax = 8
+tags = Array[StringName]([&"BloodWeapon"])
+Description = "Sacrifice 8.
+Deal {scaled} damage to all enemies for each Blood Weapon played this turn."
+metadata/_custom_type_script = "uid://lq1cxv84kjey"

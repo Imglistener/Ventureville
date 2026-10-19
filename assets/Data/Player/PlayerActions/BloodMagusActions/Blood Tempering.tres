@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://5p225i4r5lfg"]
+
+[ext_resource type="Resource" uid="uid://cy8yu8epkv56i" path="res://assets/Status Effects/Buffs/Conditions/Tempering.tres" id="1_oej7u"]
+[ext_resource type="Script" uid="uid://di8ctywmhld4m" path="res://assets/Data/Player/PlayerActions/CardEffects/Blood Tempering.gd" id="2_hqlyp"]
+
+[resource]
+script = ExtResource("2_hqlyp")
+condition = ExtResource("1_oej7u")
+name = "Blood Tempering"
+rarity = 1
+mp_cost = 1
+ap_cost = 1
+blood_tax = 8
+Description = "Sacrifice 8.
+Gain 1 Tempering."
+metadata/_custom_type_script = "uid://bm8khcsvx8q2c"

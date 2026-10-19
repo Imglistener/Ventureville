@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3 uid="uid://b302xumctdwhb"]
+
+[ext_resource type="Resource" uid="uid://dkcdc1ypd22a3" path="res://assets/Data/Player/PlayerActions/BloodMagusActions/Ascendant State.tres" id="1_yk35l"]
+[ext_resource type="Script" uid="uid://j3pcl8va46ut" path="res://assets/Data/Player/PlayerActions/CardEffects/Blood Omen.gd" id="2_ivf5t"]
+
+[resource]
+script = ExtResource("2_ivf5t")
+ascendant_state = ExtResource("1_yk35l")
+name = "Blood Omen"
+rarity = 1
+mp_cost = 2
+blood_tax = 5
+Description = "Sacrifice 5. 
+Draw 1 or if you haven’t played Ascendant State this battle; add it to your hand instead."
+metadata/_custom_type_script = "uid://bm8khcsvx8q2c"

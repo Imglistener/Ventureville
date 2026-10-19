@@ -12,6 +12,7 @@ rarity = 1
 target = 1
 mp_cost = 2
 ap_cost = 1
-Description = "Clear all Blood Syphon from a Target. Heal 3 and gain a 5% Damage Boost for each stack Cleared for 2 turns."
+Description = "Clear all Blood Syphon from a Target. 
+Heal 3 and gain a 5% Damage Boost for each stack Cleared for 2 turns."
 LogMessage = "\"The essence of your foes, it fills you with confidence!\""
 metadata/_custom_type_script = "uid://cpy8tjlulsna2"

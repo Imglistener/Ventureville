@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3 uid="uid://cwuxrc2dkcayc"]
+
+[ext_resource type="Script" uid="uid://ct8r3f7jr7qvj" path="res://assets/Data/Player/PlayerActions/CardEffects/Sanguine Smith.gd" id="1_uwx30"]
+
+[resource]
+script = ExtResource("1_uwx30")
+name = "Sanguine Smith"
+rarity = 1
+mp_cost = 2
+ap_cost = 1
+is_card_nullable = true
+Description = "Reduce the Cost of each Blood Weapon in your hand by 3 AP/MP this turn."
+metadata/_custom_type_script = "uid://bm8khcsvx8q2c"

@@ -15,6 +15,8 @@ mp_cost = 3
 ap_cost = 3
 blood_tax = 15
 tags = Array[StringName]([&"BloodWeapon"])
-Description = "Sacrifice 15, Deal Blood Damage equal to the difference between your current HP and your Max HP."
+Description = "Sacrifice 15. 
+Deal Blood Damage equal to the difference between your current HP and your Max HP.
+(Deals {scaled} Blood Damage)"
 LogMessage = "\"Molding your Blood into a heavy Greatmace, you bludgeon your enemy with incredible force!\" "
 metadata/_custom_type_script = "uid://lq1cxv84kjey"
