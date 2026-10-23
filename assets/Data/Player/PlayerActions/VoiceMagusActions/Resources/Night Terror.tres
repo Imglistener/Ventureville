@@ -1,0 +1,21 @@
+[gd_resource type="Resource" format=3 uid="uid://buca8fqrqayw2"]
+
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="1_t5x8q"]
+[ext_resource type="Resource" uid="uid://ccl61vrmwaqn7" path="res://assets/Enemies/Data/Damage Types/Psychic.tres" id="2_08pth"]
+[ext_resource type="Script" uid="uid://dfkbi61h2yl6b" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/PsychicStrike.gd" id="3_mvk4o"]
+
+[resource]
+script = ExtResource("3_mvk4o")
+base_damage = 10
+StatsScaled = ExtResource("1_t5x8q")
+damage_type = ExtResource("2_08pth")
+name = "Night Terror"
+rarity = 2
+attribute = 2
+target = 1
+mp_cost = 2
+ap_cost = 3
+is_card_nullable = true
+Description = "Deal {scaled} SAN Damage.
+Null this card."
+metadata/_custom_type_script = "uid://dsrm11e332hyn"

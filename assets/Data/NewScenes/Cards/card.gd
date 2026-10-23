@@ -30,6 +30,7 @@ signal CardClicked(card: CardUI)
 @onready var cost: Label = $CardAnchor/CardScaler/CardVisual/APTexture/MarginContainer/APCost
 @onready var mp_cost: Label = $CardAnchor/CardScaler/CardVisual/MPTexture/MarginContainer/MPCost
 @onready var disabled_mask: TextureRect = $CardAnchor/CardScaler/disabled_mask
+@onready var card_frame: TextureRect = $CardAnchor/CardScaler/CardFrame
 
 var _desc_queued := false
 
@@ -86,6 +87,19 @@ func _ready() -> void:
 		await keyword_tooltips_container.ready
 	ready_keyword_tooltips()
 	card_display_functionality.player_stats = player_stats
+	if card_data:
+		set_card_frame()
+
+func set_card_frame() -> void:
+	match card_data.attribute:
+		Card.CardAttribute.Hemomancy:
+			card_frame.texture = preload("res://assets/GUI/bloodmage_border.png")
+		Card.CardAttribute.Phonomancy:
+			card_frame.texture = preload("res://assets/GUI/voicemage_border_png.png")
+		Card.CardAttribute.Entromancy:
+			card_frame.texture = preload("res://assets/GUI/darkmage_border.png")
+		Card.CardAttribute.Somatomancy:
+			card_frame.texture = preload("res://assets/GUI/physicalmage_border.png")
 
 func _process(delta: float) -> void:
 	card_state_manager.process(delta)

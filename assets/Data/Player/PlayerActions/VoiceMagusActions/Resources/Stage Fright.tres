@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3 uid="uid://8ah2qn78i83t"]
+
+[ext_resource type="Resource" uid="uid://bv0b1smhr7ceb" path="res://assets/Status Effects/Debuffs/Horrified.tres" id="1_tmpdg"]
+[ext_resource type="Script" uid="uid://caligqio078ba" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/StageFright.gd" id="2_mwu3r"]
+
+[resource]
+script = ExtResource("2_mwu3r")
+horrified = ExtResource("1_tmpdg")
+name = "Stage Freight"
+attribute = 2
+target = 1
+mp_cost = 2
+ap_cost = 1
+Description = "Apply 2 Horrified."
+metadata/_custom_type_script = "uid://cpy8tjlulsna2"

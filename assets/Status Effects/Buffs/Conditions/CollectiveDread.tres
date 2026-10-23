@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CollectiveDreadCondition" format=3 uid="uid://cmbncujt5vng0"]
+
+[ext_resource type="Script" uid="uid://1dmnuwv4gik0" path="res://assets/Status Effects/Buffs/Conditions/CollectiveDread.gd" id="1_o5ags"]
+[ext_resource type="Texture2D" uid="uid://s6pycgmgx2e" path="res://assets/GUI/horrified.png" id="1_uyygk"]
+
+[resource]
+script = ExtResource("1_o5ags")
+condition_name = "Collective Dread"
+condition_icon = ExtResource("1_uyygk")
+condition_texture = ExtResource("1_uyygk")
+condition_description = "Once per Turn, when an Enemy Gains Horrified; every other enemy Gains 1 Horrified."
+metadata/_custom_type_script = "uid://1dmnuwv4gik0"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3 uid="uid://dksgxrdvujlnv"]
+
+[ext_resource type="Script" uid="uid://cebjbbwcqy6e7" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/StandingOvation.gd" id="1_xys36"]
+
+[resource]
+script = ExtResource("1_xys36")
+name = "Standing Ovation"
+rarity = 1
+attribute = 2
+mp_cost = 3
+ap_cost = 2
+Description = "Heal 15 HP.
+Heal 15 SAN."

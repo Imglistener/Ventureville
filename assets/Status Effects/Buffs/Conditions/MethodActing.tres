@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MethodActingCondition" format=3 uid="uid://cvqr48813nsue"]
+
+[ext_resource type="Script" uid="uid://w2i67x7p6anb" path="res://assets/Status Effects/Buffs/Conditions/MethodActingCondition.gd" id="1_g3acu"]
+[ext_resource type="Texture2D" uid="uid://d1o1moh4jai7s" path="res://assets/GUI/Illusionist_Icon.png" id="1_l6sgx"]
+[ext_resource type="Texture2D" uid="uid://c320qotn6dpje" path="res://assets/GUI/Illusionist_Icon_no_b.png" id="2_2dahi"]
+
+[resource]
+script = ExtResource("1_g3acu")
+condition_name = "Method Acting"
+condition_icon = ExtResource("1_l6sgx")
+condition_texture = ExtResource("2_2dahi")
+condition_description = "Mimic cards cost 1 less AP.
+If a you play a Mimic Card; Draw 1."
+metadata/_custom_type_script = "uid://w2i67x7p6anb"

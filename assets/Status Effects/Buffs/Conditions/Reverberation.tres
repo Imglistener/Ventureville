@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ReverberationCondition" format=3 uid="uid://c6j0oefhvy1vo"]
+
+[ext_resource type="Texture2D" uid="uid://cju5611sr6lxy" path="res://assets/GUI/Astral Modulator.png" id="1_cdt1b"]
+[ext_resource type="Script" uid="uid://cjmt634v03bey" path="res://assets/Status Effects/Buffs/Conditions/ReverberationCondition.gd" id="1_m484c"]
+
+[resource]
+script = ExtResource("1_m484c")
+condition_name = "Reverberation"
+condition_icon = ExtResource("1_cdt1b")
+condition_texture = ExtResource("1_cdt1b")
+condition_description = "Psychic damage deals 75% to SAN instead of 50%.
+"
+metadata/_custom_type_script = "uid://cjmt634v03bey"

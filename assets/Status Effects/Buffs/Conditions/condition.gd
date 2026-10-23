@@ -59,6 +59,15 @@ func find_same_effect(effects: Array) -> BattleCondition:
 		if effect.get_script() == self.get_script():
 			return effect
 	return null
-	
+
 func modify_outgoing_damage(amount: int, _defender: BaseBattlerStats) -> int:
+	return amount
+
+## Psychic attacks: fraction of the hit that also lands on SAN (default 0.5).
+## Reverberation will override this.
+func modify_psychic_san_ratio(ratio: float) -> float:
+	return ratio
+
+## Like modify_outgoing_damage, but knows the damage type (Stage Presence boosts Psychic only).
+func modify_typed_damage(amount: int, _defender: BaseBattlerStats, _damage_type: DamageType) -> int:
 	return amount

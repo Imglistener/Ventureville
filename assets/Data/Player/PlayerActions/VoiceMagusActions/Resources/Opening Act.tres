@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://dkbx2x63b4a3v"]
+
+[ext_resource type="Resource" uid="uid://cip3qjovj3myy" path="res://assets/Status Effects/Buffs/Conditions/StagePresence.tres" id="1_4un8q"]
+[ext_resource type="Script" uid="uid://dw5jrn0230un1" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/GainCondition.gd" id="2_0mvfg"]
+
+[resource]
+script = ExtResource("2_0mvfg")
+condition = ExtResource("1_4un8q")
+name = "Opening Act"
+rarity = 1
+attribute = 2
+mp_cost = 2
+ap_cost = 2
+is_card_nullable = true
+Description = "Gain 1 Stage Presence.
+Null this card."

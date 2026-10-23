@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://dl1luiy5rb4rp"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_eeqgf"]
+
+[resource]
+script = ExtResource("1_eeqgf")
+display_name = "Fear Itself"
+color = Color(0.44443923, 0.09765625, 1, 1)
+show_tooltip = true
+description = "The first time each turn an enemy becomes Horrified, gain 1 MP."
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

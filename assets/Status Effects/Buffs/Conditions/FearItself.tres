@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FearItselfCondition" format=3 uid="uid://dyjm6rf1n1fwy"]
+
+[ext_resource type="Texture2D" uid="uid://cocs76s0e3wsh" path="res://assets/GUI/Wither.png" id="1_isfw8"]
+[ext_resource type="Script" uid="uid://3tmj42h02fgm" path="res://assets/Status Effects/Buffs/Conditions/FearItself.gd" id="1_qdjle"]
+
+[resource]
+script = ExtResource("1_qdjle")
+condition_name = "Fear Itself"
+condition_icon = ExtResource("1_isfw8")
+condition_texture = ExtResource("1_isfw8")
+condition_description = "The first time each turn an enemy becomes Horrified, gain 1 MP."
+metadata/_custom_type_script = "uid://3tmj42h02fgm"

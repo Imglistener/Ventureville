@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="DefendCard" format=3 uid="uid://bjl1roxntsdb2"]
+
+[ext_resource type="PackedScene" uid="uid://lgag4d5rcy0l" path="res://assets/Data/NewScenes/block_visual_effect.tscn" id="1_g6hyu"]
+[ext_resource type="Script" uid="uid://dx57of0yiebdh" path="res://scripts/CardTypes/CardTypeDefend.gd" id="1_q82t1"]
+[ext_resource type="Script" uid="uid://b51gi65kf4wjw" path="res://assets/Data/NewScenes/Cards/OrchestrateBonus.gd" id="2_pnh27"]
+[ext_resource type="Resource" uid="uid://buwgjmht4k2ed" path="res://assets/Status Effects/Buffs/Retain.tres" id="3_siswv"]
+
+[sub_resource type="Resource" id="Resource_30no7"]
+script = ExtResource("2_pnh27")
+status = ExtResource("3_siswv")
+status_on_self = true
+metadata/_custom_type_script = "uid://b51gi65kf4wjw"
+
+[resource]
+script = ExtResource("1_q82t1")
+BaseShield = 16
+VFX = ExtResource("1_g6hyu")
+name = "Second Movement"
+rarity = 1
+attribute = 2
+mp_cost = 4
+ap_cost = 1
+tags = Array[StringName]([&"Orchestrate"])
+Description = "Gain 16 Shield.
+Orchestrate: Attack
+Gain 1 Retain."
+orchestrate_enabled = true
+orchestrate_bonus = SubResource("Resource_30no7")
+metadata/_custom_type_script = "uid://dx57of0yiebdh"

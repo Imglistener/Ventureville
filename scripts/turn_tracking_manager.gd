@@ -65,10 +65,10 @@ func _on_card_played(card: Card) -> void:
 	_entries[player_stat_manager].cards_played_this_turn.append(card)
 	for tag in card.tags:
 		_battle_tags[tag] = true
-		
+
 func _on_player_turn_start() -> void:
 	_shift(_entries[player_stat_manager])
-	
+
 func played_tag_this_battle(tag: StringName) -> bool:
 	return _battle_tags.has(tag)
 func _on_enemy_turn_start() -> void:
@@ -94,6 +94,29 @@ func _shift(f: TurnFlags) -> void:
 	f.healed_this_turn = false
 	f.gained_san_block_last_turn = f.gained_san_block_this_turn
 	f.gained_san_block_this_turn = false
+
+# ------------------------------------------------------------------ Orchestrate queries
+# include_current = true while a card is resolving (card_played already recorded it),
+# false when previewing a card that has not been played yet.
+
+## Total cards played this turn (counts the card being resolved if include_current is on).
+func count_cards_played_this_turn() -> int:
+	return _entries[player_stat_manager].cards_played_this_turn.size()
+
+## The card played immediately before the current one, or null if it is the first this turn.
+func previous_card_this_turn(include_current: bool) -> Card:
+	var played: Array[Card] = _entries[player_stat_manager].cards_played_this_turn
+	var index := played.size() - (2 if include_current else 1)
+	return played[index] if index >= 0 else null
+
+## True if any card played earlier this turn (excluding the current one) was of this type.
+func played_type_before(type: Card.Type, include_current: bool) -> bool:
+	var played: Array[Card] = _entries[player_stat_manager].cards_played_this_turn
+	var end := played.size() - (1 if include_current else 0)
+	for i in range(end):
+		if played[i].type == type:
+			return true
+	return false
 
 # Query API for CardEffects
 func took_damage_last_turn(sm: Stat_Manager) -> bool:

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" format=3 uid="uid://cygd7x8gakecu"]
+
+[ext_resource type="Script" uid="uid://b47c666hlhln4" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/Lullaby.gd" id="1_l6mdh"]
+
+[resource]
+script = ExtResource("1_l6mdh")
+name = "Lullaby"
+rarity = 2
+attribute = 2
+target = 1
+mp_cost = 5
+ap_cost = 3
+Description = "Stun 1 Enemy if they have 5 or more Horrified stacks. "
+metadata/_custom_type_script = "uid://dxw4b7jhgkbv4"

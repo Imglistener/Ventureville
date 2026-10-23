@@ -1,0 +1,20 @@
+[gd_resource type="Resource" format=3 uid="uid://b8igni4xf7n5f"]
+
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="1_7xpck"]
+[ext_resource type="Resource" uid="uid://ccl61vrmwaqn7" path="res://assets/Enemies/Data/Damage Types/Psychic.tres" id="2_p7w43"]
+[ext_resource type="Script" uid="uid://cy8uipctuf135" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/DreadVerdict.gd" id="3_fkddx"]
+
+[resource]
+script = ExtResource("3_fkddx")
+base_damage = 4
+StatsScaled = ExtResource("1_7xpck")
+damage_type = ExtResource("2_p7w43")
+name = "Dread Verdict"
+rarity = 1
+attribute = 2
+target = 1
+mp_cost = 2
+ap_cost = 2
+tags = Array[StringName]([&"Orchestrate"])
+Description = "Deal {scaled} Psychic Damage plus an addition 3 Psychic Damage for each Horrified stack on the target."
+metadata/_custom_type_script = "uid://dsrm11e332hyn"

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d2ul37wh17aim" path="res://assets/Data/Scripts/deck_editor_menu.gd" id="1_0ehgw"]
 [ext_resource type="Shader" uid="uid://ds0oi5spicmse" path="res://assets/Data/NewScenes/Scroll.gdshader" id="1_s4r4b"]
-[ext_resource type="Resource" uid="uid://dnux8rwh6xw2l" path="res://assets/Data/Classes/BloodMagus.tres" id="2_4bfk8"]
+[ext_resource type="Resource" uid="uid://u7b6uhn5848s" path="res://assets/Data/Classes/VoiceMagus.tres" id="2_7ljr0"]
 [ext_resource type="Texture2D" uid="uid://dlkas3ttipe3e" path="res://assets/KennyUI/Transparent border/panel-transparent-border-015.png" id="3_4bfk8"]
 [ext_resource type="PackedScene" uid="uid://bbclaht28of8q" path="res://assets/Data/NewScenes/confirmation_menu_base.tscn" id="3_glvkm"]
 [ext_resource type="Texture2D" uid="uid://csgwkwwy343rx" path="res://background.png" id="3_s4r4b"]
@@ -27,7 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0ehgw")
-character_data = ExtResource("2_4bfk8")
+character_data = ExtResource("2_7ljr0")
 confirmation_menu_scene = ExtResource("3_glvkm")
 
 [node name="MainMargin" type="MarginContainer" parent="." unique_id=1566107154]

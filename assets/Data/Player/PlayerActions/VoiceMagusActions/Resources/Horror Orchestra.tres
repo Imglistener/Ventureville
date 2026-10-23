@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://c53n1nw2467vr"]
+
+[ext_resource type="Resource" uid="uid://cmbncujt5vng0" path="res://assets/Status Effects/Buffs/Conditions/CollectiveDread.tres" id="1_nxesd"]
+[ext_resource type="Script" uid="uid://dw5jrn0230un1" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/GainCondition.gd" id="2_6gu3b"]
+
+[resource]
+script = ExtResource("2_6gu3b")
+condition = ExtResource("1_nxesd")
+name = "Horror Orchestra"
+rarity = 2
+attribute = 2
+mp_cost = 3
+ap_cost = 1
+is_card_nullable = true
+Description = "Gain 1 Collective Dread.
+Null this card."

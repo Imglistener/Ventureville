@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3 uid="uid://dhv4vpaixk207"]
+
+[ext_resource type="Script" uid="uid://bg0ktrmppidn2" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/Mimicry.gd" id="1_3u7fe"]
+
+[resource]
+script = ExtResource("1_3u7fe")
+name = "Mimicry"
+rarity = 2
+attribute = 2
+mp_cost = 1
+ap_cost = 1
+Description = "Create a weaker copy of the last action used by your enemies as a Phonomancy Card."
+metadata/_custom_type_script = "uid://bm8khcsvx8q2c"

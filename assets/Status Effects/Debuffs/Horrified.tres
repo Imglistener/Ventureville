@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Horrified" format=3 uid="uid://bv0b1smhr7ceb"]
+
+[ext_resource type="Texture2D" uid="uid://s6pycgmgx2e" path="res://assets/GUI/horrified.png" id="1_i61bw"]
+[ext_resource type="Script" uid="uid://ctx82vrf5comj" path="res://assets/Status Effects/Debuffs/Horrified.gd" id="2_ke7er"]
+
+[resource]
+script = ExtResource("2_ke7er")
+status_name = 3
+status_icon = ExtResource("1_i61bw")
+effect_texture = ExtResource("1_i61bw")
+status_description = "Each turn, a chance to be Stunned, Concussed or Shaken. Stacks never decay. Restoring SAN removes them."
+metadata/_custom_type_script = "uid://cgy5kmno2u1aw"

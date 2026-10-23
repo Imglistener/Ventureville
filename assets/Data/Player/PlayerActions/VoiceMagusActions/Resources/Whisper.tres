@@ -1,0 +1,18 @@
+[gd_resource type="Resource" format=3 uid="uid://ce2r7oxhl3w2g"]
+
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="1_x1nje"]
+[ext_resource type="Resource" uid="uid://ccl61vrmwaqn7" path="res://assets/Enemies/Data/Damage Types/Psychic.tres" id="2_56e2l"]
+[ext_resource type="Script" uid="uid://dfkbi61h2yl6b" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/PsychicStrike.gd" id="3_wkat6"]
+
+[resource]
+script = ExtResource("3_wkat6")
+base_damage = 6
+StatsScaled = ExtResource("1_x1nje")
+damage_type = ExtResource("2_56e2l")
+name = "Whisper"
+attribute = 2
+target = 1
+mp_cost = 1
+ap_cost = 1
+Description = "Deal {scaled} Psychic damage."
+metadata/_custom_type_script = "uid://lq1cxv84kjey"

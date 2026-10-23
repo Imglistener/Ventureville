@@ -1,0 +1,26 @@
+[gd_resource type="Resource" format=3 uid="uid://ckpapm4ek55hg"]
+
+[ext_resource type="Resource" uid="uid://colxenne7fpke" path="res://assets/Status Effects/Debuffs/DamageDown.tres" id="1_bbu7l"]
+[ext_resource type="Script" uid="uid://b51gi65kf4wjw" path="res://assets/Data/NewScenes/Cards/OrchestrateBonus.gd" id="2_piwyq"]
+[ext_resource type="Script" uid="uid://bb84s66xl7q3i" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/ApplyDamageDown.gd" id="2_wvsmk"]
+
+[sub_resource type="Resource" id="Resource_av4q6"]
+script = ExtResource("2_piwyq")
+shield = 10
+metadata/_custom_type_script = "uid://b51gi65kf4wjw"
+
+[resource]
+script = ExtResource("2_wvsmk")
+damage_down = ExtResource("1_bbu7l")
+name = "Dissonance"
+attribute = 2
+target = 1
+mp_cost = 1
+ap_cost = 1
+Description = "Apply 2 Turns of Shaken to a Target.
+Orchestrate: Buff
+Gain 10 Shield."
+orchestrate_enabled = true
+orchestrate_type = 1
+orchestrate_bonus = SubResource("Resource_av4q6")
+metadata/_custom_type_script = "uid://dxw4b7jhgkbv4"

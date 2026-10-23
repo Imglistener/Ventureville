@@ -1,0 +1,18 @@
+[gd_resource type="Resource" format=3 uid="uid://dqt2vi4cyq1yw"]
+
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="1_tt1kn"]
+[ext_resource type="Resource" uid="uid://ccl61vrmwaqn7" path="res://assets/Enemies/Data/Damage Types/Psychic.tres" id="2_8opus"]
+[ext_resource type="Script" uid="uid://dhjukjuv40bp2" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/FirstMovementSolo.gd" id="3_05ouj"]
+
+[resource]
+script = ExtResource("3_05ouj")
+StatsScaled = ExtResource("1_tt1kn")
+damage_type = ExtResource("2_8opus")
+name = "First Movement"
+rarity = 1
+attribute = 2
+mp_cost = 2
+ap_cost = 1
+Description = "Deal {scaled} Psychic Damage.
+If the Target is Horrified:
+Gain 1 AP."

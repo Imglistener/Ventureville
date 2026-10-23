@@ -3,21 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://clhppi5kqrsky" path="res://assets/Data/Classes/BloodMagus/BloodMagus.png" id="1_1a232"]
 [ext_resource type="Resource" uid="uid://dh3lhtl6ux4uu" path="res://assets/Data/Player/Inventory/Inventory.tres" id="1_iri2l"]
 [ext_resource type="Script" uid="uid://cs2ejlgorfek8" path="res://assets/Data/Player/CharacterInstance.gd" id="1_sn4ww"]
-[ext_resource type="Resource" uid="uid://cweq7n85crff3" path="res://assets/Data/Player/Deck/Deck.tres" id="2_kg42h"]
-[ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="3_v3aom"]
-[ext_resource type="Resource" uid="uid://bf04hmv3nnbgw" path="res://assets/Data/Stats/Revised Stats/Health.tres" id="4_87oeh"]
-[ext_resource type="Resource" uid="uid://bxetxvy80ay0c" path="res://assets/Data/Stats/Revised Stats/Sanity.tres" id="5_1a232"]
-[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="6_iri2l"]
-[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="7_3opvp"]
-[ext_resource type="Resource" uid="uid://ceoqilwthbnl5" path="res://assets/Data/Stats/Revised Stats/Entropy.tres" id="8_ak5lq"]
-[ext_resource type="Resource" uid="uid://cr5xuv3tmjx6m" path="res://assets/Data/Stats/Revised Stats/Strength.tres" id="9_jhug3"]
+[ext_resource type="Resource" path="res://assets/Data/Player/Deck/BloodMagusDeck.tres" id="4_v3aom"]
+[ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="5_vd4to"]
+[ext_resource type="Resource" uid="uid://bf04hmv3nnbgw" path="res://assets/Data/Stats/Revised Stats/Health.tres" id="6_iri2l"]
+[ext_resource type="Resource" uid="uid://bxetxvy80ay0c" path="res://assets/Data/Stats/Revised Stats/Sanity.tres" id="7_3opvp"]
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="8_ak5lq"]
+[ext_resource type="Resource" uid="uid://bqgopm3elq147" path="res://assets/Data/Stats/Revised Stats/Blood.tres" id="9_jhug3"]
+[ext_resource type="Resource" uid="uid://ceoqilwthbnl5" path="res://assets/Data/Stats/Revised Stats/Entropy.tres" id="10_vsgrr"]
+[ext_resource type="Resource" uid="uid://cr5xuv3tmjx6m" path="res://assets/Data/Stats/Revised Stats/Strength.tres" id="11_qiqta"]
 
 [resource]
 script = ExtResource("1_sn4ww")
-starting_deck = ExtResource("2_kg42h")
+starting_deck = ExtResource("4_v3aom")
 draw_power = 4
 max_mana = 3
 player_portrait = ExtResource("1_1a232")
 player_inventory = ExtResource("1_iri2l")
 entity_name = "Samuel"
-stats = Array[ExtResource("3_v3aom")]([ExtResource("4_87oeh"), ExtResource("5_1a232"), ExtResource("6_iri2l"), ExtResource("7_3opvp"), ExtResource("8_ak5lq"), ExtResource("9_jhug3")])
+stats = Array[ExtResource("5_vd4to")]([ExtResource("6_iri2l"), ExtResource("7_3opvp"), ExtResource("8_ak5lq"), ExtResource("9_jhug3"), ExtResource("10_vsgrr"), ExtResource("11_qiqta")])
