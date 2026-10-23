@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://bk0kyw4fiqaqr"]
+
+[ext_resource type="Resource" uid="uid://cvqr48813nsue" path="res://assets/Status Effects/Buffs/Conditions/MethodActing.tres" id="1_66dxl"]
+[ext_resource type="Script" uid="uid://dw5jrn0230un1" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/GainCondition.gd" id="2_1tdyx"]
+
+[resource]
+script = ExtResource("2_1tdyx")
+condition = ExtResource("1_66dxl")
+name = "Voice Illusion"
+rarity = 1
+attribute = 2
+mp_cost = 4
+ap_cost = 3
+is_card_nullable = true
+Description = "Gain 1 Method Acting.
+Null this card."

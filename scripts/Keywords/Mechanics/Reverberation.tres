@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://dox3y1qvv2d3q"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_ni3yr"]
+
+[resource]
+script = ExtResource("1_ni3yr")
+display_name = "Reverberation"
+color = Color(0.6949463, 0.203125, 1, 1)
+show_tooltip = true
+description = "Psychic damage deals 75% to SAN instead of 50%."
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

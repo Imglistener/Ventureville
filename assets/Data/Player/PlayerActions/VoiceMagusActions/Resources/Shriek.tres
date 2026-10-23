@@ -1,0 +1,20 @@
+[gd_resource type="Resource" format=3 uid="uid://bwbssnj1milsl"]
+
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="1_bnvhp"]
+[ext_resource type="Resource" uid="uid://ccl61vrmwaqn7" path="res://assets/Enemies/Data/Damage Types/Psychic.tres" id="2_o7at6"]
+[ext_resource type="Script" uid="uid://dfkbi61h2yl6b" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/PsychicStrike.gd" id="3_owkrl"]
+
+[resource]
+script = ExtResource("3_owkrl")
+base_damage = 6
+StatsScaled = ExtResource("1_bnvhp")
+damage_type = ExtResource("2_o7at6")
+san_ratio_override = 1.0
+name = "Shriek"
+rarity = 1
+attribute = 2
+target = 1
+mp_cost = 3
+ap_cost = 1
+Description = "Deal {scaled} Psychic Damage and just as much SAN Damage."
+metadata/_custom_type_script = "uid://lq1cxv84kjey"

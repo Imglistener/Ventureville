@@ -1,0 +1,14 @@
+[gd_resource type="Resource" format=3 uid="uid://cqsvdqvbrfw0u"]
+
+[ext_resource type="Script" uid="uid://bvxlo8dqydx7i" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/MassHysteria.gd" id="1_6j6i4"]
+
+[resource]
+script = ExtResource("1_6j6i4")
+name = "Mass Hysteria"
+rarity = 1
+attribute = 2
+target = 2
+mp_cost = 3
+ap_cost = 1
+Description = "Apply the effects of Horrified on all Enemies affected by it."
+metadata/_custom_type_script = "uid://dxw4b7jhgkbv4"

@@ -5,6 +5,8 @@ class_name AttackCard extends Card
 @export var StatsScaled: StatInstance
 @export var damage_type: DamageType
 @export var slash_vfx : PackedScene
+## Psychic attacks only. < 0 = default (50% of the hit also lands on SAN). Shriek uses 1.0.
+@export var san_ratio_override: float = -1.0
 
 func _init() -> void:
 	type = Type.ATTACK
@@ -24,7 +26,8 @@ func _calculate_total(character: CharacterInstance) -> int:
 func _deal_damage(targets: Array[Node], amount: int) -> void:
 	var effect := AttackEffect.new()
 	effect.damage_type = damage_type
-	effect.amount = amount
+	effect.amount = int(amount * _orchestrate_mult())   # Orchestrate damage bonus
+	effect.san_ratio_override = san_ratio_override
 	var player := _get_player(targets)
 	if player:
 		effect.source = player.Player

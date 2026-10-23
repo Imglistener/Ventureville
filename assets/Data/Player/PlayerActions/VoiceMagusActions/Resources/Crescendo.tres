@@ -1,0 +1,27 @@
+[gd_resource type="Resource" format=3 uid="uid://bw12wrnc62r5"]
+
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="1_flwj1"]
+[ext_resource type="Resource" uid="uid://ccl61vrmwaqn7" path="res://assets/Enemies/Data/Damage Types/Psychic.tres" id="2_aunmb"]
+[ext_resource type="Script" uid="uid://b51gi65kf4wjw" path="res://assets/Data/NewScenes/Cards/OrchestrateBonus.gd" id="3_aunmb"]
+[ext_resource type="Script" uid="uid://8yacdpu6kf6e" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/Crescendo.gd" id="3_puwtq"]
+
+[sub_resource type="Resource" id="Resource_44hft"]
+script = ExtResource("3_aunmb")
+mp = 2
+metadata/_custom_type_script = "uid://b51gi65kf4wjw"
+
+[resource]
+script = ExtResource("3_puwtq")
+base_damage = 4
+StatsScaled = ExtResource("1_flwj1")
+damage_type = ExtResource("2_aunmb")
+name = "Crescendo"
+rarity = 1
+attribute = 2
+target = 1
+mp_cost = 3
+Description = "Deal {scaled} Psychic Damage for every Orchestrate card played this turn.
+Orchestrate: Attack:
+Gain 2 MP."
+orchestrate_bonus = SubResource("Resource_44hft")
+metadata/_custom_type_script = "uid://dsrm11e332hyn"

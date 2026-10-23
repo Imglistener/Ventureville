@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://b2bri8mn32e0t"]
+
+[ext_resource type="PackedScene" uid="uid://lgag4d5rcy0l" path="res://assets/Data/NewScenes/block_visual_effect.tscn" id="1_kni1q"]
+[ext_resource type="Script" uid="uid://d1rvson20b0cr" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/VoiceShield.gd" id="2_tixcl"]
+
+[resource]
+script = ExtResource("2_tixcl")
+BaseShield = 10
+BaseSanShield = 10
+VFX = ExtResource("1_kni1q")
+name = "Sound Barrier"
+attribute = 2
+mp_cost = 2
+ap_cost = 1
+Description = "Gain 10 Shield.
+Gain 10 SAN Shield."
+metadata/_custom_type_script = "uid://dx57of0yiebdh"

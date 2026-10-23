@@ -89,29 +89,55 @@ func set_san_block(value: int) -> void:
 func set_block(value: int) -> void:
 	current_block = clampi(value, 0, 9999)
 	Stats_Changed.emit()
-	
+
 func heal(amount: int) -> void:
 	self.current_health += amount
 	if amount > 0:
 		for effect in ActiveEffects:
 			if effect is BloodDebt:
 				effect.on_heal(self)
-				break   
+				break
 
+## Any SAN restore also strips every stack of Horrified from the healer.
+## This is the only way to remove it, and it is the enemies' counterplay.
 func san_heal(amount: int) -> void:
 	self.current_sanity = clampi(self.current_sanity + amount, 0, self.Max_SAN)
-	
+	if amount <= 0:
+		return
+	sanity_restored.emit(amount, entity_name)
+	if damage_number_anchor:
+		DamageNumbers.display_san_number(amount, damage_number_anchor, damage_numbers, true)
+	var horrified := get_status(Horrified)
+	if horrified:
+		horrified.on_remove(self)
+		Events.effect_applied.emit()
+
 func take_damage(amount: int, damagetype: DamageType) -> void:
-	self.current_health -= amount 
+	self.current_health -= amount
+
+## Shared by player and enemies (CharacterInstance no longer overrides this).
+## SAN Shield absorbs first; sanity_damage_taken carries the amount that got through,
+## which is what Horrified's Breaking Point reads.
 func take_san_damage(amount: int) -> void:
+	if amount <= 0:
+		return
+	if current_san_block > 0:
+		var original := amount
+		amount = clampi(amount - current_san_block, 0, amount)
+		current_san_block = clampi(current_san_block - original, 0, current_san_block)
+	if amount <= 0:
+		return
 	self.current_sanity -= amount
-	
+	sanity_damage_taken.emit(amount, entity_name)
+	if damage_number_anchor:
+		DamageNumbers.display_san_number(amount, damage_number_anchor, damage_numbers)
+
 func _get_max_hp() -> int:
 	return _max_hp  # Now just returns the backing variable
-	
+
 func _get_max_san() -> int:
 	return _max_san
-	
+
 func get_status(status_script: Script) -> StatusEffect:
 	for effect in ActiveEffects:
 		if effect and effect.get_script() == status_script:

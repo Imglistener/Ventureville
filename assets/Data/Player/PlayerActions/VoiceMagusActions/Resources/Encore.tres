@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3 uid="uid://cshd5odrs00xj"]
+
+[ext_resource type="Script" uid="uid://bpdjqkakv1fcj" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/Encore.gd" id="1_4bdcj"]
+
+[resource]
+script = ExtResource("1_4bdcj")
+name = "Encore"
+rarity = 1
+attribute = 2
+mp_cost = 2
+Description = "Create a copy of the last Mimic card you played this battle."

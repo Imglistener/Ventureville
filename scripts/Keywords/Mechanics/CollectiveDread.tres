@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://8itpuvau4i77"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_8r1q7"]
+
+[resource]
+script = ExtResource("1_8r1q7")
+display_name = "Collective Dread"
+color = Color(0.48199463, 0.19140625, 1, 1)
+show_tooltip = true
+description = "Once per Turn, when an Enemy Gains Horrified; every other enemy Gains 1 Horrified."
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

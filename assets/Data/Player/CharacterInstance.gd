@@ -34,34 +34,26 @@ func take_damage(damage : int, damage_type: DamageType) -> void:
 		DamageNumbers.display_number(final_damage, damage_number_anchor, damage_numbers)
 		self.current_health -= final_damage
 		damage_taken.emit(final_damage, entity_name)
-	
+
 	else:
 		self.current_health -= damage
 		DamageNumbers.display_number(damage, damage_number_anchor, damage_numbers)
 		damage_taken.emit(damage, entity_name)
 	if self.current_health == 0:
 			entity_died.emit(entity_name)
-	
+
 	Stats_Changed.emit()
 func set_character_level()-> void:
 	for stat in stats:
 		character_level += stat.stat_level
-		 
+
 func reset_mana() -> void:
 	self.mana = max_mana
 
 func reset_AP() -> void:
 	self.AP = 3
 
-func take_san_damage(amount: int) -> void:
-	if self.current_san_block > 0:
-		var origina_amount = amount
-		amount = clampi(amount - self.current_san_block, 0, amount)
-		self.current_san_block = clampi(self.current_san_block - origina_amount, 0, self.current_san_block)
-	super(amount)
-	sanity_damage_taken.emit(amount, entity_name)
-	Stats_Changed.emit()
-	
+# take_san_damage now lives in BaseBattlerStats (shared with enemies).
 
 func heal(amount: int) -> void:
 	DamageNumbers.display_healing_number(amount, damage_number_anchor, damage_numbers)

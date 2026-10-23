@@ -42,3 +42,10 @@ func setup_from_data() -> void:
 	super()
 	Damage = Enemy_Data.Damage
 	damagetype = Enemy_Data.DamageElement
+
+# Each of the 3 hits is a sixth of Damage x DamageBonus x attack bonus.
+func _mimic_divisor() -> float:
+	return 6.0
+
+func _mimic_hits() -> int:
+	return 3

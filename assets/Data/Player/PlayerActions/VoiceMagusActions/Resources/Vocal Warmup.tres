@@ -1,0 +1,26 @@
+[gd_resource type="Resource" format=3 uid="uid://ce81cthsosbgc"]
+
+[ext_resource type="Resource" uid="uid://cykpqknfmbckv" path="res://assets/Status Effects/Buffs/DamageUp.tres" id="1_5r4n8"]
+[ext_resource type="Script" uid="uid://dgik53mr7s0lt" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/VocalWarmUp.gd" id="2_1eq75"]
+[ext_resource type="Script" uid="uid://b51gi65kf4wjw" path="res://assets/Data/NewScenes/Cards/OrchestrateBonus.gd" id="2_3mj0j"]
+
+[sub_resource type="Resource" id="Resource_bnvhp"]
+script = ExtResource("2_3mj0j")
+status = ExtResource("1_5r4n8")
+status_stacks = 2
+status_on_self = true
+metadata/_custom_type_script = "uid://b51gi65kf4wjw"
+
+[resource]
+script = ExtResource("2_1eq75")
+name = "Vocal Warmup"
+rarity = 1
+attribute = 2
+mp_cost = 1
+Description = "Draw 1.
+Orchestrate: Buff
+Gain 25% Damage Up for 2 Turns."
+orchestrate_enabled = true
+orchestrate_type = 1
+orchestrate_bonus = SubResource("Resource_bnvhp")
+metadata/_custom_type_script = "uid://bm8khcsvx8q2c"

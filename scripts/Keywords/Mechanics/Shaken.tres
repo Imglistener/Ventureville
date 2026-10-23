@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://cjvkd3axpjmd1"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_bxa3f"]
+
+[resource]
+script = ExtResource("1_bxa3f")
+display_name = "Shaken"
+color = Color(0.026397705, 0.2496233, 0.67578125, 1)
+text_effect = 1
+show_tooltip = true
+description = "Affected Entity has its Damage Lowered by 25%."
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

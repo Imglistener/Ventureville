@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://dain2tbqmq3f4"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_b3xbu"]
+
+[resource]
+script = ExtResource("1_b3xbu")
+display_name = "Orchestrate"
+color = Color(0.8380432, 0.66015625, 1, 1)
+text_effect = 1
+show_tooltip = true
+description = "Cards with Orchestrate gain bonus effects when played after a card with the Orchestrated Type."
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

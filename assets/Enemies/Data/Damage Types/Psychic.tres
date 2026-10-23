@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_q0ov3")
-Damage_Type = 5
+Damage_Type = 4
 Associated_Stat = ExtResource("1_lljwb")
 metadata/_custom_type_script = "uid://cs2umcg6qolyx"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="KeywordData" format=3 uid="uid://r67ecilknb2k"]
+
+[ext_resource type="Script" uid="uid://8gtwyuwqyoe1" path="res://scripts/KeywordData.gd" id="1_xe56d"]
+
+[resource]
+script = ExtResource("1_xe56d")
+display_name = "Method Acting"
+color = Color(0.9413738, 0.5770874, 0.953125, 1)
+show_tooltip = true
+description = "Mimic cards cost 1 less AP.
+If a you play a Mimic Card; Draw 1."
+metadata/_custom_type_script = "uid://8gtwyuwqyoe1"

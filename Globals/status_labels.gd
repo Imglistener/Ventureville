@@ -14,7 +14,8 @@ const COLORS := {
 	"Stalking": Color(1.0, 0.55, 0.1),
 	"Charging": Color(1.0, 0.4, 0.1),
 	"Stunned": Color(0.94, 0.9, 0.55),
-	
+	"Horrified": Color(0.627, 0.361, 0.839),
+
 }
 
 const FONT_SIZE := 30
@@ -67,6 +68,9 @@ func display_effect(status: Resource, anchor: Node2D, source_position: Vector2, 
 	elif status is Stunned:
 		text = "Stunned"
 		color = COLORS["Stunned"]
+	elif status is Horrified:
+		text = "Horrified"
+		color = COLORS["Horrified"]
 	else:
 		return
 

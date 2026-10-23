@@ -34,6 +34,12 @@ window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 
+[file_customization]
+
+folder_colors={
+"res://scripts/Keywords/": "yellow"
+}
+
 [global_group]
 
 BGMBus=""
