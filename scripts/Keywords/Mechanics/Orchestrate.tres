@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_b3xbu")
 display_name = "Orchestrate"
+aliases = ["Orchestrated"]
 color = Color(0.8380432, 0.66015625, 1, 1)
 text_effect = 1
 show_tooltip = true

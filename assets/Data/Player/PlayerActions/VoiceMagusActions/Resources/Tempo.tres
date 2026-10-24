@@ -1,0 +1,25 @@
+[gd_resource type="Resource" format=3 uid="uid://0ycb1hm4wq2o"]
+
+[ext_resource type="Script" uid="uid://b51gi65kf4wjw" path="res://assets/Data/NewScenes/Cards/OrchestrateBonus.gd" id="1_eap2b"]
+[ext_resource type="Script" uid="uid://boocmx6tcy0pp" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/Tempo.gd" id="2_eap2b"]
+
+[sub_resource type="Resource" id="Resource_eap2b"]
+script = ExtResource("1_eap2b")
+draw = 1
+metadata/_custom_type_script = "uid://b51gi65kf4wjw"
+
+[resource]
+script = ExtResource("2_eap2b")
+mp_gained = 12
+name = "Tempo"
+rarity = 1
+attribute = 2
+is_card_nullable = true
+Description = "Gain 12 MP.
+Null this card.
+Orchestrate: Debuff
+Draw 1."
+orchestrate_enabled = true
+orchestrate_type = 2
+orchestrate_bonus = SubResource("Resource_eap2b")
+metadata/_custom_type_script = "uid://bm8khcsvx8q2c"

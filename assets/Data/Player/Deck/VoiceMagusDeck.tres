@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://b5cefnn3573a1"]
+[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://dfj5p2qt7bc3b"]
 
 [ext_resource type="Script" uid="uid://cpy8tjlulsna2" path="res://scripts/Card.gd" id="1_dx7s8"]
 [ext_resource type="Script" uid="uid://pqq147nh02w3" path="res://scripts/deck.gd" id="2_b2a2k"]
@@ -26,10 +26,16 @@
 [ext_resource type="Resource" uid="uid://dqt2vi4cyq1yw" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Resources/First Movement.tres" id="23_hk85b"]
 [ext_resource type="Resource" uid="uid://bjl1roxntsdb2" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Resources/Second Movement.tres" id="24_8yksw"]
 [ext_resource type="Resource" uid="uid://ilbaeep13xan" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Resources/Third Movement.tres" id="25_84fn1"]
+[ext_resource type="Resource" uid="uid://bb2bfsj7dxop4" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Resources/Cadenza.tres" id="26_8yksw"]
+[ext_resource type="Resource" uid="uid://0ycb1hm4wq2o" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Resources/Tempo.tres" id="27_84fn1"]
+[ext_resource type="Resource" uid="uid://cbyxvjrfi040u" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Resources/Discordant Melodies.tres" id="28_6nfe0"]
 
 [resource]
 script = ExtResource("2_b2a2k")
 Obtained_Cards = Dictionary[ExtResource("1_dx7s8"), int]({
+ExtResource("28_6nfe0"): 2,
+ExtResource("27_84fn1"): 2,
+ExtResource("26_8yksw"): 1,
 ExtResource("25_84fn1"): 1,
 ExtResource("24_8yksw"): 1,
 ExtResource("23_hk85b"): 1,
@@ -56,16 +62,16 @@ ExtResource("22_lprjn"): 1,
 ExtResource("7_nq6mi"): 2
 })
 Card_Amount_In_Deck = Dictionary[ExtResource("1_dx7s8"), int]({
-ExtResource("11_3egbc"): 2,
-ExtResource("12_awc2h"): 2,
-ExtResource("14_8yksw"): 4,
-ExtResource("15_84fn1"): 1,
-ExtResource("17_exojs"): 1,
-ExtResource("18_by4m6"): 3,
-ExtResource("19_lufqu"): 1,
-ExtResource("5_h55pr"): 1,
-ExtResource("3_0vsju"): 2,
-ExtResource("7_nq6mi"): 2,
-ExtResource("6_lkudo"): 1
+ExtResource("26_8yksw"): 1,
+ExtResource("2_hqsy7"): 2,
+ExtResource("12_awc2h"): 1,
+ExtResource("13_hk85b"): 2,
+ExtResource("24_8yksw"): 1,
+ExtResource("25_84fn1"): 1,
+ExtResource("6_lkudo"): 1,
+ExtResource("23_hk85b"): 1,
+ExtResource("10_nwl6r"): 1,
+ExtResource("27_84fn1"): 2,
+ExtResource("28_6nfe0"): 2
 })
 metadata/_custom_type_script = "uid://pqq147nh02w3"

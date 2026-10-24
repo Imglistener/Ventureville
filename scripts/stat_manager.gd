@@ -51,8 +51,6 @@ func setup_ai() -> void:
 	if EnemyThoughts:
 		EnemyThoughts.queue_free()
 	var EnemyThoughtsNew: EnemyAI = enemy_ai.instantiate()
-	if not enemy_ai:
-		print("lost enemy_ai")
 	add_child(EnemyThoughtsNew)
 	EnemyThoughts = EnemyThoughtsNew
 	EnemyThoughts.enemy = enemy

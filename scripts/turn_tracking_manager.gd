@@ -16,9 +16,13 @@ class TurnFlags:
 	var healed_last_turn := false
 	var cards_played_this_turn: Array[Card] = []
 	var cards_played_last_turn: Array[Card] = []
+	var orchestrations_this_turn := 0
 
 var _entries: Dictionary = {}  # Stat_Manager -> TurnFlags
 var _battle_tags: Dictionary = {}
+const CADENZA_INTERVAL := 2
+var _orchestrations_this_battle := 0
+
 
 func _ready() -> void:
 	add_to_group("TurnTracker")   # lets cards find us without a scene path
@@ -28,6 +32,7 @@ func _ready() -> void:
 	Events.card_played.connect(_on_card_played)
 	Events.PlayerStandbyStart.connect(_on_player_turn_start.unbind(1))
 	Events.EnemyStandbyStart.connect(_on_enemy_turn_start.unbind(1))
+	Events.card_orchestrated.connect(_on_card_orchestrated)
 
 func _register(sm: Stat_Manager) -> void:
 	if _entries.has(sm):
@@ -48,7 +53,30 @@ func _on_character_healed(_amount: int, _name: String, sm: Stat_Manager) -> void
 	_entries[sm].healed_this_turn = true
 func _on_san_block_gained(_amount: int, _name: String, sm: Stat_Manager) -> void:
 	_entries[sm].gained_san_block_this_turn = true
+	
+func _on_card_orchestrated(_card: Card) -> void:
+	_entries[player_stat_manager].orchestrations_this_turn += 1
+	_orchestrations_this_battle += 1
+	if _orchestrations_this_battle % CADENZA_INTERVAL == 0:
+		# Deferred so the card that just orchestrated has already reached the discard pile.
+		_recall_from_discard.call_deferred(Card.TAG_CADENZA)
 
+func count_orchestrations_this_turn() -> int:
+	return _entries[player_stat_manager].orchestrations_this_turn
+
+func _recall_from_discard(tag: StringName) -> void:
+	var deck: Deck = player_stat_manager.Player.starting_deck
+	for card in deck.Discard_Pile:
+		if card.tags.has(tag):
+			deck.Discard_Pile.erase(card)
+			deck.DiscardSize_Changed.emit(deck.Discard_Pile.size())
+			deck.Battle_Deck.push_front(card)
+			deck.DeckSize_Changed.emit(deck.Battle_Deck.size())
+			var targets: Array[Node] = [player_stat_manager]
+			var draw := DrawEffect.new()
+			draw.amount = 1
+			draw.activate(targets)
+			return
 func _on_enemy_registered(view: EnemyView, sm: Stat_Manager) -> void:
 	_register(sm)
 
@@ -94,6 +122,7 @@ func _shift(f: TurnFlags) -> void:
 	f.healed_this_turn = false
 	f.gained_san_block_last_turn = f.gained_san_block_this_turn
 	f.gained_san_block_this_turn = false
+	f.orchestrations_this_turn = 0
 
 # ------------------------------------------------------------------ Orchestrate queries
 # include_current = true while a card is resolving (card_played already recorded it),

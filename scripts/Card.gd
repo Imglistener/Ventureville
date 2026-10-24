@@ -11,6 +11,8 @@ enum OrchestrateMode{PREVIOUS_CARD, ANY_EARLIER}
 const TAG_BLOOD_WEAPON := &"BloodWeapon"
 const TAG_FIRST_RITE := &"FirstRite"
 const TAG_SECOND_RITE := &"SecondRite"
+const TAG_CADENZA := &"Cadenza"
+const TAG_ORCHESTRATE:= &"Orchestrate"
 
 @export_group("Card Details")
 @export var name: String
@@ -54,14 +56,17 @@ func get_live_description(_character: CharacterInstance, _live_targets: Array[No
 	return get_description(_character)
 
 func activate_card(targets: Array[Node], characterstats: CharacterInstance) -> void:
-	Events.card_played.emit(self)
-	characterstats.mana -= mp_cost
-	characterstats.AP -= ap_cost
+
+	var mp := get_mp_cost()
+	var ap := get_ap_cost()
+	characterstats.mana -= mp
+	characterstats.AP -= ap
 	if is_SingleTarget():
 		apply_effect(targets)
 	else:
 		apply_effect(_get_targets(targets))
 
+	Events.card_played.emit(self)
 func _get_targets(targets: Array[Node]) -> Array[Node]:
 	if not targets:
 		return []
@@ -91,12 +96,11 @@ func apply_effect(targets: Array[Node]) -> void:
 	var player := _get_player(targets)
 	if not player:
 		return
-	# Events.card_played already fired (and the tracker already recorded this card),
-	# so the current card is the last entry in this turn's list.
 	orchestrated = _check_orchestrate(true)
 	_execute(player, targets)
 	if orchestrated:
 		_apply_orchestrate_bonus(player, targets)
+		Events.card_orchestrated.emit(self)
 
 ## Override this in individual cards.
 func _execute(_player: Stat_Manager, _targets: Array[Node]) -> void:
@@ -248,3 +252,8 @@ func _draw_cards(targets: Array[Node], amount: int) -> void:
 	var effect := DrawEffect.new()
 	effect.amount = amount
 	effect.activate(targets)
+	
+func get_ap_cost() -> int:
+	return ap_cost
+func get_mp_cost() -> int:
+	return mp_cost

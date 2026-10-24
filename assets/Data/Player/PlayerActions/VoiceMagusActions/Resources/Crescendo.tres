@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://b51gi65kf4wjw"
 
 [resource]
 script = ExtResource("3_puwtq")
-base_damage = 4
+delay = 0.2
 StatsScaled = ExtResource("1_flwj1")
 damage_type = ExtResource("2_aunmb")
 name = "Crescendo"
@@ -21,7 +21,9 @@ attribute = 2
 target = 1
 mp_cost = 3
 Description = "Deal {scaled} Psychic Damage for every Orchestrate card played this turn.
-Orchestrate: Attack:
+Orchestrate: Debuff
 Gain 2 MP."
+orchestrate_enabled = true
+orchestrate_type = 2
 orchestrate_bonus = SubResource("Resource_44hft")
 metadata/_custom_type_script = "uid://dsrm11e332hyn"

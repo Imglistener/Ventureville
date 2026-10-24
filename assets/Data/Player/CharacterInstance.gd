@@ -29,7 +29,9 @@ func take_damage(damage : int, damage_type: DamageType) -> void:
 	damage = clampi(damage - current_block, 0, damage)
 	self.current_block = clampi(current_block - initial_damage, 0 , current_block)
 	if damage_type:
-		var resistance = damage_type.Associated_Stat.stat_resistance_value
+		var resistance = 0
+		if damage_type.Associated_Stat:
+			resistance = damage_type.Associated_Stat.stat_resistance_value
 		var final_damage := clampi(damage - resistance, 0, damage)
 		DamageNumbers.display_number(final_damage, damage_number_anchor, damage_numbers)
 		self.current_health -= final_damage
@@ -75,7 +77,7 @@ func card_IsPlayable(card: Card) -> bool:
 		return false
 	if is_stunned():
 		return false
-	return self.mana >= card.mp_cost and self.AP >= card.ap_cost
+	return self.mana >= card.get_mp_cost() and self.AP >= card.get_ap_cost()
 
 #in case of new game:
 func create_instance() -> Resource:

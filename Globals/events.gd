@@ -17,6 +17,7 @@ signal card_exhausted(card: Card)
 signal turn_cards_drawn
 signal add_card_to_deck_request(card: Card)
 signal remove_card_from_deck_request(card: Card)
+signal card_orchestrated(card: Card)
 #Deck Signals
 signal clear_deck_request
 signal save_deck_request

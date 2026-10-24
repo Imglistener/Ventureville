@@ -68,8 +68,8 @@ func _ready() -> void:
 	card_name.text = str(card_data.name)
 	card_type.text = str(card_data.Type.keys()[card_data.type]).left(1) + str(card_data.Type.keys()[card_data.type]).right(-1).to_lower()
 	card_effect.set_fitted_text(KeywordsScene.format(card_data.get_description(player_stats)))
-	cost.text = str(card_data.ap_cost)
-	mp_cost.text = str(card_data.mp_cost)
+	cost.text = str(card_data.get_ap_cost())
+	mp_cost.text = str(card_data.get_mp_cost())
 	card_state_manager.init(self)
 	manage_card_rarity()
 	log = get_tree().get_first_node_in_group('Log')
@@ -78,6 +78,8 @@ func _ready() -> void:
 				player_stats.Stats_Changed.connect(update_description)
 	if not Events.card_cost_changed.is_connected(_on_cost_changed):
 		Events.card_cost_changed.connect(_on_cost_changed)
+	if not Events.card_played.is_connected(_on_card_played_refresh):
+		Events.card_played.connect(_on_card_played_refresh)
 	if ControlBase:
 		if not CardClicked.is_connected(ControlBase.on_trigger_pressed):
 			CardClicked.connect(ControlBase.on_trigger_pressed)
@@ -103,7 +105,14 @@ func set_card_frame() -> void:
 
 func _process(delta: float) -> void:
 	card_state_manager.process(delta)
+func _on_card_played_refresh(_card: Card) -> void:
+	update_costs.call_deferred()	
+func update_costs() -> void:
+	cost.text = str(card_data.get_ap_cost())
+	mp_cost.text = str(card_data.get_mp_cost())
 
+func _on_status_changed(_a = null, _b = null) -> void:
+	update_costs()
 	
 func show_card() -> void:
 	modulate = Color(1.0, 1.0, 1.0, 0.0)
@@ -138,9 +147,7 @@ func _on_cost_changed(card: Card) -> void:
 		update_costs()
 func refresh_live_preview() -> void:
 	_update_live_preview()
-func update_costs() -> void:
-	cost.text = str(card_data.ap_cost)
-	mp_cost.text = str(card_data.mp_cost)
+
 
 func play() -> void:
 	if not card_data:

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cs2ejlgorfek8" path="res://assets/Data/Player/CharacterInstance.gd" id="1_maj5l"]
 [ext_resource type="Resource" uid="uid://dh3lhtl6ux4uu" path="res://assets/Data/Player/Inventory/Inventory.tres" id="1_o81g8"]
-[ext_resource type="Resource" path="res://assets/Data/Player/Deck/VoiceMagusDeck.tres" id="2_dvox8"]
+[ext_resource type="Resource" uid="uid://bjwgxnv5jkrve" path="res://assets/Data/Player/Deck/VoiceMagusDeck.tres" id="2_dvox8"]
 [ext_resource type="Texture2D" uid="uid://cdlgjildby10k" path="res://assets/illusionist/illusionist_portrait_V2.png" id="2_tdn8f"]
 [ext_resource type="Script" uid="uid://dpyy1nwoa6fa2" path="res://assets/Data/Stats/Revised Stats/StatInstance.gd" id="5_parsd"]
 [ext_resource type="Resource" uid="uid://bf04hmv3nnbgw" path="res://assets/Data/Stats/Revised Stats/Health.tres" id="6_pcwnp"]
@@ -15,7 +15,7 @@
 [resource]
 script = ExtResource("1_maj5l")
 starting_deck = ExtResource("2_dvox8")
-draw_power = 6
+draw_power = 5
 max_mana = 3
 player_class = 2
 player_portrait = ExtResource("2_tdn8f")

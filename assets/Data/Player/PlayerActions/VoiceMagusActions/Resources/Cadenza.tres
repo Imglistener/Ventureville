@@ -1,0 +1,20 @@
+[gd_resource type="Resource" format=3 uid="uid://bb2bfsj7dxop4"]
+
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="1_sx3m0"]
+[ext_resource type="Resource" uid="uid://ccl61vrmwaqn7" path="res://assets/Enemies/Data/Damage Types/Psychic.tres" id="2_igtdt"]
+[ext_resource type="Script" uid="uid://la1yfk6qtqa2" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/Cadenza.gd" id="3_utl6h"]
+
+[resource]
+script = ExtResource("3_utl6h")
+damage_fraction = 0.5
+StatsScaled = ExtResource("1_sx3m0")
+damage_type = ExtResource("2_igtdt")
+name = "Cadenza"
+rarity = 2
+attribute = 2
+target = 1
+mp_cost = 1
+tags = Array[StringName]([&"Cadenza"])
+Description = "Deal {scaled} Psychic damage for each time you Orchestrated this turn.
+Every 2 times you Orchestrate, add this card from your discard pile to your hand."
+metadata/_custom_type_script = "uid://dsrm11e332hyn"

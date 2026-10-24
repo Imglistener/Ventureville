@@ -27,6 +27,6 @@ Description = "All Enemies gains 3 Shaken, 2 Concussed,  and 1 Stunned.
 Orchestrate: Defend
 Gain 5 MP."
 orchestrate_enabled = true
-orchestrate_type = 2
+orchestrate_type = 3
 orchestrate_bonus = SubResource("Resource_csaka")
 metadata/_custom_type_script = "uid://dxw4b7jhgkbv4"
