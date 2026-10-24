@@ -15,6 +15,7 @@ rarity = 1
 attribute = 2
 mp_cost = 2
 ap_cost = 1
+tags = Array[StringName]([&"Orchestrate"])
 Description = "Heal 20 SAN.
 Orchestrate: Defend
 Draw 1."

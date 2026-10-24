@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://oyh2nwaokngu"]
+
+[ext_resource type="PackedScene" uid="uid://lgag4d5rcy0l" path="res://assets/Data/NewScenes/block_visual_effect.tscn" id="1_oprbe"]
+[ext_resource type="Script" uid="uid://bgp64ppobb5sl" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/Mirage.gd" id="2_ofn24"]
+
+[resource]
+script = ExtResource("2_ofn24")
+VFX = ExtResource("1_oprbe")
+name = "Mirage"
+rarity = 1
+attribute = 2
+target = 3
+mp_cost = 2
+ap_cost = 1
+Description = "Gain 4 Shield for each Horrified on each enemy."
+metadata/_custom_type_script = "uid://dx57of0yiebdh"

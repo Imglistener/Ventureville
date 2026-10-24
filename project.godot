@@ -22,10 +22,6 @@ Events="*uid://be6xsbwafouf8"
 DamageNumbers="*uid://djnpb46xsrym5"
 StatusLabels="*uid://btavavp46re4c"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [display]
 
 window/size/viewport_width=1280

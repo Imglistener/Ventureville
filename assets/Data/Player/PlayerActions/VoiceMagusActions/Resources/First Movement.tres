@@ -11,8 +11,9 @@ damage_type = ExtResource("2_8opus")
 name = "First Movement"
 rarity = 1
 attribute = 2
+target = 1
 mp_cost = 2
 ap_cost = 1
 Description = "Deal {scaled} Psychic Damage.
 If the Target is Horrified:
-Gain 1 AP."
+Gain 2 AP."

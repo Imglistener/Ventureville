@@ -1,0 +1,28 @@
+[gd_resource type="Resource" format=3 uid="uid://cbyxvjrfi040u"]
+
+[ext_resource type="Resource" uid="uid://claek5dwbffxw" path="res://assets/Data/Stats/Revised Stats/Influence.tres" id="1_a2d8c"]
+[ext_resource type="Resource" uid="uid://ccl61vrmwaqn7" path="res://assets/Enemies/Data/Damage Types/Psychic.tres" id="2_hqxk2"]
+[ext_resource type="Script" uid="uid://b51gi65kf4wjw" path="res://assets/Data/NewScenes/Cards/OrchestrateBonus.gd" id="3_hqxk2"]
+[ext_resource type="Script" uid="uid://dbs40g1efwuis" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/DiscordantMelodies.gd" id="3_v7ixf"]
+
+[sub_resource type="Resource" id="Resource_a2d8c"]
+script = ExtResource("3_hqxk2")
+metadata/_custom_type_script = "uid://b51gi65kf4wjw"
+
+[resource]
+script = ExtResource("3_v7ixf")
+StatsScaled = ExtResource("1_a2d8c")
+damage_type = ExtResource("2_hqxk2")
+name = "Discordant Melodies"
+rarity = 1
+attribute = 2
+target = 2
+mp_cost = 3
+ap_cost = 2
+Description = "Every Enemy takes {scaled} Psychic Damage for each unique Status Effect on them.
+Orchestrate : Debuff
+This card is free to play if there are 3 different Status effects across all enemies."
+orchestrate_enabled = true
+orchestrate_type = 2
+orchestrate_bonus = SubResource("Resource_a2d8c")
+metadata/_custom_type_script = "uid://dsrm11e332hyn"

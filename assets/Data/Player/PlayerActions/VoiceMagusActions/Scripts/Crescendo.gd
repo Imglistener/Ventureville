@@ -3,7 +3,7 @@ extends VoiceAttackCard
 ## Set count_tag (e.g. &"BloodWeapon") to count only cards with that tag; empty counts everything.
 
 @export var count_tag: StringName = &"Orchestrate"
-
+@export var delay: float
 
 func _count(tracker: TurnTrackingManager, include_this_card: bool) -> int:
 	if not tracker:
@@ -17,10 +17,11 @@ func _execute(player: Stat_Manager, targets: Array[Node]) -> void:
 		return
 	# card_played fired before _execute, so this card is already counted.
 	var plays := _count(_get_turn_tracker(player), true)
-	_deal_damage(targets, _calculate_total(player.Player) * plays)
+	for hit in range(plays):
+		_deal_damage(targets, _calculate_total(player.Player))
+		await player.get_tree().create_timer(delay).timeout
 
 
 # Not played yet in a preview, so add this card itself.
-func _preview_value(character: CharacterInstance, enemy: EnemyBattlerStats, apply_resistance: bool) -> int:
-	var total := _calculate_total(character) * _count(_tracker(), false)
-	return enemy.calculate_type_adjusted_damage(total, damage_type) if apply_resistance else total
+func get_live_description(character: CharacterInstance, live_targets: Array[Node]) -> String:
+	return get_description(character) + "\nHits " + str(_count(_get_turn_tracker(_get_player(live_targets)) , true)) + " Times."

@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="DefendCard" format=3 uid="uid://bjl1roxntsdb2"]
+[gd_resource type="Resource" format=3 uid="uid://bjl1roxntsdb2"]
 
 [ext_resource type="PackedScene" uid="uid://lgag4d5rcy0l" path="res://assets/Data/NewScenes/block_visual_effect.tscn" id="1_g6hyu"]
-[ext_resource type="Script" uid="uid://dx57of0yiebdh" path="res://scripts/CardTypes/CardTypeDefend.gd" id="1_q82t1"]
 [ext_resource type="Script" uid="uid://b51gi65kf4wjw" path="res://assets/Data/NewScenes/Cards/OrchestrateBonus.gd" id="2_pnh27"]
 [ext_resource type="Resource" uid="uid://buwgjmht4k2ed" path="res://assets/Status Effects/Buffs/Retain.tres" id="3_siswv"]
+[ext_resource type="Script" uid="uid://d1rvson20b0cr" path="res://assets/Data/Player/PlayerActions/VoiceMagusActions/Scripts/VoiceShield.gd" id="4_g6hyu"]
 
 [sub_resource type="Resource" id="Resource_30no7"]
 script = ExtResource("2_pnh27")
@@ -12,7 +12,7 @@ status_on_self = true
 metadata/_custom_type_script = "uid://b51gi65kf4wjw"
 
 [resource]
-script = ExtResource("1_q82t1")
+script = ExtResource("4_g6hyu")
 BaseShield = 16
 VFX = ExtResource("1_g6hyu")
 name = "Second Movement"
